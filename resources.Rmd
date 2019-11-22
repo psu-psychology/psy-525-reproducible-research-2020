@@ -1,0 +1,51 @@
+---
+title: "Resources"
+---
+
+## Videos
+
+- A GitHub/RStudio workflow for branching and making pull requests. [HTML](lecture-notes/branches-pull-requests.html)
+
+## Books
+
+- Gandrud, C. (2015). Reproducible Research with R and R Studio, Second Edition. CRC Press. <https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379>
+- Wickham, H. & Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O'Reilly Media. <http://shop.oreilly.com/product/0636920034407.do>
+- Chang, W. (2012). R Graphics Cookbook. <http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf>
+
+## Blogs/Projects
+
+- R bloggers <https://www.r-bloggers.com/>
+- Open science in practice. <https://inattentionalcoffee.wordpress.com/2017/01/03/open-science-in-practice/>
+- Practicing what I preach: The open Ph.D. experiment. <http://www.librarianinthecity.com/2016/12/practicing-what-i-preach-the-open-phd-experiment/>
+- [Open Stats Lab](https://sites.trinity.edu/osl). Use data published with psychology papers to teach statistics.
+- Jupyter, Zeppelin, Beaker: The Rise of the Notebooks. <https://opendatascience.com/blog/jupyter-zeppelin-beaker-the-rise-of-the-notebooks/>
+- Open science and free culture. <http://www.simoncolumbus.com/publications-2/open-science-and-free-culture/>
+- [Collaborative Replications and Education Project (CREP)](https://osf.io/wfc6u/).
+
+## Software tools
+
+- LaTeX on the web
+    - ShareLaTex <http://sharelatex.com>
+    - Overleaf <http://www.overleaf.com>
+    - Authorea <http://www.authorea.com>
+- Experimental Design Assistant for planning animal studies <https://eda.nc3rs.org.uk/>
+- p-hacker Shiny app <http://shinyapps.org/apps/p-hacker/>
+
+## Articles
+
+- Schweinsberg, M., Madan, N., Vianello, M., Sommer, S. A., Jordan, J., Tierney, W., … Uhlmann, E. L. (2016). The pipeline project: Pre-publication independent replications of a single laboratory’s research pipeline. Journal of Experimental Social Psychology, 66, 55–67. <https://doi.org/10.1016/j.jesp.2015.10.001>
+- Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S., Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A manifesto for reproducible science. Nature Human Behaviour, 1, 0021. <https://doi.org/10.1038/s41562-016-0021>.
+- Poldrack, R. A., Baker, C. I., Durnez, J., Gorgolewski, K. J., Matthews, P. M., Munafò, M. R., … Yarkoni, T. (2017). Scanning the horizon: towards transparent and reproducible neuroimaging research. Nature Reviews Neuroscience, advance online publication. <https://doi.org/10.1038/nrn.2016.167>.
+
+## Citation Management 
+
+### Comparisons
+- <http://guides.lib.uchicago.edu/c.php?g=297307&p=1984557>
+
+- <https://en.wikipedia.org/wiki/Comparison_of_reference_management_software>
+
+### Software
+
+- Mendeley <https://www.mendeley.com/careers/?dgcid=google_paid-search_Mendeley.com-Search-Branded-USA&gclid=Cj0KEQiAifvEBRCVx5up6Ojgr5oBEiQALHw1TviV-SG0qOSpmmSkoIbrYrn1ZvPeZTinianXeiQa6FIaAqA28P8HAQ>
+- Zotero <https://www.zotero.org/>
+- Paperpile <https://paperpile.com/>

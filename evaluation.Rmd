@@ -1,0 +1,12 @@
+---
+title: "Evaluation"
+---
+
+PSY 511 course performance will be evaluated based on the following scheme:
+
+| Component           | Points                      | % of Grade |
+|---------------------|-----------------------------|-------|
+| Class participation | 2 pts/class * 15 weeks = 30 | 25    |
+| Assignments         | 5 pts * 12 assignments = 60 | 50    |
+| Final projects      | 30                          | 25    |
+| **TOTAL**           | **150**                     | **100** |

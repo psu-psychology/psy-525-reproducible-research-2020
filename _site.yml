@@ -1,0 +1,27 @@
+name: "PSY 525.00x Spring 2020"
+navbar:
+  title: "PSY 525.00x"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Schedule"
+      href: schedule.html
+    - text: "Students"
+      href: students.html
+    - text: "Assignments"
+      href: assignments.html
+    - text: "Evaluation"
+      href: evaluation.html
+    - text: "Resources"
+      href: resources.html
+    - text: "Site info"
+      href: site-info.html
+output_dir: "docs"
+output:
+  html_document:
+    theme: spacelab
+    highlight: textmate
+    include:
+      after_body: footer.html

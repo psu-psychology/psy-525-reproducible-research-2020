@@ -1,0 +1,5 @@
+Information about this R session:
+
+```{r}
+sessionInfo()
+```

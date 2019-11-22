@@ -1,0 +1,17 @@
+---
+title: "PSY 525 Spring 2020 Planning"
+output: html_notebook
+---
+
+# Purpose
+
+This document documents Rick Gilmore's planning for the Spring 2020 course on reproducible research practices.
+
+# Goals
+
+1. Learn about risks to reproducible research
+2. Learn specific techniques to mitigate some of these risks
+3. Acquire and improve proficiency with some specific tools:
+  - Version control via git and GitHub
+  - R, RStudio, and RMarkdown
+  - Python, and Jupyter notebooks

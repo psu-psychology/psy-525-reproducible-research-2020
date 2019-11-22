@@ -1,0 +1,4 @@
+```{r, echo=FALSE}
+install.packages("rmarkdown")
+install.packages("ggplot2")
+```

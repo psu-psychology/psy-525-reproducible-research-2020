@@ -1,0 +1,5 @@
+---
+title: "About the course"
+---
+
+Is there a crisis of reproducibility in psychological science? What does it mean to ask the question? What are transparent, open, and reproducible research practices? Should one implement them? How? This course will seek answers to these questions. Students will read about recent failures in research transparency and reproducibility and discuss the ethics of open practices in scientific research. Through a series of guided exercises students will learn how to use new research tools (e.g. [RStudio](https://www.rstudio.com), [Jupyter/iPython](http://jupyter.org), the [Open Science Framework](http://osf.io), [GitHub](http://github.com), [command line scripting](https://en.wikipedia.org/wiki/Command-line_interface)) that  make it easier to implement open and reproducible research practices. At the end of the course, students will be capable of implementing one or more new research practices into their own workflows. Evaluation will be based on in-class participation, short papers, and project assignments. No prior software development experience is required, but a willingness to learn new skills is essential.
