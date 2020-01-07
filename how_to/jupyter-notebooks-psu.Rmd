@@ -1,0 +1,44 @@
+---
+title: "PSU Jupyter Notebook Server"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Purpose
+
+This document describes how to use Penn State's Jupyter notebook server system.
+
+# Prerequisites
+
+1. You must have a PSU Access ID (e.g., rog1).
+2. You must have two-factor authentication set-up.
+2. You must be connected to a secure, PSU-controlled network:
+
+- `psu` wifi on campus
+- hard-wired network connection on campus (e.g., from research lab or computer lab)
+- Logged on to PSU's virtual private network (VPN)
+
+# Accessing the Jupyter notebook server
+
+1. Visit [`https://lxclusterapps.tlt.psu.edu:8000`](https://lxclusterapps.tlt.psu.edu:8000)
+
+You should see the following login screen:
+
+```{r, fig.cap="Jupyter notebook server login screen"}
+knitr::include_graphics("img/jupyter-psu-pre-login.jpg")
+```
+
+2. Enter your PSU logon credentials
+3. Verify your identity using whatever two-factor authentication method you have chosen.
+
+You should then see the following screen:
+
+```{r, fig.cap="Jupyter notebook post-login"}
+knitr::include_graphics("img/jupyter-psu-post-login.jpg")
+```
+

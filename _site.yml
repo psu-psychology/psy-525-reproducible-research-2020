@@ -1,6 +1,6 @@
-name: "PSY 525.00x Spring 2020"
+name: "PSY 525.001 Spring 2020"
 navbar:
-  title: "PSY 525.00x"
+  title: "PSY 525.001"
   left:
     - text: "Home"
       href: index.html
@@ -8,8 +8,6 @@ navbar:
       href: about.html
     - text: "Schedule"
       href: schedule.html
-    - text: "Students"
-      href: students.html
     - text: "Assignments"
       href: assignments.html
     - text: "Evaluation"

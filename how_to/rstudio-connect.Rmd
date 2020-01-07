@@ -1,0 +1,16 @@
+---
+title: "RStudio Connect"
+author: "Rick Gilmore"
+date: "`Sys.time()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Purpose
+
+This document describes use of Penn State's RStudio Connect service.
+
+# 

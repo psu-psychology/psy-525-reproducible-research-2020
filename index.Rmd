@@ -7,7 +7,7 @@ title: ""
 <img src="http://imgc-cn.artprintimages.com/images/P-473-488-90/60/6079/KTUD100Z/posters/sidney-harris-i-think-you-should-be-more-explicit-here-in-step-two-cartoon.jpg" width=250px>
 Sidney Harris, New Yorker Magazine
 
-## PSY 511.002, Spring 2017
+## PSY 525.001, Spring 2020
 
 ## Instructor
 
@@ -21,7 +21,7 @@ rogilmore AT psu DOT edu</br>
 
 [http://www.personal.psu.edu/rog1](http://www.personal.psu.edu/rog1)</br>
 [http://gilmore-lab.github.io](http://gilmore-lab.github.io)</br>
-[http://databrary.org](http://databrary.org)
+[http://databrary.org](http://databrary.org)</br>
 
 ## Meeting Location and Time
 
@@ -32,5 +32,4 @@ course nnnnnn</br>
 ## Resources
 
 - Awesome, free-to-you, data science tutorials from [DataCamp](https://www.datacamp.com/courses)!
-- **New** Psychology Department [page](https://psu-psychology.github.io/data-science-and-reproducibility/) and [discussion group](https://psu-psychology.github.io/data-science-and-reproducibility/forum.html) about data science and reproducibility.
-- Additional readings/references about open science, <https://github.com/psu-psychology/transparency>. Not recently updated.
+- Psychology Department [page](https://psu-psychology.github.io/data-science-and-reproducibility/) and [discussion group](https://psu-psychology.github.io/data-science-and-reproducibility/forum.html) about data science and reproducibility.
