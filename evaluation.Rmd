@@ -2,7 +2,7 @@
 title: "Evaluation"
 ---
 
-PSY 511 course performance will be evaluated based on the following scheme:
+PSY 525 course performance will be evaluated based on the following scheme:
 
 | Component           | Points                      | % of Grade |
 |---------------------|-----------------------------|-------|

@@ -12,6 +12,10 @@ title: "Resources"
 - Wickham, H. & Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O'Reilly Media. <http://shop.oreilly.com/product/0636920034407.do>
 - Chang, W. (2012). R Graphics Cookbook. <http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf>
 
+## E-Books
+
+- VanderPlas, J. (2016). *Python Data Science Handbook*. <https://jakevdp.github.io/PythonDataScienceHandbook/>
+
 ## Blogs/Projects
 
 - R bloggers <https://www.r-bloggers.com/>

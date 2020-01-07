@@ -1,0 +1,33 @@
+---
+title: "PSY 525 Spring 2020 Planning"
+output: html_notebook
+---
+
+# Purpose
+
+This document documents Rick Gilmore's planning for the Spring 2020 course on reproducible research practices.
+
+# Goals
+
+0. What is science about?
+1. Learn about risks to reproducible research
+2. Learn specific techniques to mitigate some of these risks
+  - Scripting as much as possible
+  - Working in the open
+  - Version control
+  - Open, transparent formats
+  - Writing clear code
+  - Generating tidy data
+      - Documenting data
+      - Cleaning data
+      - Structuring data
+          - SQL
+          - schema.org
+3. Acquire and improve proficiency with some specific tools:
+  - Version control via git and GitHub
+  - Using APIs (Google, Box, Qualtrics)
+      - Census data?
+  - Command line
+  - R, RStudio, and RMarkdown
+  - Python, and Jupyter notebooks
+  - Psychopy
