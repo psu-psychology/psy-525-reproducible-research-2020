@@ -2,19 +2,29 @@
 title: "Resources"
 ---
 
-## Videos
+## How-to's
 
-- A GitHub/RStudio workflow for branching and making pull requests. [HTML](lecture-notes/branches-pull-requests.html)
+- How to [connect to Penn State's RStudio Server Pro](how_to/rstudio-server-pro.html) instance to run RStudio in the cloud.
+- How to [connect to Penn State's Jupyter notebook server](how_to/jupyter-notebooks-psu.html).
+- How to [use Google's colaboratory Jupyter notebook service](how_to/google-colaboratory.html).
 
-## Books
+## Web courses
 
-- Gandrud, C. (2015). Reproducible Research with R and R Studio, Second Edition. CRC Press. <https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379>
-- Wickham, H. & Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O'Reilly Media. <http://shop.oreilly.com/product/0636920034407.do>
-- Chang, W. (2012). R Graphics Cookbook. <http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf>
+- [Data Carpentry](https://datacarpentry.org/), now [The Carpentries](https://carpentries.org/)
+    - [OpenRefine for Social Science Data](https://datacarpentry.org/openrefine-socialsci/) by Data Carpentry.
+    - [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/)
+    - [Programming with Python](http://swcarpentry.github.io/python-novice-inflammation/)
+    - [Plotting and Programming in Python](http://swcarpentry.github.io/python-novice-gapminder/)
+    - [Version Control with Git](http://swcarpentry.github.io/git-novice/)
+    
+## Books and E-Books
 
-## E-Books
-
+- Chang, W. (2012). *R Graphics Cookbook*. <http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf>
+- Gandrud, C. (2015). *Reproducible Research with R and R Studio, Second Edition*. CRC Press. <https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379>
 - VanderPlas, J. (2016). *Python Data Science Handbook*. <https://jakevdp.github.io/PythonDataScienceHandbook/>
+- Wickham, H. & Grolemund, G. (2016). *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*. O'Reilly Media. <http://shop.oreilly.com/product/0636920034407.do>.
+- Wickham, H. (2019). *Advanced R, 2nd Ed*. Chapman & Hall/CRC. <https://adv-r.hadley.nz/>. 
+- Xie, Y., Allaire, J.J., & Grolemund, G. (2019). *R Markdown: The Definitive Guide*. Chapman & Hall/CRC. <https://bookdown.org/yihui/rmarkdown/>.
 
 ## Blogs/Projects
 
@@ -28,6 +38,7 @@ title: "Resources"
 
 ## Software tools
 
+- OpenRefine, <https://openrefine.org>
 - LaTeX on the web
     - ShareLaTex <http://sharelatex.com>
     - Overleaf <http://www.overleaf.com>
