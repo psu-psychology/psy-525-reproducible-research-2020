@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -15,13 +15,14 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -83,7 +84,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -103,33 +103,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 52px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h2 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h3 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h4 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h5 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h6 {
-  padding-top: 57px;
-  margin-top: -57px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .dropdown-submenu {
   position: relative;
@@ -232,6 +232,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -243,18 +244,6 @@ $(document).ready(function () {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -301,12 +290,32 @@ $(document).ready(function () {
 <li>
   <a href="resources.html">Resources</a>
 </li>
-<li>
-  <a href="site-info.html">Site info</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    How-to
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="how_to/rstudio-server-pro.html">RStudio server</a>
+    </li>
+    <li>
+      <a href="how_to/jupyter-notebooks-psu.html">Jupyter notebook server</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="site-info.html">Site info</a>
+</li>
+<li>
+  <a href="https://github.com/psu-psychology/psy-525-reproducible-research-2020">
+    <span class="ion ion-social-github"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -321,24 +330,36 @@ $(document).ready(function () {
 </div>
 
 
-<div id="videos" class="section level2">
-<h2>Videos</h2>
+<div id="how-tos" class="section level2">
+<h2>How-to’s</h2>
 <ul>
-<li>A GitHub/RStudio workflow for branching and making pull requests. <a href="lecture-notes/branches-pull-requests.html">HTML</a></li>
+<li>How to <a href="how_to/rstudio-server-pro.html">connect to Penn State’s RStudio Server Pro</a> instance to run RStudio in the cloud.</li>
+<li>How to <a href="how_to/jupyter-notebooks-psu.html">connect to Penn State’s Jupyter notebook server</a>.</li>
+<li>How to <a href="how_to/google-colaboratory.html">use Google’s colaboratory Jupyter notebook service</a>.</li>
 </ul>
 </div>
-<div id="books" class="section level2">
-<h2>Books</h2>
+<div id="web-courses" class="section level2">
+<h2>Web courses</h2>
 <ul>
-<li>Gandrud, C. (2015). Reproducible Research with R and R Studio, Second Edition. CRC Press. <a href="https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379" class="uri">https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379</a></li>
-<li>Wickham, H. &amp; Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O’Reilly Media. <a href="http://shop.oreilly.com/product/0636920034407.do" class="uri">http://shop.oreilly.com/product/0636920034407.do</a></li>
-<li>Chang, W. (2012). R Graphics Cookbook. <a href="http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf" class="uri">http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf</a></li>
+<li><a href="https://datacarpentry.org/">Data Carpentry</a>, now <a href="https://carpentries.org/">The Carpentries</a>
+<ul>
+<li><a href="https://datacarpentry.org/openrefine-socialsci/">OpenRefine for Social Science Data</a> by Data Carpentry.</li>
+<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">R for Reproducible Scientific Analysis</a></li>
+<li><a href="http://swcarpentry.github.io/python-novice-inflammation/">Programming with Python</a></li>
+<li><a href="http://swcarpentry.github.io/python-novice-gapminder/">Plotting and Programming in Python</a></li>
+<li><a href="http://swcarpentry.github.io/git-novice/">Version Control with Git</a></li>
+</ul></li>
 </ul>
 </div>
-<div id="e-books" class="section level2">
-<h2>E-Books</h2>
+<div id="books-and-e-books" class="section level2">
+<h2>Books and E-Books</h2>
 <ul>
+<li>Chang, W. (2012). <em>R Graphics Cookbook</em>. <a href="http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf" class="uri">http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf</a></li>
+<li>Gandrud, C. (2015). <em>Reproducible Research with R and R Studio, Second Edition</em>. CRC Press. <a href="https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379" class="uri">https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379</a></li>
 <li>VanderPlas, J. (2016). <em>Python Data Science Handbook</em>. <a href="https://jakevdp.github.io/PythonDataScienceHandbook/" class="uri">https://jakevdp.github.io/PythonDataScienceHandbook/</a></li>
+<li>Wickham, H. &amp; Grolemund, G. (2016). <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media. <a href="http://shop.oreilly.com/product/0636920034407.do" class="uri">http://shop.oreilly.com/product/0636920034407.do</a>.</li>
+<li>Wickham, H. (2019). <em>Advanced R, 2nd Ed</em>. Chapman &amp; Hall/CRC. <a href="https://adv-r.hadley.nz/" class="uri">https://adv-r.hadley.nz/</a>.</li>
+<li>Xie, Y., Allaire, J.J., &amp; Grolemund, G. (2019). <em>R Markdown: The Definitive Guide</em>. Chapman &amp; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</li>
 </ul>
 </div>
 <div id="blogsprojects" class="section level2">
@@ -356,6 +377,7 @@ $(document).ready(function () {
 <div id="software-tools" class="section level2">
 <h2>Software tools</h2>
 <ul>
+<li>OpenRefine, <a href="https://openrefine.org" class="uri">https://openrefine.org</a></li>
 <li>LaTeX on the web
 <ul>
 <li>ShareLaTex <a href="http://sharelatex.com" class="uri">http://sharelatex.com</a></li>
@@ -411,6 +433,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

@@ -6,3 +6,5 @@ This site is generated in [R Markdown](http://rmarkdown.rstudio.com/) using [RSt
 
 ```{r, child="_sessioninfo.Rmd"}
 ```
+
+I make extensive use of the documentation in <https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html> and enjoy trying out different themes based on <https://www.datadreaming.org/post/r-markdown-theme-gallery/>.

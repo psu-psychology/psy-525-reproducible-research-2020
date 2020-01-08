@@ -14,12 +14,21 @@ navbar:
       href: evaluation.html
     - text: "Resources"
       href: resources.html
+    - text: "How-to"
+      menu:
+        - text: "RStudio server"
+          href: how_to/rstudio-server-pro.html
+        - text: "Jupyter notebook server"
+          href: how_to/jupyter-notebooks-psu.html
+  right:
     - text: "Site info"
       href: site-info.html
+    - icon: ion-social-github
+      href: https://github.com/psu-psychology/psy-525-reproducible-research-2020
 output_dir: "docs"
 output:
   html_document:
-    theme: spacelab
+    theme: flatly
     highlight: textmate
     include:
       after_body: footer.html
