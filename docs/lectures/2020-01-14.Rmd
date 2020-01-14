@@ -1,0 +1,117 @@
+---
+title: "Week 1: Course intro"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: libs
+    widescreen: true
+    incremental: false
+    transition: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Prelude
+
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/66oNv_DJuPc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<https://www.youtube.com/embed/66oNv_DJuPc>
+
+# Preliminaries
+
+## Announcements
+
+- Data science talk series
+- QuantDev group in HDFS (meet Wednesday's at noon)
+- Social Data Analytics (SoDA)
+
+## Today's agenda
+
+- Introductions
+- Introduction to the course
+- Needs/interests assessment
+- Why trust science?
+- Setting up your computational environment
+
+# Introductions
+
+---
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/DenverCP.JPG/266px-DenverCP.JPG" height=150px/>
+<img src="http://watson.brown.edu/ds/sites/all/themes/ds/img/header/brown_large.png" height=150px/>
+<img src="https://www.wheretraveler.com/sites/default/files/styles/wt17_promoted/public/WashingtonDC-shutterstock_93633676.jpg?itok=IT7CL9PU" height=150px/>
+<img src="https://ai.cs.cmu.edu/sites/default/files/CMU.png" height=150px/>
+<img src="http://onwardstate.com/wp-content/uploads/2014/10/93" height=150px/>
+<img src="img/sleic.jpg" height=150px/></br>
+<img src="https://nyu.databrary.org/web/images/logo/databrary-nav.svg" height=150px>
+
+## Your turn
+
+# Introduction to the course
+
+## Schedule
+
+<https://psu-psychology.github.io/psy-525-reproducible-research-2020>
+
+## Evaluation
+
+<https://psu-psychology.github.io/psy-525-reproducible-research-2020/evaluation.html>
+
+## Tips for success
+
+- Code every day
+- Choose specific, meaningful goals
+- Document (and celebrate) your progress
+- Use a password manager ([LastPass](https://www.lastpass.com), [1Password](https://1password.com))
+
+# Needs/interests assessment
+
+## Who should learn to code?
+
+## Why learn to code?
+
+---
+
+- It's fun
+- It's useful
+- Let computers do the boring, tedious, detail-oriented stuff
+- Reproducible workflows
+- Improve your job prospects
+
+## Languages you might know
+
+- MS Excel scripting
+- SPSS syntax
+- *nix shell scripting
+- HTML, CSS, PHP, Javascript
+- MATLAB
+- Java, C, C++
+- R, Python
+
+## Let's leaRn some R!
+
+<https://www.datacamp.com/courses/tech:r>
+
+- [DataCamp Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r)
+- [DataCamp Intermediate R](https://www.datacamp.com/courses/intermediate-r)
+- [DataCamp Intermediate R: Practice](https://www.datacamp.com/courses/intermediate-r-practice)
+
+# Why trust science?
+
+## Society for Research in Child Development (SRCD)
+
+Policy on Scientific Integrity, Transparency, and Openness
+
+<https://www.srcd.org/policy-scientific-integrity-transparency-and-openness>
+
+# Setting up your computational environment

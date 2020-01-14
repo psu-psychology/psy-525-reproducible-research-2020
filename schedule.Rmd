@@ -8,6 +8,7 @@ title: "Schedule"
 
 - Introduction to the course
 - Needs/interests assessment, and goal setting
+- Discussion: Why trust science?
 - Setting up computational environments
     - On your local machine
     - In the cloud
