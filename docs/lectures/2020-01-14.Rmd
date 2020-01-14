@@ -95,6 +95,7 @@ knitr::opts_chunk$set(echo = FALSE)
 - *nix shell scripting
 - HTML, CSS, PHP, Javascript
 - MATLAB
+- LaTex, SQL
 - Java, C, C++
 - R, Python
 
