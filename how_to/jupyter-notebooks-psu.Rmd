@@ -69,6 +69,11 @@ knitr::include_graphics("../img/new-jupyter-nb.jpg")
 I like to name my notebooks right away.
 Notice the `Untitled` label on the upper left of the window.
 Click on `Untitled` to open a new window where you can rename your notebook.
+
+```{r, fig.cap="Renaming a notebook"}
+knitr::include_graphics("../img/jupyter-rename-notebook.jpg")
+```
+
 In general, I try to name files with dashes rather than spaces, for example, `ricks-jupyter-notebook`.
 The reason is that names without spaces work better with Linux-style file systems--not always, but more often.
 When you have named your notebook, hit the `Rename` button to close the `Rename Notebook` window and return to the Jupyter notebook.
