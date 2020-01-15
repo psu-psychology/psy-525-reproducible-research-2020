@@ -1,9 +1,9 @@
 # PSY 525 helper functions
 
-render_lectures <- function(lecture_dir = "lectures") {
-  fl <- list.files(path = lecture_dir, pattern = "\\.Rmd$", full.names = TRUE)
+render_subfolder <- function(sub_dir = "lectures") {
+  fl <- list.files(path = sub_dir, pattern = "\\.Rmd$", full.names = TRUE)
   message(paste0("There are ", length(fl), " files to render."))
-  if (fl > 0) {
+  if (length(fl) > 0) {
     message(paste0("Rendering."))
     lapply(fl, rmarkdown::render)
   } else {
@@ -14,6 +14,7 @@ render_lectures <- function(lecture_dir = "lectures") {
 }
 
 render_all <- function() {
-  render_lectures()
+  render_subfolder("lectures")
+  render_subfolder("how_to")
   rmarkdown::render_site()
 }

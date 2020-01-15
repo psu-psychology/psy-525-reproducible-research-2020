@@ -1660,6 +1660,13 @@ Renaming a notebook
 <h1>Logging out</h1>
 <p>It’s not required, but it’s certainly good (computer) manners to log out. Press the <code>Logout</code> button in the upper right hand corner to do so. That will bring you back to the login screen.</p>
 </div>
+<div id="installing-packages" class="section level1">
+<h1>Installing packages</h1>
+<p>The base configuration of Python 3 comes with many useful packages, but you may want to install others for your notebooks.</p>
+<p>For example, to install the <code>censusdata</code> package, issue the following command within a Python notebook cell:</p>
+<pre><code>!pip install --user censusdata</code></pre>
+<p>The exclamation point <code>!</code> tells the notebook to access the system shell. <code>pip</code> is a package installer for Python. The <code>--user</code> flag tells the system to install the package for the use of you, the user, alone. And, <code>censusdata</code> is the package. Execute the cell with command+enter, and the package will install.</p>
+</div>
 
 
 
