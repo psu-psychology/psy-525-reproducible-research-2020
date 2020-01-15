@@ -92,3 +92,19 @@ Click on one of your old notebooks, and it will launch.
 It's not required, but it's certainly good (computer) manners to log out.
 Press the `Logout` button in the upper right hand corner to do so.
 That will bring you back to the login screen.
+
+# Installing packages
+
+The base configuration of Python 3 comes with many useful packages, but you may want to install others for your notebooks.
+
+For example, to install the `censusdata` package, issue the following command within a Python notebook cell:
+
+```
+!pip install --user censusdata
+```
+
+The exclamation point `!` tells the notebook to access the system shell. 
+`pip` is a package installer for Python.
+The `--user` flag tells the system to install the package for the use of you, the user, alone.
+And, `censusdata` is the package.
+Execute the cell with command+enter, and the package will install.

@@ -113,7 +113,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 >"*Do doctors really know what they are talking about when they tell us vaccines are safe? Should we take climate experts at their word when they warn us about the perils of global warming? Why should we trust science when our politicians don't?*"
 
--- Naomi Oreskes, *Why Trust Science*
+-- Naomi Oreskes, *Why Trust Science?*
 
 ## Society for Research in Child Development (SRCD)
 

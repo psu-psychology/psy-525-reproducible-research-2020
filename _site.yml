@@ -24,6 +24,8 @@ navbar:
           href: how_to/rstudio-server-pro.html
         - text: "Jupyter notebook server"
           href: how_to/jupyter-notebooks-psu.html
+        - text: "Google Colaboratory"
+          href: how_to/google-colaboratory.html
   right:
     - text: "Site info"
       href: site-info.html
