@@ -39,7 +39,7 @@ Due by the start of class on 2020-01-21.
 - Cases of scientific misconduct (read 1; skim the other)
     + [Hauser](http://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes)
     + [Stapel](http://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all&_r=0)
-- Reproducibility (read 1; skim the others)
+- Reproducibility (skim)
     + Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. *Science*, *349*(6251), aac4716–aac4716. https://doi.org/10.1126/science.aac4716
 - Supplemental (not required)
     + Heesen, R., & Bright, L. K. (2019). Is peer review a good idea? *The British Journal for the Philosophy of Science*, *40*. eprints.lse.ac.uk. Retrieved January 7, 2020, from http://eprints.lse.ac.uk/101242/

@@ -18,6 +18,8 @@ navbar:
       menu:
         - text: "Week 1: 2020-01-14"
           href: lectures/2020-01-14.html
+        - text: "Week 2: 2020-01-21"
+          href: lectures/2020-01-21.html
     - text: "How-to"
       menu:
         - text: "RStudio server"
