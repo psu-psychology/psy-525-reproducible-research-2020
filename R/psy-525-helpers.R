@@ -17,4 +17,11 @@ render_all <- function() {
   render_subfolder("lectures")
   render_subfolder("how_to")
   rmarkdown::render_site()
+  clean_up()
+}
+
+clean_up <- function() {
+  if (".databrary.RData" %in% list.files()) {
+    file.remove(".databrary.RData")
+  }
 }
