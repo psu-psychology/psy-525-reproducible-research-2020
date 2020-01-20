@@ -1,0 +1,13 @@
+---
+title: "prettydoc::html_pretty"
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r, child="schedule_raw.Rmd"}
+```
+
