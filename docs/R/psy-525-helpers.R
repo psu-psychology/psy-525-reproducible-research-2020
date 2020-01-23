@@ -24,4 +24,11 @@ clean_up <- function() {
   if (".databrary.RData" %in% list.files()) {
     file.remove(".databrary.RData")
   }
+  if (file.exists("docs/hw")) {
+    unlink("docs/hw/*")
+    file.remove("docs/hw")
+  }
+  if (file.exists("docs/psy-525-spring-2020.csv")) {
+    file.remove("docs/psy-525-spring-2020.csv")
+  }
 }

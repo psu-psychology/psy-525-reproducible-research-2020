@@ -58,6 +58,12 @@ knitr::include_graphics("https://www.klinebooks.com/pictures/28217.jpg?v=1428617
 ## Evidence for endorsement in a scientific community
 
 ```{r, fig.cap="[[@Kim2018-tr]](https://doi.org/10.1177%2F0971721817744438)"}
+knitr::include_graphics("https://journals.sagepub.com/na101/home/literatum/publisher/sage/journals/content/stsa/2018/stsa_23_1/0971721817744438/20180208/images/large/10.1177_0971721817744438-table1.jpeg")
+```
+
+---
+
+```{r, fig.cap="[[@Kim2018-tr]](https://doi.org/10.1177%2F0971721817744438)"}
 knitr::include_graphics("https://journals.sagepub.com/na101/home/literatum/publisher/sage/journals/content/stsa/2018/stsa_23_1/0971721817744438/20180208/images/medium/10.1177_0971721817744438-fig1.gif")
 ```
 
@@ -93,7 +99,7 @@ knitr::include_graphics("https://www.rd.com/wp-content/uploads/2017/02/01-How-Ba
 [[@Brakewood2013-wj]](https://doi.org/10.1016/j.neuroimage.2013.02.040)
 </small>
 
-## Transparency and penness as essential scientific values 
+## Transparency and openness as essential scientific values 
 
 > "*We regard scientific integrity, transparency, and openness as essential for the conduct of research and its application to practice and policy...*"
 
