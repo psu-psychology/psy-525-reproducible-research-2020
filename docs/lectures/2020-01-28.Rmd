@@ -1,0 +1,604 @@
+---
+title: "Week 3: Reproducible workflows"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: libs
+    widescreen: true
+    incremental: false
+    transition: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "900px")
+```
+
+<!-- # Prelude -->
+
+# Preliminaries
+
+## Announcements
+
+- Center for Social Data Analytics (C-SODA) “Research Roundup”, Friday, January 31, 2020, 12:00-1:30 pm, B001 Sparks (Databasement)
+- [Institute for Computational and Data Science (ICDS) events](https://ics.psu.edu/news-events/events/)
+- ["The Data Deluge", ICDS Symposium, March 16-17, 2020](https://ics.psu.edu/news-events/events/icds-symposium-2020/), NLI.
+
+## Today's agenda
+
+- A manifesto for reproducible science
+- Reproducible workflows
+
+# A manifesto for reproducible science
+
+## Discussion of
+
+Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S., Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A manifesto for reproducible science. *Nature Human Behaviour*, *1*, 0021. <https://doi.org/10.1038/s41562-016-0021>.
+
+## Steps in scientific method (and weaknesses)
+
+- Generate and specify hypothesis
+- Design study
+- Conduct study and collect data
+- Analyze data and test hypothesis
+- Interpret results
+- Publish and/or conduct next study
+
+---
+
+```{r, fig.cap="[[@munafo_manifesto_2017]](https://doi.org/10.1038/s41562-016-0021)"}
+knitr::include_graphics("https://www.nature.com/article-assets/npg/nathumbehav/2017/s41562-016-0021/images_hires/w926/s41562-016-0021-f1.jpg")
+```
+
+## Failure to control for bias
+
+- [*Apophenia*](https://en.wikipedia.org/wiki/Apophenia)
+    - Mistaking connections and meaning between unrelated things
+- Confirmation bias
+- Hindsight bias
+- [[@Kahneman2013-zi]](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow)
+
+## Low statistical power
+
+- [[@Button2013-ox]](https://doi.org/10.1038/nrn3475)
+- [[@ioannidis_why_2005]](https://doi.org/10.1371/journal.pmed.0020124)
+
+---
+
+```{r, fig.cap="[[@Szucs2017-fc]](https://doi.org/10.1371/journal.pbio.2000797)"}
+knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/image?size=large&id=10.1371/journal.pbio.2000797.g003")
+```
+
+## Poor quality control
+
+- [[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+
+- *Methods* reproducibility
+    - *"…the ability to implement, as exactly as possible, the experimental and computational procedures, with the same data and tools, to obtain the same results."*
+
+## *p*-Hacking
+
+- [[@Simonsohn2014-tt]](https://doi.org/10.1037/a0033242)
+- If an effect is *true*, the distribution of reported *p* values should be right-skewed (long right tail)
+- <https://www.p-curve.com/>
+
+## HARKing: hypothesizing after the results are known
+
+- [[@Kerr1998-zg]](https://doi.org/10.1207/s15327957pspr0203_4)
+- Find an effect in data analysis
+- Present effect as if it had been hypothesized
+- Why is this problematic?
+
+## Publication bias
+
+- Results vs. null findings
+- Novel results vs. replications
+- Counter-intuitive (sexy) findings
+- [File drawer effect](https://www.psychfiledrawer.org/TheFiledrawerProblem.php)
+    - How many unpublished failures to replicate sit in file drawers?
+    
+# Overcoming these weaknesses
+
+## Performing research
+
+- Protecting against cognitive biases
+- Improving methodological training
+- Implementing independent methological support
+- Encouraging collaboration and team science
+- Collect bigger samples
+
+## Reporting on research
+
+- Promoting study pre-registration
+    - Registered reports--[[@munafo_manifesto_2017]](https://doi.org/10.1038/s41562-016-0021), Box 3
+- Improving the quality of reporting
+    - [The Transparency and Openness Promotion (TOP) guidelines](https://osf.io/ud578/) and [signatories](https://cos.io/top/#list)
+
+## Reporting on research
+
+>"*We find that about 40% of studies fail to fully report all experimental conditions and about 70% of studies do not report all outcome variables included in the questionnaire. Reported effect sizes are about twice as large as unreported effect sizes and are about 3 times more likely to be statistically significant.*"
+
+- [[@Kerr1998-zg]](https://doi.org/10.1177/1948550615598377)
+
+## Reporting on research
+
+- Publish replications
+- Teach with replications
+  - [[@Frank2012-fc]](https://doi.org/10.1177/1745691612460686).
+
+## Verifying research
+
+- Promoting transparency and open science
+- Open methods, materials, code sharing, data sharing 
+
+## Changing Incentives
+
+- [[@higginson_current_2016]](https://doi.org/10.1371/journal.pbio.2000995)
+  - Claim that current publication incentive structure reinforces current practices
+- [OSF badge system](https://osf.io/tvyxz/)
+- Other incentives/disincentives
+
+## Status report/recommendations by stakeholder group
+
+<iframe src="https://www.nature.com/articles/s41562-016-0021/tables/1">
+</iframe>
+
+Source: <https://www.nature.com/articles/s41562-016-0021/tables/1>
+
+## Questions for discussion
+
+- Which of the manifesto provisions would you **disagree** with?
+- Do you agree with the assessment about progress ([Table 1](https://www.nature.com/articles/s41562-016-0021/tables/1))
+- What steps could **you** take?
+
+# Reproducible workflows
+
+## One step forward
+
+- Capturing workflows and improving **methods** reproducibility [[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+
+## [Workflows](https://en.wikipedia.org/wiki/Workflow)
+
+<https://www.google.com/search?q=workflow>
+
+## Typical workflows in experimental psychology
+
+- Idea/question/hypotheses
+- Design study
+- Seek ethics board permission
+- Build/borrow/buy data collection instruments
+- Run study
+- Analyze results
+- Write-up results for presentation and/or publication
+
+## Design study
+
+- Participants
+    + Number, characteristics
+- Setting(s)
+    + Lab, classroom, home
+
+---
+
+- Measures or tasks
+    + Self/other report
+    + Observations/video or audio recording
+    + Physiological measures (MRI, EEG, ECG)
+    + Computer-based tasks
+
+## Data collection instruments
+
+- Surveys
+- Video/audio
+- MRI, EEG, ECG
+- Computer-generated data files
+
+## Run study
+
+```
+done.collecting.data = FALSE
+while (!done.collecting.data) {
+  Collect.sample()
+  if (collected.sample.n >= planned.sample.n) {
+    done.collecting.data = TRUE
+  } else {
+    done.collecting.data = FALSE
+  }
+}
+```
+
+## Analyze results 
+
+- Clean/check data
+- Merge, combine, munge data
+
+----
+
+<div class="centered">
+```{r, echo=FALSE}
+library(DiagrammeR)
+grViz("
+      digraph {
+      layout = dot
+      node [shape = square]
+      Analyze -> Evaluate
+      Evaluate -> Analyze
+      }")
+```
+</div>
+
+## Prepare presentation/publication
+
+- Intro
+- Methods
+- Results
+    + Stats
+    + Plots
+- Conclusions
+- References
+- Data?
+
+## Behavioral study summary
+
+<div class="centered">
+```{r grViz, echo=FALSE}
+grViz("
+      digraph {
+      layout = dot
+      node [shape = circle]
+      E1 -> XL1
+      S1 -> XL1
+      E2 -> XL2
+      S2 -> XL2
+      En -> XLn
+      Sn -> XLn
+      {XL1, XL2, XLn} -> XLall
+      XLall -> Stat
+      Stat -> {XLplot, MSWd, Ppt}
+      XLplot -> {MSWd, Ppt}
+      }")
+```
+</div>
+
+## Imaging example
+
+<div class="centered">
+
+```{r grViz-2, echo=FALSE}
+grViz("
+      digraph {
+      layout = dot
+      node [shape = circle]
+      {Str1, MNI} -> Norm1
+      {Norm1, F1} -> Fnorm1
+      {Str2, MNI} -> Norm2
+      {Norm2, F2} -> Fnorm2
+      {StrN, MNI} -> NormN
+      {NormN, Fn} -> FnormN
+      {Fnorm1, Des1, Beh1} -> FstL1
+      {Fnorm2, Des2, Beh2} -> FstL2
+      {FnormN, DesN, BehN} -> FstLn
+      {FstL1, FstL2, FstLn} -> SndL
+      {SndL, Beh} -> {Plot, MSWd, Ppt}
+      Plot -> {MSWd, Ppt}
+      }")
+```
+</div>
+
+## Threats to **methods** reproducibility
+
+- Idea/question/hypotheses
+- Design study
+- Seek ethics board permission
+- Build/borrow/buy **data collection instruments**
+- **Run study**
+- **Analyze results**
+- **Write-up results** for presentation and/or publication
+
+## What are the threats?
+
+- Data collection instruments
+- Running study
+- Data analysis
+- Study write-up
+
+## Mitigating the threats
+
+- Maximize consistency, **methods** reproducibility [[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+- Design of/consistent adherence to detailed experimental protocols
+- Consistent, transparent workflows
+- Consistent, transparent organization of data, metadata
+- Minimize human/hand data entry
+- Automate as much as possible
+
+## How detailed is your (internal) protocol?
+
+- Play & Learning Across a Year (PLAY) project [wiki](https://play-project.org)
+
+## Questions to consider
+
+- What data and metadata am I collecting?
+- How does it get collected?
+- Where does it go after it's collected?
+- How does my non-electronic data get transferred to an electronic form?
+- How do my electronic data files get cleaned, merged, munged?
+
+## Reproducible workflow aspirations
+
+- "Chain of custody" from raw data to finished results and figures
+- Single command to regenerate all results and figures from raw data
+
+<https://datasci.kitzes.com/lessons/python/reproducible_workflow.html>
+
+## Reproducible workflow recommendations
+
+- Create consistent structure for projects
+    + Use file name conventions
+- Use machine-readable file types
+    + commas-separated value (.csv) vs. .xlsx
+- Automate as much as possible
+- Use version control
+
+## Lots of ways to organize electronic data...
+
+```
+study-1/
+  sub-001/
+    sub-001-measure-a.txt
+    sub-001-image.jpg
+    sub-001-demo.csv
+    sub-001-measure-b.txt
+  sub-002/
+    sub-002-measure-a.txt
+    sub-002-image.jpg
+    sub-002-demo.csv
+    sub-002-measure-b.txt
+  ...
+  sub-00n/
+    ...
+```
+
+----
+
+```
+study-1/
+  measure-a/
+    sub-001-measure-a.txt
+    ...
+  measure-b/
+    sub-001-measure-b.txt
+    ...
+  image/
+    sub-001-image.jpg
+    sub-002-image.jpg
+    ...
+  demo/
+    sub-001-demo.csv
+    sub-002-demo.csv
+    ...
+```
+
+----
+
+```
+study-1/
+  analysis/
+    data/
+      sessions/
+        2017-01-09-sub-001/
+        ...
+      aggregate/
+        study-1-demo-aggregate.csv
+        study-1-measure-a-aggregate.csv
+        ...
+    R/
+    img/
+    reports/
+  protocol/
+    code/
+      my-experiment.m
+    materials/
+      stim-1.jpg
+      stim-2.jpg
+      ...
+```
+
+----
+
+```
+  pubs/
+    presentations/
+    papers/
+  refs/
+  grants/
+    2016/
+    2017/
+  irb/
+  mtgs/
+```
+
+## Databrary's volume, session/materials model
+
+<iframe src="https://nyu.databrary.org/volume/2">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+
+<https://nyu.databrary.org/volume/2>
+
+## [ProjectTemplate](https://projecttemplate.net/index.html)
+
+- Automates some of the project management involved in data analysis
+    + Hat Tip (HT): Michael Hallquist
+- Gilmore says: Use what you like
+
+## Can automate project creation, too
+
+```
+## Create project directory
+proj_name = "tmp_proj"
+if (!exists(proj_name)) {
+  dir.create(path = proj_name, recursive = TRUE)
+}
+# Create sessions directory
+sessions_dir = paste(proj_name, "analysis/sessions", sep="/")
+if (!exists(sessions_dir)) {
+  dir.create(path = sessions_dir, recursive = TRUE) # creates intermediate dirs
+}
+# Aggregate data file directory
+agg_dir = paste(proj_name, "analysis/aggregate", sep="/")
+if (!exists(agg_dir)) {
+  dir.create(path = agg_dir, recursive = TRUE)
+}
+```
+
+## Words to the wise
+
+- Use consistent file/directory names
+    + `lowerCamelCaseIsGood.txt` so is `UpperCamelCase.txt`
+    + `underscores_between_words.txt` works; so do `dashes-between`.txt
+    + avoid `spaces in your file names.txt`; these are not always reliably readable by all computers.
+- Choose good, [descriptive names](https://kbroman.org/dataorg/pages/names.html)
+
+## Consider seriously [Karl Broman's guides](https://kbroman.org/dataorg/)
+
+- Be consistent
+- Write dates as YYYY-MM-DD.
+- Fill-in all cells
+- One thing in a cell
+- Make your data a rectangle
+- Create a data dictionary
+
+---
+
+- No calculations in raw data files
+- No font or color to highlight data
+- Make back-ups
+- Validate data to avoid data entry errors
+- Save data in plain text files (comma or tab-delimited)
+
+## Why?
+
+- Data scientists (that's you!) spend a lot of time just cleaning data
+- <https://www.infoworld.com/article/3047584/big-data/hottest-job-data-scientists-say-theyre-still-mostly-digital-janitors.html>
+
+## Easy to merge data sets if they contain a linking variable (like subID)
+
+- [study-1-demo-agg.csv](csv/study-1-demo-agg.csv) contains
+    + subID, sex, ageYrs, favColor
+- [study-1-rt-agg.csv](csv/study-1-rt-agg.csv) contains
+    + subID, condition, rt
+    
+----
+
+```
+subID,sex,ageYrs,favColor
+001,m,53,green
+002,f,51,blue
+003,f,23,red
+004,m,25,aqua
+```
+
+Don't put spaces between variables in comma-separated value (.csv) files.
+Also, make sure to add a final line feed/enter character.
+
+----
+
+```
+subID,condition,rt
+001,upright,250
+001,inverted,300
+002,upright,225
+002,inverted,290
+003,upright,270
+003,inverted,230
+004,upright,210
+004,inverted,240
+```
+    
+----
+
+```{r data-import-example, include=TRUE, echo=TRUE}
+# read data files, first row (header) contains variable names
+demo <- read.csv(file = "csv/study-1-demo-agg.csv", header = TRUE)
+rt <- read.csv(file = "csv/study-1-rt-agg.csv", header = TRUE)
+
+# merge and print
+merged <- merge(demo, rt, by = "subID")
+merged
+```
+
+## A final word about tidy data [[@hadley_wickham_tidy_2014]](https://doi.org/10.18637/jss.v059.i10)
+
+- Variables in columns
+- Observations in rows
+- ~~Ok~~/better to repeat values in columns
+    + subID,trial,rt
+    + 001,1,300
+    + 001,2,345
+    + 002,2,327
+    + 003,3,429
+    
+## Reproducible workflows allow on-line QA
+
+- QA = quality assurance
+- Example 1: QA on PLAY project
+- Example 2: QA on sex differences project
+
+## Main points
+
+- Think like a computer!
+- Plan your work; work your plan
+- Consistency, standard formats
+- Tidy data
+- Haven't said anything about "openness"...yet
+
+---
+
+- (Methods) reproducible workflows are much easier to share
+
+## More resources
+
+- Data Carpentry, <https://www.datacarpentry.org/>
+- Software Carpentry, <https://software-carpentry.org/>
+- Open Science Framework (OSF), <https://osf.io>
+- R for Data Science, <https://r4ds.had.co.nz/>
+
+# Next time
+
+- Preregistration & registered reports
+- Introduction to R and RMarkdown
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](https://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References
+
+<!-- Scrolling final reference page -->
+<!-- https://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
