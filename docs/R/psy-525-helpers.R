@@ -22,6 +22,7 @@ render_all <- function() {
 
 clean_up <- function() {
   if (".databrary.RData" %in% list.files()) {
+    databraryapi::logout_db()
     file.remove(".databrary.RData")
   }
   if (file.exists("docs/hw")) {

@@ -50,7 +50,7 @@ Due by the start of class on 2020-01-21.
 
 Due by the start of class on 2020-01-28.
 
-1. Choose one of the verification bias examples from [*Flawed Science*](http://pubman.mpdl.mpg.de/pubman/item/escidoc:1569964:8/component/escidoc:1569966/Stapel_Investigation_Final_report.pdf). In a paragraph or two, propose ways you might avoid this sort of bias in your own research.
+1. Choose one of the verification bias examples from [*Flawed Science*](https://pure.mpg.de/pubman/item/item_1569964_8/component/file_1569966/Stapel_Investigation_Final_report.pdf). In a paragraph or two, propose ways you might avoid this sort of bias in your own research.
 2. Choose one of the [TOP guideline categories](https://osf.io/9f6gx/) where either your own research practices have room to improve or you are doing rather well. In a paragraph or two, explain your reasoning.
 
 ## Week 3: Tuesday, January 28, 2020
