@@ -117,7 +117,7 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 ## Reporting on research
 
 - Promoting study pre-registration
-    - Registered reports--[[@munafo_manifesto_2017]](https://doi.org/10.1038/s41562-016-0021), Box 3
+    - Registered reports [[@munafo_manifesto_2017]](https://doi.org/10.1038/s41562-016-0021), Box 3
 - Improving the quality of reporting
     - [The Transparency and Openness Promotion (TOP) guidelines](https://osf.io/ud578/) and [signatories](https://cos.io/top/#list)
 
@@ -147,10 +147,7 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 
 ## Status report/recommendations by stakeholder group
 
-<iframe src="https://www.nature.com/articles/s41562-016-0021/tables/1">
-</iframe>
-
-Source: <https://www.nature.com/articles/s41562-016-0021/tables/1>
+<https://www.nature.com/articles/s41562-016-0021/tables/1>
 
 ## Questions for discussion
 
@@ -249,10 +246,22 @@ grViz("
 
 <div class="centered">
 ```{r grViz, echo=FALSE}
+
+# Helpful site: https://mikeyharper.uk/flowcharts-in-r-using-diagrammer/
+
 grViz("
       digraph {
-      layout = dot
-      node [shape = circle]
+      graph [layout = dot, rankdir = LR]
+      node [shape = circle, fillcolor = Linen]
+      
+      # Nod definitions
+      E1, E2, En [shape = circle]
+      S1, S2, Sn [shape = square]
+      XL1, XL2, XLn, XLall  [shape = folder]
+      Stat [shape = triangle]
+      MSWd, Ppt [shape = rectangle]
+      
+      # Edge definitions
       E1 -> XL1
       S1 -> XL1
       E2 -> XL2
@@ -274,19 +283,25 @@ grViz("
 ```{r grViz-2, echo=FALSE}
 grViz("
       digraph {
-      layout = dot
+      graph [layout = dot, rankdir = LR]
+      
+      # Node defaults
       node [shape = circle]
-      {Str1, MNI} -> Norm1
-      {Norm1, F1} -> Fnorm1
-      {Str2, MNI} -> Norm2
-      {Norm2, F2} -> Fnorm2
-      {StrN, MNI} -> NormN
-      {NormN, Fn} -> FnormN
-      {Fnorm1, Des1, Beh1} -> FstL1
-      {Fnorm2, Des2, Beh2} -> FstL2
-      {FnormN, DesN, BehN} -> FstLn
-      {FstL1, FstL2, FstLn} -> SndL
-      {SndL, Beh} -> {Plot, MSWd, Ppt}
+      
+       [shape = folder, fillcolor = Linen]
+      BOLD, DTI [shape = folder, fillcolor = Beige]
+      MNI  [shape = folder, fillcolor = Linen]
+      Plot, Stats [shape = rectangle]
+      MSWd, Ppt [shape = oval]
+      
+      # Edge structure
+      {T1, MNI} -> StrNorm
+      {BOLD, StrNorm} -> BOLDNorm
+      {Behavior, BOLDNorm} -> FuncBeh
+      {DTI, StrNorm} -> DTINorm
+      {FuncBeh, Demog, DTINorm} -> Part
+      Part -> {Plot, Stats}
+      Stats -> {MSWd, Ppt}
       Plot -> {MSWd, Ppt}
       }")
 ```
@@ -312,15 +327,16 @@ grViz("
 ## Mitigating the threats
 
 - Maximize consistency, **methods** reproducibility [[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
-- Design of/consistent adherence to detailed experimental protocols
-- Consistent, transparent workflows
-- Consistent, transparent organization of data, metadata
+- Design/consistent adhere to detailed experimental protocols
+- Make workflows consistent, transparent
+- Organize data, metadata in consistent, transparent ways
 - Minimize human/hand data entry
 - Automate as much as possible
 
 ## How detailed is your (internal) protocol?
 
 - Play & Learning Across a Year (PLAY) project [wiki](https://play-project.org)
+- Sex differences in visual perception [master protocol](https://gilmore-lab.github.io/sex-differences-in-motion-perception/protocol/master-protocol.html), [testing protocol](https://gilmore-lab.github.io/sex-differences-in-motion-perception/protocol/test-session-protocol.html)
 
 ## Questions to consider
 
@@ -543,13 +559,13 @@ merged
     + 001,1,300
     + 001,2,345
     + 002,2,327
-    + 003,3,429
     
 ## Reproducible workflows allow on-line QA
 
 - QA = quality assurance
-- Example 1: QA on PLAY project
-- Example 2: QA on sex differences project
+- Example 1: QA on PLAY project (Rick use local copies)
+- Example 2: [QA report](https://gilmore-lab.github.io/sex-differences-in-motion-perception/analysis/session_qa.html) on sex differences project
+- Example 3: Individual plots from sex differences project (Rick use local copies)
 
 ## Main points
 
