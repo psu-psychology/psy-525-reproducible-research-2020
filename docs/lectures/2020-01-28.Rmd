@@ -147,10 +147,7 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 
 ## Status report/recommendations by stakeholder group
 
-<iframe src="https://www.nature.com/articles/s41562-016-0021/tables/1">
-</iframe>
-
-Source: <https://www.nature.com/articles/s41562-016-0021/tables/1>
+<https://www.nature.com/articles/s41562-016-0021/tables/1>
 
 ## Questions for discussion
 
@@ -330,15 +327,16 @@ grViz("
 ## Mitigating the threats
 
 - Maximize consistency, **methods** reproducibility [[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
-- Design of/consistent adherence to detailed experimental protocols
-- Consistent, transparent workflows
-- Consistent, transparent organization of data, metadata
+- Design/consistent adhere to detailed experimental protocols
+- Make workflows consistent, transparent
+- Organize data, metadata in consistent, transparent ways
 - Minimize human/hand data entry
 - Automate as much as possible
 
 ## How detailed is your (internal) protocol?
 
 - Play & Learning Across a Year (PLAY) project [wiki](https://play-project.org)
+- Sex differences in visual perception [master protocol](https://gilmore-lab.github.io/sex-differences-in-motion-perception/protocol/master-protocol.html), [testing protocol](https://gilmore-lab.github.io/sex-differences-in-motion-perception/protocol/test-session-protocol.html)
 
 ## Questions to consider
 
@@ -561,13 +559,13 @@ merged
     + 001,1,300
     + 001,2,345
     + 002,2,327
-    + 003,3,429
     
 ## Reproducible workflows allow on-line QA
 
 - QA = quality assurance
-- Example 1: QA on PLAY project
-- Example 2: QA on sex differences project
+- Example 1: QA on PLAY project (Rick use local copies)
+- Example 2: [QA report](https://gilmore-lab.github.io/sex-differences-in-motion-perception/analysis/session_qa.html) on sex differences project
+- Example 3: Individual plots from sex differences project (Rick use local copies)
 
 ## Main points
 
