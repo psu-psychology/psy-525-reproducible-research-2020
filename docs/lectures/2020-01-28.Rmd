@@ -117,7 +117,7 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 ## Reporting on research
 
 - Promoting study pre-registration
-    - Registered reports--[[@munafo_manifesto_2017]](https://doi.org/10.1038/s41562-016-0021), Box 3
+    - Registered reports [[@munafo_manifesto_2017]](https://doi.org/10.1038/s41562-016-0021), Box 3
 - Improving the quality of reporting
     - [The Transparency and Openness Promotion (TOP) guidelines](https://osf.io/ud578/) and [signatories](https://cos.io/top/#list)
 
