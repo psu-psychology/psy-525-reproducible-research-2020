@@ -81,10 +81,10 @@ Due by the start of class on 2020-01-28.
 
 Due by the start of class on 2020-01-28.
 
-1 Pick one of the recommended elements from [Table 1 in Munafò, et al. (2017)](http://www.nature.com/articles/s41562-016-0021/tables/1). Evaluate the recommendation. Do you agree that it would mitigate one or more threats to reproducibility. Why or why not? Do you agree with the assessment about the degree to which stakeholders have adopted the recommended practice?
+1. Pick one of the recommended elements from [Table 1 in Munafò, et al. (2017)](http://www.nature.com/articles/s41562-016-0021/tables/1). Evaluate the recommendation. Do you agree that it would mitigate one or more threats to reproducibility. Why or why not? Do you agree with the assessment about the degree to which stakeholders have adopted the recommended practice?
 2. Edit/create a text-based workflow for an active project you are working on.
     + Annote the workflow to indicate where it could be made more reproducible, transparent.
-    + If you are feeling super-ambitious, you may want to try creating a graph-based workflow.
+    + If you are feeling super-ambitious, you may want to try creating a graph-based workflow using the `diagrammeR` package.
 
 ## Week 4: Tuesday, February 4, 2020
 
@@ -140,7 +140,7 @@ Due by the start of class on 2020-02-18.
 1. Create GitHub repo for the project you completed last week
     + Open an issue flagging `@rogilmore` so I know to look at your repo and document.
 2. Create a repo for your final course project
-    + Create a Markdown document where you start to outline the possible directions that your final project might take.
+    + Create an R Markdown document where you start to outline the possible directions that your final project might take.
     + Open an issue so I can take a look.
 3. Clone a repo; fix/change something; make a [pull request](https://help.github.com/articles/about-pull-requests/).
     + Option 1: <http://psu-psychology.github.io/psy-525-reproducible-research-2020/>
