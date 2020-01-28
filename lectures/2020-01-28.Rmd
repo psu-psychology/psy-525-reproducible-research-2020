@@ -25,6 +25,12 @@ knitr::opts_chunk$set(echo = FALSE,
 
 # Preliminaries
 
+---
+
+> "*The first principle is that you must not fool yourself and you are the easiest person to fool.*"
+>
+> `r tufte::quote_footer('--- Richard Feynmann')`
+
 ## Announcements
 
 - Center for Social Data Analytics (C-SODA) “Research Roundup”, Friday, January 31, 2020, 12:00-1:30 pm, B001 Sparks (Databasement)
@@ -81,7 +87,8 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 - [[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
 
 - *Methods* reproducibility
-    - *"…the ability to implement, as exactly as possible, the experimental and computational procedures, with the same data and tools, to obtain the same results."*
+
+> *"…the ability to implement, as exactly as possible, the experimental and computational procedures, with the same data and tools, to obtain the same results."*
 
 ## *p*-Hacking
 
@@ -123,9 +130,9 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 
 ## Reporting on research
 
->"*We find that about 40% of studies fail to fully report all experimental conditions and about 70% of studies do not report all outcome variables included in the questionnaire. Reported effect sizes are about twice as large as unreported effect sizes and are about 3 times more likely to be statistically significant.*"
+> "*We find that about 40% of studies fail to fully report all experimental conditions and about 70% of studies do not report all outcome variables included in the questionnaire. Reported effect sizes are about twice as large as unreported effect sizes and are about 3 times more likely to be statistically significant.*"
 
-- [[@Kerr1998-zg]](https://doi.org/10.1177/1948550615598377)
+--- [[@Franco2016-yu]](https://doi.org/10.1177/1948550615598377)
 
 ## Reporting on research
 
@@ -189,6 +196,37 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
     + Observations/video or audio recording
     + Physiological measures (MRI, EEG, ECG)
     + Computer-based tasks
+    
+## Power analysis
+
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+
+power_to_df <- function(x) {
+  df <- data.frame(n1 = x$n1, n2 = x$n2, d = x$d, sig.level = x$sig.level, power = x$power, alternative = x$alternative)
+  df
+}
+
+power_from_p_male <- function(p_male) {
+  n_male <- p_male*300
+  n_female <- 300 - n_male
+  pwr::pwr.t2n.test(n_male, n_female, sig.level = 0.01, 
+                    power = .8, alternative = "greater")
+}
+
+pow_calc <- function(p_male) {
+  power_to_df(power_from_p_male(p_male))
+}
+
+purrr::map_dfr(1/(2:8), pow_calc) %>%
+  dplyr::rename(., n_males = n1) %>%
+  ggplot2::ggplot(.) + 
+  ggplot2::aes(n_males, d) + 
+  ggplot2::geom_point() +
+  ggplot2::geom_smooth(se = FALSE) +
+  ggplot2::ggtitle("Effect size detectable at .8 power, n_tot=300")
+```
+
 
 ## Data collection instruments
 
@@ -200,13 +238,13 @@ knitr::include_graphics("https://journals.plos.org/plosbiology/article/figure/im
 ## Run study
 
 ```
-done.collecting.data = FALSE
-while (!done.collecting.data) {
-  Collect.sample()
-  if (collected.sample.n >= planned.sample.n) {
-    done.collecting.data = TRUE
+done_collecting_data = FALSE
+while (!done_collecting_data) {
+  Collect_sample()
+  if (collected_sample_n >= planned_sample_n) {
+    done_collecting_data = TRUE
   } else {
-    done.collecting.data = FALSE
+    done_collecting_data = FALSE
   }
 }
 ```
@@ -478,8 +516,14 @@ if (!exists(agg_dir)) {
 
 - Use consistent file/directory names
     + `lowerCamelCaseIsGood.txt` so is `UpperCamelCase.txt`
-    + `underscores_between_words.txt` works; so do `dashes-between`.txt
+    + `underscores_between_words.txt` works
+    + `dashes-between.txt` works for *file* names, but...
+        - Doesn't work for objects in `R`
+        - `file-name.txt` interpreted as `file` minus `name.txt`
     + avoid `spaces in your file names.txt`; these are not always reliably readable by all computers.
+
+---
+
 - Choose good, [descriptive names](https://kbroman.org/dataorg/pages/names.html)
 
 ## Consider seriously [Karl Broman's guides](https://kbroman.org/dataorg/)
