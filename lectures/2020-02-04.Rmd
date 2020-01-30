@@ -1,0 +1,669 @@
+---
+title: "Week 4: Registration and R Markdown"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: libs
+    widescreen: true
+    incremental: false
+    transition: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "900px")
+```
+
+<!-- # Prelude -->
+
+# Preliminaries
+
+## Announcements
+
+- [Institute for Computational and Data Science (ICDS) events](https://ics.psu.edu/news-events/events/)
+- ["The Data Deluge", ICDS Symposium, March 16-17, 2020](https://ics.psu.edu/news-events/events/icds-symposium-2020/), NLI.
+
+## Today's agenda
+
+- Registration
+    + What, why, who, how?
+- Tools for reproducible workflows
+    - Introduction to [RStudio](http://rstudio.com)
+    - Introduction to R Markdown
+- Doing real work with R Markdown
+
+# Registration
+
+## Registered reports
+
+- What are they?
+- Why are they a thing?
+- Who's doing them?
+- How they work and how to get involved
+
+## What are they?
+
+- Peer review and provisional acceptance of methodologically sound study proposals
+
+## Why registered reports?
+
+- Results (positive or null) don't determine publication (prevent publication bias)
+- Reduce questionable practices
+    + p-hacking
+    + HARKing
+    
+## Why [**not**](http://www.cogsci.nl/blog/miscellaneous/215-the-pros-and-cons-of-pre-registration-in-fundamental-research) registered reports
+
+- Restrict creativity in reporting "un-registered"/exploratory analyses?
+    + Clearer communication about confirmatory vs. exploratory
+- Mandatory vs. optional
+- Clinical trials vs. fundamental research
+- Exploration is not a dirty word
+
+## Who's doing them?
+
+- [Journals with Registered Reports](https://cos.io/rr/#journals) from COS
+- How do they work?
+    - Google sheet comparing features <https://docs.google.com/spreadsheets/d/1D4_k-8C_UENTRtbPzXfhjEyu3BfLxdOsn9j-otrO870/edit#gid=0>
+
+---
+
+```{r}
+knitr::include_graphics("https://www.elsevier.com/__data/assets/image/0017/143162/Registered-Reports_EditorialPipeline.jpg")
+```
+
+## Preregistration separate from publication
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SWkqdNppL-s" frameborder="0" allowfullscreen></iframe>
+
+## [AsPredicted.org](https://aspredicted.org/)
+
+- Standardized preregistration tool
+- Separate confirmatory from exploratory analyses
+- One author completes checklist, others receive email to approve
+- Unique (private) URL to pdf
+- Share when you like or never
+
+## Your thoughts on registered reports, pregistration?
+
+# Tools for reproducible workflows
+
+## [RStudio](http://rstudio.com)
+
+- An integrated development environment (IDE) for R
+
+## Components of RStudio
+
+- Code editor
+- R console
+- Integrated help
+- Image viewer
+- Integration with git and other version-control packages
+- Project management
+
+## R Markdown
+
+- [Markdown](https://daringfireball.net/projects/markdown/)
+    - Mark-up language to make it easy to write HTML
+- R Markdown a special type of Markdown
+    - Allows for "literate" programming, mixing text, analysis, figures
+    - Adds to Markdown syntax
+    
+## Let's do this...
+
+- Open up RStudio
+- Create a new R Markdown document
+    - `File/New File/R Markdown...`
+
+---
+
+```{r}
+knitr::include_graphics("img/rstudio-new-file.jpg")
+```
+
+---
+
+- Select `Document`, call it something sensible like `psy-525-rmarkdown-testbed`
+    - **NB**: This is the document's *title* not the name of the file.
+
+```{r}
+knitr::include_graphics("img/rstudio-new-rmarkdown.jpg")
+```
+
+---
+
+- Save the file as `testbed.Rmd`
+
+## Anatomy of an R Markdown file
+
+- Header
+- Chunks
+- Text, etc.
+
+---
+
+```{r}
+knitr::include_graphics("img/rmarkdown-testbed.jpg")
+```
+
+
+## [Markdown](https://daringfireball.net/projects/markdown) syntax
+
+- Text formatting
+    + *italics* by surrounding text with single asterisks or underscores: `*italics*` or `_italics_`
+    + **boldface** by surrounding text with double asterisks or underscores: `**boldface**` or `__boldface__`
+    
+---
+
+- Text formatting
+    + ~~strikethrough~~ by surrounding text with double tildes: `~~strikethrough~~`
+    + [Clickable URLs](http://www.psu.edu) by surrounding link text with square brackets and URL with parentheses: ```[Clickable URLs](http://www.psu.edu)```
+
+## Markdown syntax
+
+- Paragraph formatting
+    + Headings with level specified by the number of hash (#) marks
+    + Lists (bullet and enumerated)
+    + Block quotes
+    + Code blocks
+    
+----
+
+```
+# This is a Heading 1
+## This is a Heading 2
+### This is a Heading 3
+```
+
+----
+
+Code:
+```markdown
+- An item
+    - A nested item
+        - A doubly-nested item
+- Another item
+```
+
+- An item
+    - A nested item
+        - A doubly-nested item
+- Another item
+
+
+----
+
+Code:
+```markdown
+1. An enumerated item
+    - A nested item
+1. A second enumerated item
+```
+
+1. An enumerated item
+    - A nested item
+1. A second enumerated item
+
+*Notice how the numbers are incremented automatically!*
+
+## Learn from my mistakes...
+
+- `<CTRL>+2` goes to console
+- `<CTRL>+1` goes to source
+- `<UP-ARROW>` `<RETURN>`
+- `<COMMAND><ALT>+I` (Mac OS) inserts a chunk
+- Train your fingers now!
+
+----
+
+Code:
+```markdown
+> Four score and seven years ago, some famous President 
+> spoke infamous words that would live on throughout history.
+> These words are famous enough that I want to highlight them with a block quote.
+```
+
+> Four score and seven years ago, some famous President spoke infamous words that would live on throughout history.
+> These words are famous enough that I want to highlight them with a block quote.
+
+
+## More on Markdown syntax
+
+- Images can be inserted using this syntax `![Alt text](/path/to/img.jpg)`
+- Comments -- won't print in rendered output -- `<!- This is a comment ->`
+
+## R Markdown additions
+
+- `.Rmd` extension
+- Combine text, code, images, figures, video
+- "Computable" reports, documents, slide shows, notebooks
+- Code in "chunks"
+- Output in multiple formats from the same file
+
+## Make some data
+
+Code (in a chunk):
+````markdown
+`r ''````{r}
+x = rnorm(n = 100, mean = 0, sd = 1)   # N(0,1)
+y = rnorm(n = 100, mean = 2, sd = 0.5) # N(2, 0.5)
+```
+````
+
+```{r, echo=FALSE}
+x = rnorm(n = 100, mean = 0, sd = 1)   # N(0,1)
+y = rnorm(n = 100, mean = 2, sd = 0.5) # N(2, 0.5)
+```
+
+## Summary of x, y
+
+Code (in a chunk):
+````markdown
+`r ''````{r}
+summary(x)
+summary(y)
+```
+````
+
+```{r}
+summary(x)
+summary(y)
+```
+
+## Histogram of x
+
+Code (in a chunk):
+````markdown
+`r ''````{r}
+hist(x)
+```
+````
+
+---
+
+```{r}
+hist(x)
+```
+
+## Histogram of y
+
+Code (in a chunk):
+````markdown
+`r ''````{r}
+hist(y)
+```
+````
+
+---
+
+```{r}
+hist(y)
+```
+
+## X vs. Y
+
+Code (in a chunk):
+````markdown
+`r ''````{r}
+plot(x,y)
+```
+````
+
+---
+
+```{r}
+plot(x,y)
+```
+
+## Embed figure using "chunk" syntax
+
+````markdown
+`r ''````{r rog, fig.cap="Rick's pic from Databrary"}
+knitr::include_graphics("https://nyu.databrary.org/party/6/avatar")
+```
+````
+
+---
+
+```{r rog, fig.cap="Rick's pic from Databrary"}
+knitr::include_graphics("https://nyu.databrary.org/party/6/avatar")
+```
+
+## Embed figure using HTML
+
+`<img src="img/sleic.jpg" height=500px>`
+
+Height parameter (or, e.g. `height=500px`) is optional, but useful. Remember Markdown -> HTML.
+
+----
+
+<img src="img/sleic.jpg" height=500px>
+
+## Learn from my mistakes
+
+- Don't change your working directory...*EVAH*!
+- Give R Markdown document "local" paths.
+
+## Embed YouTube video
+
+HTML Code (**not** in a chunk--not talking to R)
+```markdown
+<iframe width="420" height="315" 
+src="https://www.youtube.com/embed/9hUy9ePyo6Q" 
+frameborder="0" allowfullscreen>
+</iframe>
+```
+
+- YouTube gives you code to cut and paste to 'embed' a video.
+- Just copy and paste
+
+----
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/9hUy9ePyo6Q" frameborder="0" allowfullscreen></iframe>
+
+## Printing computed variables
+
+Code (in a chunk):
+````markdown
+`r ''````{r}
+summ.x = summary(x)
+summ.y = summary(y)
+names(summ.x) # Figure out variable names for indexing
+```
+````
+
+```{r}
+summ.x = summary(x)
+summ.y = summary(y)
+names(summ.x) # Figure out variable names for indexing
+```
+
+----
+
+*Index by variable name:* X lies within the range of [`r summ.x["Min."]`, `r summ.x["Max."]`].
+
+*Index by numeric index:* The (y-x) difference in means is `r summ.y[4] - summ.x[4]`.
+
+*Calculate and report:* The correlation between x and y is `r cor(x,y)`.
+
+# Doing real work with R Markdown
+
+## Use cases
+
+- You want to give a talk based on your analysis
+- You want to give a collaborator a report on your analysis in a format they prefer
+- You don't want to duplicate effort
+
+## Output options
+
+- Document
+    + HTML
+        + Embedded or non-embedded figures
+    + MS Word
+    + PDF
+
+---
+
+- Presentation
+    + HTML (ioslides)
+    + HTML (Slidy)
+    + PDF (Beamer)
+    
+---
+
+- Shiny (interactive document)
+    + Document
+    + Presentation (ioslides)
+- A website!
+
+## All in your head(er)
+
+- R Markdown documents have header text written in YAML
+- [YAML](https://en.wikipedia.org/wiki/YAML) = YAML Ain't Markup Language
+
+----
+
+`---`</br>
+`title: "One Code to Rule Them All"`</br>
+`author: "Rick O. Gilmore"`</br>
+`date: "July 4, 1776"`</br>
+`output: html_document`</br>
+`---`</br></br>
+
+## Default output is `html_document`
+
+- `rmarkdown::render(input = "my-report.Rmd")` creates a single HTML file
+- The `output: html_document` line specifies the default format for the file
+- Omitting the `output:` or `author:` or `date:` commands still yields an HTML file
+
+## Getting fancier
+
+- `rmarkdown::render()` can take an `output_format` parameter
+- `rmarkdown::render(input = "my-report.Rmd", output_format = "html_document")` renders an HTML file as before
+
+---
+
+- `rmarkdown::render(input = "my-report.Rmd", output_format = "word_document")` renders an MS Word document
+- `rmarkdown::render(input = "my-report.Rmd", output_format = "pdf_document")` renders a PDF document
+
+----
+
+`rmarkdown::render(input = "my-report.Rmd", output_format = "html_document")`</br>
+`rmarkdown::render(input = "my-report.Rmd", output_format = "word_document")`</br>
+`rmarkdown::render(input = "my-report.Rmd", output_format = "pdf_document")`
+
+---
+
+Or, just
+
+`rmarkdown::render(input = "my-report.Rmd", output_format = c("html_document", "word_document", "pdf_document"))`
+
+makes all three with **one** command.
+
+## Y'all can customize your YAML
+
+- Default `html_document` output creates a single HTML file with all figures embedded via
+    + `self_contained: true`
+- Nice for sharing a single file with collaborators
+- Not so if you want to save the figures for other uses
+- If `self_contained: false`, then figures are written to separate directory
+
+----
+
+`---`</br>
+`title: "One Code to Rule Them All"`</br>
+`author: "Rick O. Gilmore"`</br>
+`date: "July 4, 1776"`</br>
+`output:`</br>
+  `html_document:`</br>
+    `self_contained: false`</br>
+`---`</br></br>
+
+## Exploring report parameters
+
+## Presentations
+
+- **HTML (ioslides)**
+- HTML (Slidy)
+- PDF (Beamer)
+
+## ioslides basics
+
+- New slides with titles start with double-hashes  
+
+`## New Slide Title`
+
+- New slides without titles start with four dashes 
+
+`----`
+
+## ioslides basics
+
+- Bullet points start with single dashes 
+
+`- Bulleted item 1`</br>
+`- Bulleted item 2`
+
+- if `incremental: FALSE` in YAML header (the default), then 
+
+`>- Incremental bullet` 
+
+allows you to show one bullet at a time for that slide
+
+## ioslides basics
+
+- Embedding figures requires some HTML 
+
+`<img src="fig.jpg">` embeds 
+
+- Embedding videos depends on source
+    + YouTube provides code
+    + Embedding other (even local) videos requires HTML
+
+## ioslides formatting
+
+```
+<div class="centered">
+...
+</div>
+```
+
+Centers items between the `<div>` and `<\div>` tags vertically.
+
+## ioslides formatting
+
+```
+---
+The three dashes will start a new slide without a header.
+## Slide with a header
+- Some text
+---
+Another header-less slide
+```
+
+## Rendering ioslides
+
+`---`</br>
+`title: "One Code to Rule Them All"`</br>
+`author: "Rick O. Gilmore"`</br>
+`date: "July 4, 1776"`</br>
+**`output: ioslides_presentation`**</br>
+`---`</br>
+
+in your file header, or
+
+`rmarkdown::render(input = "my-report.Rmd", output_format = "ioslides_presentation")`
+
+on the fly.
+
+## Parameters for ioslides
+
+`incremental: false`</br>
+
+Turns off incremental reveal of bullets.
+
+`widescreen: true`</br>
+
+Makes slides work well with 16:9 aspect ratio screens.
+
+## Documents
+
+- HTML documents, `output_format="html_document"`
+- **MS Word documents,`output_format="word_document"`**
+- PDF documents, `output_format="pdf_document"`
+
+## MS Word document basics
+
+See <http://rmarkdown.rstudio.com/word_document_format.html>
+
+```
+---
+...
+output:
+  word_document:
+    fig_width: 5
+    fig_height: 5
+    fig_caption: false
+    df_print: kable
+...
+---
+```    
+
+## Rendering MS Word documents
+
+`rmarkdown::render(input = "my-report.Rmd", output_format = "word_document")`
+
+if your document header *does not* have parameters for word_document, or
+
+`rmarkdown::render(input = "my-report.Rmd")`
+
+if your document header has the parameters and `word_document` is first in the list.
+
+## PDF documents
+
+See <http://rmarkdown.rstudio.com/pdf_document_format.html>
+
+- Put in 1st position in header, then `rmarkdown::render(input = "my-report.Rmd")` 
+- Or, `rmarkdown::render(input = "my-report.Rmd", output_format = "pdf_document")`
+- Must [install LaTeX](https://www.latex-project.org/get/) for this to work
+
+---
+
+```
+---
+...
+  pdf_document:
+    toc: true
+    toc_depth: 2
+...
+---
+```
+
+## Some useful parameters for the `rmarkdown::render()` command
+
+- `output_file = myslides.ioslides.html` or `output_file = myslides.slidy.html` to specify different output file targets.
+- `output_dir = reports` or `output_dir = docx` to direct output to a specific directory.
+- `params = list(name = "Joe", quest = "Find the grail", favorite.color = "blue")` to pass parameters that R can use via `params$name`
+
+## Questions?
+
+# Next time
+
+---
+
+- Version control using git and GitHub
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](https://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References
+
+<!-- Scrolling final reference page -->
+<!-- https://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
