@@ -210,7 +210,7 @@ power_to_df <- function(x) {
 power_from_p_male <- function(p_male) {
   n_male <- p_male*300
   n_female <- 300 - n_male
-  pwr::pwr.t2n.test(n_male, n_female, sig.level = 0.01, 
+  pwr::pwr.t2n.test(n_male, n_female, sig.level = 0.0125, 
                     power = .8, alternative = "greater")
 }
 
