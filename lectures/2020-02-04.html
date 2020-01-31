@@ -102,7 +102,7 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2020-01-30 12:44:04</p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-01-30 19:48:59</p>
           </hgroup>
   </slide>
 
@@ -307,7 +307,8 @@ slide:not(.current) .plotly.html-widget{
 
 <ul>
 <li><del>strikethrough</del> by surrounding text with double tildes: <code>~~strikethrough~~</code></li>
-<li><a href='http://www.psu.edu' title=''>Clickable URLs</a> by surrounding link text with square brackets and URL with parentheses: <code>[Clickable URLs](http://www.psu.edu)</code></li>
+<li><a href='http://www.psu.edu' title=''>Clickable URLs</a> by surrounding link text with square brackets and URL with parentheses:</li>
+<li><code>[Clickable URLs](http://www.psu.edu)</code></li>
 </ul></li>
 </ul>
 
@@ -397,7 +398,8 @@ slide:not(.current) .plotly.html-widget{
 
 <ul>
 <li>Images can be inserted using this syntax <code>![Alt text](/path/to/img.jpg)</code></li>
-<li>Comments – won’t print in rendered output – <code>&lt;!- This is a comment -&gt;</code></li>
+<li>Comments – won’t print in rendered output –</li>
+<li><code>&lt;!- This is a comment -&gt;</code></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>R Markdown additions</h2></hgroup><article  id="r-markdown-additions">
@@ -429,10 +431,10 @@ summary(y)
 ```</pre>
 
 <pre >##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -2.81239 -0.57453  0.02559  0.05327  0.86384  2.22922</pre>
+## -2.45250 -0.71191 -0.09787 -0.18429  0.38318  2.35751</pre>
 
 <pre >##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.9671  1.6277  1.9263  1.9807  2.3183  3.0389</pre>
+##  0.4357  1.6484  2.0409  1.9937  2.3683  3.1606</pre>
 
 </article></slide><slide class=""><hgroup><h2>Histogram of x</h2></hgroup><article  id="histogram-of-x">
 
@@ -470,7 +472,9 @@ plot(x,y)
 
 <p><img src="2020-02-04_files/figure-html/unnamed-chunk-9-1.png" width="900px" style="display: block; margin: auto;" /></p>
 
-</article></slide><slide class=""><hgroup><h2>Embed figure using &ldquo;chunk&rdquo; syntax</h2></hgroup><article  id="embed-figure-using-chunk-syntax">
+</article></slide><slide class=""><hgroup><h2>Embed a figure using &ldquo;chunk&rdquo; syntax</h2></hgroup><article  id="embed-a-figure-using-chunk-syntax">
+
+<p>Code (in a chunk):</p>
 
 <pre class = 'prettyprint lang-markdown'>```{r rog, fig.cap=&quot;Rick&#39;s pic from Databrary&quot;}
 knitr::include_graphics(&quot;https://nyu.databrary.org/party/6/avatar&quot;)
@@ -478,7 +482,7 @@ knitr::include_graphics(&quot;https://nyu.databrary.org/party/6/avatar&quot;)
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<div class="figure" style="text-align: center">
+<div style="text-align: center" class="figure">
 <img src="https://nyu.databrary.org/party/6/avatar" alt="Rick's pic from Databrary" width="900px" />
 
 <p class="caption">
@@ -487,7 +491,9 @@ Rick’s pic from Databrary
 
 </p></div>
 
-</article></slide><slide class=""><hgroup><h2>Embed figure using HTML</h2></hgroup><article  id="embed-figure-using-html">
+</article></slide><slide class=""><hgroup><h2>Embed a figure using HTML</h2></hgroup><article  id="embed-a-figure-using-html">
+
+<p>Code (outside a chunk):</p>
 
 <p><code>&lt;img src=&quot;img/sleic.jpg&quot; height=500px&gt;</code></p>
 
@@ -501,12 +507,15 @@ Rick’s pic from Databrary
 
 <ul>
 <li>Don’t change your working directory…<em>EVAH</em>!</li>
-<li>Give R Markdown document &ldquo;local&rdquo; paths.</li>
+<li>Give R Markdown document &ldquo;local&rdquo; paths</li>
+<li>Projects (next week) make this MUCH easier</li>
+<li>Talk to R <em>inside</em> chunks; talk to RStudio <em>outside</em> chunks</li>
+<li>Save your R Markdown file often</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Embed YouTube video</h2></hgroup><article  id="embed-youtube-video">
+</article></slide><slide class=""><hgroup><h2>Embed a YouTube video</h2></hgroup><article  id="embed-a-youtube-video">
 
-<p>HTML Code (<strong>not</strong> in a chunk–not talking to R)</p>
+<p>HTML Code (outside a chunk–not talking to R)</p>
 
 <pre class = 'prettyprint lang-markdown'>&lt;iframe width=&quot;420&quot; height=&quot;315&quot; 
 src=&quot;https://www.youtube.com/embed/9hUy9ePyo6Q&quot; 
@@ -524,7 +533,7 @@ frameborder=&quot;0&quot; allowfullscreen&gt;
 
 </iframe>
 
-</article></slide><slide class=""><hgroup><h2>Printing computed variables</h2></hgroup><article  id="printing-computed-variables">
+</article></slide><slide class=""><hgroup><h2>Printing computed variables in your text</h2></hgroup><article  id="printing-computed-variables-in-your-text">
 
 <p>Code (in a chunk):</p>
 
@@ -539,11 +548,37 @@ names(summ.x) # Figure out variable names for indexing
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p><em>Index by variable name:</em> X lies within the range of [-2.8123854, 2.2292188].</p>
+<p><img src="img/rmarkdown-inline-code.jpg" width="900px" style="display: block; margin: auto;" /></p>
 
-<p><em>Index by numeric index:</em> The (y-x) difference in means is 1.9274061.</p>
+<ul>
+<li>Prefix inline code bits with &ldquo;`r&rdquo;</li>
+<li>Terminate inline code bits with single backtick &ldquo;`&rdquo;</li>
+<li><strong>No more copying and pasting statistical results!</strong></li>
+</ul>
 
-<p><em>Calculate and report:</em> The correlation between x and y is -0.0498423.</p>
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Format numeric outputs with <code>sprintf()</code></li>
+<li><code>sprintf(&quot;%2.3f&quot;, 14.7666)</code> gives 14.77</li>
+<li>See <code>help(&quot;sprintf&quot;)</code></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><em>Index by variable name:</em> X lies within the range of [-2.4525014, 2.3575107].</p>
+
+<p><em>Index by numeric index:</em> The (y-x) difference in means is 2.1779896.</p>
+
+<p><em>Calculate and report:</em> The correlation between x and y is 0.1480369.</p>
+
+</article></slide><slide class=""><hgroup><h2>Math equations</h2></hgroup><article  id="math-equations">
+
+<p>Markdown (<strong>not</strong> in a chunk–not talking to R) using LaTex syntax.</p>
+
+<pre class = 'prettyprint lang-markdown'>$$e=mc^{2}$$</pre>
+
+<p>\[e=mc^{2}\]</p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Doing real work with R Markdown</h2></hgroup><article  id="doing-real-work-with-r-markdown">
 
@@ -604,221 +639,122 @@ names(summ.x) # Figure out variable names for indexing
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p><code>---</code></br> <code>title: &quot;One Code to Rule Them All&quot;</code></br> <code>author: &quot;Rick O. Gilmore&quot;</code></br> <code>date: &quot;July 4, 1776&quot;</code></br> <code>output: html_document</code></br> <code>---</code></br></br></p>
-
-</article></slide><slide class=""><hgroup><h2>Default output is <code>html_document</code></h2></hgroup><article  id="default-output-is-html_document">
-
-<ul>
-<li><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;)</code> creates a single HTML file</li>
-<li>The <code>output: html_document</code> line specifies the default format for the file</li>
-<li>Omitting the <code>output:</code> or <code>author:</code> or <code>date:</code> commands still yields an HTML file</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Getting fancier</h2></hgroup><article  id="getting-fancier">
-
-<ul>
-<li><code>rmarkdown::render()</code> can take an <code>output_format</code> parameter</li>
-<li><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;html_document&quot;)</code> renders an HTML file as before</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<ul>
-<li><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;word_document&quot;)</code> renders an MS Word document</li>
-<li><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;pdf_document&quot;)</code> renders a PDF document</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<p><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;html_document&quot;)</code></br> <code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;word_document&quot;)</code></br> <code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;pdf_document&quot;)</code></p>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<p>Or, just</p>
-
-<p><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = c(&quot;html_document&quot;, &quot;word_document&quot;, &quot;pdf_document&quot;))</code></p>
-
-<p>makes all three with <strong>one</strong> command.</p>
-
-</article></slide><slide class=""><hgroup><h2>Y’all can customize your YAML</h2></hgroup><article  id="yall-can-customize-your-yaml">
-
-<ul>
-<li>Default <code>html_document</code> output creates a single HTML file with all figures embedded via
-
-<ul>
-<li><code>self_contained: true</code></li>
-</ul></li>
-<li>Nice for sharing a single file with collaborators</li>
-<li>Not so if you want to save the figures for other uses</li>
-<li>If <code>self_contained: false</code>, then figures are written to separate directory</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<p><code>---</code></br> <code>title: &quot;One Code to Rule Them All&quot;</code></br> <code>author: &quot;Rick O. Gilmore&quot;</code></br> <code>date: &quot;July 4, 1776&quot;</code></br> <code>output:</code></br> <code>html_document:</code></br> <code>self_contained: false</code></br> <code>---</code></br></br></p>
-
-</article></slide><slide class=""><hgroup><h2>Exploring report parameters</h2></hgroup><article  id="exploring-report-parameters">
-
-</article></slide><slide class=""><hgroup><h2>Presentations</h2></hgroup><article  id="presentations">
-
-<ul>
-<li><strong>HTML (ioslides)</strong></li>
-<li>HTML (Slidy)</li>
-<li>PDF (Beamer)</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>ioslides basics</h2></hgroup><article  id="ioslides-basics">
-
-<ul>
-<li>New slides with titles start with double-hashes</li>
-</ul>
-
-<p><code>## New Slide Title</code></p>
-
-<ul>
-<li>New slides without titles start with four dashes</li>
-</ul>
-
-<p><code>----</code></p>
-
-</article></slide><slide class=""><hgroup><h2>ioslides basics</h2></hgroup><article  id="ioslides-basics-1">
-
-<ul>
-<li>Bullet points start with single dashes</li>
-</ul>
-
-<p><code>- Bulleted item 1</code></br> <code>- Bulleted item 2</code></p>
-
-<ul>
-<li>if <code>incremental: FALSE</code> in YAML header (the default), then</li>
-</ul>
-
-<p><code>&gt;- Incremental bullet</code></p>
-
-<p>allows you to show one bullet at a time for that slide</p>
-
-</article></slide><slide class=""><hgroup><h2>ioslides basics</h2></hgroup><article  id="ioslides-basics-2">
-
-<ul>
-<li>Embedding figures requires some HTML</li>
-</ul>
-
-<p><code>&lt;img src=&quot;fig.jpg&quot;&gt;</code> embeds</p>
-
-<ul>
-<li>Embedding videos depends on source
-
-<ul>
-<li>YouTube provides code</li>
-<li>Embedding other (even local) videos requires HTML</li>
-</ul></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>ioslides formatting</h2></hgroup><article  id="ioslides-formatting">
-
-<pre >&lt;div class=&quot;centered&quot;&gt;
-...
-&lt;/div&gt;</pre>
-
-<p>Centers items between the <code>&lt;div&gt;</code> and <code>&lt;\div&gt;</code> tags vertically.</p>
-
-</article></slide><slide class=""><hgroup><h2>ioslides formatting</h2></hgroup><article  id="ioslides-formatting-1">
-
-<pre >---
-The three dashes will start a new slide without a header.
-## Slide with a header
-- Some text
----
-Another header-less slide</pre>
-
-</article></slide><slide class=""><hgroup><h2>Rendering ioslides</h2></hgroup><article  id="rendering-ioslides">
-
-<p><code>---</code></br> <code>title: &quot;One Code to Rule Them All&quot;</code></br> <code>author: &quot;Rick O. Gilmore&quot;</code></br> <code>date: &quot;July 4, 1776&quot;</code></br> <strong><code>output: ioslides_presentation</code></strong></br> <code>---</code></br></p>
-
-<p>in your file header, or</p>
-
-<p><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;ioslides_presentation&quot;)</code></p>
-
-<p>on the fly.</p>
-
-</article></slide><slide class=""><hgroup><h2>Parameters for ioslides</h2></hgroup><article  id="parameters-for-ioslides">
-
-<p><code>incremental: false</code></br></p>
-
-<p>Turns off incremental reveal of bullets.</p>
-
-<p><code>widescreen: true</code></br></p>
-
-<p>Makes slides work well with 16:9 aspect ratio screens.</p>
-
-</article></slide><slide class=""><hgroup><h2>Documents</h2></hgroup><article  id="documents">
-
-<ul>
-<li>HTML documents, <code>output_format=&quot;html_document&quot;</code></li>
-<li><strong>MS Word documents,<code>output_format=&quot;word_document&quot;</code></strong></li>
-<li>PDF documents, <code>output_format=&quot;pdf_document&quot;</code></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>MS Word document basics</h2></hgroup><article  id="ms-word-document-basics">
-
-<p>See <a href='http://rmarkdown.rstudio.com/word_document_format.html' title=''>http://rmarkdown.rstudio.com/word_document_format.html</a></p>
-
-<pre >---
-...
+<pre class = 'prettyprint lang-yaml'>---
+title: &quot;psy-525-rmarkdown-testbed&quot;
+author: &quot;Rick Gilmore&quot;
+date: &quot;2020-01-30 19:49:00&quot;
 output:
+  html_document:
+    self_contained: true
   word_document:
     fig_width: 5
     fig_height: 5
     fig_caption: false
     df_print: kable
-...
+  pdf_document: default
+  ioslides_presentation: default
+  powerpoint_presentation: default
 ---</pre>
 
-</article></slide><slide class=""><hgroup><h2>Rendering MS Word documents</h2></hgroup><article  id="rendering-ms-word-documents">
-
-<p><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;word_document&quot;)</code></p>
-
-<p>if your document header <em>does not</em> have parameters for word_document, or</p>
-
-<p><code>rmarkdown::render(input = &quot;my-report.Rmd&quot;)</code></p>
-
-<p>if your document header has the parameters and <code>word_document</code> is first in the list.</p>
-
-</article></slide><slide class=""><hgroup><h2>PDF documents</h2></hgroup><article  id="pdf-documents">
-
-<p>See <a href='http://rmarkdown.rstudio.com/pdf_document_format.html' title=''>http://rmarkdown.rstudio.com/pdf_document_format.html</a></p>
+</article></slide><slide class=""><hgroup><h2>Learn from my mistakes</h2></hgroup><article  id="learn-from-my-mistakes-2">
 
 <ul>
-<li>Put in 1st position in header, then <code>rmarkdown::render(input = &quot;my-report.Rmd&quot;)</code></li>
-<li>Or, <code>rmarkdown::render(input = &quot;my-report.Rmd&quot;, output_format = &quot;pdf_document&quot;)</code></li>
-<li>Must <a href='https://www.latex-project.org/get/' title=''>install LaTeX</a> for this to work</li>
+<li>YAML syntax is specific</li>
+<li>Yes, the tabs and colons matter</li>
+<li>You can <del>have fun</del>/waste a lot of time exploring YAML options</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<pre >---
-...
-  pdf_document:
-    toc: true
-    toc_depth: 2
-...
----</pre>
+<ul>
+<li>OTOH, <a href='https://yihui.org/knitr/options/#code-chunk' title=''><strong>chunk</strong> options</a> are super useful
 
-</article></slide><slide class=""><hgroup><h2>Some useful parameters for the <code>rmarkdown::render()</code> command</h2></hgroup><article  id="some-useful-parameters-for-the-rmarkdownrender-command">
+<ul>
+<li><code>echo=TRUE</code> prints your R code</li>
+<li><code>echo=FALSE</code> runs but does not print your code; <code>include=FALSE</code> does also.</li>
+<li><code>eval=FALSE</code> prevents a chunk from executing</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>&lsquo;Knitting&rsquo; vs. &lsquo;Rendering&rsquo; your document</h2></hgroup><article  id="knitting-vs.-rendering-your-document">
+
+<ul>
+<li>Pressing the <code>knit</code> button converts your document to the default format</li>
+<li>That is, the first format after your <code>output:</code> parameter</li>
+<li>Pressing and holding the <code>knit</code> button gives other options</li>
+<li><code>knitr</code> is an R package that R Markdown depends upon heavily</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Rendering your document</h2></hgroup><article  id="rendering-your-document">
+
+<p>In the console (not your R Markdown document):</p>
+
+<pre class = 'prettyprint lang-yaml'>&gt; rmarkdown::render(&quot;testbed.Rmd&quot;)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Why render?</h2></hgroup><article  id="why-render">
+
+<ul>
+<li>Saves time when editing interactively
+
+<ul>
+<li>Render, then switch to browser (alt-tab or command-tab)</li>
+<li>Refresh browser</li>
+</ul></li>
+<li>Give documents parameters, like which output(s) you want</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>In the console:</p>
+
+<pre class = 'prettyprint lang-yaml'>&gt; rmarkdown::render(&quot;testbed.Rmd&quot;, 
+output_formats = c(&quot;html_document&quot;, &quot;word_document&quot;, &quot;pdf_document&quot;))</pre>
+
+<p>Makes copies in three different formats: <code>testbed.html</code>, <code>testbed.docx</code>, and <code>testbed.pdf</code>.</p>
+
+</article></slide><slide class=""><hgroup><h2>Other useful parameters for the <code>rmarkdown::render()</code> command</h2></hgroup><article  id="other-useful-parameters-for-the-rmarkdownrender-command">
 
 <ul>
 <li><code>output_file = myslides.ioslides.html</code> or <code>output_file = myslides.slidy.html</code> to specify different output file targets.</li>
 <li><code>output_dir = reports</code> or <code>output_dir = docx</code> to direct output to a specific directory.</li>
-<li><code>params = list(name = &quot;Joe&quot;, quest = &quot;Find the grail&quot;, favorite.color = &quot;blue&quot;)</code> to pass parameters that R can use via <code>params$name</code></li>
+<li>parameterized reports using <code>params:</code></li>
 </ul>
 
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>In your header:</p>
+
+<pre class = 'prettyprint lang-yaml'>---
+title: &quot;psy-525-rmarkdown-testbed&quot;
+author: &quot;Rick Gilmore&quot;
+date: &quot;2020-01-30 19:49:00&quot;
+output:
+  html_document: default
+params:
+  name: Joe
+  quest: &quot;to find the Holy Grail&quot;
+---</pre>
+
+<ul>
+<li>Single words don’t require quotes; phrases with spaces do</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>In the console:</p>
+
+<pre class = 'prettyprint lang-yaml'>&gt; rmarkdown::render(&quot;testbed.Rmd&quot;, params=list(name=&quot;Francine&quot;))</pre>
+
 </article></slide><slide class=""><hgroup><h2>Questions?</h2></hgroup><article  id="questions">
+
+</article></slide><slide class=""><hgroup><h2>Your turn…</h2></hgroup><article  id="your-turn">
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Next time</h2></hgroup><article  id="next-time">
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
+<li>RStudio projects</li>
 <li>Version control using git and GitHub</li>
 </ul>
 
@@ -843,34 +779,13 @@ output:
 ## [1] stats     graphics  grDevices utils     datasets 
 ## [6] methods   base     
 ## 
-## other attached packages:
-##  [1] DiagrammeR_1.0.5 forcats_0.4.0    stringr_1.4.0   
-##  [4] dplyr_0.8.3      purrr_0.3.3      readr_1.3.1     
-##  [7] tidyr_1.0.0      tibble_2.1.3     ggplot2_3.2.1   
-## [10] tidyverse_1.3.0 
-## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.3         lubridate_1.7.4    tufte_0.5         
-##  [4] lattice_0.20-38    visNetwork_2.0.9   assertthat_0.2.1  
-##  [7] digest_0.6.23      packrat_0.5.0      mime_0.8          
-## [10] R6_2.4.1           cellranger_1.1.0   backports_1.1.5   
-## [13] reprex_0.3.0       evaluate_0.14      httr_1.4.1        
-## [16] highr_0.8          pillar_1.4.3       rlang_0.4.4       
-## [19] lazyeval_0.2.2     readxl_1.3.1       rstudioapi_0.10   
-## [22] rmarkdown_2.1      labeling_0.3       pwr_1.2-2         
-## [25] htmlwidgets_1.5.1  munsell_0.5.0      tinytex_0.19      
-## [28] broom_0.5.3        compiler_3.6.2     modelr_0.1.5      
-## [31] xfun_0.12          pkgconfig_2.0.3    base64enc_0.1-3   
-## [34] htmltools_0.4.0    tidyselect_1.0.0   fansi_0.4.1       
-## [37] crayon_1.3.4       dbplyr_1.4.2       withr_2.1.2       
-## [40] grid_3.6.2         nlme_3.1-142       jsonlite_1.6      
-## [43] gtable_0.3.0       lifecycle_0.1.0    DBI_1.1.0         
-## [46] magrittr_1.5       scales_1.1.0       cli_2.0.1         
-## [49] stringi_1.4.5      farver_2.0.3       fs_1.3.1          
-## [52] xml2_1.2.2         vctrs_0.2.2        generics_0.0.2    
-## [55] RColorBrewer_1.1-2 tools_3.6.2        glue_1.3.1        
-## [58] hms_0.5.3          yaml_2.2.0         colorspace_1.4-1  
-## [61] rvest_0.3.5        knitr_1.27         haven_2.2.0</pre>
+##  [1] compiler_3.6.2  magrittr_1.5    htmltools_0.4.0
+##  [4] tools_3.6.2     yaml_2.2.0      Rcpp_1.0.3     
+##  [7] stringi_1.4.5   rmarkdown_2.1   highr_0.8      
+## [10] knitr_1.27      stringr_1.4.0   xfun_0.12      
+## [13] digest_0.6.23   packrat_0.5.0   rlang_0.4.4    
+## [16] evaluate_0.14</pre>
 
 </article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references">
 
