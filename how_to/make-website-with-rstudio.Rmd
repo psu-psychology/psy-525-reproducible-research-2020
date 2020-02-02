@@ -1,0 +1,45 @@
+---
+title: "Making a web site with R Markdown"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+## Purpose
+
+This document describes how to create a simple web site using R Markdown.
+
+## Prerequisites
+
+1. RStudio
+2. A GitHub account (optional, but highly recommended).
+
+## Procedure
+
+### Prepare GitHub repo to serve your site (Optional, but highly recommended) 
+1. Create a new repository (repo) for your site on GitHub.
+    - If your repo is a project under your account, it will have the following type of URL: `https://rogilmore.github.io/my-project`.
+    - For example, the PSY 525 course is a project under the `psu-psychology` organization, so our site's URL is `https://psu-psychology.github.io/psy-525-reproducible-research-2020`.
+2. Copy/clone the repo to a new project in RStudio.
+
+### Make the website
+
+1. View the [web_site template directory](https://github.com/psu-psychology/psy-525-reproducible-research-2020/how-to/web_site_template/docs) for a skeletal structure you can build on.
+2. Essential components of the site are as follows:
+    - an `index.Rmd` file that is your home page.
+    - a `_site.yml` file that tells RStudio how to render the `.Rmd` and other files into a site.
+3. Render the site from your project's root directory by running `rmarkdown::render_site()`.
+
+### Share the website (via GitHub pages)
+
+1. If your website has its own repo, commit and push all of the code to GitHub.
+2. Visit the repo on GitHub.
+3. Open the repo's Settings.
+    - Scroll down to the GitHub pages section

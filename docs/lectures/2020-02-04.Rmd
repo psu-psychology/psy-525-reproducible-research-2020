@@ -164,7 +164,8 @@ knitr::include_graphics("img/rmarkdown-testbed.jpg")
 
 - Text formatting
     + ~~strikethrough~~ by surrounding text with double tildes: `~~strikethrough~~`
-    + [Clickable URLs](http://www.psu.edu) by surrounding link text with square brackets and URL with parentheses: ```[Clickable URLs](http://www.psu.edu)```
+    + [Clickable URLs](http://www.psu.edu) by surrounding link text with square brackets and URL with parentheses: 
+    + ```[Clickable URLs](http://www.psu.edu)```
 
 ## Markdown syntax
 
@@ -233,11 +234,11 @@ Code:
 > Four score and seven years ago, some famous President spoke infamous words that would live on throughout history.
 > These words are famous enough that I want to highlight them with a block quote.
 
-
 ## More on Markdown syntax
 
 - Images can be inserted using this syntax `![Alt text](/path/to/img.jpg)`
-- Comments -- won't print in rendered output -- `<!- This is a comment ->`
+- Comments -- won't print in rendered output -- 
+- `<!- This is a comment ->`
 
 ## R Markdown additions
 
@@ -322,8 +323,9 @@ plot(x,y)
 plot(x,y)
 ```
 
-## Embed figure using "chunk" syntax
+## Embed a figure using "chunk" syntax
 
+Code (in a chunk):
 ````markdown
 `r ''````{r rog, fig.cap="Rick's pic from Databrary"}
 knitr::include_graphics("https://nyu.databrary.org/party/6/avatar")
@@ -336,7 +338,9 @@ knitr::include_graphics("https://nyu.databrary.org/party/6/avatar")
 knitr::include_graphics("https://nyu.databrary.org/party/6/avatar")
 ```
 
-## Embed figure using HTML
+## Embed a figure using HTML
+
+Code (outside a chunk):
 
 `<img src="img/sleic.jpg" height=500px>`
 
@@ -349,11 +353,14 @@ Height parameter (or, e.g. `height=500px`) is optional, but useful. Remember Mar
 ## Learn from my mistakes
 
 - Don't change your working directory...*EVAH*!
-- Give R Markdown document "local" paths.
+- Give R Markdown document "local" paths
+- Projects (next week) make this MUCH easier
+- Talk to R *inside* chunks; talk to RStudio *outside* chunks
+- Save your R Markdown file often
 
-## Embed YouTube video
+## Embed a YouTube video
 
-HTML Code (**not** in a chunk--not talking to R)
+HTML Code (outside a chunk--not talking to R)
 ```markdown
 <iframe width="420" height="315" 
 src="https://www.youtube.com/embed/9hUy9ePyo6Q" 
@@ -368,7 +375,7 @@ frameborder="0" allowfullscreen>
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/9hUy9ePyo6Q" frameborder="0" allowfullscreen></iframe>
 
-## Printing computed variables
+## Printing computed variables in your text
 
 Code (in a chunk):
 ````markdown
@@ -382,8 +389,24 @@ names(summ.x) # Figure out variable names for indexing
 ```{r}
 summ.x = summary(x)
 summ.y = summary(y)
-names(summ.x) # Figure out variable names for indexing
+names(summ.x)       # Figure out variable names for indexing
 ```
+
+---
+
+```{r}
+knitr::include_graphics("img/rmarkdown-inline-code.jpg")
+```
+
+- Prefix inline code bits with "`r"
+- Terminate inline code bits with single backtick "`"
+- **No more copying and pasting statistical results!**
+
+---
+
+- Format numeric outputs with `sprintf()`
+- `sprintf("%2.3f", 14.7666)` gives `r sprintf("%2.2f", 14.7666)`
+- See `help("sprintf")`
 
 ----
 
@@ -392,6 +415,15 @@ names(summ.x) # Figure out variable names for indexing
 *Index by numeric index:* The (y-x) difference in means is `r summ.y[4] - summ.x[4]`.
 
 *Calculate and report:* The correlation between x and y is `r cor(x,y)`.
+
+## Math equations 
+
+Markdown (**not** in a chunk--not talking to R) using LaTex syntax.
+```markdown
+$$e=mc^{2}$$
+```
+
+$$e=mc^{2}$$
 
 # Doing real work with R Markdown
 
@@ -430,214 +462,195 @@ names(summ.x) # Figure out variable names for indexing
 
 ----
 
-`---`</br>
-`title: "One Code to Rule Them All"`</br>
-`author: "Rick O. Gilmore"`</br>
-`date: "July 4, 1776"`</br>
-`output: html_document`</br>
-`---`</br></br>
-
-## Default output is `html_document`
-
-- `rmarkdown::render(input = "my-report.Rmd")` creates a single HTML file
-- The `output: html_document` line specifies the default format for the file
-- Omitting the `output:` or `author:` or `date:` commands still yields an HTML file
-
-## Getting fancier
-
-- `rmarkdown::render()` can take an `output_format` parameter
-- `rmarkdown::render(input = "my-report.Rmd", output_format = "html_document")` renders an HTML file as before
-
+```yaml
 ---
-
-- `rmarkdown::render(input = "my-report.Rmd", output_format = "word_document")` renders an MS Word document
-- `rmarkdown::render(input = "my-report.Rmd", output_format = "pdf_document")` renders a PDF document
-
-----
-
-`rmarkdown::render(input = "my-report.Rmd", output_format = "html_document")`</br>
-`rmarkdown::render(input = "my-report.Rmd", output_format = "word_document")`</br>
-`rmarkdown::render(input = "my-report.Rmd", output_format = "pdf_document")`
-
----
-
-Or, just
-
-`rmarkdown::render(input = "my-report.Rmd", output_format = c("html_document", "word_document", "pdf_document"))`
-
-makes all three with **one** command.
-
-## Y'all can customize your YAML
-
-- Default `html_document` output creates a single HTML file with all figures embedded via
-    + `self_contained: true`
-- Nice for sharing a single file with collaborators
-- Not so if you want to save the figures for other uses
-- If `self_contained: false`, then figures are written to separate directory
-
-----
-
-`---`</br>
-`title: "One Code to Rule Them All"`</br>
-`author: "Rick O. Gilmore"`</br>
-`date: "July 4, 1776"`</br>
-`output:`</br>
-  `html_document:`</br>
-    `self_contained: false`</br>
-`---`</br></br>
-
-## Exploring report parameters
-
-## Presentations
-
-- **HTML (ioslides)**
-- HTML (Slidy)
-- PDF (Beamer)
-
-## ioslides basics
-
-- New slides with titles start with double-hashes  
-
-`## New Slide Title`
-
-- New slides without titles start with four dashes 
-
-`----`
-
-## ioslides basics
-
-- Bullet points start with single dashes 
-
-`- Bulleted item 1`</br>
-`- Bulleted item 2`
-
-- if `incremental: FALSE` in YAML header (the default), then 
-
-`>- Incremental bullet` 
-
-allows you to show one bullet at a time for that slide
-
-## ioslides basics
-
-- Embedding figures requires some HTML 
-
-`<img src="fig.jpg">` embeds 
-
-- Embedding videos depends on source
-    + YouTube provides code
-    + Embedding other (even local) videos requires HTML
-
-## ioslides formatting
-
-```
-<div class="centered">
-...
-</div>
-```
-
-Centers items between the `<div>` and `<\div>` tags vertically.
-
-## ioslides formatting
-
-```
----
-The three dashes will start a new slide without a header.
-## Slide with a header
-- Some text
----
-Another header-less slide
-```
-
-## Rendering ioslides
-
-`---`</br>
-`title: "One Code to Rule Them All"`</br>
-`author: "Rick O. Gilmore"`</br>
-`date: "July 4, 1776"`</br>
-**`output: ioslides_presentation`**</br>
-`---`</br>
-
-in your file header, or
-
-`rmarkdown::render(input = "my-report.Rmd", output_format = "ioslides_presentation")`
-
-on the fly.
-
-## Parameters for ioslides
-
-`incremental: false`</br>
-
-Turns off incremental reveal of bullets.
-
-`widescreen: true`</br>
-
-Makes slides work well with 16:9 aspect ratio screens.
-
-## Documents
-
-- HTML documents, `output_format="html_document"`
-- **MS Word documents,`output_format="word_document"`**
-- PDF documents, `output_format="pdf_document"`
-
-## MS Word document basics
-
-See <http://rmarkdown.rstudio.com/word_document_format.html>
-
-```
----
-...
+title: "psy-525-rmarkdown-testbed"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
 output:
+  html_document:
+    self_contained: true
   word_document:
     fig_width: 5
     fig_height: 5
     fig_caption: false
     df_print: kable
-...
----
-```    
-
-## Rendering MS Word documents
-
-`rmarkdown::render(input = "my-report.Rmd", output_format = "word_document")`
-
-if your document header *does not* have parameters for word_document, or
-
-`rmarkdown::render(input = "my-report.Rmd")`
-
-if your document header has the parameters and `word_document` is first in the list.
-
-## PDF documents
-
-See <http://rmarkdown.rstudio.com/pdf_document_format.html>
-
-- Put in 1st position in header, then `rmarkdown::render(input = "my-report.Rmd")` 
-- Or, `rmarkdown::render(input = "my-report.Rmd", output_format = "pdf_document")`
-- Must [install LaTeX](https://www.latex-project.org/get/) for this to work
-
----
-
-```
----
-...
-  pdf_document:
-    toc: true
-    toc_depth: 2
-...
+  pdf_document: default
+  ioslides_presentation: default
+  powerpoint_presentation: default
 ---
 ```
 
-## Some useful parameters for the `rmarkdown::render()` command
+## Learn from my mistakes
+
+- YAML syntax is specific
+- Yes, the tabs and colons matter
+- You can ~~have fun~~/waste a lot of time exploring YAML options
+
+---
+
+- OTOH, [**chunk** options](https://yihui.org/knitr/options/#code-chunk) are super useful
+    - `echo=TRUE` prints your R code
+    - `echo=FALSE` runs but does not print your code; `include=FALSE` does also.
+    - `eval=FALSE` prevents a chunk from executing
+
+## 'Knitting' vs. 'Rendering' your document
+
+- Pressing the `knit` button converts your document to the default format
+- That is, the first format after your `output:` parameter
+- Pressing and holding the `knit` button gives other options
+- `knitr` is an R package that R Markdown depends upon heavily
+
+## Rendering your document
+
+In the console (not your R Markdown document):
+```yaml
+> rmarkdown::render("testbed.Rmd")
+```
+
+## Why render?
+
+- Saves time when editing interactively
+    - Render, then switch to browser (alt-tab or command-tab)
+    - Refresh browser
+- Give documents parameters, like which output(s) you want
+
+---
+
+In the console:
+```yaml
+> rmarkdown::render("testbed.Rmd", 
+output_formats = c("html_document", "word_document", "pdf_document"))
+```
+
+Makes copies in three different formats: `testbed.html`, `testbed.docx`, and `testbed.pdf`.
+
+## Other useful parameters for the `rmarkdown::render()` command
 
 - `output_file = myslides.ioslides.html` or `output_file = myslides.slidy.html` to specify different output file targets.
 - `output_dir = reports` or `output_dir = docx` to direct output to a specific directory.
-- `params = list(name = "Joe", quest = "Find the grail", favorite.color = "blue")` to pass parameters that R can use via `params$name`
+- parameterized reports using `params:`
+
+---
+
+In your header:
+````yaml
+---
+title: "psy-525-rmarkdown-testbed"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output:
+  html_document: default
+params:
+  name: Joe
+  quest: "to find the Holy Grail"
+---
+````
+
+- Single words don't require quotes; phrases with spaces do
+
+---
+
+In the console (for example):
+````yaml
+> rmarkdown::render("testbed.Rmd", params=list(name="Francine"))
+````
+
+## Some useful sets of YAML header parameters...
+
+Make a self-contained HTML file that includes any plots you've made or graphics you've embedded.
+Great for sharing locally (i.e, as a document not over the web).
+
+````yaml
+---
+output:
+  html_document:
+    self_contained: true
+---
+```
+
+---
+
+Add a table of contents. `toc_depth` controls how "deep" into your header hierarchy the table of contents should go.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+```
+
+---
+
+Add `toc_float: true` to make the table of contents "float" to the side of your document.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+```
+
+---
+
+Add `toc_float: true` to make the table of contents "float" to the side of your document.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+```
+
+---
+
+Add `number_sections: true` to make the table of contents automatically generate a hierarchical set of numbers--1.0, 1.2, 2.1, etc.--based on your header hierarchy.
+Remember, `#` is header 1, `##` is header 2, etc.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+---
+```
+
+---
+
+Include your code chunks (`include = TRUE`) but hide them until someone wants to see them by adding `code_folding: hide` to your YAML header.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+    code_folding: hide
+---
+```
 
 ## Questions?
+
+## Your turn...
 
 # Next time
 
 ---
 
+- RStudio projects
 - Version control using git and GitHub
 
 # Resources

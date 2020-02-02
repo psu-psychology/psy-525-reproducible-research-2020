@@ -1,10 +1,16 @@
 ---
-title: "psy-525-rmarkdown-testbed"
+title: "R Markdown testbed"
+subtitle: "PSY 525"
 author: "Rick Gilmore"
 date: "`r Sys.time()`"
 output: 
   html_document:
     self_contained: true
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    code_folding: hide
   word_document:
     fig_width: 5
     fig_height: 5
@@ -12,28 +18,114 @@ output:
     df_print: kable
   pdf_document: default
   ioslides_presentation: default
+params:
+  name: Joe
+  quest: "find the grail"
+  fav_color: "blue"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+# This is a Heading 1
+## This is a Heading 2
+### This is a Heading 3
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# Lists
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## Not enumerated
 
-```{r cars}
-summary(cars)
+- An item
+    - A nested item with **boldface**
+        - A doubly-nested item with *italics*
+- Another item with some ~~text stricken out~~
+
+## Enumerated
+
+1. An enumerated item
+    - A nested item
+1. A second enumerated item
+    a. A nested item with a footnote [^1] marker. Look for the text at the end of the document.
+    a. A second nested item. See how alphabetical enumerated lists work like you'd expect.
+    
+[^1]: Here is the footnote text. Note that it ends up at the end of the document.
+
+## Block quotation
+
+> Four score and seven years ago, some famous President spoke infamous words that would live on throughout history.
+> These words are famous enough that I want to highlight them with a block quote.
+
+# Make some data
+
+```{r}
+x = rnorm(n = 100, mean = 0, sd = 1)   # N(0,1)
+y = rnorm(n = 100, mean = 2, sd = 0.5) # N(2, 0.5)
 ```
 
-## Including Plots
+## Summarize
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+summary(x)
+summary(y)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Histogram
+
+```{r}
+hist(x)
+```
+
+## Plot
+
+```{r}
+plot(x,y)
+```
+
+# Embed figures or videos
+
+## From the web
+
+```{r rog, fig.cap="Rick's pic from Databrary"}
+knitr::include_graphics("https://nyu.databrary.org/party/6/avatar")
+```
+
+## From a local file
+
+<img src="img/sleic.jpg" height=500px>
+
+## From YouTube
+
+<iframe width="420" height="315" 
+src="https://www.youtube.com/embed/9hUy9ePyo6Q" 
+frameborder="0" allowfullscreen>
+</iframe>
+
+# Printing values from R
+
+```{r}
+summ.x = summary(x)
+summ.y = summary(y)
+names(summ.x) # Figure out variable names for indexing
+```
+
+*Index by variable name:* X lies within the range of [`r summ.x["Min."]`, `r summ.x["Max."]`].
+
+*Index by numeric index:* The (y-x) difference in means is `r summ.y[4] - summ.x[4]`.
+
+*Calculate and report:* The correlation between x and y is `r cor(x,y)`.
+
+# Math equations
+
+$$e=mc^{2}$$
+
+# Parameterized reports
+
+## My name is `r params$name`
+
+## My quest is to `r params$quest`
+
+## My favorite color is `r params$fav_color`
+
+# Footnotes
+

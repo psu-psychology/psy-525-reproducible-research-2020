@@ -556,6 +556,92 @@ In the console (for example):
 > rmarkdown::render("testbed.Rmd", params=list(name="Francine"))
 ````
 
+## Some useful sets of YAML header parameters...
+
+Make a self-contained HTML file that includes any plots you've made or graphics you've embedded.
+Great for sharing locally (i.e, as a document not over the web).
+
+````yaml
+---
+output:
+  html_document:
+    self_contained: true
+---
+```
+
+---
+
+Add a table of contents. `toc_depth` controls how "deep" into your header hierarchy the table of contents should go.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+```
+
+---
+
+Add `toc_float: true` to make the table of contents "float" to the side of your document.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+```
+
+---
+
+Add `toc_float: true` to make the table of contents "float" to the side of your document.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+```
+
+---
+
+Add `number_sections: true` to make the table of contents automatically generate a hierarchical set of numbers--1.0, 1.2, 2.1, etc.--based on your header hierarchy.
+Remember, `#` is header 1, `##` is header 2, etc.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+---
+```
+
+---
+
+Include your code chunks (`include = TRUE`) but hide them until someone wants to see them by adding `code_folding: hide` to your YAML header.
+
+````yaml
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+    code_folding: hide
+---
+```
+
 ## Questions?
 
 ## Your turn...
