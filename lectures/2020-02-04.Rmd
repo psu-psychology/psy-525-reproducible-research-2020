@@ -567,7 +567,7 @@ output:
   html_document:
     self_contained: true
 ---
-```
+````
 
 ---
 
@@ -580,7 +580,7 @@ output:
     toc: true
     toc_depth: 2
 ---
-```
+````
 
 ---
 
@@ -594,21 +594,7 @@ output:
     toc_depth: 2
     toc_float: true
 ---
-```
-
----
-
-Add `toc_float: true` to make the table of contents "float" to the side of your document.
-
-````yaml
----
-output:
-  html_document:
-    toc: true
-    toc_depth: 2
-    toc_float: true
----
-```
+````
 
 ---
 
@@ -624,7 +610,7 @@ output:
     toc_float: true
     number_sections: true
 ---
-```
+````
 
 ---
 
@@ -640,7 +626,7 @@ output:
     number_sections: true
     code_folding: hide
 ---
-```
+````
 
 ## Questions?
 

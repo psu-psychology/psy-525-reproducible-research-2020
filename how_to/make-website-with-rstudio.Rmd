@@ -14,7 +14,9 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
 
 ## Purpose
 
-This document describes how to create a simple web site using R Markdown.
+This document describes how to create a simple project web site using R Markdown.
+
+There is a very similar workflow for creating a site for an organization (or a person), but we will not provide details here.
 
 ## Prerequisites
 
@@ -24,6 +26,7 @@ This document describes how to create a simple web site using R Markdown.
 ## Procedure
 
 ### Prepare GitHub repo to serve your site (Optional, but highly recommended) 
+
 1. Create a new repository (repo) for your site on GitHub.
     - If your repo is a project under your account, it will have the following type of URL: `https://rogilmore.github.io/my-project`.
     - For example, the PSY 525 course is a project under the `psu-psychology` organization, so our site's URL is `https://psu-psychology.github.io/psy-525-reproducible-research-2020`.
@@ -43,3 +46,23 @@ This document describes how to create a simple web site using R Markdown.
 2. Visit the repo on GitHub.
 3. Open the repo's Settings.
     - Scroll down to the GitHub pages section
+4. Choose how GitHub will find your site.
+    - `master branch` means that your website files are intermingled with the other files in your repo.
+    This is fine for simple repos, but I usually prefer the second option.
+    - `master branch /docs folder`. This means that your website files are copied to a new folder called `docs/`. Here's a figure showing how the PSY 525 course website is configured.
+    
+```{r, fig.cap="PSY 525 website GitHub pages configuration"}
+knitr::include_graphics("img/github-pages-psy-525.jpg")
+```
+    
+4. Go back to your R site and confirm that your `_site.yml` file has the correct `output_dir:` parameter.
+    - If you chose `master branch` for your GitHub pages, then you must specify `output_dir: "."` in your `_site.yml` header file. The period `.` means the home or root directory for your repo.
+    - If you chose `master branch /docs folder` then you must set `output_dir: "docs"` (no `/`).
+    - If you change your `_site.yml` file, you must re-render the site using `rmarkdown::render_site()`; commit and push the changes to GitHub.
+5. Wait a few moments and then visit the URL for your site.
+GitHub pages can take tens of seconds to do all the updating on the backend, so be a little patient.
+
+### Share the website via another web hosting service
+
+You can use another web hosting service to host your site.
+Just copy the files in `docs/` folder or project root directory to that service using whatever instructions your web hosting service provides for uploading content.

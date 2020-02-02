@@ -34,6 +34,8 @@ navbar:
           href: how_to/google-colaboratory.html
         - text: "Evaluate different RMarkdown themes"
           href: how_to/evaluating-themes.html
+        - text: "Make a website with R Markdown"
+          href: how_to/make-website-with-rstudio.html
   right:
     - text: "Site info"
       href: site-info.html
