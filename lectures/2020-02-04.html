@@ -102,7 +102,7 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2020-02-03 11:12:44</p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-03 11:36:00</p>
           </hgroup>
   </slide>
 
@@ -432,10 +432,10 @@ summary(y)
 ```</pre>
 
 <pre >##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -1.82372 -0.51646  0.01199  0.08982  0.65845  1.85306</pre>
+## -2.97475 -0.61898  0.12376  0.06366  0.83831  2.63637</pre>
 
 <pre >##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.8256  1.6645  2.0427  1.9953  2.3252  3.2679</pre>
+##  0.6814  1.7026  2.0332  2.0396  2.3295  3.5140</pre>
 
 </article></slide><slide class=""><hgroup><h2>Histogram of x</h2></hgroup><article  id="histogram-of-x">
 
@@ -483,7 +483,7 @@ knitr::include_graphics(&quot;https://nyu.databrary.org/party/6/avatar&quot;)
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<div style="text-align: center" class="figure">
+<div class="figure" style="text-align: center">
 <img src="https://nyu.databrary.org/party/6/avatar" alt="Rick's pic from Databrary" width="900px" />
 
 <p class="caption">
@@ -566,11 +566,11 @@ names(summ.x) # Figure out variable names for indexing
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p><em>Index by variable name:</em> X lies within the range of [-1.8237163, 1.8530633].</p>
+<p><em>Index by variable name:</em> X lies within the range of [-2.9747495, 2.6363735].</p>
 
-<p><em>Index by numeric index:</em> The (y-x) difference in means is 1.9054271.</p>
+<p><em>Index by numeric index:</em> The (y-x) difference in means is 1.9759253.</p>
 
-<p><em>Calculate and report:</em> The correlation between x and y is -0.0176073.</p>
+<p><em>Calculate and report:</em> The correlation between x and y is 0.1314792.</p>
 
 </article></slide><slide class=""><hgroup><h2>Math equations</h2></hgroup><article  id="math-equations">
 
@@ -642,7 +642,7 @@ names(summ.x) # Figure out variable names for indexing
 <pre class = 'prettyprint lang-yaml'>---
 title: &quot;psy-525-rmarkdown-testbed&quot;
 author: &quot;Rick Gilmore&quot;
-date: &quot;2020-02-03 11:12:45&quot;
+date: &quot;2020-02-03 11:36:01&quot;
 output:
   html_document:
     self_contained: true
@@ -727,7 +727,7 @@ output_formats = c(&quot;html_document&quot;, &quot;word_document&quot;, &quot;p
 <pre class = 'prettyprint lang-yaml'>---
 title: &quot;psy-525-rmarkdown-testbed&quot;
 author: &quot;Rick Gilmore&quot;
-date: &quot;2020-02-03 11:12:45&quot;
+date: &quot;2020-02-03 11:36:01&quot;
 output:
   html_document: default
 params:
@@ -844,26 +844,27 @@ output:
 ##  [9] ggplot2_3.2.1    tidyverse_1.3.0 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_1.0.0   xfun_0.12          haven_2.2.0       
-##  [4] lattice_0.20-38    colorspace_1.4-1   vctrs_0.2.2       
-##  [7] generics_0.0.2     htmltools_0.4.0    yaml_2.2.0        
-## [10] rlang_0.4.4        pillar_1.4.3       withr_2.1.2       
-## [13] glue_1.3.1         DBI_1.1.0          RColorBrewer_1.1-2
-## [16] dbplyr_1.4.2       modelr_0.1.5       readxl_1.3.1      
-## [19] lifecycle_0.1.0    munsell_0.5.0      gtable_0.3.0      
-## [22] cellranger_1.1.0   rvest_0.3.5        visNetwork_2.0.9  
-## [25] htmlwidgets_1.5.1  evaluate_0.14      labeling_0.3      
-## [28] pwr_1.2-2          knitr_1.27         fansi_0.4.1       
-## [31] highr_0.8          broom_0.5.3        tufte_0.5         
-## [34] Rcpp_1.0.3         backports_1.1.5    scales_1.1.0      
-## [37] jsonlite_1.6       farver_2.0.3       fs_1.3.1          
-## [40] hms_0.5.3          packrat_0.5.0      digest_0.6.23     
-## [43] stringi_1.4.5      grid_3.6.2         cli_2.0.1         
-## [46] tools_3.6.2        magrittr_1.5       lazyeval_0.2.2    
-## [49] crayon_1.3.4       pkgconfig_2.0.3    xml2_1.2.2        
-## [52] reprex_0.3.0       lubridate_1.7.4    rstudioapi_0.10   
-## [55] assertthat_0.2.1   rmarkdown_2.1      httr_1.4.1        
-## [58] R6_2.4.1           nlme_3.1-142       compiler_3.6.2</pre>
+##  [1] Rcpp_1.0.3         lubridate_1.7.4    tufte_0.5         
+##  [4] lattice_0.20-38    visNetwork_2.0.9   assertthat_0.2.1  
+##  [7] digest_0.6.23      packrat_0.5.0      R6_2.4.1          
+## [10] cellranger_1.1.0   backports_1.1.5    reprex_0.3.0      
+## [13] evaluate_0.14      httr_1.4.1         highr_0.8         
+## [16] pillar_1.4.3       rlang_0.4.4        lazyeval_0.2.2    
+## [19] readxl_1.3.1       rstudioapi_0.10    databraryapi_0.1.8
+## [22] rmarkdown_2.1      labeling_0.3       pwr_1.2-2         
+## [25] htmlwidgets_1.5.1  munsell_0.5.0      broom_0.5.3       
+## [28] compiler_3.6.2     modelr_0.1.5       xfun_0.12         
+## [31] pkgconfig_2.0.3    htmltools_0.4.0    tidyselect_1.0.0  
+## [34] fansi_0.4.1        crayon_1.3.4       dbplyr_1.4.2      
+## [37] withr_2.1.2        grid_3.6.2         nlme_3.1-142      
+## [40] jsonlite_1.6       gtable_0.3.0       lifecycle_0.1.0   
+## [43] DBI_1.1.0          magrittr_1.5       scales_1.1.0      
+## [46] cli_2.0.1          stringi_1.4.5      farver_2.0.3      
+## [49] fs_1.3.1           xml2_1.2.2         generics_0.0.2    
+## [52] vctrs_0.2.2        RColorBrewer_1.1-2 tools_3.6.2       
+## [55] glue_1.3.1         hms_0.5.3          jpeg_0.1-8.1      
+## [58] yaml_2.2.0         colorspace_1.4-1   rvest_0.3.5       
+## [61] knitr_1.27         haven_2.2.0</pre>
 
 </article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references">
 

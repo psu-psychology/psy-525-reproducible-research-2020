@@ -20,6 +20,13 @@ render_all <- function() {
   clean_up()
 }
 
+launch_github <- function(repo_url = "https://github.com/psu-psychology/psy-525-reproducible-research-2020") {
+  if (!is.character(repo_url)) {
+    stop("'repo_url' must be a string.")
+  }
+  browseURL(repo_url)
+}
+
 clean_up <- function() {
   if (".databrary.RData" %in% list.files()) {
     databraryapi::logout_db()
@@ -31,4 +38,5 @@ clean_up <- function() {
   if (file.exists("docs/psy-525-spring-2020.csv")) {
     file.remove("docs/psy-525-spring-2020.csv")
   }
+  launch_github()
 }
