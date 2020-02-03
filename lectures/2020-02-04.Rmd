@@ -27,6 +27,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ## Announcements
 
+- Friday February 7, 2020 - "Best Practices of Maintaining a Lab Notebook to improve Accountability",  Melissa Ishler, Ph.D. Department of Entomology, The Pennsylvania State University, 11:15 am to 12:05 pm. 127 Noll Laboratory, Host: Department of Kinesiology
 - [Institute for Computational and Data Science (ICDS) events](https://ics.psu.edu/news-events/events/)
 - ["The Data Deluge", ICDS Symposium, March 16-17, 2020](https://ics.psu.edu/news-events/events/icds-symposium-2020/), NLI.
 
