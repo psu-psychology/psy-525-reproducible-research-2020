@@ -19,13 +19,17 @@ output:
   pdf_document: default
   ioslides_presentation: default
 params:
-  name: Joe
+  name: Steve
   quest: "find the grail"
   fav_color: "blue"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, 
+                      out.width = "400px",
+                      fig.align = "center")
+
+library(knitr)
 ```
 
 # This is a Heading 1
@@ -40,6 +44,7 @@ knitr::opts_chunk$set(echo = TRUE)
     - A nested item with **boldface**
         - A doubly-nested item with *italics*
 - Another item with some ~~text stricken out~~
+- URL: [Penn State Home](https://www.psu.edu)
 
 ## Enumerated
 
@@ -84,15 +89,30 @@ plot(x,y)
 
 # Embed figures or videos
 
-## From the web
+Some of these methods work better than others with a particular output format.
+
+## From the web using `knitr::include_graphics()`.
+
+The `html_document` format is fine with using the URL as the input to `knitr::include_graphics()`, but the `pdf_document` format seems to want a local file path, hence the use of `download.file()`.
 
 ```{r rog, fig.cap="Rick's pic from Databrary"}
-knitr::include_graphics("https://nyu.databrary.org/party/6/avatar")
+download.file("https://nyu.databrary.org/party/6/avatar",'img/rog.png', mode = 'wb')
+knitr::include_graphics("img/rog.png")
 ```
 
-## From a local file
+## From a local file using HTML
 
-<img src="img/sleic.jpg" height=500px>
+<img src="img/sleic.jpg" width=400px>
+
+## From a local file using `knitr::include_graphics()`
+
+```{r, out.width="400px"}
+knitr::include_graphics("img/sleic.jpg")
+```
+
+## From a local file using Markdown syntax
+
+![SLEIC](img/sleic.jpg)
 
 ## From YouTube
 
@@ -114,6 +134,10 @@ names(summ.x) # Figure out variable names for indexing
 *Index by numeric index:* The (y-x) difference in means is `r summ.y[4] - summ.x[4]`.
 
 *Calculate and report:* The correlation between x and y is `r cor(x,y)`.
+
+```{r}
+
+```
 
 # Math equations
 

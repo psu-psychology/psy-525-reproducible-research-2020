@@ -114,7 +114,7 @@ knitr::include_graphics("https://www.elsevier.com/__data/assets/image/0017/14316
 - [Markdown](https://daringfireball.net/projects/markdown/)
     - Mark-up language to make it easy to write HTML
 - R Markdown a special type of Markdown
-    - Allows for "literate" programming, mixing text, analysis, figures
+    - Allows for ["literate" programming](https://en.wikipedia.org/wiki/Literate_programming), mixing text, analysis, figures
     - Adds to Markdown syntax
     
 ## Let's do this...
@@ -220,7 +220,7 @@ Code:
 - `<CTRL>+2` goes to console
 - `<CTRL>+1` goes to source
 - `<UP-ARROW>` `<RETURN>`
-- `<COMMAND><ALT>+I` (Mac OS) inserts a chunk
+- `<COMMAND><ALT>+I` (Mac OS); `<CTRL><ALT>+I` (Windows) inserts a chunk
 - Train your fingers now!
 
 ----
@@ -521,7 +521,7 @@ In the console (not your R Markdown document):
 In the console:
 ```yaml
 > rmarkdown::render("testbed.Rmd", 
-output_formats = c("html_document", "word_document", "pdf_document"))
+output_format = c("html_document", "word_document", "pdf_document"))
 ```
 
 Makes copies in three different formats: `testbed.html`, `testbed.docx`, and `testbed.pdf`.

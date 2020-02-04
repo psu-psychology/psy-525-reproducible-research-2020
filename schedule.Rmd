@@ -116,8 +116,11 @@ Due by the start of class on 2020-02-11.
 In a few paragraphs, comment on what was and what was not included.
 Would the preregistration provide researchers sufficient structure to carry out the research without 'HARKing'?
 What downsides do you see to preregistration?
-2. Create a template for a reproducible research report in R Markdown.
-3. Convert your workflow from last week's assignment into R Markdown.
+2. Create a template for a reproducible research report or a pregistration document in R Markdown.
+3. Convert some portion of your workflow from last week's assignment into an R Markdown.
+4. Make sure to use some R Markdown features you haven't used before.
+Flag the features you used and explain how they'd be useful in an actual use case you can envision.
+4. Either email me the R Markdown file, or if you've pushed your file to a GitHub repo, send me a review request.
 
 ## Week 5: Tuesday, February 11, 2020
 
@@ -130,6 +133,8 @@ What downsides do you see to preregistration?
 
 ### Readings/webinars
 
+- Hardwicke, T. E., & Ioannidis, J. P. A. (2018). Mapping the universe of registered reports. *Nature Human Behaviour*, *2*(11), 793–796. nature.com. Retrieved from http://dx.doi.org/10.1038/s41562-018-0444-y
+- Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., & Vanpaemel, W. (2019, May). Preregistration: Comparing dream to reality. Retrieved from <https://psyarxiv.com/d8wex>.
 - [GitHub and RStudio](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
 - Jenny Bryan's <http://happygitwithr.com/>
 
