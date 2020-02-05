@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 5: Version control</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Week 5: Version control',
+                        subtitle: 'PSY 525',
+                useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Rick Gilmore' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="libs/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+  </style>
+
+  <link rel="stylesheet" href="css/gilmore.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-05 14:53:00</p>
+          </hgroup>
+  </slide>
+
+<!-- # Prelude -->
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Preliminaries</h2></hgroup><article  id="preliminaries">
+
+</article></slide><slide class=""><hgroup><h2>Announcements</h2></hgroup><article  id="announcements">
+
+<ul>
+<li><a href='https://ics.psu.edu/news-events/events/' title=''>Institute for Computational and Data Science (ICDS) events</a></li>
+<li><a href='https://ics.psu.edu/news-events/events/icds-symposium-2020/' title=''>&ldquo;The Data Deluge&rdquo;, ICDS Symposium, March 16-17, 2020</a>, NLI.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Today’s agenda</h2></hgroup><article  id="todays-agenda">
+
+<ul>
+<li>Version control</li>
+<li>Version control with git and GitHub</li>
+<li>RStudio projects</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Version control</h2></hgroup><article  id="version-control">
+
+</article></slide><slide class=""><hgroup><h2>What is version control?</h2></hgroup><article  id="what-is-version-control">
+
+<ul>
+<li>&ldquo;management of changes to documents, computer programs, large web sites, and other collections of information.&rdquo; <a href='https://en.wikipedia.org/wiki/Version_control' title=''>https://en.wikipedia.org/wiki/Version_control</a></li>
+<li>Track changes an example</li>
+<li>Wikipedia another</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><img src="https://whatdoidowithmylife.files.wordpress.com/2012/06/drawing-board.jpg" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><img src="http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Why do version control?</h2></hgroup><article  id="why-do-version-control">
+
+<ul>
+<li>Keep record of who made what changes when</li>
+<li>Revert to previous version</li>
+<li>Transparency</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>How to do version control</h2></hgroup><article  id="how-to-do-version-control">
+
+</article></slide><slide class=""><hgroup><h2><a href='http://happygitwithr.com/big-picture.html#what-is-the-payoff' title=''>Edit, Save, Attach</a></h2></hgroup><article  id="edit-save-attach">
+
+<ul>
+<li>My typical scheme for collaborative writing</li>
+<li>Requires consistent file-naming (and incrementing) conventions
+
+<ul>
+<li>gilmore-etal-nature-2017-01-28-1319.docx</li>
+<li>gilmore-etal-nature-2017-01-28-1400.docx</li>
+<li>or gilmore-etal-nature-2020-02-04v01.docx</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Pros</h2></hgroup><article  id="pros">
+
+<ul>
+<li>No special software needed</li>
+<li>Works with every file type</li>
+<li>Good for any file type</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Cons</h2></hgroup><article  id="cons">
+
+<ul>
+<li>Not everyone uses the same file naming conventions</li>
+<li>Dealing with conflicts</li>
+<li>File management</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Google Docs</h2></hgroup><article  id="google-docs">
+
+<ul>
+<li>Gilmore, R.O., Diaz, M.T., Wyble, B.A., &amp; Yarkoni, T. (2017). Progress toward openness, transparency, and reproducibility in cognitive neuroscience. <em>Annals of the New York Academy of Sciences</em>, <em>1396</em>, 5–18. doi: 10.1111/nyas.13325.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Pros</h2></hgroup><article  id="pros-1">
+
+<ul>
+<li>Works with docs and sheets</li>
+<li>Unlimited, automatic track changes</li>
+<li>Stored in cloud</li>
+<li>No special naming conventions</li>
+<li>Writers can work in parallel</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Cons</h2></hgroup><article  id="cons-1">
+
+<ul>
+<li>NYAS Editor wanted Word doc with track changes!</li>
+<li>Not all types of files</li>
+<li>Not everyone likes/knows how to use Google docs</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Cloud storage (Box, OneDrive)</h2></hgroup><article  id="cloud-storage-box-onedrive">
+
+<ul>
+<li>Pros
+
+<ul>
+<li>Keep the same file name</li>
+<li>Let Box or OneDrive do automatic versioning</li>
+<li>Shared file space</li>
+<li>Any kind of file supported</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Cons
+
+<ul>
+<li>limit on # of versions (100 for Box)</li>
+<li>Penn State enterprise license</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><a href='http://osf.io' title=''>Open Science Framework</a></h2></hgroup><article  id="open-science-framework">
+
+<ul>
+<li>Integrates with Box, Dropbox, GitHub</li>
+<li>Pros
+
+<ul>
+<li>Free, open source, devoted to open science</li>
+<li>Many different file types</li>
+</ul></li>
+<li>Cons
+
+<ul>
+<li>Version control depends on storage sources</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Version control using git and GitHub</h2></hgroup><article  id="version-control-using-git-and-github">
+
+</article></slide><slide class=""><hgroup><h2>How to do version control</h2></hgroup><article  id="how-to-do-version-control-1">
+
+<ul>
+<li><a href='https://en.wikipedia.org/wiki/Git' title=''>git</a>
+
+<ul>
+<li>free, open source version control system</li>
+<li>created by Linus Torvalds, creator of the Linux operating system, to manage that project’s software development</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><a href='http://github.com' title=''>GitHub</a> is a web-based git service</h2></hgroup><article  id="github-is-a-web-based-git-service">
+
+<ul>
+<li><a href='http://github.com' title=''>GitHub</a></li>
+<li><a href='https://about.gitlab.com/' title=''>GitLab</a></li>
+<li><a href='https://bitbucket.org/' title=''>Bitbucket</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Cons</h2></hgroup><article  id="cons-2">
+
+<ul>
+<li>Designed by and for software developers</li>
+<li>Text files</li>
+<li>Wonky</li>
+<li>Longevity of web-based repos?</li>
+<li>No automatic synching</li>
+<li>Users have to specifically push (upload), pull (download) files, merge/manage conflicts</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Pros</h2></hgroup><article  id="pros-2">
+
+<ul>
+<li>Users have to specifically push (upload), pull (download) files, merge/manage conflicts</li>
+<li>Great for R code, <del>data</del></li>
+<li>Great for Jupyter notebooks (later in course)</li>
+<li>Exploits the power of the web</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Easy-to-use &ldquo;Pages&rdquo; feature</li>
+<li>Supports Markdown, Jupyter notebooks</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><img src="https://homes.cs.washington.edu/~mernst/advice/version-control-fig3.png" width="700px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Distributed version control</h2></hgroup><article  id="distributed-version-control">
+
+<ul>
+<li>Everyone works on their own local copies</li>
+<li>Pull before they start work</li>
+<li>Save and push when they’re finished</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Learn from my mistakes</h2></hgroup><article  id="learn-from-my-mistakes">
+
+<ul>
+<li>Use RStudio projects (next)</li>
+<li>Have your local directory structure mirror GitHub</li>
+<li>Pull before you start working</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Work in a branch (I usually work in <code>dev</code>)</li>
+<li>Commit often</li>
+<li>Push to GitHub</li>
+<li>Create pull request to merge your changes into master</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Let’s do this…</h2></hgroup><article  id="lets-do-this">
+
+</article></slide><slide class=""><hgroup><h2>Complete Hello World exercise</h2></hgroup><article  id="complete-hello-world-exercise">
+
+<ul>
+<li>Complete <a href='https://guides.github.com/activities/hello-world/' title=''>Hello World</a> exercise on GitHub</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Get git setup on your computer</h2></hgroup><article  id="get-git-setup-on-your-computer">
+
+<ul>
+<li>Install: <a href='http://happygitwithr.com/install-git.html' title=''>http://happygitwithr.com/install-git.html</a></li>
+<li>Tell git who you are: <a href='http://happygitwithr.com/hello-git.html' title=''>http://happygitwithr.com/hello-git.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Connect git to your GitHub account</h2></hgroup><article  id="connect-git-to-your-github-account">
+
+<ul>
+<li>Instructions: <a href='http://happygitwithr.com/push-pull-github.html' title=''>http://happygitwithr.com/push-pull-github.html</a></li>
+<li>(if necessary; might not need to do this if you installed recently) Avoid authenticating each time by <a href='http://happygitwithr.com/credential-caching.html' title=''>caching credentials</a> or using <a href='http://happygitwithr.com/ssh-keys.html' title=''>ssh keys</a></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>RStudio Projects</h2></hgroup><article  id="rstudio-projects">
+
+</article></slide><slide class=""><hgroup><h2>Projects</h2></hgroup><article  id="projects">
+
+<ul>
+<li>Separate &ldquo;home&rdquo; directory for each piece of work</li>
+<li>Switch to using <code>Open Project...</code> command in <code>File</code> menu</li>
+<li>Saved metadata in *.Rproj (not saved on GitHub)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Connect RStudio with git and GitHub</h2></hgroup><article  id="connect-rstudio-with-git-and-github">
+
+<ul>
+<li>Clone the Hello World repo, following these instructions: <a href='http://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio' title=''>http://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Create new RStudio project</h2></hgroup><article  id="create-new-rstudio-project">
+
+<ul>
+<li>Instructions: <a href='http://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone' title=''>http://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone</a></li>
+<li>GitHub repo first</li>
+<li>New RStudio project by cloning repo</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Rick’s workflow</h2></hgroup><article  id="ricks-workflow">
+
+<ul>
+<li>Create repo on GitHub</li>
+<li>Copy link</li>
+<li>Open RStudio</li>
+<li>Create new project in RStudio</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Add <code>*.Rproj</code> to <code>.gitignore</code></li>
+<li>Edit README.md</li>
+<li>Save and commit as &lsquo;first commit&rsquo;</li>
+<li>Push to GitHub to test connection</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Learn from my mistakes</h2></hgroup><article  id="learn-from-my-mistakes-1">
+
+<ul>
+<li>Add sensitive files, directories to <code>.gitignore</code></li>
+</ul>
+
+<table class = 'rmdtable'>
+<tr class="odd">
+<td align="left">.Rproj.user</td>
+</tr>
+<tr class="even">
+<td align="left">.Rhistory</td>
+</tr>
+<tr class="odd">
+<td align="left">.RData</td>
+</tr>
+<tr class="even">
+<td align="left">.Ruserdata</td>
+</tr>
+<tr class="odd">
+<td align="left">psy-525-reproducible-research-2020.Rproj</td>
+</tr>
+<tr class="even">
+<td align="left">psy-525-spring-2020.csv</td>
+</tr>
+<tr class="odd">
+<td align="left">.databrary.RData</td>
+</tr>
+<tr class="even">
+<td align="left">hw</td>
+</tr>
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Real-life scenarios less radically open than mine</h2></hgroup><article  id="real-life-scenarios-less-radically-open-than-mine">
+
+<ul>
+<li>Use git locally, but not push to GitHub</li>
+<li>Use RStudio projects, but not use git or GitHub</li>
+<li>Use private repository (limit of 3 collaborators/repo)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Version control for RStudio Projects</h2></hgroup><article  id="version-control-for-rstudio-projects">
+
+<ul>
+<li><a href='http://rstudio.github.io/packrat/' title=''>packrat</a></li>
+<li>Trying it again for this course. Progress report soon.</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Next time</h2></hgroup><article  id="next-time">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Simulation as a tool for reproducible and transparent science</li>
+<li>Visualization tools in R</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Resources</h2></hgroup><article  id="resources">
+
+</article></slide><slide class=""><hgroup><h2>Software</h2></hgroup><article  id="software">
+
+<p>This talk was produced on 2020-02-05 in <a href='https://rstudio.com' title=''>RStudio</a> using R Markdown. The code and materials used to generate the slides may be found at <a href='https://github.com/psu-psychology/psy-525-reproducible-research-2020' title=''>https://github.com/psu-psychology/psy-525-reproducible-research-2020</a>. Information about the R Session that produced the code is as follows:</p>
+
+<pre >## R version 3.6.2 (2019-12-12)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods  
+## [7] base     
+## 
+## other attached packages:
+##  [1] knitr_1.27       DiagrammeR_1.0.5 forcats_0.4.0   
+##  [4] stringr_1.4.0    dplyr_0.8.3      purrr_0.3.3     
+##  [7] readr_1.3.1      tidyr_1.0.0      tibble_2.1.3    
+## [10] ggplot2_3.2.1    tidyverse_1.3.0 
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.3         lubridate_1.7.4    tufte_0.5         
+##  [4] lattice_0.20-38    visNetwork_2.0.9   assertthat_0.2.1  
+##  [7] digest_0.6.23      packrat_0.5.0      R6_2.4.1          
+## [10] cellranger_1.1.0   backports_1.1.5    reprex_0.3.0      
+## [13] evaluate_0.14      httr_1.4.1         highr_0.8         
+## [16] pillar_1.4.3       rlang_0.4.4        lazyeval_0.2.2    
+## [19] readxl_1.3.1       rstudioapi_0.10    rmarkdown_2.1     
+## [22] labeling_0.3       pwr_1.2-2          htmlwidgets_1.5.1 
+## [25] munsell_0.5.0      tinytex_0.19       broom_0.5.3       
+## [28] compiler_3.6.2     modelr_0.1.5       xfun_0.12         
+## [31] pkgconfig_2.0.3    htmltools_0.4.0    tidyselect_1.0.0  
+## [34] fansi_0.4.1        crayon_1.3.4       dbplyr_1.4.2      
+## [37] withr_2.1.2        grid_3.6.2         nlme_3.1-142      
+## [40] jsonlite_1.6       gtable_0.3.0       lifecycle_0.1.0   
+## [43] DBI_1.1.0          magrittr_1.5       scales_1.1.0      
+## [46] cli_2.0.1          stringi_1.4.5      farver_2.0.3      
+## [49] fs_1.3.1           xml2_1.2.2         generics_0.0.2    
+## [52] vctrs_0.2.2        RColorBrewer_1.1-2 tools_3.6.2       
+## [55] glue_1.3.1         jpeg_0.1-8.1       hms_0.5.3         
+## [58] yaml_2.2.0         colorspace_1.4-1   rvest_0.3.5       
+## [61] haven_2.2.0</pre>
+
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references">
+
+<!-- Scrolling final reference page -->
+
+<!-- https://stackoverflow.com/q/38260799 -->
+
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
