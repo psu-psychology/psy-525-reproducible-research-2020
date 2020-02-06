@@ -1,8 +1,8 @@
 ---
-title: "PSY 525.001, Spring 2020"
+pagetitle: "index.html"
 ---
 
-# Transparent, Open, and Reproducible Research Practices in the Social and Behavioral Sciences
+## Transparent, Open, and Reproducible Research Practices in the Social and Behavioral Sciences
 
 <img src="http://imgc-cn.artprintimages.com/images/P-473-488-90/60/6079/KTUD100Z/posters/sidney-harris-i-think-you-should-be-more-explicit-here-in-step-two-cartoon.jpg" width=250px>
 Sidney Harris, New Yorker Magazine
