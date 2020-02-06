@@ -1,6 +1,6 @@
 name: "R Markdown Website Template"
 navbar:
-  title: "Home"
+  title: "Site Template"
   left:
     - text: "Home"
       href: index.html
