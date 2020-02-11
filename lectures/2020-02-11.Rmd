@@ -114,7 +114,7 @@ knitr::include_graphics("http://smutch.github.io/VersionControlTutorial/_images/
 ---
 
 - Cons
-    + limit on # of versions (100 for Box)
+    + limit on # of versions (was 100 for Box)
     + Penn State enterprise license
     
 ## [Open Science Framework](http://osf.io)
@@ -293,4 +293,3 @@ slides > slide:not(.nobackground):after {
   }
 }
 </style>
-
