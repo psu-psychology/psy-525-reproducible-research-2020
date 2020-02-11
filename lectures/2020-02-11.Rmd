@@ -33,10 +33,28 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ## Today's agenda
 
+- General comments on homework
 - Version control
 - Version control with git and GitHub
 - RStudio projects
 
+# Comments on homework
+
+## Things to consider
+
+- Where are my data stored?
+    - Can I create a reproducible workflow for importing them?
+- Automate as much as possible
+- Use names that are transparent to others
+
+---
+
+- What are your document's dependencies, e.g. packages, external scripts or functions
+- Make your code as readable as possible.
+    - Consider `<COMMAND/CTRL>I` to reindent lines
+    - `<SHIFT><COMMAND/CTRL>A` to reformat code
+- Plot first, analyze later
+  
 # Version control
 
 ## What is version control?
