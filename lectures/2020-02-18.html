@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 6: Simulation &amp; Visualization</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Week 6: Simulation &amp; Visualization',
+                        subtitle: 'PSY 525',
+                useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Rick Gilmore' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="libs/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+  </style>
+
+  <link rel="stylesheet" href="css/gilmore.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-12 16:25:36</p>
+          </hgroup>
+  </slide>
+
+<!-- Code to make scrolling slides -->
+
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Preliminaries</h2></hgroup><article  id="preliminaries">
+
+</article></slide><slide class=""><hgroup><h2>Announcements</h2></hgroup><article  id="announcements">
+
+<ul>
+<li>Data Science Community meeting 2020-02-28, 10a, Pattee Library Collaboration Commons</li>
+<li><a href='https://ics.psu.edu/news-events/events/' title=''>Institute for Computational and Data Science (ICDS) events</a></li>
+<li><a href='https://ics.psu.edu/news-events/events/icds-symposium-2020/' title=''>&ldquo;The Data Deluge&rdquo;, ICDS Symposium, March 16-17, 2020</a>, NLI.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Today’s topics</h2></hgroup><article  id="todays-topics">
+
+<ul>
+<li>Some observations about GitHub use and R Markdown</li>
+<li>Simulation as a tool for reproducible and transparent science</li>
+<li>Visualization in R</li>
+<li>Advanced simulation</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Observations</h2></hgroup><article  id="observations">
+
+</article></slide><slide class=""><hgroup><h2>GitHub</h2></hgroup><article  id="github">
+
+<ul>
+<li>You’re in charge of what goes where.</li>
+<li>Public repos are public, but no one knows what you’re doing unless you alert them.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Pull requests are when you edit my code and want me to &ldquo;pull&rdquo;/adopt it.
+
+<ul>
+<li>If I’m a collaborator on the project with <code>write</code> privileges, I don’t have to issue a pull request.</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>R Markdown</h2></hgroup><article  id="r-markdown">
+
+<ul>
+<li>Ok to make multiple R Markdown files and link them</li>
+<li>Make sure to add spaces where they belong: <code>##Header</code> vs. <code>## Header</code></li>
+<li>Comments! Add them. This is your record of what you did.</li>
+<li>Don’t forget you can hide things</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Label chunks</li>
+<li>Make chunks bite-sized</li>
+<li>Add comments in your code to explain what you’re doing
+
+<ul>
+<li>Could someone else figure out what your code does?</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Be a risk-taker; be your own professor</h2></hgroup><article  id="be-a-risk-taker-be-your-own-professor">
+
+<ul>
+<li><a href='http://www.stat.cmu.edu/~cshalizi/rmarkdown' title=''>http://www.stat.cmu.edu/~cshalizi/rmarkdown</a></li>
+<li><a href='http://stat545.com/bit006_github-browsability-wins.html' title=''>http://stat545.com/bit006_github-browsability-wins.html</a></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Simulation as a tool for reproducible and transparent science</h2></hgroup><article  id="simulation-as-a-tool-for-reproducible-and-transparent-science">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Why simulate</li>
+<li>What to simulate</li>
+<li>How to simulate</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Why &amp; what to simulate?</h2></hgroup><article  id="why-what-to-simulate">
+
+<ul>
+<li>Explore sample sizes, effect sizes, power</li>
+<li>Pre-plan/test, polish data-munging workflows</li>
+<li>Make hypotheses even more explicit
+
+<ul>
+<li>Simulation == Pregistration on steroids</li>
+<li>&lsquo;<del>X affects Y</del>&rsquo; -&gt; &lsquo;Mean(X) &gt; Mean(Y)&rsquo;</li>
+<li>or ’Mean(X) &gt;= 2*Mean(Y)’</li>
+</ul></li>
+<li>Simulate data analysis in advance</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Plan data visualizations in advance</li>
+<li>Avoid avoidable errors</li>
+<li>Plan your work, work your plan</li>
+<li>Super easy to run analyses when your data come in</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>How to simulate</h2></hgroup><article  id="how-to-simulate">
+
+<ul>
+<li>R functions</li>
+<li>R Markdown document(s)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Super-simple example</h2></hgroup><article  id="super-simple-example">
+
+<ul>
+<li><strong>Hypothesis 1</strong>: Height (inches) is correlated with weight (lbs)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># choose sample size
+sample_n &lt;- 200
+
+# choose intercept and slope
+beta0 &lt;- 36   # inches
+beta1 &lt;- 0.33  # Rick&#39;s guess
+
+# choose standard deviation for error
+sigma &lt;- 10 # Rick&#39;s guess</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># random weights between 80 lbs and 250 lbs (uniform sampling)
+w &lt;- runif(n = sample_n, min = 80, max = 250)
+
+h_pred &lt;- rep(x = beta0, n = sample_n) + beta1 * w
+h &lt;- h_pred + rnorm(n = sample_n, mean = 0, sd = sigma)</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>library(ggplot2)
+library(dplyr)
+
+hist(w)</pre>
+
+<p><img src="2020-02-18_files/figure-html/plot-hist-1.png" width="900px" style="display: block; margin: auto;" /></p>
+
+<pre class = 'prettyprint lang-r'>hist(h)</pre>
+
+<p><img src="2020-02-18_files/figure-html/plot-hist-2.png" width="900px" style="display: block; margin: auto;" /></p>
+
+<pre class = 'prettyprint lang-r'>hist(h_pred)</pre>
+
+<p><img src="2020-02-18_files/figure-html/plot-hist-3.png" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># Put h and w into data frame for ggplot
+height_weight &lt;- data.frame(inches = h, lbs = w)
+
+# Plot
+scatter_1 &lt;- ggplot(data = height_weight) +
+  aes(x = lbs, y = inches) +
+  geom_point()
+scatter_1</pre>
+
+<p><img src="2020-02-18_files/figure-html/plot-scatter-1.png" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Data pictures</h2></hgroup><article  id="data-pictures">
+
+<ul>
+<li>What should your data look like if your hypothesis is confirmed?</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>That’s synthesis, now analysis</h2></hgroup><article  id="thats-synthesis-now-analysis">
+
+<ul>
+<li>Remember Hypothesis 1: Height (inches) is correlated with weight (lbs)?</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'># Could use the raw data
+# cor.test(x = w, y = h)
+# Or, to use the values in the data frame, use with(...)
+
+with(height_weight, cor.test(x = inches, y = lbs))</pre>
+
+<pre >## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  inches and lbs
+## t = 23.815, df = 198, p-value &lt;
+## 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.8201748 0.8930182
+## sample estimates:
+##       cor 
+## 0.8609471</pre>
+
+</article></slide><slide class=""><hgroup><h2>Aside: extracting the statistics to make an interactive report</h2></hgroup><article  id="aside-extracting-the-statistics-to-make-an-interactive-report">
+
+<pre class = 'prettyprint lang-r'># Save output as a variable
+cor_test_inches_lbs &lt;- with(height_weight, cor.test(x = inches, y = lbs))
+
+# What sort of beast is this?
+mode(cor_test_inches_lbs)</pre>
+
+<pre >## [1] &quot;list&quot;</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># Aha, it&#39;s a list, this shows me all of the parts
+unlist(cor_test_inches_lbs)</pre>
+
+<pre >##                            statistic.t 
+##                     &quot;23.8150738622622&quot; 
+##                           parameter.df 
+##                                  &quot;198&quot; 
+##                                p.value 
+##                 &quot;4.96403573064589e-60&quot; 
+##                           estimate.cor 
+##                    &quot;0.860947053551774&quot; 
+##                 null.value.correlation 
+##                                    &quot;0&quot; 
+##                            alternative 
+##                            &quot;two.sided&quot; 
+##                                 method 
+## &quot;Pearson&#39;s product-moment correlation&quot; 
+##                              data.name 
+##                       &quot;inches and lbs&quot; 
+##                              conf.int1 
+##                     &quot;0.82017482945277&quot; 
+##                              conf.int2 
+##                    &quot;0.893018230414761&quot;</pre>
+
+<pre class = 'prettyprint lang-r'># Looks like the t value is the first element
+cor_test_inches_lbs[[1]]</pre>
+
+<pre >##        t 
+## 23.81507</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>The Pearson’s product-moment correlation correlation between height and weight is 0.861, \(t\)(198)=23.815, \(p\)=0.00000, with a 95\(\%\) confidence interval of [0.820, 0.893].</p>
+
+<p><span class="blue">
+I did some formatting using the <code>sprintf()</code> function to make the numbers look pretty. You may also find <code>format()</code> useful.</span></p>
+
+<p><code>sprintf(&quot;%.3f&quot;, my.var)</code> limits <code>my.var</code> to 3 decimal places; where <code>sprintf(&quot;%2.3f&quot;, my.var)</code> limits it to 2 digits to the left and 3 to the right.</p>
+
+</article></slide><slide class=""><hgroup><h2>Now back to analysis with our synthetic data</h2></hgroup><article  id="now-back-to-analysis-with-our-synthetic-data">
+
+<pre class = 'prettyprint lang-r'>fit &lt;- lm(formula = inches ~ lbs, data = height_weight)
+summary(fit) # Use lm() command to fit formula</pre>
+
+<pre >## 
+## Call:
+## lm(formula = inches ~ lbs, data = height_weight)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q 
+## -28.9927  -6.4719   0.2834   7.0903 
+##      Max 
+##  30.5295 
+## 
+## Coefficients:
+##             Estimate Std. Error t value
+## (Intercept) 31.25999    2.55851   12.22
+## lbs          0.35775    0.01502   23.82
+##             Pr(&gt;|t|)    
+## (Intercept)   &lt;2e-16 ***
+## lbs           &lt;2e-16 ***
+## ---
+## Signif. codes:  
+##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;
+##   0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.31 on 198 degrees of freedom
+## Multiple R-squared:  0.7412, Adjusted R-squared:  0.7399 
+## F-statistic: 567.2 on 1 and 198 DF,  p-value: &lt; 2.2e-16</pre>
+
+<pre class = 'prettyprint lang-r'>(ci &lt;- confint(fit)) # confint() command fits confidence intervals</pre>
+
+<pre >##                  2.5 %     97.5 %
+## (Intercept) 26.2145736 36.3054164
+## lbs          0.3281285  0.3873761</pre>
+
+<p>Surrounding <code>(ci &lt;- confint(fit))</code> in parentheses saves variable ci and prints it out.</p>
+
+</article></slide><slide class=""><hgroup><h2>How’d we do?</h2></hgroup><article  id="howd-we-do">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="left">Actual</th>
+<th align="left">Low Estimate</th>
+<th align="left">High Estimate</th>
+</tr>
+<tr class="odd">
+<td align="left">\(\beta0\)</td>
+<td align="left">36</td>
+<td align="left">26.2145736</td>
+<td align="left">36.3054164</td>
+</tr>
+<tr class="even">
+<td align="left">\(\beta1\)</td>
+<td align="left">0.33</td>
+<td align="left">0.3281285</td>
+<td align="left">0.3873761</td>
+</tr>
+</table>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># random weights between 80 lbs and 250 lbs (uniform sampling)
+w &lt;- runif(n = sample_n, min = 80, max = 250)
+
+h_pred &lt;- rep(x = beta0, n = sample_n) + beta1 * w
+h &lt;- h_pred + rnorm(n = sample_n, mean = 0, sd = sigma)
+height_weight &lt;- data.frame(inches = h, lbs = w)
+
+fit &lt;- lm(formula = inches ~ lbs, data = height_weight)
+summary(fit)</pre>
+
+<pre >## 
+## Call:
+## lm(formula = inches ~ lbs, data = height_weight)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q 
+## -27.2714  -6.2880   0.0422   6.2732 
+##      Max 
+##  30.1685 
+## 
+## Coefficients:
+##             Estimate Std. Error t value
+## (Intercept) 35.34288    2.51262   14.07
+## lbs          0.33324    0.01443   23.09
+##             Pr(&gt;|t|)    
+## (Intercept)   &lt;2e-16 ***
+## lbs           &lt;2e-16 ***
+## ---
+## Signif. codes:  
+##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;
+##   0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.11 on 198 degrees of freedom
+## Multiple R-squared:  0.7291, Adjusted R-squared:  0.7278 
+## F-statistic:   533 on 1 and 198 DF,  p-value: &lt; 2.2e-16</pre>
+
+<pre class = 'prettyprint lang-r'>(ci &lt;- confint(fit)) # saves in variable ci and prints</pre>
+
+<pre >##                  2.5 %     97.5 %
+## (Intercept) 30.3879401 40.2978145
+## lbs          0.3047766  0.3617077</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="left">Actual</th>
+<th align="left">Low Estimate</th>
+<th align="left">High Estimate</th>
+</tr>
+<tr class="odd">
+<td align="left">\(\beta0\)</td>
+<td align="left">36</td>
+<td align="left">30.3879401</td>
+<td align="left">40.2978145</td>
+</tr>
+<tr class="even">
+<td align="left">\(\beta1\)</td>
+<td align="left">0.33</td>
+<td align="left">0.3047766</td>
+<td align="left">0.3617077</td>
+</tr>
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Simulation of neural data</h2></hgroup><article  id="simulation-of-neural-data">
+
+<ul>
+<li>Critical review: Welvaert, M., &amp; Rosseel, Y. (2014). A Review of fMRI Simulation Studies. PLOS ONE, 9(7), e101953. <a href='https://doi.org/10.1371/journal.pone.0101953' title=''>https://doi.org/10.1371/journal.pone.0101953</a>.</li>
+<li>Welvaert, M., Durnez, J., Moerkerke, B., Berdoolaege, G. &amp; Rosseel, Y. (2011). neuRosim: An R Package for Generating fMRI Data. Journal of Statistical Software, 44(10). Retrieved from <a href='https://www.jstatsoft.org/article/view/v044i10' title=''>https://www.jstatsoft.org/article/view/v044i10</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>AFNI’s <em>AlphaSim</em>, <a href='https://afni.nimh.nih.gov/pub/dist/doc/program_help/AlphaSim.html' title=''>https://afni.nimh.nih.gov/pub/dist/doc/program_help/AlphaSim.html</a></li>
+<li>Simulating EEG data
+
+<ul>
+<li><a href='https://github.com/lrkrol/SEREEGA' title=''>https://github.com/lrkrol/SEREEGA</a></li>
+<li><code>eegkit</code> R package has <a href='https://rdrr.io/cran/eegkit/man/eegsim.html' title=''><code>eegsim</code> function</a></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Visualization in R</h2></hgroup><article  id="visualization-in-r">
+
+</article></slide><slide class=""><hgroup><h2>Plot first, analyze last</h2></hgroup><article  id="plot-first-analyze-last">
+
+<ul class = 'build'>
+<li>Why?</li>
+<li><a href='https://www.linkedin.com/in/mike-meyer-0056578a' title=''>Mike Meyer</a> told me so</li>
+<li>Less biased</li>
+<li>Easier to be transparent and reproducible</li>
+<li>Want/need to plot eventually anyway</li>
+<li>If a picture’s worth a thousand words…</li>
+<li>How?</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>How</h2></hgroup><article  id="how">
+
+<ul>
+<li>Base graphics
+
+<ul>
+<li><code>plot(x,y)</code> <code>hist(x)</code>, <code>coplot()</code></li>
+</ul></li>
+<li><code>ggplot2</code>
+
+<ul>
+<li>Grammar of graphics</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Base graphics</h2></hgroup><article  id="base-graphics">
+
+<ul>
+<li>Try it, maybe you’ll like it</li>
+<li><code>plot()</code> takes many types of input</li>
+<li>So does <code>summary()</code></li>
+<li>A little harder to customize</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Data visualization with ggplot2</h2></hgroup><article  id="data-visualization-with-ggplot2">
+
+<p>Wickham, H. &amp; Grolemund, G. (2017). <em>R for Data Science</em>. O’Reilly. <a href='http://r4ds.had.co.nz/' title=''>http://r4ds.had.co.nz/</a></p>
+
+</article></slide><slide class=""><hgroup><h2>Let’s just walk through the data visualiation chapter</h2></hgroup><article  id="lets-just-walk-through-the-data-visualiation-chapter">
+
+<p><a href='http://r4ds.had.co.nz/data-visualisation.html' title=''>http://r4ds.had.co.nz/data-visualisation.html</a></p>
+
+</article></slide><slide class=""><hgroup><h2>Other ggplot2 resources</h2></hgroup><article  id="other-ggplot2-resources">
+
+<ul>
+<li>Wickham, H. (2010). <em>ggplot2: Elegant Graphics for Data Analysis (Use R!)</em> <a href='http://ggplot2.org/book/' title=''>http://ggplot2.org/book/</a></li>
+<li>ggplot2 3.2.1 documentation: <a href='http://docs.ggplot2.org/current/' title=''>http://docs.ggplot2.org/current/</a></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Advanced simulation</h2></hgroup><article  id="advanced-simulation">
+
+</article></slide><slide class=""><hgroup><h2>Advanced simulation</h2></hgroup><article  id="advanced-simulation-1">
+
+<ul>
+<li>Putting code into a function</li>
+<li>A factorial design?</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Let’s make it a function</h2></hgroup><article  id="lets-make-it-a-function">
+
+<ul>
+<li>Functions help automate routines</li>
+<li>Parts of a function:
+
+<ul>
+<li>Input parameters
+
+<ul>
+<li>Defaults or not</li>
+</ul></li>
+<li>Output(s)</li>
+</ul></li>
+<li><code>my_function_name &lt;- function(my_param1, my_param2 = &quot;cool&quot;)</code></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># define global constants from prior simulation
+sample_n = 200
+beta0 = 36
+beta1 = .33
+sigma = 10
+min_x = 80
+max_x = 250</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'>height_weight_sim &lt;- function(sample_n = 200, beta0 = 36, beta1 = .33, sigma = 10, min_x = 80, max_x = 250) {
+  # Calculates correlation, intercept, slope estimates for
+  # linear relation between two variables
+  
+  # Args:
+  #   sample_n: Number of sample poings, default is 200
+  #   beta0: Intercept, default is 36 (inches)
+  #   beta1: Slope, default is .33
+  #   sigma: Standard deviation of error
+  #   min_x: Minimum value for x (weight in lbs)
+  #   max_x: Maximum value for x (weight in lbs)
+  #
+  # Returns:
+  #   Named array with values
+  #   beta0
+  #   beta1
+  #   beta0.lo: 2.5% quantile for intercept
+  #   beta0.hi  97.5% quantile for intercept
+  #   beta1.lo  2.5% quantile for slope
+  #   beta1.hi  97.5% quantile for slope
+
+  w &lt;- runif(n = sample_n, min = min_x, max = max_x)
+
+  h_pred &lt;- rep(x = beta0, n = sample_n) + beta1 * w
+  h &lt;- h_pred + rnorm(n = sample_n, mean = 0, sd = sigma)
+  height.weight &lt;- data.frame(inches = h, lbs = w)
+
+  fit &lt;- lm(formula = inches ~ lbs, data = height.weight)
+  ci &lt;- confint(fit)
+  
+  # Create output vector with named values
+  (results &lt;- c(&quot;beta0&quot; = beta0, 
+    &quot;beta1&quot;= beta1, 
+    &quot;beta0.lo&quot; = ci[1,1],
+    &quot;beta0.hi&quot; = ci[1,2],
+    &quot;beta1.lo&quot; = ci[2,1],
+    &quot;beta1.hi&quot; = ci[2,2]))
+}</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># Defaults only
+height_weight_sim()</pre>
+
+<pre >##      beta0      beta1   beta0.lo 
+## 36.0000000  0.3300000 30.1054129 
+##   beta0.hi   beta1.lo   beta1.hi 
+## 40.1348080  0.3083830  0.3665475</pre>
+
+<pre class = 'prettyprint lang-r'># Larger sample size
+height_weight_sim(sample_n = 500)</pre>
+
+<pre >##      beta0      beta1   beta0.lo 
+## 36.0000000  0.3300000 32.0637095 
+##   beta0.hi   beta1.lo   beta1.hi 
+## 37.9329671  0.3131146  0.3473109</pre>
+
+</article></slide><slide class=""><hgroup><h2>Doing a series of simulations</h2></hgroup><article  id="doing-a-series-of-simulations">
+
+<ul>
+<li>Goal: run our function a number of times, collect the results</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>n_simulations = 100
+n_vars = 6 # variables height_weight_sim() outputs
+
+# initialize output array
+height_weight_sim_data &lt;- array(0, dim=c(n_simulations, n_vars))
+
+# Repeat height_weight_sim() n_simulations times
+for (i in 1:n_simulations) { 
+  height_weight_sim_data[i,] &lt;- height_weight_sim()
+  }</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># Easier to make simulation data a data frame
+ht_wt_sims &lt;- as.data.frame(height_weight_sim_data)
+
+# rename variables to be more easily read
+names(ht_wt_sims) &lt;- c(&quot;beta0&quot;, &quot;beta1&quot;, 
+                       &quot;beta0.lo&quot;, &quot;beta0.hi&quot;,
+                       &quot;beta1.lo&quot;, &quot;beta1.hi&quot;)
+
+# Add a variable to index the simulation number
+ht_wt_sims$sim_num &lt;- 1:n_simulations
+
+# Plot beta0 min and max (now called V3, V4)
+ggplot(data = ht_wt_sims) +
+  aes(x = sim_num) +
+  geom_linerange(mapping = aes(ymin = beta0.lo,
+                                ymax = beta0.hi)) +
+  ylab(&quot;CIs for Intercept&quot;) +
+  geom_hline(yintercept = beta0, color = &quot;red&quot;)</pre>
+
+<p><img src="2020-02-18_files/figure-html/plot-n-simulation-results-1.png" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># Plot beta1 min and max (now called V5, V6)
+ggplot(data = ht_wt_sims) +
+  aes(x = sim_num) +
+  geom_linerange(mapping = aes(ymin = beta1.lo,
+                                ymax = beta1.hi)) +
+  ylab(&quot;CIs for Slope&quot;) +
+  geom_hline(yintercept = beta1, color = &quot;red&quot;)</pre>
+
+<p><img src="2020-02-18_files/figure-html/unnamed-chunk-1-1.png" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>How about a factorial design?</h2></hgroup><article  id="how-about-a-factorial-design">
+
+<ul>
+<li>Dependent variable: RT</li>
+<li>Independent variables
+
+<ul>
+<li>Fixed
+
+<ul>
+<li>Symbol type: {letter, number}</li>
+</ul></li>
+<li>Random
+
+<ul>
+<li>Subject mean RT</li>
+</ul></li>
+</ul></li>
+<li>Hypothesis:
+
+<ul>
+<li>RT to detect numbers is bigger than for letters (by 50 ms)</li>
+<li>There is no order effect</li>
+</ul></li>
+<li>Rick wishes he’d found this first: <a href='https://www.r-bloggers.com/design-of-experiments-%E2%80%93-full-factorial-designs/' title=''>https://www.r-bloggers.com/design-of-experiments-%E2%80%93-full-factorial-designs/</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># Simulation parameters
+n_subs = 30
+trials_per_cond = 100
+
+letters_numbers_rt_diff = 50 # ms
+rt_mean_across_subs = 350
+sigma = 50
+cond_labels = c(&quot;letter&quot;, &quot;number&quot;)
+cond_rts &lt;- c(&quot;letter&quot; = 0, &quot;number&quot; = letters_numbers_rt_diff)
+
+stim_types &lt;- factor(x = rep(x = c(1,2), 
+                             trials_per_cond), 
+                     labels = cond_labels)
+
+#sample(factor(x=rep(c(&quot;letter&quot;, &quot;number&quot;), 100)), 200)
+random_stim_types &lt;- sample(stim_types, trials_per_cond*length(cond_labels))
+
+mean_sub_rt &lt;- rnorm(n = 1, mean = rt_mean_across_subs, sd = sigma)
+trial_rt &lt;- array(0, dim = length(random_stim_types))
+
+# Generate RTs based on trial, condition
+for (t in 1:length(random_stim_types)) {
+  trial_rt[t] &lt;- mean_sub_rt + cond_rts[random_stim_types[t]] + 
+    rnorm(n = 1, mean = 0, sd = sigma)
+}
+
+# Make data frame
+letter_number_df &lt;- data.frame(trial = 1:length(random_stim_types), 
+                               stim = random_stim_types, 
+                               rt = trial_rt)
+
+letter_number_df %&gt;%
+  ggplot(.) +
+  aes(x = random_stim_types, y = rt) +
+  geom_boxplot() +
+  geom_point(alpha = .2)</pre>
+
+<p><img src="2020-02-18_files/figure-html/factorial-design-1.png" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Put this in a function</h2></hgroup><article  id="put-this-in-a-function">
+
+<pre class = 'prettyprint lang-r'>simulate_sub_rt &lt;- function(trials_per_cond = 100,
+                            letters_numbers_rt_diff = 50,
+                            rt_mean_across_subs = 350, 
+                            sigma = 50) {
+  
+  cond_rts &lt;- c(&quot;letter&quot; = 0, 
+                &quot;number&quot; = letters_numbers_rt_diff)
+  stim_types &lt;- factor(x = rep(x = c(1,2),
+                               trials_per_cond), 
+                       labels = c(&quot;letter&quot;, &quot;number&quot;))
+  random_stim_types &lt;- sample(stim_types, 2*trials_per_cond)
+
+  mean_sub_rt &lt;- rnorm(n = 1, 
+                       mean = rt_mean_across_subs, 
+                       sd = sigma)
+  trial_rt &lt;- array(0, dim = length(random_stim_types))
+
+  # Generate RTs based on trial, condition
+  for (t in 1:length(random_stim_types)) {
+    trial_rt[t] &lt;- mean_sub_rt + cond_rts[random_stim_types[t]] +
+      rnorm(n = 1, mean = 0, sd = sigma)
+    }
+
+  # Make data frame
+  letter.number.df &lt;- data.frame(trial = 1:length(random_stim_types), 
+                                 stim = random_stim_types, 
+                                 rt = trial_rt)
+}</pre>
+
+</article></slide><slide class=""><hgroup><h2>Create code to a set of participants and create one merged data frame</h2></hgroup><article  id="create-code-to-a-set-of-participants-and-create-one-merged-data-frame">
+
+<pre class = 'prettyprint lang-r'>make_sub_rt_df &lt;- function(sub.id) {
+  sub_rt_df &lt;- simulate_sub_rt()
+  sub_rt_df$sub.id &lt;- sub.id
+  sub_rt_df
+}
+
+# Use lapply to make separate data frames for all subs
+sub_rt_df_list &lt;- lapply(1:n_subs, make_sub_rt_df)
+
+# Use Reduce() with the merge function to make one big file
+sub_rt_df_merged &lt;- Reduce(function(x, y) merge(x, y, all=TRUE), sub_rt_df_list)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Now, want to see what we have?</h2></hgroup><article  id="now-want-to-see-what-we-have">
+
+<pre class = 'prettyprint lang-r'>ggplot(data = sub_rt_df_merged) +
+  aes(x=stim, y=rt, color=stim) +
+  geom_boxplot() +
+  facet_grid(facets = . ~ as.factor(sub.id)) +
+  theme(axis.text.x.bottom = element_blank(),
+        axis.ticks.x.bottom = element_blank())</pre>
+
+<p><img src="2020-02-18_files/figure-html/plot-merged-simulation-data-1.png" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>And, just for fun</h2></hgroup><article  id="and-just-for-fun">
+
+<pre class = 'prettyprint lang-r'>library(lme4)
+fit1 &lt;- lmer(formula = rt ~ stim + (1|sub.id), data = sub_rt_df_merged)
+summary(fit1)</pre>
+
+<pre >## Linear mixed model fit by REML [&#39;lmerMod&#39;]
+## Formula: rt ~ stim + (1 | sub.id)
+##    Data: sub_rt_df_merged
+## 
+## REML criterion at convergence: 64071.7
+## 
+## Scaled residuals: 
+##     Min      1Q  Median      3Q     Max 
+## -3.3464 -0.6755 -0.0057  0.6604  4.6157 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  sub.id   (Intercept) 2429     49.29   
+##  Residual             2480     49.80   
+## Number of obs: 6000, groups:  sub.id, 30
+## 
+## Fixed effects:
+##             Estimate Std. Error t value
+## (Intercept)  348.929      9.044   38.58
+## stimnumber    48.855      1.286   37.99
+## 
+## Correlation of Fixed Effects:
+##            (Intr)
+## stimnumber -0.071</pre>
+
+</article></slide><slide class=""><hgroup><h2>Or</h2></hgroup><article  id="or">
+
+<pre class = 'prettyprint lang-r'>fit2 &lt;- aov(formula = rt ~ stim + Error(as.factor(sub.id)), data = sub_rt_df_merged)
+summary(fit2)</pre>
+
+<pre >## 
+## Error: as.factor(sub.id)
+##           Df   Sum Sq Mean Sq F value
+## Residuals 29 14160799  488303        
+##           Pr(&gt;F)
+## Residuals       
+## 
+## Error: Within
+##             Df   Sum Sq Mean Sq F value
+## stim         1  3580191 3580191    1444
+## Residuals 5969 14804349    2480        
+##           Pr(&gt;F)    
+## stim      &lt;2e-16 ***
+## Residuals           
+## ---
+## Signif. codes:  
+##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;
+##   0.1 &#39; &#39; 1</pre>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Next time</h2></hgroup><article  id="next-time">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Doing other useful things with R and R Markdown</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Resources</h2></hgroup><article  id="resources">
+
+</article></slide><slide class=""><hgroup><h2>Software</h2></hgroup><article  id="software">
+
+<p>This talk was produced on 2020-02-12 in <a href='https://rstudio.com' title=''>RStudio</a> using R Markdown. The code and materials used to generate the slides may be found at <a href='https://github.com/psu-psychology/psy-525-reproducible-research-2020' title=''>https://github.com/psu-psychology/psy-525-reproducible-research-2020</a>. Information about the R Session that produced the code is as follows:</p>
+
+<pre >## R version 3.6.2 (2019-12-12)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils    
+## [5] datasets  methods   base     
+## 
+## other attached packages:
+##  [1] DiagrammeR_1.0.5 forcats_0.4.0   
+##  [3] stringr_1.4.0    purrr_0.3.3     
+##  [5] readr_1.3.1      tidyr_1.0.0     
+##  [7] tibble_2.1.3     tidyverse_1.3.0 
+##  [9] lme4_1.1-21      Matrix_1.2-18   
+## [11] dplyr_0.8.3      ggplot2_3.2.1   
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.3         lubridate_1.7.4   
+##  [3] tufte_0.5          lattice_0.20-38   
+##  [5] visNetwork_2.0.9   assertthat_0.2.1  
+##  [7] digest_0.6.23      packrat_0.5.0     
+##  [9] R6_2.4.1           cellranger_1.1.0  
+## [11] plyr_1.8.5         backports_1.1.5   
+## [13] reprex_0.3.0       evaluate_0.14     
+## [15] httr_1.4.1         highr_0.8         
+## [17] pillar_1.4.3       rlang_0.4.4       
+## [19] lazyeval_0.2.2     readxl_1.3.1      
+## [21] minqa_1.2.4        rstudioapi_0.10   
+## [23] nloptr_1.2.1       rmarkdown_2.1     
+## [25] labeling_0.3       splines_3.6.2     
+## [27] pwr_1.2-2          htmlwidgets_1.5.1 
+## [29] munsell_0.5.0      broom_0.5.3       
+## [31] compiler_3.6.2     modelr_0.1.5      
+## [33] xfun_0.12          pkgconfig_2.0.3   
+## [35] htmltools_0.4.0    tidyselect_1.0.0  
+## [37] codetools_0.2-16   fansi_0.4.1       
+## [39] crayon_1.3.4       dbplyr_1.4.2      
+## [41] withr_2.1.2        MASS_7.3-51.5     
+## [43] grid_3.6.2         nlme_3.1-142      
+## [45] jsonlite_1.6       gtable_0.3.0      
+## [47] lifecycle_0.1.0    DBI_1.1.0         
+## [49] magrittr_1.5       scales_1.1.0      
+## [51] cli_2.0.1          stringi_1.4.5     
+## [53] farver_2.0.3       reshape2_1.4.3    
+## [55] fs_1.3.1           xml2_1.2.2        
+## [57] vctrs_0.2.2        generics_0.0.2    
+## [59] boot_1.3-23        RColorBrewer_1.1-2
+## [61] tools_3.6.2        glue_1.3.1        
+## [63] hms_0.5.3          yaml_2.2.0        
+## [65] colorspace_1.4-1   rvest_0.3.5       
+## [67] knitr_1.27         haven_2.2.0</pre>
+
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references"></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

@@ -181,7 +181,7 @@ Due by the start of class on 2020-02-25.
     + Statistical Analyses
     + Discussion/Conclusions
         - What did you discover or demonstrate?
-- Please label the r chunks in your R Markdown files
+- Please label the R chunks in your R Markdown files
 
 ## Week 7: Tuesday, February 25, 2020
 
