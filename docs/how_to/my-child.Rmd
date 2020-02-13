@@ -1,0 +1,13 @@
+---
+pagetitle: "Child document"
+---
+
+I am from the child document even though my unformatted text doesn't really show it.
+
+## This is a level 2 header
+
+I love both of my children equally.
+
+### This is a level 3 header
+
+As much as I love R Markdown, I love my children more.
