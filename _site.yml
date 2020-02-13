@@ -42,6 +42,8 @@ navbar:
           href: how_to/evaluating-themes.html
         - text: "Make a website with R Markdown"
           href: how_to/make-website-with-rstudio.html
+        - text: "Use R Markdown formatting"
+          href: how_to/sample-rmarkdown-document.html
   right:
     - text: "Site info"
       href: site-info.html

@@ -18,7 +18,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
                       fig.align = "center",
-                      out.width = "900px")
+                      out.width = "900px",
+                      cache = TRUE)
 ```
 
 <!-- # Prelude -->

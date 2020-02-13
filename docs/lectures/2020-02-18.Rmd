@@ -158,9 +158,9 @@ hist(h_pred)
 height_weight <- data.frame(inches = h, lbs = w)
 
 # Plot
-scatter_1 <- ggplot(data = height_weight) +
-  aes(x = lbs, y = inches) +
-  geom_point()
+scatter_1 <- ggplot2::ggplot(data = height_weight) +
+  ggplot2::aes(x = lbs, y = inches) +
+  ggplot2::geom_point()
 scatter_1
 ```
 
@@ -272,6 +272,13 @@ summary(fit)
   + If a picture's worth a thousand words...
 >- How?
 
+## Things I feel strongly about
+
+- Plot *all* of your data
+- Every response, condition, participant
+- What do the plots tell you?
+- Do your plots match your prior 'data picture'?
+
 ## How
 
 - Base graphics
@@ -286,11 +293,25 @@ summary(fit)
 - So does `summary()`
 - A little harder to customize
 
-## Data visualization with ggplot2
+## Data visualization with `ggplot2`
 
 Wickham, H. & Grolemund, G. (2017). *R for Data Science*. O'Reilly. <http://r4ds.had.co.nz/>
 
-## Let's just walk through the data visualiation chapter
+## Background about `ggplot2`
+
+- The `gg` refers to the Grammar of Graphics
+
+Wilkinson, L., Wills, D., Rope, D., Norton, A., & Dubbs, R. (2005). The Grammar of Graphics (Statistics and Computing) (2nd edition.). Springer. Retrieved from https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448
+
+---
+
+- ggplot2 is the package; `ggplot()` is the function call
+- Data can be continuous, ordinal, or nominal
+- Graphs map data $\rightarrow$ visual elements (aesthetics)
+- \{height, weight, gender, rt\} $\rightarrow$ \{x, y, color, shape, line type, row, column\}
+- 'Add' layers to our plot using the `+` operator
+
+## Let's walk through the data visualiation chapter
 
 <http://r4ds.had.co.nz/data-visualisation.html>
 
