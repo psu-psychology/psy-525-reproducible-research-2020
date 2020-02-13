@@ -44,6 +44,8 @@ navbar:
           href: how_to/make-website-with-rstudio.html
         - text: "Use R Markdown formatting"
           href: how_to/sample-rmarkdown-document.html
+        - text: "Embed 'child' R Markdown documents"
+          href: how_to/embed-rmarkdown-docs.html
   right:
     - text: "Site info"
       href: site-info.html
