@@ -1,0 +1,314 @@
+---
+title: "Week 5: Version control"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: libs
+    widescreen: true
+    incremental: false
+    transition: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "900px",
+                      cache = TRUE)
+```
+
+<!-- # Prelude -->
+
+# Preliminaries
+
+## Announcements
+
+- Women in Statistics and Data Science group, Monday February 10th, 12-1pm, 327 Thomas
+- [Institute for Computational and Data Science (ICDS) events](https://ics.psu.edu/news-events/events/)
+- ["The Data Deluge", ICDS Symposium, March 16-17, 2020](https://ics.psu.edu/news-events/events/icds-symposium-2020/), NLI.
+
+## Today's agenda
+
+- General comments on homework
+- Version control
+- Version control with git and GitHub
+- RStudio projects
+
+# Comments on homework
+
+## Things to consider
+
+- Where are my data stored?
+    - Can I create a reproducible workflow for importing them?
+- Automate as much as possible
+- Use names that are transparent to others
+
+---
+
+- What are your document's dependencies, e.g. packages, external scripts or functions
+- Make your code as readable as possible.
+    - Consider `<COMMAND/CTRL>I` to reindent lines
+    - `<SHIFT><COMMAND/CTRL>A` to reformat code
+- Plot first, analyze later
+  
+# Version control
+
+## What is version control?
+
+- "management of changes to documents, computer programs, large web sites, and other collections of information." <https://en.wikipedia.org/wiki/Version_control>
+- Track changes an example
+- Wikipedia another
+
+---
+
+```{r}
+knitr::include_graphics("https://whatdoidowithmylife.files.wordpress.com/2012/06/drawing-board.jpg")
+```
+
+---
+
+```{r}
+knitr::include_graphics("http://smutch.github.io/VersionControlTutorial/_images/vc-xkcd.jpg")
+```
+
+## Why do version control?
+
+- Keep record of who made what changes when
+- Revert to previous version
+- Transparency
+
+## How to do version control
+
+## [Edit, Save, Attach](http://happygitwithr.com/big-picture.html#what-is-the-payoff)
+
+- My typical scheme for collaborative writing
+- Requires consistent file-naming (and incrementing) conventions
+    + gilmore-etal-nature-2017-01-28-1319.docx
+    + gilmore-etal-nature-2017-01-28-1400.docx
+    + or gilmore-etal-nature-2020-02-04v01.docx
+    
+## Pros
+    
++ No special software needed
++ Works with every file type
++ Good for any file type
+
+## Cons
+    
++ Not everyone uses the same file naming conventions
++ Dealing with conflicts
++ File management
+
+## Google Docs
+
+- Gilmore, R.O., Diaz, M.T., Wyble, B.A., & Yarkoni, T. (2017). Progress toward openness, transparency, and reproducibility in cognitive neuroscience. *Annals of the New York Academy of Sciences*, *1396*, 5–18. doi: 10.1111/nyas.13325.
+
+## Pros
+
++ Works with docs and sheets
++ Unlimited, automatic track changes
++ Stored in cloud
++ No special naming conventions
++ Writers can work in parallel
+
+## Cons
+
++ NYAS Editor wanted Word doc with track changes!
++ Not all types of files
++ Not everyone likes/knows how to use Google docs
+    
+## Cloud storage (Box, OneDrive)
+
+- Pros
+    + Keep the same file name
+    + Let Box or OneDrive do automatic versioning
+    + Shared file space
+    + Any kind of file supported
+    
+---
+
+- Cons
+    + limit on # of versions (was 100 for Box)
+    + Penn State enterprise license
+    
+## [Open Science Framework](http://osf.io)
+
+- Integrates with Box, Dropbox, GitHub
+- Pros
+    + Free, open source, devoted to open science
+    + Many different file types
+- Cons
+    + Version control depends on storage sources
+
+# Version control using git and GitHub
+
+## How to do version control
+
+- [git](https://en.wikipedia.org/wiki/Git)
+    + free, open source version control system
+    + created by Linus Torvalds, creator of the Linux operating system, to manage that project's software development
+    
+## [GitHub](http://github.com) is a web-based git service
+    
++ [GitHub](http://github.com)
++ [GitLab](https://about.gitlab.com/)
++ [Bitbucket](https://bitbucket.org/)
+    
+## Cons
+
+- Designed by and for software developers
+- Text files
+- Wonky
+- Longevity of web-based repos?
+- No automatic synching
+- Users have to specifically push (upload), pull (download) files, merge/manage conflicts
+
+## Pros
+
+- Users have to specifically push (upload), pull (download) files, merge/manage conflicts
+- Great for R code, ~~data~~
+- Great for Jupyter notebooks (later in course)
+- Exploits the power of the web
+
+---
+
+- Easy-to-use "Pages" feature
+- Supports Markdown, Jupyter notebooks
+
+---
+
+```{r, out.width="700px"}
+knitr::include_graphics("https://homes.cs.washington.edu/~mernst/advice/version-control-fig3.png")
+```
+
+## Distributed version control
+
+- Everyone works on their own local copies
+- Pull before they start work
+- Save and push when they're finished
+
+## Learn from my mistakes
+
+- Use RStudio projects (next)
+- Have your local directory structure mirror GitHub
+- Pull before you start working
+
+---
+
+- Work in a branch (I usually work in `dev`)
+- Commit often
+- Push to GitHub
+- Create pull request to merge your changes into master
+
+## Let's do this...
+
+## Complete Hello World exercise
+
+- Complete [Hello World](https://guides.github.com/activities/hello-world/) exercise on GitHub
+
+## Get git setup on your computer
+
+- Install: <http://happygitwithr.com/install-git.html>
+- Tell git who you are: <http://happygitwithr.com/hello-git.html>
+
+## Connect git to your GitHub account
+
+- Instructions: <http://happygitwithr.com/push-pull-github.html>
+- (if necessary; might not need to do this if you installed recently) Avoid authenticating each time by [caching credentials](http://happygitwithr.com/credential-caching.html) or using [ssh keys](http://happygitwithr.com/ssh-keys.html)
+
+# RStudio Projects
+
+## Projects
+
+- Separate "home" directory for each piece of work
+- Switch to using `Open Project...` command in `File` menu
+- Saved metadata in *.Rproj (not saved on GitHub)
+
+## Connect RStudio with git and GitHub
+
+- Clone the Hello World repo, following these instructions: <http://happygitwithr.com/rstudio-git-github.html#clone-the-new-github-repository-to-your-computer-via-rstudio>
+
+## Create new RStudio project
+
+- Instructions: <http://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone>
+- GitHub repo first
+- New RStudio project by cloning repo
+
+## Rick's workflow
+
+- Create repo on GitHub
+- Copy link
+- Open RStudio
+- Create new project in RStudio
+
+---
+
+- Add `*.Rproj` to `.gitignore`
+- Edit README.md
+- Save and commit as 'first commit'
+- Push to GitHub to test connection
+
+## Learn from my mistakes
+
+- Add sensitive files, directories to `.gitignore`
+
+----
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+psy-525-reproducible-research-2020.Rproj
+psy-525-spring-2020.csv
+.databrary.RData
+hw
+----
+
+## Real-life scenarios less radically open than mine
+
+- Use git locally, but not push to GitHub
+- Use RStudio projects, but not use git or GitHub
+- Use private repository (limit of 3 collaborators/repo)
+
+## Version control for RStudio Projects
+
+- [packrat](http://rstudio.github.io/packrat/)
+- Trying it again for this course. Progress report soon.
+
+# Next time
+
+---
+
+- Simulation as a tool for reproducible and transparent science
+- Visualization tools in R
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](https://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References
+
+<!-- Scrolling final reference page -->
+<!-- https://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>

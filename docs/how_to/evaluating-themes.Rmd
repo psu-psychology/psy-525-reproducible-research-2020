@@ -1,0 +1,31 @@
+---
+title: "Evaluating different RMarkdown themes"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+## Purpose
+
+This document describes some of Rick's explorations with different RMarkdown themes for the course website.
+
+Most of the examples come from those mentioned in  <https://www.datadreaming.org/post/r-markdown-theme-gallery/>.
+
+For comparison purposes, I created a "child" document that comprises the schedule information and rendered it in all of the themes.
+Modify the knitr chunk so that `child="schedule_raw.Rmd"` is one of the parameters.
+
+## Theme by theme
+
+- [Prettydoc `architect`](../testing_themes/prettydoc_htmlpretty.html)
+- [Prettydoc `leonids`](../testing_themes/prettydoc_leonids.html)
+- [`material`](../testing_themes/theme_material.html)
+- [`html_clean`](../testing_themes/theme_html_clean.html)
+- [`readthedown`](../testing_themes/theme_readthedown.html)
+- [`tufte_html`](../testing_themes/tufte_html.html)

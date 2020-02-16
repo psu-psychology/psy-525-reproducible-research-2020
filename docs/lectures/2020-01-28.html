@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 3: Reproducible workflows</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Week 3: Reproducible workflows',
+                        subtitle: 'PSY 525',
+                useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Rick Gilmore' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="libs/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-deck.js"></script>
+  <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+  <script src="libs/viz-1.8.2/viz.js"></script>
+  <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+  <script src="libs/grViz-binding-1.0.5/grViz.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+  </style>
+
+  <link rel="stylesheet" href="css/gilmore.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-13 11:20:39</p>
+          </hgroup>
+  </slide>
+
+<!-- # Prelude -->
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Preliminaries</h2></hgroup><article  id="preliminaries">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<blockquote>
+<p>&ldquo;<em>The first principle is that you must not fool yourself and you are the easiest person to fool.</em>&rdquo;</p>
+
+<footer>
+
+— Richard Feynmann
+
+</footer>
+</blockquote>
+
+</article></slide><slide class=""><hgroup><h2>Announcements</h2></hgroup><article  id="announcements">
+
+<ul>
+<li>Center for Social Data Analytics (C-SODA) &ldquo;Research Roundup&rdquo;, Friday, January 31, 2020, 12:00-1:30 pm, B001 Sparks (Databasement)</li>
+<li><a href='https://ics.psu.edu/news-events/events/' title=''>Institute for Computational and Data Science (ICDS) events</a></li>
+<li><a href='https://ics.psu.edu/news-events/events/icds-symposium-2020/' title=''>&ldquo;The Data Deluge&rdquo;, ICDS Symposium, March 16-17, 2020</a>, NLI.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Today’s agenda</h2></hgroup><article  id="todays-agenda">
+
+<ul>
+<li>A manifesto for reproducible science</li>
+<li>Reproducible workflows</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>A manifesto for reproducible science</h2></hgroup><article  id="a-manifesto-for-reproducible-science">
+
+</article></slide><slide class=""><hgroup><h2>Discussion of</h2></hgroup><article  id="discussion-of">
+
+<p>Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S., Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A manifesto for reproducible science. <em>Nature Human Behaviour</em>, <em>1</em>, 0021. <a href='https://doi.org/10.1038/s41562-016-0021' title=''>https://doi.org/10.1038/s41562-016-0021</a>.</p>
+
+</article></slide><slide class=""><hgroup><h2>Steps in scientific method (and weaknesses)</h2></hgroup><article  id="steps-in-scientific-method-and-weaknesses">
+
+<ul>
+<li>Generate and specify hypothesis</li>
+<li>Design study</li>
+<li>Conduct study and collect data</li>
+<li>Analyze data and test hypothesis</li>
+<li>Interpret results</li>
+<li>Publish and/or conduct next study</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="figure" style="text-align: center">
+<img src="https://www.nature.com/article-assets/npg/nathumbehav/2017/s41562-016-0021/images_hires/w926/s41562-016-0021-f1.jpg" alt="[[@munafo_manifesto_2017]](https://doi.org/10.1038/s41562-016-0021)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1038/s41562-016-0021' title=''><span class="cite">(Munafò et al., 2017)</span></a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Failure to control for bias</h2></hgroup><article  id="failure-to-control-for-bias">
+
+<ul>
+<li><a href='https://en.wikipedia.org/wiki/Apophenia' title=''><em>Apophenia</em></a>
+
+<ul>
+<li>Mistaking connections and meaning between unrelated things</li>
+</ul></li>
+<li>Confirmation bias</li>
+<li>Hindsight bias</li>
+<li><a href='https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow' title=''><span class="cite">(Kahneman, 2013)</span></a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Low statistical power</h2></hgroup><article  id="low-statistical-power">
+
+<ul>
+<li><a href='https://doi.org/10.1038/nrn3475' title=''><span class="cite">(Button et al., 2013)</span></a></li>
+<li><a href='https://doi.org/10.1371/journal.pmed.0020124' title=''><span class="cite">(Ioannidis, 2005)</span></a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="figure" style="text-align: center">
+<img src="https://journals.plos.org/plosbiology/article/figure/image?size=large&id=10.1371/journal.pbio.2000797.g003" alt="[[@Szucs2017-fc]](https://doi.org/10.1371/journal.pbio.2000797)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1371/journal.pbio.2000797' title=''><span class="cite">(Szucs &amp; Ioannidis, 2017)</span></a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Poor quality control</h2></hgroup><article  id="poor-quality-control">
+
+<ul>
+<li><p><a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman, Fanelli, &amp; Ioannidis, 2016)</span></a></p></li>
+<li><p><em>Methods</em> reproducibility</p></li>
+</ul>
+
+<blockquote>
+<p><em>&ldquo;…the ability to implement, as exactly as possible, the experimental and computational procedures, with the same data and tools, to obtain the same results.&rdquo;</em></p>
+</blockquote>
+
+</article></slide><slide class=""><hgroup><h2><em>p</em>-Hacking</h2></hgroup><article  id="p-hacking">
+
+<ul>
+<li><a href='https://doi.org/10.1037/a0033242' title=''><span class="cite">(Simonsohn, Nelson, &amp; Simmons, 2014)</span></a></li>
+<li>If an effect is <em>true</em>, the distribution of reported <em>p</em> values should be right-skewed (long right tail)</li>
+<li><a href='https://www.p-curve.com/' title=''>https://www.p-curve.com/</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>HARKing: hypothesizing after the results are known</h2></hgroup><article  id="harking-hypothesizing-after-the-results-are-known">
+
+<ul>
+<li><a href='https://doi.org/10.1207/s15327957pspr0203_4' title=''><span class="cite">(Kerr, 1998)</span></a></li>
+<li>Find an effect in data analysis</li>
+<li>Present effect as if it had been hypothesized</li>
+<li>Why is this problematic?</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Publication bias</h2></hgroup><article  id="publication-bias">
+
+<ul>
+<li>Results vs. null findings</li>
+<li>Novel results vs. replications</li>
+<li>Counter-intuitive (sexy) findings</li>
+<li><a href='https://www.psychfiledrawer.org/TheFiledrawerProblem.php' title=''>File drawer effect</a>
+
+<ul>
+<li>How many unpublished failures to replicate sit in file drawers?</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Overcoming these weaknesses</h2></hgroup><article  id="overcoming-these-weaknesses">
+
+</article></slide><slide class=""><hgroup><h2>Performing research</h2></hgroup><article  id="performing-research">
+
+<ul>
+<li>Protecting against cognitive biases</li>
+<li>Improving methodological training</li>
+<li>Implementing independent methological support</li>
+<li>Encouraging collaboration and team science</li>
+<li>Collect bigger samples</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Reporting on research</h2></hgroup><article  id="reporting-on-research">
+
+<ul>
+<li>Promoting study pre-registration
+
+<ul>
+<li>Registered reports <a href='https://doi.org/10.1038/s41562-016-0021' title=''><span class="cite">(Munafò et al., 2017)</span></a>, Box 3</li>
+</ul></li>
+<li>Improving the quality of reporting
+
+<ul>
+<li><a href='https://osf.io/ud578/' title=''>The Transparency and Openness Promotion (TOP) guidelines</a> and <a href='https://cos.io/top/#list' title=''>signatories</a></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Reporting on research</h2></hgroup><article  id="reporting-on-research-1">
+
+<blockquote>
+<p>&ldquo;<em>We find that about 40% of studies fail to fully report all experimental conditions and about 70% of studies do not report all outcome variables included in the questionnaire. Reported effect sizes are about twice as large as unreported effect sizes and are about 3 times more likely to be statistically significant.</em>&rdquo;</p>
+</blockquote>
+
+<p>— <a href='https://doi.org/10.1177/1948550615598377' title=''><span class="cite">(Franco, Malhotra, &amp; Simonovits, 2016)</span></a></p>
+
+</article></slide><slide class=""><hgroup><h2>Reporting on research</h2></hgroup><article  id="reporting-on-research-2">
+
+<ul>
+<li>Publish replications</li>
+<li>Teach with replications
+
+<ul>
+<li><a href='https://doi.org/10.1177/1745691612460686' title=''><span class="cite">(Frank &amp; Saxe, 2012)</span></a>.</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Verifying research</h2></hgroup><article  id="verifying-research">
+
+<ul>
+<li>Promoting transparency and open science</li>
+<li>Open methods, materials, code sharing, data sharing</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Changing Incentives</h2></hgroup><article  id="changing-incentives">
+
+<ul>
+<li><a href='https://doi.org/10.1371/journal.pbio.2000995' title=''><span class="cite">(Higginson &amp; Munafò, 2016)</span></a>
+
+<ul>
+<li>Claim that current publication incentive structure reinforces current practices</li>
+</ul></li>
+<li><a href='https://osf.io/tvyxz/' title=''>OSF badge system</a></li>
+<li>Other incentives/disincentives</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Status report/recommendations by stakeholder group</h2></hgroup><article  id="status-reportrecommendations-by-stakeholder-group">
+
+<p><a href='https://www.nature.com/articles/s41562-016-0021/tables/1' title=''>https://www.nature.com/articles/s41562-016-0021/tables/1</a></p>
+
+</article></slide><slide class=""><hgroup><h2>Questions for discussion</h2></hgroup><article  id="questions-for-discussion">
+
+<ul>
+<li>Which of the manifesto provisions would you <strong>disagree</strong> with?</li>
+<li>Do you agree with the assessment about progress (<a href='https://www.nature.com/articles/s41562-016-0021/tables/1' title=''>Table 1</a>)</li>
+<li>What steps could <strong>you</strong> take?</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Reproducible workflows</h2></hgroup><article  id="reproducible-workflows">
+
+</article></slide><slide class=""><hgroup><h2>One step forward</h2></hgroup><article  id="one-step-forward">
+
+<ul>
+<li>Capturing workflows and improving <strong>methods</strong> reproducibility <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman et al., 2016)</span></a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><a href='https://en.wikipedia.org/wiki/Workflow' title=''>Workflows</a></h2></hgroup><article  id="workflows">
+
+<p><a href='https://www.google.com/search?q=workflow' title=''>https://www.google.com/search?q=workflow</a></p>
+
+</article></slide><slide class=""><hgroup><h2>Typical workflows in experimental psychology</h2></hgroup><article  id="typical-workflows-in-experimental-psychology">
+
+<ul>
+<li>Idea/question/hypotheses</li>
+<li>Design study</li>
+<li>Seek ethics board permission</li>
+<li>Build/borrow/buy data collection instruments</li>
+<li>Run study</li>
+<li>Analyze results</li>
+<li>Write-up results for presentation and/or publication</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Design study</h2></hgroup><article  id="design-study">
+
+<ul>
+<li>Participants
+
+<ul>
+<li>Number, characteristics</li>
+</ul></li>
+<li>Setting(s)
+
+<ul>
+<li>Lab, classroom, home</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Measures or tasks
+
+<ul>
+<li>Self/other report</li>
+<li>Observations/video or audio recording</li>
+<li>Physiological measures (MRI, EEG, ECG)</li>
+<li>Computer-based tasks</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Power analysis</h2></hgroup><article  id="power-analysis">
+
+<p><img src="2020-01-28_files/figure-html/unnamed-chunk-3-1.png" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Data collection instruments</h2></hgroup><article  id="data-collection-instruments">
+
+<ul>
+<li>Surveys</li>
+<li>Video/audio</li>
+<li>MRI, EEG, ECG</li>
+<li>Computer-generated data files</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Run study</h2></hgroup><article  id="run-study">
+
+<pre >done_collecting_data = FALSE
+while (!done_collecting_data) {
+  Collect_sample()
+  if (collected_sample_n &gt;= planned_sample_n) {
+    done_collecting_data = TRUE
+  } else {
+    done_collecting_data = FALSE
+  }
+}</pre>
+
+</article></slide><slide class=""><hgroup><h2>Analyze results</h2></hgroup><article  id="analyze-results">
+
+<ul>
+<li>Clean/check data</li>
+<li>Merge, combine, munge data</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div class="centered">
+<div id="htmlwidget-2fa0b9c5b141edebcbcd" style="width:900px;height:432px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2fa0b9c5b141edebcbcd">{"x":{"diagram":"\n      digraph {\n      layout = dot\n      node [shape = square]\n      Analyze -> Evaluate\n      Evaluate -> Analyze\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script></div>
+
+</article></slide><slide class=""><hgroup><h2>Prepare presentation/publication</h2></hgroup><article  id="prepare-presentationpublication">
+
+<ul>
+<li>Intro</li>
+<li>Methods</li>
+<li>Results
+
+<ul>
+<li>Stats</li>
+<li>Plots</li>
+</ul></li>
+<li>Conclusions</li>
+<li>References</li>
+<li>Data?</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Behavioral study summary</h2></hgroup><article  id="behavioral-study-summary">
+
+<div class="centered">
+<div id="htmlwidget-83ac7306a74065c8f8e0" style="width:900px;height:432px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-83ac7306a74065c8f8e0">{"x":{"diagram":"\n      digraph {\n      graph [layout = dot, rankdir = LR]\n      node [shape = circle, fillcolor = Linen]\n      \n      # Nod definitions\n      E1, E2, En [shape = circle]\n      S1, S2, Sn [shape = square]\n      XL1, XL2, XLn, XLall  [shape = folder]\n      Stat [shape = triangle]\n      MSWd, Ppt [shape = rectangle]\n      \n      # Edge definitions\n      E1 -> XL1\n      S1 -> XL1\n      E2 -> XL2\n      S2 -> XL2\n      En -> XLn\n      Sn -> XLn\n      {XL1, XL2, XLn} -> XLall\n      XLall -> Stat\n      Stat -> {XLplot, MSWd, Ppt}\n      XLplot -> {MSWd, Ppt}\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script></div>
+
+</article></slide><slide class=""><hgroup><h2>Imaging example</h2></hgroup><article  id="imaging-example">
+
+<div class="centered">
+<div id="htmlwidget-92485c3c2fbb4aa723ee" style="width:900px;height:432px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92485c3c2fbb4aa723ee">{"x":{"diagram":"\n      digraph {\n      graph [layout = dot, rankdir = LR]\n      \n      # Node defaults\n      node [shape = circle]\n      \n       [shape = folder, fillcolor = Linen]\n      BOLD, DTI [shape = folder, fillcolor = Beige]\n      MNI  [shape = folder, fillcolor = Linen]\n      Plot, Stats [shape = rectangle]\n      MSWd, Ppt [shape = oval]\n      \n      # Edge structure\n      {T1, MNI} -> StrNorm\n      {BOLD, StrNorm} -> BOLDNorm\n      {Behavior, BOLDNorm} -> FuncBeh\n      {DTI, StrNorm} -> DTINorm\n      {FuncBeh, Demog, DTINorm} -> Part\n      Part -> {Plot, Stats}\n      Stats -> {MSWd, Ppt}\n      Plot -> {MSWd, Ppt}\n      }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script></div>
+
+</article></slide><slide class=""><hgroup><h2>Threats to <strong>methods</strong> reproducibility</h2></hgroup><article  id="threats-to-methods-reproducibility">
+
+<ul>
+<li>Idea/question/hypotheses</li>
+<li>Design study</li>
+<li>Seek ethics board permission</li>
+<li>Build/borrow/buy <strong>data collection instruments</strong></li>
+<li><strong>Run study</strong></li>
+<li><strong>Analyze results</strong></li>
+<li><strong>Write-up results</strong> for presentation and/or publication</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>What are the threats?</h2></hgroup><article  id="what-are-the-threats">
+
+<ul>
+<li>Data collection instruments</li>
+<li>Running study</li>
+<li>Data analysis</li>
+<li>Study write-up</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Mitigating the threats</h2></hgroup><article  id="mitigating-the-threats">
+
+<ul>
+<li>Maximize consistency, <strong>methods</strong> reproducibility <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman et al., 2016)</span></a></li>
+<li>Design/consistent adhere to detailed experimental protocols</li>
+<li>Make workflows consistent, transparent</li>
+<li>Organize data, metadata in consistent, transparent ways</li>
+<li>Minimize human/hand data entry</li>
+<li>Automate as much as possible</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>How detailed is your (internal) protocol?</h2></hgroup><article  id="how-detailed-is-your-internal-protocol">
+
+<ul>
+<li>Play &amp; Learning Across a Year (PLAY) project <a href='https://play-project.org' title=''>wiki</a></li>
+<li>Sex differences in visual perception <a href='https://gilmore-lab.github.io/sex-differences-in-motion-perception/protocol/master-protocol.html' title=''>master protocol</a>, <a href='https://gilmore-lab.github.io/sex-differences-in-motion-perception/protocol/test-session-protocol.html' title=''>testing protocol</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Questions to consider</h2></hgroup><article  id="questions-to-consider">
+
+<ul>
+<li>What data and metadata am I collecting?</li>
+<li>How does it get collected?</li>
+<li>Where does it go after it’s collected?</li>
+<li>How does my non-electronic data get transferred to an electronic form?</li>
+<li>How do my electronic data files get cleaned, merged, munged?</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Reproducible workflow aspirations</h2></hgroup><article  id="reproducible-workflow-aspirations">
+
+<ul>
+<li>&ldquo;Chain of custody&rdquo; from raw data to finished results and figures</li>
+<li>Single command to regenerate all results and figures from raw data</li>
+</ul>
+
+<p><a href='https://datasci.kitzes.com/lessons/python/reproducible_workflow.html' title=''>https://datasci.kitzes.com/lessons/python/reproducible_workflow.html</a></p>
+
+</article></slide><slide class=""><hgroup><h2>Reproducible workflow recommendations</h2></hgroup><article  id="reproducible-workflow-recommendations">
+
+<ul>
+<li>Create consistent structure for projects
+
+<ul>
+<li>Use file name conventions</li>
+</ul></li>
+<li>Use machine-readable file types
+
+<ul>
+<li>comma-separated value (.csv) vs. .xlsx</li>
+</ul></li>
+<li>Automate as much as possible</li>
+<li>Use version control</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Lots of ways to organize electronic data…</h2></hgroup><article  id="lots-of-ways-to-organize-electronic-data">
+
+<pre >study-1/
+  sub-001/
+    sub-001-measure-a.txt
+    sub-001-image.jpg
+    sub-001-demo.csv
+    sub-001-measure-b.txt
+  sub-002/
+    sub-002-measure-a.txt
+    sub-002-image.jpg
+    sub-002-demo.csv
+    sub-002-measure-b.txt
+  ...
+  sub-00n/
+    ...</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >study-1/
+  measure-a/
+    sub-001-measure-a.txt
+    ...
+  measure-b/
+    sub-001-measure-b.txt
+    ...
+  image/
+    sub-001-image.jpg
+    sub-002-image.jpg
+    ...
+  demo/
+    sub-001-demo.csv
+    sub-002-demo.csv
+    ...</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >study-1/
+  analysis/
+    data/
+      sessions/
+        2017-01-09-sub-001/
+        ...
+      aggregate/
+        study-1-demo-aggregate.csv
+        study-1-measure-a-aggregate.csv
+        ...
+    R/
+    img/
+    reports/
+  protocol/
+    code/
+      my-experiment.m
+    materials/
+      stim-1.jpg
+      stim-2.jpg
+      ...</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >  pubs/
+    presentations/
+    papers/
+  refs/
+  grants/
+    2016/
+    2017/
+  irb/
+  mtgs/</pre>
+
+</article></slide><slide class=""><hgroup><h2>Databrary’s volume, session/materials model</h2></hgroup><article  id="databrarys-volume-sessionmaterials-model">
+
+<iframe src="https://nyu.databrary.org/volume/2">
+
+<p>
+
+Your browser does not support iframes.
+
+</p>
+
+</iframe>
+
+<p><a href='https://nyu.databrary.org/volume/2' title=''>https://nyu.databrary.org/volume/2</a></p>
+
+</article></slide><slide class=""><hgroup><h2><a href='https://projecttemplate.net/index.html' title=''>ProjectTemplate</a></h2></hgroup><article  id="projecttemplate">
+
+<ul>
+<li>Automates some of the project management involved in data analysis
+
+<ul>
+<li>Hat Tip (HT): Michael Hallquist</li>
+</ul></li>
+<li>Gilmore says: Use what you like</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Can automate project creation, too</h2></hgroup><article  id="can-automate-project-creation-too">
+
+<pre >## Create project directory
+proj_name = &quot;tmp_proj&quot;
+if (!exists(proj_name)) {
+  dir.create(path = proj_name, recursive = TRUE)
+}
+# Create sessions directory
+sessions_dir = paste(proj_name, &quot;analysis/sessions&quot;, sep=&quot;/&quot;)
+if (!exists(sessions_dir)) {
+  dir.create(path = sessions_dir, recursive = TRUE) # creates intermediate dirs
+}
+# Aggregate data file directory
+agg_dir = paste(proj_name, &quot;analysis/aggregate&quot;, sep=&quot;/&quot;)
+if (!exists(agg_dir)) {
+  dir.create(path = agg_dir, recursive = TRUE)
+}</pre>
+
+</article></slide><slide class=""><hgroup><h2>Words to the wise</h2></hgroup><article  id="words-to-the-wise">
+
+<ul>
+<li>Use consistent file/directory names
+
+<ul>
+<li><code>lowerCamelCaseIsGood.txt</code> so is <code>UpperCamelCase.txt</code></li>
+<li><code>underscores_between_words.txt</code> works</li>
+<li><code>dashes-between.txt</code> works for <em>file</em> names, but…
+
+<ul>
+<li>Doesn’t work for objects in <code>R</code></li>
+<li><code>file-name.txt</code> interpreted as <code>file</code> minus <code>name.txt</code></li>
+</ul></li>
+<li>avoid <code>spaces in your file names.txt</code>; these are not always reliably readable by all computers.</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Choose good, <a href='https://kbroman.org/dataorg/pages/names.html' title=''>descriptive names</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Consider seriously <a href='https://kbroman.org/dataorg/' title=''>Karl Broman’s guides</a></h2></hgroup><article  id="consider-seriously-karl-bromans-guides">
+
+<ul>
+<li>Be consistent</li>
+<li>Write dates as YYYY-MM-DD.</li>
+<li>Fill-in all cells</li>
+<li>One thing in a cell</li>
+<li>Make your data a rectangle</li>
+<li>Create a data dictionary</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>No calculations in raw data files</li>
+<li>No font or color to highlight data</li>
+<li>Make back-ups</li>
+<li>Validate data to avoid data entry errors</li>
+<li>Save data in plain text files (comma or tab-delimited)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Why?</h2></hgroup><article  id="why">
+
+<ul>
+<li>Data scientists (that’s you!) spend a lot of time just cleaning data</li>
+<li><a href='https://www.infoworld.com/article/3047584/big-data/hottest-job-data-scientists-say-theyre-still-mostly-digital-janitors.html' title=''>https://www.infoworld.com/article/3047584/big-data/hottest-job-data-scientists-say-theyre-still-mostly-digital-janitors.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Easy to merge data sets if they contain a linking variable (like subID)</h2></hgroup><article  id="easy-to-merge-data-sets-if-they-contain-a-linking-variable-like-subid">
+
+<ul>
+<li><a href='csv/study-1-demo-agg.csv' title=''>study-1-demo-agg.csv</a> contains
+
+<ul>
+<li>subID, sex, ageYrs, favColor</li>
+</ul></li>
+<li><a href='csv/study-1-rt-agg.csv' title=''>study-1-rt-agg.csv</a> contains
+
+<ul>
+<li>subID, condition, rt</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >subID,sex,ageYrs,favColor
+001,m,53,green
+002,f,51,blue
+003,f,23,red
+004,m,25,aqua</pre>
+
+<p>Don’t put spaces between variables in comma-separated value (.csv) files. Also, make sure to add a final line feed/enter character.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >subID,condition,rt
+001,upright,250
+001,inverted,300
+002,upright,225
+002,inverted,290
+003,upright,270
+003,inverted,230
+004,upright,210
+004,inverted,240</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre class = 'prettyprint lang-r'># read data files, first row (header) contains variable names
+demo &lt;- read.csv(file = &quot;csv/study-1-demo-agg.csv&quot;, header = TRUE)
+rt &lt;- read.csv(file = &quot;csv/study-1-rt-agg.csv&quot;, header = TRUE)
+
+# merge and print
+merged &lt;- merge(demo, rt, by = &quot;subID&quot;)
+merged</pre>
+
+<pre >##   subID sex ageYrs favColor condition  rt
+## 1     1   m     53    green   upright 250
+## 2     1   m     53    green  inverted 300
+## 3     2   f     51     blue   upright 225
+## 4     2   f     51     blue  inverted 290
+## 5     3   f     23      red   upright 270
+## 6     3   f     23      red  inverted 230
+## 7     4   m     25     aqua   upright 210
+## 8     4   m     25     aqua  inverted 240</pre>
+
+</article></slide><slide class=""><hgroup><h2>A final word about tidy data <a href='https://doi.org/10.18637/jss.v059.i10' title=''><span class="cite">(Wickham, 2014)</span></a></h2></hgroup><article  id="a-final-word-about-tidy-data-hadley_wickham_tidy_2014">
+
+<ul>
+<li>Variables in columns</li>
+<li>Observations in rows</li>
+<li><del>Ok</del>/better to repeat values in columns
+
+<ul>
+<li>subID,trial,rt</li>
+<li>001,1,300</li>
+<li>001,2,345</li>
+<li>002,2,327</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Reproducible workflows allow on-line QA</h2></hgroup><article  id="reproducible-workflows-allow-on-line-qa">
+
+<ul>
+<li>QA = quality assurance</li>
+<li>Example 1: QA on PLAY project (Rick use local copies)</li>
+<li>Example 2: <a href='https://gilmore-lab.github.io/sex-differences-in-motion-perception/analysis/session_qa.html' title=''>QA report</a> on sex differences project</li>
+<li>Example 3: Individual plots from sex differences project (Rick use local copies)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Main points</h2></hgroup><article  id="main-points">
+
+<ul>
+<li>Think like a computer!</li>
+<li>Plan your work; work your plan</li>
+<li>Consistency, standard formats</li>
+<li>Tidy data</li>
+<li>Haven’t said anything about &ldquo;openness&rdquo;…yet</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>(Methods) reproducible workflows are much easier to share</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>More resources</h2></hgroup><article  id="more-resources">
+
+<ul>
+<li>Data Carpentry, <a href='https://www.datacarpentry.org/' title=''>https://www.datacarpentry.org/</a></li>
+<li>Software Carpentry, <a href='https://software-carpentry.org/' title=''>https://software-carpentry.org/</a></li>
+<li>Open Science Framework (OSF), <a href='https://osf.io' title=''>https://osf.io</a></li>
+<li>R for Data Science, <a href='https://r4ds.had.co.nz/' title=''>https://r4ds.had.co.nz/</a></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Next time</h2></hgroup><article  id="next-time">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Preregistration &amp; registered reports</li>
+<li>Introduction to R and RMarkdown</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Resources</h2></hgroup><article  id="resources">
+
+</article></slide><slide class=""><hgroup><h2>Software</h2></hgroup><article  id="software">
+
+<p>This talk was produced on 2020-02-13 in <a href='https://rstudio.com' title=''>RStudio</a> using R Markdown. The code and materials used to generate the slides may be found at <a href='https://github.com/psu-psychology/psy-525-reproducible-research-2020' title=''>https://github.com/psu-psychology/psy-525-reproducible-research-2020</a>. Information about the R Session that produced the code is as follows:</p>
+
+<pre >## R version 3.6.2 (2019-12-12)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets 
+## [6] methods   base     
+## 
+## other attached packages:
+##  [1] DiagrammeR_1.0.5 forcats_0.4.0    stringr_1.4.0   
+##  [4] dplyr_0.8.3      purrr_0.3.3      readr_1.3.1     
+##  [7] tidyr_1.0.0      tibble_2.1.3     ggplot2_3.2.1   
+## [10] tidyverse_1.3.0  seriation_1.2-8 
+## 
+## loaded via a namespace (and not attached):
+##  [1] viridis_0.5.1      httr_1.4.1        
+##  [3] tufte_0.5          jsonlite_1.6      
+##  [5] viridisLite_0.3.0  foreach_1.4.8     
+##  [7] modelr_0.1.5       gtools_3.8.1      
+##  [9] assertthat_0.2.1   highr_0.8         
+## [11] cellranger_1.1.0   yaml_2.2.0        
+## [13] pillar_1.4.3       backports_1.1.5   
+## [15] lattice_0.20-38    glue_1.3.1        
+## [17] digest_0.6.23      RColorBrewer_1.1-2
+## [19] rvest_0.3.5        colorspace_1.4-1  
+## [21] htmltools_0.4.0    pkgconfig_2.0.3   
+## [23] broom_0.5.3        haven_2.2.0       
+## [25] scales_1.1.0       gdata_2.18.0      
+## [27] farver_2.0.3       generics_0.0.2    
+## [29] withr_2.1.2        lazyeval_0.2.2    
+## [31] cli_2.0.1          magrittr_1.5      
+## [33] crayon_1.3.4       readxl_1.3.1      
+## [35] evaluate_0.14      fs_1.3.1          
+## [37] fansi_0.4.1        nlme_3.1-142      
+## [39] MASS_7.3-51.5      gplots_3.0.1.2    
+## [41] xml2_1.2.2         tools_3.6.2       
+## [43] registry_0.5-1     hms_0.5.3         
+## [45] lifecycle_0.1.0    munsell_0.5.0     
+## [47] reprex_0.3.0       cluster_2.1.0     
+## [49] packrat_0.5.0      compiler_3.6.2    
+## [51] caTools_1.18.0     rlang_0.4.4       
+## [53] grid_3.6.2         iterators_1.0.12  
+## [55] rstudioapi_0.10    visNetwork_2.0.9  
+## [57] htmlwidgets_1.5.1  labeling_0.3      
+## [59] bitops_1.0-6       rmarkdown_2.1     
+## [61] gtable_0.3.0       codetools_0.2-16  
+## [63] DBI_1.1.0          TSP_1.1-8         
+## [65] R6_2.4.1           gridExtra_2.3     
+## [67] lubridate_1.7.4    knitr_1.27        
+## [69] pwr_1.2-2          utf8_1.1.4        
+## [71] KernSmooth_2.23-16 dendextend_1.13.3 
+## [73] stringi_1.4.5      Rcpp_1.0.3        
+## [75] vctrs_0.2.2        gclus_1.3.2       
+## [77] dbplyr_1.4.2       tidyselect_1.0.0  
+## [79] xfun_0.12</pre>
+
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references">
+
+<!-- Scrolling final reference page -->
+
+<!-- https://stackoverflow.com/q/38260799 -->
+
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+<div class="references" id="refs">
+<div id="ref-Button2013-ox">
+<p>Button, K. S., Ioannidis, J. P. A., Mokrysz, C., Nosek, B. A., Flint, J., Robinson, E. S. J., &amp; Munafò, M. R. (2013). Power failure: Why small sample size undermines the reliability of neuroscience. <em>Nat. Rev. Neurosci.</em>, <em>14</em>(5), 365–376. <a href='https://doi.org/10.1038/nrn3475' title=''>https://doi.org/10.1038/nrn3475</a></p></div>
+
+<div id="ref-Franco2016-yu">
+<p>Franco, A., Malhotra, N., &amp; Simonovits, G. (2016). Underreporting in psychology experiments: Evidence from a study registry. <em>Social Psychological and Personality Science</em>, <em>7</em>(1), 8–12. <a href='https://doi.org/10.1177/1948550615598377' title=''>https://doi.org/10.1177/1948550615598377</a></p></div>
+
+<div id="ref-Frank2012-fc">
+<p>Frank, M. C., &amp; Saxe, R. (2012). Teaching replication. <em>Perspectives on Psychological Science: A Journal of the Association for Psychological Science</em>, <em>7</em>(6), 600–604. <a href='https://doi.org/10.1177/1745691612460686' title=''>https://doi.org/10.1177/1745691612460686</a></p></div>
+
+<div id="ref-goodman_what_2016">
+<p>Goodman, S. N., Fanelli, D., &amp; Ioannidis, J. P. A. (2016). What does research reproducibility mean? <em>Science Translational Medicine</em>, <em>8</em>(341), 341ps12–341ps12. <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''>https://doi.org/10.1126/scitranslmed.aaf5027</a></p></div>
+
+<div id="ref-higginson_current_2016">
+<p>Higginson, A. D., &amp; Munafò, M. R. (2016). Current Incentives for Scientists Lead to Underpowered Studies with Erroneous Conclusions. <em>PLOS Biology</em>, <em>14</em>(11), e2000995. <a href='https://doi.org/10.1371/journal.pbio.2000995' title=''>https://doi.org/10.1371/journal.pbio.2000995</a></p></div>
+
+<div id="ref-ioannidis_why_2005">
+<p>Ioannidis, J. P. A. (2005). Why Most Published Research Findings Are False. <em>PLoS Med</em>, <em>2</em>(8), e124. <a href='https://doi.org/10.1371/journal.pmed.0020124' title=''>https://doi.org/10.1371/journal.pmed.0020124</a></p></div>
+
+<div id="ref-Kahneman2013-zi">
+<p>Kahneman, D. (2013). <em>Thinking, fast and slow</em> (1st edition). Farrar, Straus; Giroux. Retrieved from <a href='https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555' title=''>https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555</a></p></div>
+
+<div id="ref-Kerr1998-zg">
+<p>Kerr, N. L. (1998). HARKing: Hypothesizing after the results are known. <em>Personality and Social Psychology Review: An Official Journal of the Society for Personality and Social Psychology, Inc</em>, <em>2</em>(3), 196–217. <a href='https://doi.org/10.1207/s15327957pspr0203\_4' title=''>https://doi.org/10.1207/s15327957pspr0203\_4</a></p></div>
+
+<div id="ref-munafo_manifesto_2017">
+<p>Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S., Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A manifesto for reproducible science. <em>Nature Human Behaviour</em>, <em>1</em>, 0021. <a href='https://doi.org/10.1038/s41562-016-0021' title=''>https://doi.org/10.1038/s41562-016-0021</a></p></div>
+
+<div id="ref-Simonsohn2014-tt">
+<p>Simonsohn, U., Nelson, L. D., &amp; Simmons, J. P. (2014). P-curve: A key to the file-drawer. <em>Journal of Experimental Psychology. General</em>, <em>143</em>(2), 534–547. <a href='https://doi.org/10.1037/a0033242' title=''>https://doi.org/10.1037/a0033242</a></p></div>
+
+<div id="ref-Szucs2017-fc">
+<p>Szucs, D., &amp; Ioannidis, J. P. A. (2017). Empirical assessment of published effect sizes and power in the recent cognitive neuroscience and psychology literature. <em>PLoS Biology</em>, <em>15</em>(3), e2000797. <a href='https://doi.org/10.1371/journal.pbio.2000797' title=''>https://doi.org/10.1371/journal.pbio.2000797</a></p></div>
+
+<div id="ref-hadley_wickham_tidy_2014">
+<p>Wickham, H. (2014). Tidy Data. <em>Journal of Statistical Software</em>, <em>59</em>(10). <a href='https://doi.org/10.18637/jss.v059.i10' title=''>https://doi.org/10.18637/jss.v059.i10</a></p></div></div></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

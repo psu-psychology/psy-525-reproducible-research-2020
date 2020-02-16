@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 2: A ‘crisis’ in the making</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Week 2: A ‘crisis’ in the making',
+                        subtitle: 'PSY 525',
+                useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Rick Gilmore' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="libs/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+  </style>
+
+  <link rel="stylesheet" href="css/gilmore.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-13 11:20:37</p>
+          </hgroup>
+  </slide>
+
+<!-- # Prelude -->
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Preliminaries</h2></hgroup><article  id="preliminaries">
+
+<!-- ## Announcements -->
+
+</article></slide><slide class=""><hgroup><h2>Today’s agenda</h2></hgroup><article  id="todays-agenda">
+
+<ul>
+<li>The values of science</li>
+<li>Learning from cases of misconduct</li>
+<li>Is there a crisis of reproducibility?</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>The values of science–problems and solutions</h2></hgroup><article  id="the-values-of-scienceproblems-and-solutions">
+
+</article></slide><slide class=""><hgroup><h2>Robert Merton</h2></hgroup><article  id="robert-merton">
+
+<p><img src="https://upload.wikimedia.org/wikipedia/en/0/08/Robert_K_Merton.jpg" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><img src="https://www.klinebooks.com/pictures/28217.jpg?v=1428617395" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>CUDOS</h2></hgroup><article  id="cudos">
+
+<ul>
+<li><strong>communalism</strong>: common ownership of scientific goods (intellectual property)</li>
+<li><strong>universalism</strong>: scientific validity is independent of sociopolitical status/personal attributes of its participants</li>
+<li><strong>disinterestedness</strong>: scientific institutions benefit a common scientific enterprise, not specific individuals</li>
+<li><strong>organized skepticism</strong>: claims should be exposed to critical scrutiny before being accepted</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Evidence for endorsement in a scientific community</h2></hgroup><article  id="evidence-for-endorsement-in-a-scientific-community">
+
+<div style="text-align: center" class="figure">
+<img src="https://journals.sagepub.com/na101/home/literatum/publisher/sage/journals/content/stsa/2018/stsa_23_1/0971721817744438/20180208/images/large/10.1177_0971721817744438-table1.jpeg" alt="[[@Kim2018-tr]](https://doi.org/10.1177%2F0971721817744438)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1177%2F0971721817744438' title=''><span class="cite">(Kim &amp; Kim, 2018)</span></a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div style="text-align: center" class="figure">
+<img src="https://journals.sagepub.com/na101/home/literatum/publisher/sage/journals/content/stsa/2018/stsa_23_1/0971721817744438/20180208/images/medium/10.1177_0971721817744438-fig1.gif" alt="[[@Kim2018-tr]](https://doi.org/10.1177%2F0971721817744438)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1177%2F0971721817744438' title=''><span class="cite">(Kim &amp; Kim, 2018)</span></a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Does psychology have a toothbrush problem?</h2></hgroup><article  id="does-psychology-have-a-toothbrush-problem">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><img src="https://www.rd.com/wp-content/uploads/2017/02/01-How-Bad-is-it-to-Share-a-Toothbrush-159311405-ABykov-760x506.jpg" width="900px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<blockquote>
+<p>&ldquo;<em>…psychologists tend to treat other peoples’ theories like toothbrushes; no self-respecting individual wants to use anyone else’s.</em>&rdquo;</p>
+</blockquote>
+
+<p><small> <a href='https://www.psychologicalscience.org/observer/becoming-a-cumulative-science' title=''><span class="cite">(Mischel, 2011)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<blockquote>
+<p>&ldquo;<em>The toothbrush culture undermines the building of a genuinely cumulative science, encouraging more parallel play and solo game playing, rather than building on each other’s directly relevant best work.</em>&rdquo;</p>
+</blockquote>
+
+<p><small> <a href='https://www.psychologicalscience.org/observer/becoming-a-cumulative-science' title=''><span class="cite">(Mischel, 2011)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>An ethical duty to share?</h2></hgroup><article  id="an-ethical-duty-to-share">
+
+<blockquote>
+<p>&ldquo;<em>…the principles of human subject research require an analysis of both risks and benefits…such an analysis suggests that researchers may have a positive duty to share data in order to maximize the contribution that individual participants have made.</em>&rdquo;</p>
+</blockquote>
+
+<p><small> <a href='https://doi.org/10.1016/j.neuroimage.2013.02.040' title=''><span class="cite">(Brakewood &amp; Poldrack, 2013)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>Transparency and openness as essential scientific values</h2></hgroup><article  id="transparency-and-openness-as-essential-scientific-values">
+
+<blockquote>
+<p>&ldquo;<em>We regard scientific integrity, transparency, and openness as essential for the conduct of research and its application to practice and policy…</em>&rdquo;</p>
+</blockquote>
+
+<p><small> <a href='https://www.srcd.org/policy-scientific-integrity-transparency-and-openness' title=''><span class="cite">(SRCD, 2019)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<blockquote>
+<p>&ldquo;<em>SRCD holds that highlighting integrity, transparency, and openness as core values of the Society strengthens child development research as a whole. In emphasizing these values, our science will yield more robust and reliable findings that others can readily build upon and will better serve parents, the public, and policymakers who support and depend upon our work.</em>&rdquo;</p>
+</blockquote>
+
+<p><small> <a href='https://www.srcd.org/policy-scientific-integrity-transparency-and-openness' title=''><span class="cite">(SRCD, 2019)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>Inefficiencies in scientific communication <a href='https://doi.org/10.1080/1047840X.2012.692215' title=''><span class="cite">(Nosek &amp; Bar-Anan, 2012)</span></a></h2></hgroup><article  id="inefficiencies-in-scientific-communication-nosek2012-al">
+
+<ul>
+<li>No communication</li>
+<li>Slow communication</li>
+<li>Incomplete communication</li>
+<li>Inaccurate communication</li>
+<li>Unmodifiable communication</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Recommendations</h2></hgroup><article  id="recommendations">
+
+<ul>
+<li>Make the internet the primary means of scientific communication</li>
+<li>Open access to all research</li>
+<li>Disentangle publication from evaluation</li>
+</ul>
+
+<p><small> <a href='https://doi.org/10.1080/1047840X.2012.692215' title=''><span class="cite">(Nosek &amp; Bar-Anan, 2012)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>&ldquo;Grading&rdquo; papers</li>
+<li>Publishing peer review</li>
+<li>Open continuous peer review</li>
+</ul>
+
+<p><small> <a href='https://doi.org/10.1080/1047840X.2012.692215' title=''><span class="cite">(Nosek &amp; Bar-Anan, 2012)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>What does <em>your</em> scientific utopia look like?</h2></hgroup><article  id="what-does-your-scientific-utopia-look-like">
+
+</article></slide><slide class=""><hgroup><h2>Gilmore’s…</h2></hgroup><article  id="gilmores">
+
+<ul>
+<li>All data underlying publications is available for reanalysis/visualization/verification in restricted access data repositories</li>
+<li>All code used to generate displays or run tasks is openly shared</li>
+<li>All measures are openly shared and well-documented
+
+<ul>
+<li>e.g., your definition of race vs. mine</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Better, more systematic documentation of theoretical commitments, unstated assumptions, actual findings</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Learning from cases of misconduct</h2></hgroup><article  id="learning-from-cases-of-misconduct">
+
+</article></slide><slide class=""><hgroup><h2>The Hauser and Stapel cases</h2></hgroup><article  id="the-hauser-and-stapel-cases">
+
+<ul>
+<li><a href='https://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes' title=''>Marc Hauser</a>
+
+<ul>
+<li><a href='https://www.sciencemag.org/news/2014/05/harvard-misconduct-investigation-psychologist-released' title=''>https://www.sciencemag.org/news/2014/05/harvard-misconduct-investigation-psychologist-released</a></li>
+</ul></li>
+<li><a href='https://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all&amp;_r=0' title=''>Diederik Stapel</a>
+
+<ul>
+<li><a href='https://root.bryancavemedia.com/marketing/downloads/schooled_in_fraud_compliance_lessons_from_lying_dutchman_killingsworth.pdf' title=''>Commentary</a></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Marc Hauser</h2></hgroup><article  id="marc-hauser">
+
+<ul>
+<li>Evolutionary/Comparative Psychologist, Professor at Harvard</li>
+<li>Resigned 2011 after internal investigation found him responsible for research misconduct</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><a href='https://grants.nih.gov/grants/guide/notice-files/NOT-OD-12-149.html' title=''>2012 report by NIH Office of Research Integrity (ORI)</a></h2></hgroup><article  id="report-by-nih-office-of-research-integrity-ori">
+
+<ul>
+<li>Fabricated data in Figure 2 of <a href='https://doi.org/10.1016/S0010-0277(02)00139-7' title=''><span class="cite">(Hauser, Weiss, &amp; Marcus, 2002)</span></a>; paper retracted.</li>
+<li>Falsified coding in unpublished data.</li>
+<li>Falsely described methodology in manuscript submitted to Cognition, Science, and Nature. Corrected manuscript prior to publication as <a href='https://doi.org/10.1016/j.cognition.2007.10.010' title=''><span class="cite">(Saffran et al., 2008)</span></a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Falsely reported results and methodology for one study in <a href='https://doi.org/10.1098/rspb.2007.0586' title=''><span class="cite">(Hauser, Glynn, &amp; Wood, 2007)</span></a></li>
+<li>Made false statement in Methodology section of <a href='https://doi.org/10.1126/science.1144663' title=''><span class="cite">(Wood, Glynn, Phillips, &amp; Hauser, 2007)</span></a></li>
+<li>Engaged in research misconduct by providing inconsistent coding of unpublished data</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<blockquote>
+<p><em>&ldquo;Respondent neither admits nor denies committing research misconduct but accepts ORI has found evidence of research misconduct as set forth above and has entered into a Voluntary Settlement Agreement to resolve this matter. The settlement is not an admission of liability on the part of the Respondent.&rdquo;</em></p>
+</blockquote>
+
+<p><a href='https://grants.nih.gov/grants/guide/notice-files/NOT-OD-12-149.html' title=''>https://grants.nih.gov/grants/guide/notice-files/NOT-OD-12-149.html</a></p>
+
+</article></slide><slide class=""><hgroup><h2><a href='https://archive.boston.com/whitecoatnotes/2012/09/05/marc-hauser-responds-federal-finding-scientific-misconduct/spzRWEVIPKA4BUu8wi8t8J/story.html' title=''>Hauser’s response</a></h2></hgroup><article  id="hausers-response">
+
+<blockquote>
+<p><em>&ldquo;…Although I have fundamental differences with some of the findings in the ORI report, I acknowledge that I made mistakes. I tried to do too much, teaching courses, running a large lab of students, sitting on several editorial boards, directing the Mind, Brain &amp; Behavior Program at Harvard, conducting multiple research collaborations, and writing for the general public. I let important details get away from my control, and as head of the lab, I take responsibility for all errors made within the lab, whether or not I was directly involved…&rdquo;</em></p>
+</blockquote>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<blockquote>
+<p><em>&ldquo;I am saddened that this investigation has caused some to question all of my work, rather than the few papers and unpublished studies in question. Before, during and after the investigation, many of my lab’s research findings were replicated by independent researchers…&rdquo;</em></p>
+</blockquote>
+
+</article></slide><slide class=""><hgroup><h2>Diederik Stapel</h2></hgroup><article  id="diederik-stapel">
+
+<ul>
+<li>Dean of the School of Social and Behavioral Sciences at Tilburg University</li>
+<li>teacher of Scientific Ethics course</li>
+<li>Fraud investigation launched when 3 grad students noticed anomalies – duplicate entries in data tables</li>
+<li>Stapel confessed, lost position, gave up Ph.D., wrote a book</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><a href='https://pubman.mpdl.mpg.de/pubman/item/escidoc:1569964:8/component/escidoc:1569966/Stapel_Investigation_Final_report.pdf' title=''>Flawed science: The fraudulent research practices of social psychologist Diederik Stapel</a></h2></hgroup><article  id="flawed-science-the-fraudulent-research-practices-of-social-psychologist-diederik-stapel">
+
+<ul>
+<li><em>&ldquo;…found to have committed a serious infringement of scientific integrity by using fictitious data in his publications, while presenting the data as the output of empirical research.&rdquo;</em></li>
+<li>Previous suspicions/concerns about data &ldquo;too good to be true&rdquo; were ignored.</li>
+<li>Fraud established in 55 publications.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>How did it happen?</h2></hgroup><article  id="how-did-it-happen">
+
+<ul>
+<li><em>&ldquo;admitted to having committed fraud in much of his research. He has also conceded that he has been sloppy, kept inadequate records and presented data in the best light possible&rdquo;</em></li>
+<li><em>&ldquo;…No explicit attention was paid to the combating or prevention of scientific misconduct within the scientific research environment in the Netherlands, and there was certainly no formal Code for research integrity…&rdquo;</em></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><em>&ldquo;…Whatever measures existed were more implicit, and any action was at the discretion of individual researchers….&rdquo;</em></li>
+<li><em>&ldquo;…no culture of transparency, information sharing, peer review and joint responsibility in this Faculty. It was easy for researchers to go their own way…&rdquo;</em></li>
+<li><em>&ldquo;…[researchers] did not share their data with other members of the various research groups, and there was no peer review…&rdquo;</em></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><em>&ldquo;People trusted each other’s scientific integrity: no feedback, no warnings, no correction.&rdquo;</em></li>
+</ul>
+
+<p><a href='https://pubman.mpdl.mpg.de/pubman/item/escidoc:1569964:8/component/escidoc:1569966/Stapel_Investigation_Final_report.pdf' title=''>Flawed science: The fraudulent research practices of social psychologist Diederik Stapel</a></p>
+
+</article></slide><slide class=""><hgroup><h2>Recommendations</h2></hgroup><article  id="recommendations-1">
+
+<ul>
+<li>Avoid verification biases (pp. 48-50)</li>
+<li>Provide complete information about methodology, sufficient to permit replication</li>
+<li>Avoid statistical errors</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>If it’s &ldquo;too good to be true&rdquo;, it probably isn’t.</li>
+<li>Journals should avoid bias toward <em>&ldquo;elegant, concise, attractive findings&rdquo;</em></li>
+<li><em>&ldquo;The data on which an experimental psychology doctoral dissertation is based must as a rule be collected and analysed by the PhD students themselves.&rdquo;</em></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>What do you take from these cases?</h2></hgroup><article  id="what-do-you-take-from-these-cases">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Is there a crisis of reproducibility?</h2></hgroup><article  id="is-there-a-crisis-of-reproducibility">
+
+</article></slide><slide class=""><hgroup><h2>The Reproducibility Project</h2></hgroup><article  id="the-reproducibility-project">
+
+<ul>
+<li><a href='https://osf.io/ezcuj/' title=''>Reproducibility Project: Psychology</a></li>
+<li><a href='https://doi.org/10.1126/science.aac4716' title=''><span class="cite">(Collaboration, 2015)</span></a></li>
+<li><a href='https://cos.io' title=''>Center for Open Science (COS)</a>, produces <a href='https://osf.io' title=''>Open Science Framework (OSF)</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><a href='https://doi.org/10.1126/science.aac4716' title=''><span class="cite">(Collaboration, 2015)</span></a></h2></hgroup><article  id="collaboration_estimating_2015">
+
+<ul>
+<li>39/98 (39.7%) replication attempts were successful</li>
+<li>97% of original studies reported statistically significant results vs. 36% of replications</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div style="text-align: center" class="figure">
+<img src="https://science-sciencemag-org.ezaccess.libraries.psu.edu/content/sci/349/6251/aac4716/F1.large.jpg" alt="[[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1126/science.aac4716' title=''><span class="cite">(Collaboration, 2015)</span></a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div style="text-align: center" class="figure">
+<img src="https://science-sciencemag-org.ezaccess.libraries.psu.edu/content/sci/349/6251/aac4716/F2.large.jpg" alt="[[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1126/science.aac4716' title=''><span class="cite">(Collaboration, 2015)</span></a>
+
+</p></div>
+
+<p><small>This may not render if you are not behind the PSU VPN</small></p>
+
+</article></slide><slide class=""><hgroup><h2>So, did the studies replicate?</h2></hgroup><article  id="so-did-the-studies-replicate">
+
+<ul>
+<li><a href='https://doi.org/10.1126/science.aad7243' title=''><span class="cite">(Gilbert, King, Pettigrew, &amp; Wilson, 2016)</span></a>
+
+<ul>
+<li>Sampling error differences predicts &lt; 100% reproducibility</li>
+<li>Samples !=</li>
+<li>Only 69% of original PIs &ldquo;endorsed&rdquo; replication protocol. Replication rate 4x higher (59.7% vs. 15.4%) in studies with endorsed protocol.</li>
+<li>CI of <em>expected</em> effect sizes given sample/methodological variability? <a href='https://osf.io/wx7ck/wiki/home/' title=''>Many Labs project</a></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><a href='https://doi.org/10.1126/science.aac4716' title=''><span class="cite">(Collaboration, 2015)</span></a> <em>&ldquo;…seriously underestimated reproducibility of psychological science.&rdquo;</em></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Issues</h2></hgroup><article  id="issues">
+
+<ul>
+<li>Kudos to <a href='https://doi.org/10.1126/science.aac4716' title=''><span class="cite">(Collaboration, 2015)</span></a> and <a href='https://doi.org/10.1126/science.aad7243' title=''><span class="cite">(Gilbert et al., 2016)</span></a> for addressing these issues openly
+
+<ul>
+<li><a href='https://osf.io/ezcuj/' title=''>Data</a> from <a href='https://doi.org/10.1126/science.aac4716' title=''><span class="cite">(Collaboration, 2015)</span></a></li>
+<li><a href='https://dx.doi.org/10.7910/DVN/5LKVH2' title=''>Data</a> from <a href='https://doi.org/10.1126/science.aad7243' title=''><span class="cite">(Gilbert et al., 2016)</span></a></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Reproducibility of &ldquo;psychological science&rdquo; vs. a specific finding</li>
+<li>What is the <em>true</em> effect size of a particular manipulation?</li>
+<li>Domain-specific differences in/challenges to reproducibility</li>
+<li>Possible confusion about types of reproducibility</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Differences across scientific domains <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman, Fanelli, &amp; Ioannidis, 2016)</span></a></h2></hgroup><article  id="differences-across-scientific-domains-goodman_what_2016">
+
+<ul>
+<li>Degree of determinism</li>
+<li>Signal to measurement-error ratio</li>
+<li>Complexity of designs and measurement tools</li>
+<li>Closeness of fit between hypothesis and experimental design or data</li>
+<li>Statistical or analytic methods to test hypotheses</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Typical heterogeneity of experimental results</li>
+<li>Culture of replication, transparency, and cumulating knowledge</li>
+<li>Statistical criteria for truth claims</li>
+<li>Purposes to which findings will be put and consequences of false conclusions</li>
+</ul>
+
+<p><small> <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman et al., 2016)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>What does research reproducibility mean?</h2></hgroup><article  id="what-does-research-reproducibility-mean">
+
+<ul>
+<li>Methods</li>
+<li>Results</li>
+<li>Inferential</li>
+</ul>
+
+<p><small> <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman et al., 2016)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>What does research reproducibility mean?</h2></hgroup><article  id="what-does-research-reproducibility-mean-1">
+
+<ul>
+<li><strong>Methods</strong> reproducibility</li>
+</ul>
+
+<blockquote>
+<p><em>&ldquo;…the ability to implement, as exactly as possible, the experimental and computational procedures, with the same data and tools, to obtain the same results.&rdquo;</em></p>
+</blockquote>
+
+<p><small> <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman et al., 2016)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>What does research reproducibility mean?</h2></hgroup><article  id="what-does-research-reproducibility-mean-2">
+
+<ul>
+<li><strong>Results</strong> reproducibility</li>
+</ul>
+
+<blockquote>
+<p><em>&ldquo;(previously described as replicability) refers to obtaining the same results from the conduct of an independent study whose procedures are as closely matched to the original experiment as possible.&rdquo;</em></p>
+</blockquote>
+
+<p><small> <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman et al., 2016)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>What does research reproducibility mean?</h2></hgroup><article  id="what-does-research-reproducibility-mean-3">
+
+<ul>
+<li><strong>Inferential</strong> reproducibility</li>
+</ul>
+
+<blockquote>
+<p><em>&ldquo;…refers to the drawing of qualitatively similar conclusions from either an independent replication of a study or a reanalysis of the original study&rdquo;</em></p>
+</blockquote>
+
+<p><small> <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''><span class="cite">(Goodman et al., 2016)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2>Is there a reproducibility crisis in science?</h2></hgroup><article  id="is-there-a-reproducibility-crisis-in-science">
+
+<ul>
+<li>Yes, a significant crisis</li>
+<li>Yes, a slight crisis</li>
+<li>No crisis</li>
+<li>Don’t know</li>
+</ul>
+
+<p><small> <a href='https://doi.org/10.1038/533452a' title=''><span class="cite">(Baker, 2015)</span></a> </small></p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div style="text-align: center" class="figure">
+<img src="https://www.nature.com/polopoly_fs/7.36716.1469695923!/image/reproducibility-graphic-online1.jpeg_gen/derivatives/landscape_630/reproducibility-graphic-online1.jpeg" alt="[[@baker_over_2015]](https://doi.org/10.1038/533452a)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1038/533452a' title=''><span class="cite">(Baker, 2015)</span></a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Have you failed to reproduce an analysis from your lab or someone else’s?</h2></hgroup><article  id="have-you-failed-to-reproduce-an-analysis-from-your-lab-or-someone-elses">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div style="text-align: center" class="figure">
+<img src="https://www.nature.com/polopoly_fs/7.36718.1464174471!/image/reproducibility-graphic-online3.jpg_gen/derivatives/landscape_630/reproducibility-graphic-online3.jpg" alt="[[@baker_over_2015]](https://doi.org/10.1038/533452a)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1038/533452a' title=''><span class="cite">(Baker, 2015)</span></a>
+
+</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Does this surprise you? Why or why not?</h2></hgroup><article  id="does-this-surprise-you-why-or-why-not">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<div style="text-align: center" class="figure">
+<img src="https://www.nature.com/polopoly_fs/7.36719.1464174488!/image/reproducibility-graphic-online4.jpg_gen/derivatives/landscape_630/reproducibility-graphic-online4.jpg" alt="[[@baker_over_2015]](https://doi.org/10.1038/533452a)" width="900px" />
+
+<p class="caption">
+
+<a href='https://doi.org/10.1038/533452a' title=''><span class="cite">(Baker, 2015)</span></a>
+
+</p></div>
+
+<!-- Factors contributing to irreproducible research -->
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Next time</h2></hgroup><article  id="next-time">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Making research more reproducible</li>
+<li>Reproducible workflows</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Resources</h2></hgroup><article  id="resources">
+
+</article></slide><slide class=""><hgroup><h2>Software</h2></hgroup><article  id="software">
+
+<p>This talk was produced on 2020-02-13 in <a href='http://rstudio.com' title=''>RStudio</a> using R Markdown. The code and materials used to generate the slides may be found at <a href='https://github.com/psu-psychology/psy-525-reproducible-research-2020' title=''>https://github.com/psu-psychology/psy-525-reproducible-research-2020</a>. Information about the R Session that produced the code is as follows:</p>
+
+<pre >## R version 3.6.2 (2019-12-12)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets 
+## [6] methods   base     
+## 
+## other attached packages:
+## [1] seriation_1.2-8
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.3         highr_0.8         
+##  [3] compiler_3.6.2     pillar_1.4.3      
+##  [5] viridis_0.5.1      bitops_1.0-6      
+##  [7] iterators_1.0.12   tools_3.6.2       
+##  [9] dendextend_1.13.3  digest_0.6.23     
+## [11] packrat_0.5.0      viridisLite_0.3.0 
+## [13] evaluate_0.14      lifecycle_0.1.0   
+## [15] tibble_2.1.3       gtable_0.3.0      
+## [17] pkgconfig_2.0.3    rlang_0.4.4       
+## [19] foreach_1.4.8      cli_2.0.1         
+## [21] registry_0.5-1     rstudioapi_0.10   
+## [23] yaml_2.2.0         xfun_0.12         
+## [25] TSP_1.1-8          gridExtra_2.3     
+## [27] stringr_1.4.0      pwr_1.2-2         
+## [29] dplyr_0.8.3        cluster_2.1.0     
+## [31] knitr_1.27         vctrs_0.2.2       
+## [33] gtools_3.8.1       caTools_1.18.0    
+## [35] tidyselect_1.0.0   grid_3.6.2        
+## [37] glue_1.3.1         R6_2.4.1          
+## [39] fansi_0.4.1        rmarkdown_2.1     
+## [41] gdata_2.18.0       purrr_0.3.3       
+## [43] magrittr_1.5       ggplot2_3.2.1     
+## [45] gplots_3.0.1.2     scales_1.1.0      
+## [47] codetools_0.2-16   gclus_1.3.2       
+## [49] htmltools_0.4.0    MASS_7.3-51.5     
+## [51] assertthat_0.2.1   colorspace_1.4-1  
+## [53] utf8_1.1.4         KernSmooth_2.23-16
+## [55] stringi_1.4.5      lazyeval_0.2.2    
+## [57] munsell_0.5.0      crayon_1.3.4</pre>
+
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references">
+
+<!-- Scrolling final reference page -->
+
+<!-- https://stackoverflow.com/q/38260799 -->
+
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+<div id="refs" class="references">
+<div id="ref-baker_over_2015">
+<p>Baker, M. (2015). Over half of psychology studies fail reproducibility test. <em>Nature News</em>. <a href='https://doi.org/10.1038/nature.2015.18248' title=''>https://doi.org/10.1038/nature.2015.18248</a></p></div>
+
+<div id="ref-Brakewood2013-wj">
+<p>Brakewood, B., &amp; Poldrack, R. A. (2013). The ethics of secondary data analysis: Considering the application of belmont principles to the sharing of neuroimaging data. <em>NeuroImage</em>, <em>82</em>, 671–676. <a href='https://doi.org/10.1016/j.neuroimage.2013.02.040' title=''>https://doi.org/10.1016/j.neuroimage.2013.02.040</a></p></div>
+
+<div id="ref-collaboration_estimating_2015">
+<p>Collaboration, O. S. (2015). Estimating the reproducibility of psychological. <em>Science</em>, <em>349</em>(6251), aac4716. <a href='https://doi.org/10.1126/science.aac4716' title=''>https://doi.org/10.1126/science.aac4716</a></p></div>
+
+<div id="ref-gilbert_comment_2016">
+<p>Gilbert, D. T., King, G., Pettigrew, S., &amp; Wilson, T. D. (2016). Comment on “Estimating the reproducibility of psychological science”. <em>Science</em>, <em>351</em>(6277), 1037–1037. <a href='https://doi.org/10.1126/science.aad7243' title=''>https://doi.org/10.1126/science.aad7243</a></p></div>
+
+<div id="ref-goodman_what_2016">
+<p>Goodman, S. N., Fanelli, D., &amp; Ioannidis, J. P. A. (2016). What does research reproducibility mean? <em>Science Translational Medicine</em>, <em>8</em>(341), 341ps12–341ps12. <a href='https://doi.org/10.1126/scitranslmed.aaf5027' title=''>https://doi.org/10.1126/scitranslmed.aaf5027</a></p></div>
+
+<div id="ref-hauser_rhesus_2007">
+<p>Hauser, M. D., Glynn, D., &amp; Wood, J. (2007). Rhesus monkeys correctly read the goal-relevant gestures of a human agent. <em>Proceedings of the Royal Society of London B: Biological Sciences</em>, <em>274</em>(1620), 1913–1918. <a href='https://doi.org/10.1098/rspb.2007.0586' title=''>https://doi.org/10.1098/rspb.2007.0586</a></p></div>
+
+<div id="ref-hauser_retracted:_2002">
+<p>Hauser, M. D., Weiss, D., &amp; Marcus, G. (2002). RETRACTED: Rule learning by cotton-top tamarins. <em>Cognition</em>, <em>86</em>(1), B15–B22. <a href='https://doi.org/10.1016/S0010-0277(02)00139-7' title=''>https://doi.org/10.1016/S0010-0277(02)00139-7</a></p></div>
+
+<div id="ref-Kim2018-tr">
+<p>Kim, S. Y., &amp; Kim, Y. (2018). The ethos of science and its correlates: An empirical analysis of scientists’ endorsement of mertonian norms. <em>Science, Technology and Society</em>, <em>23</em>(1), 1–24. <a href='https://doi.org/10.1177/0971721817744438' title=''>https://doi.org/10.1177/0971721817744438</a></p></div>
+
+<div id="ref-Mischel2011-br">
+<p>Mischel, W. (2011). Becoming a cumulative science. <em>APS Observer</em>, <em>22</em>(1). Retrieved from <a href='https://www.psychologicalscience.org/observer/becoming-a-cumulative-science' title=''>https://www.psychologicalscience.org/observer/becoming-a-cumulative-science</a></p></div>
+
+<div id="ref-Nosek2012-al">
+<p>Nosek, B. A., &amp; Bar-Anan, Y. (2012). Scientific utopia i: Opening scientific communication. <em>Psychological Inquiry</em>, <em>23</em>(3), 217–243. <a href='https://doi.org/10.1080/1047840X.2012.692215' title=''>https://doi.org/10.1080/1047840X.2012.692215</a></p></div>
+
+<div id="ref-saffran_grammatical_2008">
+<p>Saffran, J., Hauser, M., Seibel, R., Kapfhamer, J., Tsao, F., &amp; Cushman, F. (2008). Grammatical pattern learning by human infants and cotton-top tamarin monkeys. <em>Cognition</em>, <em>107</em>(2), 479–500. <a href='https://doi.org/10.1016/j.cognition.2007.10.010' title=''>https://doi.org/10.1016/j.cognition.2007.10.010</a></p></div>
+
+<div id="ref-SRCD2019-yv">
+<p>SRCD. (2019). Policy on scientific integrity, transparency, and openness | society for research in child development SRCD. <a href='https://www.srcd.org/policy-scientific-integrity-transparency-and-openness' title=''>https://www.srcd.org/policy-scientific-integrity-transparency-and-openness</a>. Retrieved from <a href='https://www.srcd.org/policy-scientific-integrity-transparency-and-openness' title=''>https://www.srcd.org/policy-scientific-integrity-transparency-and-openness</a></p></div>
+
+<div id="ref-wood_perception_2007">
+<p>Wood, J. N., Glynn, D. D., Phillips, B. C., &amp; Hauser, M. D. (2007). The Perception of Rational, Goal-Directed Action in Nonhuman Primates. <em>Science</em>, <em>317</em>(5843), 1402–1405. <a href='https://doi.org/10.1126/science.1144663' title=''>https://doi.org/10.1126/science.1144663</a></p></div></div></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

@@ -300,7 +300,25 @@ $(document).ready(function () {
     <li>
       <a href="lectures/2020-01-14.html">Week 1: 2020-01-14</a>
     </li>
+    <li>
+      <a href="lectures/2020-01-21.html">Week 2: 2020-01-21</a>
+    </li>
+    <li>
+      <a href="lectures/2020-01-28.html">Week 3: 2020-01-28</a>
+    </li>
+    <li>
+      <a href="lectures/2020-02-04.html">Week 4: 2020-02-04</a>
+    </li>
+    <li>
+      <a href="lectures/2020-02-11.html">Week 5: 2020-02-11</a>
+    </li>
+    <li>
+      <a href="lectures/2020-02-18.html">Week 6: 2020-02-18</a>
+    </li>
   </ul>
+</li>
+<li>
+  <a href="students.html">Students</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -317,6 +335,18 @@ $(document).ready(function () {
     </li>
     <li>
       <a href="how_to/google-colaboratory.html">Google Colaboratory</a>
+    </li>
+    <li>
+      <a href="how_to/evaluating-themes.html">Evaluate different RMarkdown themes</a>
+    </li>
+    <li>
+      <a href="how_to/make-website-with-rstudio.html">Make a website with R Markdown</a>
+    </li>
+    <li>
+      <a href="how_to/sample-rmarkdown-document.html">Use R Markdown formatting</a>
+    </li>
+    <li>
+      <a href="how_to/embed-rmarkdown-docs.html">Embed 'child' R Markdown documents</a>
     </li>
   </ul>
 </li>
@@ -395,7 +425,7 @@ $(document).ready(function () {
 <li><a href="http://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes">Hauser</a></li>
 <li><a href="http://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all&amp;_r=0">Stapel</a></li>
 </ul></li>
-<li>Reproducibility (read 1; skim the others)
+<li>Reproducibility (skim)
 <ul>
 <li>Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. <em>Science</em>, <em>349</em>(6251), aac4716–aac4716. <a href="https://doi.org/10.1126/science.aac4716" class="uri">https://doi.org/10.1126/science.aac4716</a></li>
 </ul></li>
@@ -411,7 +441,7 @@ $(document).ready(function () {
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-01-28.</p>
 <ol style="list-style-type: decimal">
-<li>Choose one of the verification bias examples from <a href="http://pubman.mpdl.mpg.de/pubman/item/escidoc:1569964:8/component/escidoc:1569966/Stapel_Investigation_Final_report.pdf"><em>Flawed Science</em></a>. In a paragraph or two, propose ways you might avoid this sort of bias in your own research.</li>
+<li>Choose one of the verification bias examples from <a href="https://pure.mpg.de/pubman/item/item_1569964_8/component/file_1569966/Stapel_Investigation_Final_report.pdf"><em>Flawed Science</em></a>. In a paragraph or two, propose ways you might avoid this sort of bias in your own research.</li>
 <li>Choose one of the <a href="https://osf.io/9f6gx/">TOP guideline categories</a> where either your own research practices have room to improve or you are doing rather well. In a paragraph or two, explain your reasoning.</li>
 </ol>
 </div>
@@ -455,7 +485,14 @@ $(document).ready(function () {
 <div id="homework-2" class="section level3">
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-01-28.</p>
-<p>1 Pick one of the recommended elements from <a href="http://www.nature.com/articles/s41562-016-0021/tables/1">Table 1 in Munafò, et al. (2017)</a>. Evaluate the recommendation. Do you agree that it would mitigate one or more threats to reproducibility. Why or why not? Do you agree with the assessment about the degree to which stakeholders have adopted the recommended practice? 2. Edit/create a text-based workflow for an active project you are working on. + Annote the workflow to indicate where it could be made more reproducible, transparent. + If you are feeling super-ambitious, you may want to try creating a graph-based workflow.</p>
+<ol style="list-style-type: decimal">
+<li><del>Pick one of the recommended elements from <a href="http://www.nature.com/articles/s41562-016-0021/tables/1">Table 1 in Munafò, et al. (2017)</a>. Evaluate the recommendation. Do you agree that it would mitigate one or more threats to reproducibility. Why or why not? Do you agree with the assessment about the degree to which stakeholders have adopted the recommended practice?</del>. We covered most of this material in class.</li>
+<li>Edit/create a text-based workflow for an active project you are working on.
+<ul>
+<li>Annote the workflow to indicate where it could be made more reproducible, transparent.</li>
+<li>If you are feeling super-ambitious, you may want to try creating a graph-based workflow using the <code>diagrammeR</code> package.</li>
+</ul></li>
+</ol>
 </div>
 </div>
 <div id="week-4-tuesday-february-4-2020" class="section level2">
@@ -495,8 +532,10 @@ $(document).ready(function () {
 <p>Due by the start of class on 2020-02-11.</p>
 <ol style="list-style-type: decimal">
 <li>Find a preregistration document for a study relevant to your research interests on <code>aspredicted.org</code> or <code>osf.io</code>. In a few paragraphs, comment on what was and what was not included. Would the preregistration provide researchers sufficient structure to carry out the research without ‘HARKing’? What downsides do you see to preregistration?</li>
-<li>Create a template for a reproducible research report in R Markdown.</li>
-<li>Convert your workflow from last week’s assignment into R Markdown.</li>
+<li>Create a template for a reproducible research report or a pregistration document in R Markdown.</li>
+<li>Convert some portion of your workflow from last week’s assignment into an R Markdown.</li>
+<li>Make sure to use some R Markdown features you haven’t used before. Flag the features you used and explain how they’d be useful in an actual use case you can envision.</li>
+<li>Either email me the R Markdown file, or if you’ve pushed your file to a GitHub repo, send me a review request.</li>
 </ol>
 </div>
 </div>
@@ -516,6 +555,8 @@ $(document).ready(function () {
 <div id="readingswebinars-3" class="section level3">
 <h3>Readings/webinars</h3>
 <ul>
+<li>Hardwicke, T. E., &amp; Ioannidis, J. P. A. (2018). Mapping the universe of registered reports. <em>Nature Human Behaviour</em>, <em>2</em>(11), 793–796. nature.com. Retrieved from <a href="http://dx.doi.org/10.1038/s41562-018-0444-y" class="uri">http://dx.doi.org/10.1038/s41562-018-0444-y</a></li>
+<li>Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., &amp; Vanpaemel, W. (2019, May). Preregistration: Comparing dream to reality. Retrieved from <a href="https://psyarxiv.com/d8wex" class="uri">https://psyarxiv.com/d8wex</a>.</li>
 <li><a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/">GitHub and RStudio</a></li>
 <li>Jenny Bryan’s <a href="http://happygitwithr.com/" class="uri">http://happygitwithr.com/</a></li>
 </ul>
@@ -530,7 +571,7 @@ $(document).ready(function () {
 </ul></li>
 <li>Create a repo for your final course project
 <ul>
-<li>Create a Markdown document where you start to outline the possible directions that your final project might take.</li>
+<li>Create an R Markdown document where you start to outline the possible directions that your final project might take.</li>
 <li>Open an issue so I can take a look.</li>
 </ul></li>
 <li>Clone a repo; fix/change something; make a <a href="https://help.github.com/articles/about-pull-requests/">pull request</a>.
@@ -589,7 +630,7 @@ $(document).ready(function () {
 </ul></li>
 </ol>
 <ul>
-<li>Please label the r chunks in your R Markdown files</li>
+<li>Please label the R chunks in your R Markdown files</li>
 </ul>
 </div>
 </div>

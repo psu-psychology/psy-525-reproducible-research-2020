@@ -1,0 +1,64 @@
+---
+title: "Embedding R Markdown documents"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    self_contained: true
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      out.width = "400px",
+                      fig.align = "center")
+```
+
+# Purpose
+
+This document describes how to create 'child' R Markdown documents that are incorporated into a parent document during the rendering process.
+
+For example, Rick uses this to generate a full syllabus from the various parts of the course website ([Rmd](https://psu-psychology.github.io/psy-525-reproducible-research-2020/psy-525-2020-spring-gilmore-syllabus.Rmd) | [docx](https://psu-psychology.github.io/psy-525-reproducible-research-2020/psy-525-2020-spring-gilmore-syllabus.docx) | [PDF](https://psu-psychology.github.io/psy-525-reproducible-research-2020/psy-525-2020-spring-gilmore-syllabus.pdf)).
+
+You could use this to create separate R Markdown documents for different plots, or sections of a bigger piece of work.
+
+# Procedure
+
+- Create a parent R Markdown document as you normally would.
+- Create one or more "child" R Markdown documents.
+    - Make sure to delete the default `setup` chunk, or you will get an error. There can't be more than one chunk with the same name in your (combined) document.
+    - The "child" documents can have minimal YAML header info, a `pagetitle:` parameter is all that is needed:
+    
+```yaml
+---
+pagetitle: "my-child"
+---
+```
+
+- Place a chunk where you want the child document to be inserted:
+
+````markdown
+`r ''````{r child = 'my-child.Rmd'}
+```
+````
+
+That's it.
+When you render the parent document, the contents of the child will be included.
+
+To prove it, here are the contents of the `my-child.Rmd` document:
+
+```{r child = 'my-child.Rmd'}
+```
+
+# Cautionary notes
+
+The nice auto-numbering table of contents feature in the `html_document` and related output formats isn't so smart.
+You'll need to think about the header levels in your parent and child documents, and make sure that they work.
+
+Your 'child' documents may or may not have information about variables you define in the parent document or other child documents.
+

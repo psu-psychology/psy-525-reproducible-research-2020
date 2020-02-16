@@ -1,0 +1,40 @@
+---
+title: "PSY 525.001 Spring 2020 Syllabus"
+output: 
+  pdf_document: default
+---
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
+```{r child = 'index.Rmd'}
+```
+
+----
+
+## About the course
+
+```{r child = 'about.Rmd'}
+```
+
+----
+
+# Schedule
+
+```{r child = 'schedule.Rmd'}
+```
+
+----
+
+# Evaluation
+
+```{r child = 'evaluation.Rmd'}
+```
+
+----
+
+# Resources
+
+```{r child = 'resources.Rmd'}
+```

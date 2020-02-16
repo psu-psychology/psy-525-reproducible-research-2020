@@ -39,7 +39,7 @@ Due by the start of class on 2020-01-21.
 - Cases of scientific misconduct (read 1; skim the other)
     + [Hauser](http://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes)
     + [Stapel](http://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all&_r=0)
-- Reproducibility (read 1; skim the others)
+- Reproducibility (skim)
     + Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. *Science*, *349*(6251), aac4716–aac4716. https://doi.org/10.1126/science.aac4716
 - Supplemental (not required)
     + Heesen, R., & Bright, L. K. (2019). Is peer review a good idea? *The British Journal for the Philosophy of Science*, *40*. eprints.lse.ac.uk. Retrieved January 7, 2020, from http://eprints.lse.ac.uk/101242/
@@ -50,7 +50,7 @@ Due by the start of class on 2020-01-21.
 
 Due by the start of class on 2020-01-28.
 
-1. Choose one of the verification bias examples from [*Flawed Science*](http://pubman.mpdl.mpg.de/pubman/item/escidoc:1569964:8/component/escidoc:1569966/Stapel_Investigation_Final_report.pdf). In a paragraph or two, propose ways you might avoid this sort of bias in your own research.
+1. Choose one of the verification bias examples from [*Flawed Science*](https://pure.mpg.de/pubman/item/item_1569964_8/component/file_1569966/Stapel_Investigation_Final_report.pdf). In a paragraph or two, propose ways you might avoid this sort of bias in your own research.
 2. Choose one of the [TOP guideline categories](https://osf.io/9f6gx/) where either your own research practices have room to improve or you are doing rather well. In a paragraph or two, explain your reasoning.
 
 ## Week 3: Tuesday, January 28, 2020
@@ -81,10 +81,10 @@ Due by the start of class on 2020-01-28.
 
 Due by the start of class on 2020-01-28.
 
-1 Pick one of the recommended elements from [Table 1 in Munafò, et al. (2017)](http://www.nature.com/articles/s41562-016-0021/tables/1). Evaluate the recommendation. Do you agree that it would mitigate one or more threats to reproducibility. Why or why not? Do you agree with the assessment about the degree to which stakeholders have adopted the recommended practice?
+1. ~~Pick one of the recommended elements from [Table 1 in Munafò, et al. (2017)](http://www.nature.com/articles/s41562-016-0021/tables/1). Evaluate the recommendation. Do you agree that it would mitigate one or more threats to reproducibility. Why or why not? Do you agree with the assessment about the degree to which stakeholders have adopted the recommended practice?~~. We covered most of this material in class.
 2. Edit/create a text-based workflow for an active project you are working on.
     + Annote the workflow to indicate where it could be made more reproducible, transparent.
-    + If you are feeling super-ambitious, you may want to try creating a graph-based workflow.
+    + If you are feeling super-ambitious, you may want to try creating a graph-based workflow using the `diagrammeR` package.
 
 ## Week 4: Tuesday, February 4, 2020
 
@@ -116,8 +116,11 @@ Due by the start of class on 2020-02-11.
 In a few paragraphs, comment on what was and what was not included.
 Would the preregistration provide researchers sufficient structure to carry out the research without 'HARKing'?
 What downsides do you see to preregistration?
-2. Create a template for a reproducible research report in R Markdown.
-3. Convert your workflow from last week's assignment into R Markdown.
+2. Create a template for a reproducible research report or a pregistration document in R Markdown.
+3. Convert some portion of your workflow from last week's assignment into an R Markdown.
+4. Make sure to use some R Markdown features you haven't used before.
+Flag the features you used and explain how they'd be useful in an actual use case you can envision.
+4. Either email me the R Markdown file, or if you've pushed your file to a GitHub repo, send me a review request.
 
 ## Week 5: Tuesday, February 11, 2020
 
@@ -130,6 +133,8 @@ What downsides do you see to preregistration?
 
 ### Readings/webinars
 
+- Hardwicke, T. E., & Ioannidis, J. P. A. (2018). Mapping the universe of registered reports. *Nature Human Behaviour*, *2*(11), 793–796. nature.com. Retrieved from http://dx.doi.org/10.1038/s41562-018-0444-y
+- Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., & Vanpaemel, W. (2019, May). Preregistration: Comparing dream to reality. Retrieved from <https://psyarxiv.com/d8wex>.
 - [GitHub and RStudio](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
 - Jenny Bryan's <http://happygitwithr.com/>
 
@@ -140,7 +145,7 @@ Due by the start of class on 2020-02-18.
 1. Create GitHub repo for the project you completed last week
     + Open an issue flagging `@rogilmore` so I know to look at your repo and document.
 2. Create a repo for your final course project
-    + Create a Markdown document where you start to outline the possible directions that your final project might take.
+    + Create an R Markdown document where you start to outline the possible directions that your final project might take.
     + Open an issue so I can take a look.
 3. Clone a repo; fix/change something; make a [pull request](https://help.github.com/articles/about-pull-requests/).
     + Option 1: <http://psu-psychology.github.io/psy-525-reproducible-research-2020/>
@@ -176,7 +181,7 @@ Due by the start of class on 2020-02-25.
     + Statistical Analyses
     + Discussion/Conclusions
         - What did you discover or demonstrate?
-- Please label the r chunks in your R Markdown files
+- Please label the R chunks in your R Markdown files
 
 ## Week 7: Tuesday, February 25, 2020
 

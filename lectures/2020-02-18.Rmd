@@ -1,0 +1,604 @@
+---
+title: "Week 6: Simulation & Visualization"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: libs
+    widescreen: true
+    incremental: false
+    transition: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "900px",
+                      cache = TRUE)
+```
+
+<!-- Code to make scrolling slides -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Announcements
+
+- Code for Her [workshop on LaTex](https://sites.psu.edu/codeforher/latex-spring-2020-workshop/), 2020-02-26 6-8p, Paterno 103, Mann Assembly Room
+- Data Science Community meeting 2020-02-28, 10a, Pattee Library Collaboration Commons
+- [Institute for Computational and Data Science (ICDS) events](https://ics.psu.edu/news-events/events/)
+- ["The Data Deluge", ICDS Symposium, March 16-17, 2020](https://ics.psu.edu/news-events/events/icds-symposium-2020/), NLI.
+
+## Today's topics
+
+- Some observations about GitHub use and R Markdown
+- Simulation as a tool for reproducible and transparent science
+- Visualization in R
+- Advanced simulation
+
+# Observations
+
+## GitHub
+
+- You're in charge of what goes where.
+- Public repos are public, but no one knows what you're doing unless you alert them.
+
+---
+
+- Pull requests are when you edit my code and want me to "pull"/adopt it.
+    - If I'm a collaborator on the project with `write` privileges, I don't have to issue a pull request.
+
+## R Markdown
+
+- Ok to make multiple R Markdown files and link them
+- Make sure to add spaces where they belong: `##Header` vs. `## Header`
+- Comments! Add them. This is your record of what you did.
+- Don't forget you can hide things
+
+---
+
+- Label chunks
+- Make chunks bite-sized
+- Add comments in your code to explain what you're doing
+    - Could someone else figure out what your code does?
+
+## Be a risk-taker; be your own professor
+
+- <http://www.stat.cmu.edu/~cshalizi/rmarkdown>
+- <http://stat545.com/bit006_github-browsability-wins.html>
+
+# Simulation as a tool for reproducible and transparent science
+
+---
+
+- Why simulate
+- What to simulate
+- How to simulate
+
+## Why & what to simulate?
+
+- Explore sample sizes, effect sizes, power
+- Pre-plan/test, polish data-munging workflows
+- Make hypotheses even more explicit
+    + Simulation == Pregistration on steroids
+    + '~~X affects Y~~' -> 'Mean(X) > Mean(Y)'
+    + or 'Mean(X) >= 2*Mean(Y)'
+- Simulate data analysis in advance
+
+---
+
+- Plan data visualizations in advance
+- Avoid avoidable errors
+- Plan your work, work your plan
+- Super easy to run analyses when your data come in
+
+## How to simulate
+
+- R functions
+- R Markdown document(s)
+
+## Super-simple example
+
+- **Hypothesis 1**: Height (inches) is correlated with weight (lbs)
+
+---
+
+```{r pick-parameters, echo=TRUE}
+# choose sample size
+sample_n <- 200
+
+# choose intercept and slope
+beta0 <- 36   # inches
+beta1 <- 0.33  # Rick's guess
+
+# choose standard deviation for error
+sigma <- 10 # Rick's guess
+```
+
+---
+
+```{r generate-data, echo=TRUE}
+# random weights between 80 lbs and 250 lbs (uniform sampling)
+w <- runif(n = sample_n, min = 80, max = 250)
+
+h_pred <- rep(x = beta0, n = sample_n) + beta1 * w
+h <- h_pred + rnorm(n = sample_n, mean = 0, sd = sigma)
+```
+
+---
+
+```{r plot-hist, echo=TRUE}
+library(ggplot2)
+library(dplyr)
+
+hist(w)
+hist(h)
+hist(h_pred)
+```
+
+---
+
+```{r plot-scatter, echo=TRUE}
+# Put h and w into data frame for ggplot
+height_weight <- data.frame(inches = h, lbs = w)
+
+# Plot
+scatter_1 <- ggplot2::ggplot(data = height_weight) +
+  ggplot2::aes(x = lbs, y = inches) +
+  ggplot2::geom_point()
+scatter_1
+```
+
+## Data pictures
+
+- What should your data look like if your hypothesis is confirmed?
+
+## That's synthesis, now analysis
+
+- Remember Hypothesis 1: Height (inches) is correlated with weight (lbs)?
+
+```{r measure-correlation, echo=TRUE}
+
+# Could use the raw data
+# cor.test(x = w, y = h)
+# Or, to use the values in the data frame, use with(...)
+
+with(height_weight, cor.test(x = inches, y = lbs))
+```
+
+## Aside: extracting the statistics to make an interactive report
+
+```{r save.cor.stats, echo=TRUE}
+# Save output as a variable
+cor_test_inches_lbs <- with(height_weight, cor.test(x = inches, y = lbs))
+
+# What sort of beast is this?
+mode(cor_test_inches_lbs)
+```
+
+---
+
+```{r unpack-list, echo=TRUE}
+# Aha, it's a list, this shows me all of the parts
+unlist(cor_test_inches_lbs)
+
+# Looks like the t value is the first element
+cor_test_inches_lbs[[1]]
+```
+
+---
+
+The `r cor_test_inches_lbs[[7]]` correlation between height and weight is `r sprintf("%.3f", cor_test_inches_lbs[[4]])`, $t$(`r sprintf("%i", cor_test_inches_lbs[[2]])`)=`r sprintf("%2.3f", cor_test_inches_lbs[[1]])`, $p$=`r sprintf("%.5f", cor_test_inches_lbs[[3]])`, with a 95$\%$ confidence interval of [`r sprintf("%.3f", cor_test_inches_lbs[[9]][1])`, `r sprintf("%.3f", cor_test_inches_lbs[[9]][2])`].
+
+<span class="blue">I did some formatting using the `sprintf()` function to make the numbers look pretty. You may also find `format()` useful.</span>
+
+`sprintf("%.3f", my.var)` limits `my.var` to 3 decimal places; where `sprintf("%2.3f", my.var)` limits it to 2 digits to the left and 3 to the right.
+
+## Now back to analysis with our synthetic data
+
+```{r linear-reg, echo=TRUE}
+fit <- lm(formula = inches ~ lbs, data = height_weight)
+summary(fit) # Use lm() command to fit formula
+(ci <- confint(fit)) # confint() command fits confidence intervals
+```
+
+Surrounding `(ci <- confint(fit))` in parentheses saves variable ci and prints it out.
+
+## How'd we do?
+
+| Parameter | Actual    | Low Estimate | High Estimate |
+|-----------|-----------|--------------|---------------|
+| $\beta0$  | `r beta0` | `r ci[1,1]`  | `r ci[1,2]`   |
+| $\beta1$  | `r beta1` | `r ci[2,1]`  | `r ci[2,2]`   |
+
+---
+
+```{r run-it-all-again, echo=TRUE}
+# random weights between 80 lbs and 250 lbs (uniform sampling)
+w <- runif(n = sample_n, min = 80, max = 250)
+
+h_pred <- rep(x = beta0, n = sample_n) + beta1 * w
+h <- h_pred + rnorm(n = sample_n, mean = 0, sd = sigma)
+height_weight <- data.frame(inches = h, lbs = w)
+
+fit <- lm(formula = inches ~ lbs, data = height_weight)
+summary(fit)
+(ci <- confint(fit)) # saves in variable ci and prints
+```
+
+---
+
+| Parameter | Actual    | Low Estimate | High Estimate |
+|-----------|-----------|--------------|---------------|
+| $\beta0$  | `r beta0` | `r ci[1,1]`  | `r ci[1,2]`   |
+| $\beta1$  | `r beta1` | `r ci[2,1]`  | `r ci[2,2]`   |
+
+## Simulation of neural data
+
+- Critical review: Welvaert, M., & Rosseel, Y. (2014). A Review of fMRI Simulation Studies. PLOS ONE, 9(7), e101953. <https://doi.org/10.1371/journal.pone.0101953>.
+- Welvaert, M., Durnez, J., Moerkerke, B., Berdoolaege, G. & Rosseel, Y. (2011). neuRosim: An R Package for Generating fMRI Data. Journal of Statistical Software, 44(10). Retrieved from <https://www.jstatsoft.org/article/view/v044i10>
+
+---
+
+- AFNI's *AlphaSim*, <https://afni.nimh.nih.gov/pub/dist/doc/program_help/AlphaSim.html>
+- Simulating EEG data
+    - <https://github.com/lrkrol/SEREEGA>
+    - `eegkit` R package has [`eegsim` function](https://rdrr.io/cran/eegkit/man/eegsim.html)
+
+# Visualization in R
+
+## Plot first, analyze last
+
+>- Why?
+  + [Mike Meyer](https://www.linkedin.com/in/mike-meyer-0056578a) told me so
+  + Less biased
+  + Easier to be transparent and reproducible
+  + Want/need to plot eventually anyway
+  + If a picture's worth a thousand words...
+>- How?
+
+## Things I feel strongly about
+
+- Plot *all* of your data
+- Every response, condition, participant
+- What do the plots tell you?
+- Do your plots match your prior 'data picture'?
+
+## How
+
+- Base graphics
+    + `plot(x,y)` `hist(x)`, `coplot()`
+- `ggplot2`
+    + Grammar of graphics
+    
+## Base graphics
+
+- Try it, maybe you'll like it
+- `plot()` takes many types of input
+- So does `summary()`
+- A little harder to customize
+
+## Data visualization with `ggplot2`
+
+Wickham, H. & Grolemund, G. (2017). *R for Data Science*. O'Reilly. <http://r4ds.had.co.nz/>
+
+## Background about `ggplot2`
+
+- The `gg` refers to the Grammar of Graphics
+
+Wilkinson, L., Wills, D., Rope, D., Norton, A., & Dubbs, R. (2005). The Grammar of Graphics (Statistics and Computing) (2nd edition.). Springer. Retrieved from https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448
+
+---
+
+- ggplot2 is the package; `ggplot()` is the function call
+- Data can be continuous, ordinal, or nominal
+- Graphs map data $\rightarrow$ visual elements (aesthetics)
+- \{height, weight, gender, rt\} $\rightarrow$ \{x, y, color, shape, line type, row, column\}
+- 'Add' layers to our plot using the `+` operator
+
+## Let's walk through the data visualiation chapter
+
+<http://r4ds.had.co.nz/data-visualisation.html>
+
+## Other ggplot2 resources
+
+- Wickham, H. (2010). *ggplot2: Elegant Graphics for Data Analysis (Use R!)* <http://ggplot2.org/book/>
+- ggplot2 3.2.1 documentation: <http://docs.ggplot2.org/current/>
+
+# Advanced simulation
+
+## Advanced simulation
+
+- Putting code into a function
+- A factorial design?
+
+## Let's make it a function
+
+- Functions help automate routines
+- Parts of a function:
+    + Input parameters
+        - Defaults or not
+    + Output(s)
+- `my_function_name <- function(my_param1, my_param2 = "cool")`
+
+----
+
+```{r define-global-constants, echo=TRUE}
+
+# define global constants from prior simulation
+sample_n = 200
+beta0 = 36
+beta1 = .33
+sigma = 10
+min_x = 80
+max_x = 250
+```
+
+---
+
+```{r define-function, echo=TRUE}
+height_weight_sim <- function(sample_n = 200, beta0 = 36, beta1 = .33, sigma = 10, min_x = 80, max_x = 250) {
+  # Calculates correlation, intercept, slope estimates for
+  # linear relation between two variables
+  
+  # Args:
+  #   sample_n: Number of sample poings, default is 200
+  #   beta0: Intercept, default is 36 (inches)
+  #   beta1: Slope, default is .33
+  #   sigma: Standard deviation of error
+  #   min_x: Minimum value for x (weight in lbs)
+  #   max_x: Maximum value for x (weight in lbs)
+  #
+  # Returns:
+  #   Named array with values
+  #   beta0
+  #   beta1
+  #   beta0.lo: 2.5% quantile for intercept
+  #   beta0.hi  97.5% quantile for intercept
+  #   beta1.lo  2.5% quantile for slope
+  #   beta1.hi  97.5% quantile for slope
+
+  w <- runif(n = sample_n, min = min_x, max = max_x)
+
+  h_pred <- rep(x = beta0, n = sample_n) + beta1 * w
+  h <- h_pred + rnorm(n = sample_n, mean = 0, sd = sigma)
+  height.weight <- data.frame(inches = h, lbs = w)
+
+  fit <- lm(formula = inches ~ lbs, data = height.weight)
+  ci <- confint(fit)
+  
+  # Create output vector with named values
+  (results <- c("beta0" = beta0, 
+    "beta1"= beta1, 
+    "beta0.lo" = ci[1,1],
+    "beta0.hi" = ci[1,2],
+    "beta1.lo" = ci[2,1],
+    "beta1.hi" = ci[2,2]))
+}
+```
+
+---
+
+```{r run-height-weight-function, echo=TRUE}
+# Defaults only
+height_weight_sim()
+
+# Larger sample size
+height_weight_sim(sample_n = 500)
+```
+
+## Doing a series of simulations
+
+- Goal: run our function a number of times, collect the results
+
+```{r run-n-simulations, echo=TRUE}
+n_simulations = 100
+n_vars = 6 # variables height_weight_sim() outputs
+
+# initialize output array
+height_weight_sim_data <- array(0, dim=c(n_simulations, n_vars))
+
+# Repeat height_weight_sim() n_simulations times
+for (i in 1:n_simulations) { 
+  height_weight_sim_data[i,] <- height_weight_sim()
+  }
+```
+
+---
+
+```{r plot-n-simulation-results, echo=TRUE}
+
+# Easier to make simulation data a data frame
+ht_wt_sims <- as.data.frame(height_weight_sim_data)
+
+# rename variables to be more easily read
+names(ht_wt_sims) <- c("beta0", "beta1", 
+                       "beta0.lo", "beta0.hi",
+                       "beta1.lo", "beta1.hi")
+
+# Add a variable to index the simulation number
+ht_wt_sims$sim_num <- 1:n_simulations
+
+# Plot beta0 min and max (now called V3, V4)
+ggplot(data = ht_wt_sims) +
+  aes(x = sim_num) +
+  geom_linerange(mapping = aes(ymin = beta0.lo,
+                                ymax = beta0.hi)) +
+  ylab("CIs for Intercept") +
+  geom_hline(yintercept = beta0, color = "red")
+```
+
+---
+
+```{r, echo=TRUE}
+# Plot beta1 min and max (now called V5, V6)
+ggplot(data = ht_wt_sims) +
+  aes(x = sim_num) +
+  geom_linerange(mapping = aes(ymin = beta1.lo,
+                                ymax = beta1.hi)) +
+  ylab("CIs for Slope") +
+  geom_hline(yintercept = beta1, color = "red")
+```
+
+## How about a factorial design?
+
+- Dependent variable: RT
+- Independent variables
+    + Fixed
+        - Symbol type: {letter, number}
+    + Random
+        - Subject mean RT
+- Hypothesis:
+    + RT to detect numbers is bigger than for letters (by 50 ms)
+    + There is no order effect
+- Rick wishes he'd found this first: <https://www.r-bloggers.com/design-of-experiments-%E2%80%93-full-factorial-designs/>
+
+---
+```{r factorial-design, echo=TRUE}
+# Simulation parameters
+n_subs = 30
+trials_per_cond = 100
+
+letters_numbers_rt_diff = 50 # ms
+rt_mean_across_subs = 350
+sigma = 50
+cond_labels = c("letter", "number")
+cond_rts <- c("letter" = 0, "number" = letters_numbers_rt_diff)
+
+stim_types <- factor(x = rep(x = c(1,2), 
+                             trials_per_cond), 
+                     labels = cond_labels)
+
+#sample(factor(x=rep(c("letter", "number"), 100)), 200)
+random_stim_types <- sample(stim_types, trials_per_cond*length(cond_labels))
+
+mean_sub_rt <- rnorm(n = 1, mean = rt_mean_across_subs, sd = sigma)
+trial_rt <- array(0, dim = length(random_stim_types))
+
+# Generate RTs based on trial, condition
+for (t in 1:length(random_stim_types)) {
+  trial_rt[t] <- mean_sub_rt + cond_rts[random_stim_types[t]] + 
+    rnorm(n = 1, mean = 0, sd = sigma)
+}
+
+# Make data frame
+letter_number_df <- data.frame(trial = 1:length(random_stim_types), 
+                               stim = random_stim_types, 
+                               rt = trial_rt)
+
+letter_number_df %>%
+  ggplot(.) +
+  aes(x = random_stim_types, y = rt) +
+  geom_boxplot() +
+  geom_point(alpha = .2)
+```
+
+## Put this in a function
+
+```{r make-factorial-function, echo=TRUE}
+simulate_sub_rt <- function(trials_per_cond = 100,
+                            letters_numbers_rt_diff = 50,
+                            rt_mean_across_subs = 350, 
+                            sigma = 50) {
+  
+  cond_rts <- c("letter" = 0, 
+                "number" = letters_numbers_rt_diff)
+  stim_types <- factor(x = rep(x = c(1,2),
+                               trials_per_cond), 
+                       labels = c("letter", "number"))
+  random_stim_types <- sample(stim_types, 2*trials_per_cond)
+
+  mean_sub_rt <- rnorm(n = 1, 
+                       mean = rt_mean_across_subs, 
+                       sd = sigma)
+  trial_rt <- array(0, dim = length(random_stim_types))
+
+  # Generate RTs based on trial, condition
+  for (t in 1:length(random_stim_types)) {
+    trial_rt[t] <- mean_sub_rt + cond_rts[random_stim_types[t]] +
+      rnorm(n = 1, mean = 0, sd = sigma)
+    }
+
+  # Make data frame
+  letter.number.df <- data.frame(trial = 1:length(random_stim_types), 
+                                 stim = random_stim_types, 
+                                 rt = trial_rt)
+}
+```
+
+## Create code to a set of participants and create one merged data frame
+
+```{r make-merged-simulation-df, echo=TRUE}
+make_sub_rt_df <- function(sub.id) {
+  sub_rt_df <- simulate_sub_rt()
+  sub_rt_df$sub.id <- sub.id
+  sub_rt_df
+}
+
+# Use lapply to make separate data frames for all subs
+sub_rt_df_list <- lapply(1:n_subs, make_sub_rt_df)
+
+# Use Reduce() with the merge function to make one big file
+sub_rt_df_merged <- Reduce(function(x, y) merge(x, y, all=TRUE), sub_rt_df_list)
+```
+
+## Now, want to see what we have?
+
+```{r plot-merged-simulation-data, echo=TRUE}
+ggplot(data = sub_rt_df_merged) +
+  aes(x=stim, y=rt, color=stim) +
+  geom_boxplot() +
+  facet_grid(facets = . ~ as.factor(sub.id)) +
+  theme(axis.text.x.bottom = element_blank(),
+        axis.ticks.x.bottom = element_blank())
+```
+
+## And, just for fun
+
+```{r one-way-anova, echo=TRUE}
+library(lme4)
+fit1 <- lmer(formula = rt ~ stim + (1|sub.id), data = sub_rt_df_merged)
+summary(fit1)
+```
+
+## Or
+
+```{r one-way-using-aov, echo=TRUE}
+fit2 <- aov(formula = rt ~ stim + Error(as.factor(sub.id)), data = sub_rt_df_merged)
+summary(fit2)
+```
+
+# Next time
+
+---
+
+- Doing other useful things with R and R Markdown
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](https://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+
+```{r session-info}
+sessionInfo()
+```
+
+## References
