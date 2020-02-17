@@ -2,23 +2,9 @@
 title: "Students"
 ---
 
-The following students are taking PSY 511.
+The following students are taking PSY 525.
 
-- Berenice Anaya
-    + Course GitHub repo. <https://github.com/psu-psych-511-2017-spring/anaya_berenice>
-    + Personal GitHub page. <https://github.com/bua25>.
-- Yushuang Liu
-    + Course GitHub repo. <https://github.com/psu-psych-511-2017-spring/liu_yushuang>
-    + Personal GitHub repo. <https://github.com/yzl67>.
-- Natalie Motta-Mena
-    + Course GitHub repo. <https://github.com/psu-psych-511-2017-spring/motta-mena_natalie>
-- Kingsley Schroeder
-    + Kingsley is a third year student from Dayton, Ohio. She received her B.A. in Psychology from Washington & Lee University in 2014. Her research interests center on children’s gender role development, with emphases on both the acquisition of gender understanding and also the ways in which that understanding may affect children’s development. Recently, she has begun to apply these ideas to an immigrant population, specifically on the ways in which children in immigrant families balance their home and host cultures' gender traditions.
-    + Course GitHub repo. <https://github.com/psu-psych-511-2017-spring/schroeder_kingsley>
-    + Personal GitHubo repo. <https://github.com/kms676>.
-- Alicia Vallorani
-    + Course GitHub repo. <https://github.com/psu-psych-511-2017-spring/vallorani_alicia>
-    + Personal GitHub rep. <https://github.com/auv27>.
-- Sara Winter
-    + Course GitHub repo. <https://github.com/psu-psych-511-2017-spring/winter_sara>
-    + Personal GitHub repo. <https://github.com/sow5180>.
+- Hannah Merseal
+    + Course GitHub repo. <https://github.com/hannah-merseal/psy-525-reproducible-research-2020>
+    + Personal GitHub page. <https://github.com/hannah-merseal>.
+
