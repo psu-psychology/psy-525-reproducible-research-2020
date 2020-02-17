@@ -18,6 +18,18 @@ navbar:
       menu:
         - text: "Week 1: 2020-01-14"
           href: lectures/2020-01-14.html
+        - text: "Week 2: 2020-01-21"
+          href: lectures/2020-01-21.html
+        - text: "Week 3: 2020-01-28"
+          href: lectures/2020-01-28.html
+        - text: "Week 4: 2020-02-04"
+          href: lectures/2020-02-04.html
+        - text: "Week 5: 2020-02-11"
+          href: lectures/2020-02-11.html
+        - text: "Week 6: 2020-02-18"
+          href: lectures/2020-02-18.html
+    - text: "Students"
+      href: students.html
     - text: "How-to"
       menu:
         - text: "RStudio server"
@@ -26,6 +38,14 @@ navbar:
           href: how_to/jupyter-notebooks-psu.html
         - text: "Google Colaboratory"
           href: how_to/google-colaboratory.html
+        - text: "Evaluate different RMarkdown themes"
+          href: how_to/evaluating-themes.html
+        - text: "Make a website with R Markdown"
+          href: how_to/make-website-with-rstudio.html
+        - text: "Use R Markdown formatting"
+          href: how_to/sample-rmarkdown-document.html
+        - text: "Embed 'child' R Markdown documents"
+          href: how_to/embed-rmarkdown-docs.html
   right:
     - text: "Site info"
       href: site-info.html

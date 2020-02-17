@@ -1,0 +1,425 @@
+---
+title: "Week 2: A 'crisis' in the making"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: libs
+    widescreen: true
+    incremental: false
+    transition: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "900px",
+                      cache = TRUE)
+```
+
+<!-- # Prelude -->
+
+# Preliminaries
+
+<!-- ## Announcements -->
+
+## Today's agenda
+
+- The values of science
+- Learning from cases of misconduct
+- Is there a crisis of reproducibility?
+
+# The values of science--problems and solutions
+
+## Robert Merton
+
+
+```{r}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/en/0/08/Robert_K_Merton.jpg")
+```
+
+---
+
+```{r}
+knitr::include_graphics("https://www.klinebooks.com/pictures/28217.jpg?v=1428617395")
+```
+
+## CUDOS
+
+- **communalism**: common ownership of scientific goods (intellectual property)
+- **universalism**: scientific validity is independent of sociopolitical status/personal attributes of its participants
+- **disinterestedness**: scientific institutions benefit a common scientific enterprise, not specific individuals
+- **organized skepticism**: claims should be exposed to critical scrutiny before being accepted
+
+## Evidence for endorsement in a scientific community
+
+```{r, fig.cap="[[@Kim2018-tr]](https://doi.org/10.1177%2F0971721817744438)"}
+knitr::include_graphics("https://journals.sagepub.com/na101/home/literatum/publisher/sage/journals/content/stsa/2018/stsa_23_1/0971721817744438/20180208/images/large/10.1177_0971721817744438-table1.jpeg")
+```
+
+---
+
+```{r, fig.cap="[[@Kim2018-tr]](https://doi.org/10.1177%2F0971721817744438)"}
+knitr::include_graphics("https://journals.sagepub.com/na101/home/literatum/publisher/sage/journals/content/stsa/2018/stsa_23_1/0971721817744438/20180208/images/medium/10.1177_0971721817744438-fig1.gif")
+```
+
+## Does psychology have a toothbrush problem?
+
+---
+
+```{r}
+knitr::include_graphics("https://www.rd.com/wp-content/uploads/2017/02/01-How-Bad-is-it-to-Share-a-Toothbrush-159311405-ABykov-760x506.jpg")
+```
+
+---
+
+> "*...psychologists tend to treat other peoples’ theories like toothbrushes; no self-respecting individual wants to use anyone else’s.*"
+
+<small>
+[[@Mischel2011-br]](https://www.psychologicalscience.org/observer/becoming-a-cumulative-science)
+</small>
+
+---
+
+> "*The toothbrush culture undermines the building of a genuinely cumulative science, encouraging more parallel play and solo game playing, rather than building on each other’s directly relevant best work.*"
+
+<small>
+[[@Mischel2011-br]](https://www.psychologicalscience.org/observer/becoming-a-cumulative-science)
+</small>
+
+## An ethical duty to share? 
+
+>"*...the principles of human subject research require an analysis of both risks and benefits...such an analysis suggests that researchers may have a positive duty to share data in order to maximize the contribution that individual participants have made.*"
+
+<small>
+[[@Brakewood2013-wj]](https://doi.org/10.1016/j.neuroimage.2013.02.040)
+</small>
+
+## Transparency and openness as essential scientific values 
+
+> "*We regard scientific integrity, transparency, and openness as essential for the conduct of research and its application to practice and policy...*"
+
+<small>
+[[@SRCD2019-yv]](https://www.srcd.org/policy-scientific-integrity-transparency-and-openness)
+</small>
+
+---
+
+> "*SRCD holds that highlighting integrity, transparency, and openness as core values of the Society strengthens child development research as a whole. In emphasizing these values, our science will yield more robust and reliable findings that others can readily build upon and will better serve parents, the public, and policymakers who support and depend upon our work.*"
+
+<small>
+[[@SRCD2019-yv]](https://www.srcd.org/policy-scientific-integrity-transparency-and-openness)
+</small>
+
+## Inefficiencies in scientific communication [[@Nosek2012-al]](https://doi.org/10.1080/1047840X.2012.692215)
+
+- No communication
+- Slow communication
+- Incomplete communication
+- Inaccurate communication
+- Unmodifiable communication
+
+## Recommendations 
+
+- Make the internet the primary means of scientific communication
+- Open access to all research
+- Disentangle publication from evaluation
+
+<small>
+[[@Nosek2012-al]](https://doi.org/10.1080/1047840X.2012.692215)
+</small>
+
+---
+
+- "Grading" papers
+- Publishing peer review
+- Open continuous peer review
+
+<small>
+[[@Nosek2012-al]](https://doi.org/10.1080/1047840X.2012.692215)
+</small>
+
+## What does *your* scientific utopia look like?
+
+## Gilmore's...
+
+- All data underlying publications is available for reanalysis/visualization/verification in restricted access data repositories
+- All code used to generate displays or run tasks is openly shared
+- All measures are openly shared and well-documented
+    - e.g., your definition of race vs. mine
+    
+---
+
+- Better, more systematic documentation of theoretical commitments, unstated assumptions, actual findings
+
+# Learning from cases of misconduct
+
+## The Hauser and Stapel cases
+
+- [Marc Hauser](https://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes)
+    - <https://www.sciencemag.org/news/2014/05/harvard-misconduct-investigation-psychologist-released>
+- [Diederik Stapel](https://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all&_r=0)
+    - [Commentary](https://root.bryancavemedia.com/marketing/downloads/schooled_in_fraud_compliance_lessons_from_lying_dutchman_killingsworth.pdf)
+     
+## Marc Hauser
+
+- Evolutionary/Comparative Psychologist, Professor at Harvard
+- Resigned 2011 after internal investigation found him responsible for research misconduct
+
+## [2012 report by NIH Office of Research Integrity (ORI)](https://grants.nih.gov/grants/guide/notice-files/NOT-OD-12-149.html)
+
+- Fabricated data in Figure 2 of [[@hauser_retracted:_2002]](https://doi.org/10.1016/S0010-0277(02)00139-7); paper retracted.
+- Falsified coding in unpublished data.
+- Falsely described methodology in manuscript submitted to Cognition, Science, and Nature. Corrected manuscript prior to publication as [[@saffran_grammatical_2008]](https://doi.org/10.1016/j.cognition.2007.10.010)
+
+---
+
+- Falsely reported results and methodology for one study in [[@hauser_rhesus_2007]](https://doi.org/10.1098/rspb.2007.0586)
+- Made false statement in Methodology section of [[@wood_perception_2007]](https://doi.org/10.1126/science.1144663)
+- Engaged in research misconduct by providing inconsistent coding of unpublished data 
+
+----
+
+> *"Respondent neither admits nor denies committing research misconduct but accepts ORI has found evidence of research misconduct as set forth above and has entered into a Voluntary Settlement Agreement to resolve this matter. The settlement is not an admission of liability on the part of the Respondent."*
+
+<https://grants.nih.gov/grants/guide/notice-files/NOT-OD-12-149.html>
+
+## [Hauser's response](https://archive.boston.com/whitecoatnotes/2012/09/05/marc-hauser-responds-federal-finding-scientific-misconduct/spzRWEVIPKA4BUu8wi8t8J/story.html)
+
+> *"...Although I have fundamental differences with some of the findings in the ORI report, I acknowledge that I made mistakes. I tried to do too much, teaching courses, running a large lab of students, sitting on several editorial boards, directing the Mind, Brain & Behavior Program at Harvard, conducting multiple research collaborations, and writing for the general public. I let important details get away from my control, and as head of the lab, I take responsibility for all errors made within the lab, whether or not I was directly involved..."*
+
+----
+
+> *"I am saddened that this investigation has caused some to question all of my work, rather than the few papers and unpublished studies in question. Before, during and after the investigation, many of my lab’s research findings were replicated by independent researchers..."*
+
+## Diederik Stapel
+
+- Dean of the School of Social and Behavioral Sciences at Tilburg University
+- teacher of Scientific Ethics course
+- Fraud investigation launched when 3 grad students noticed anomalies -- duplicate entries in data tables
+- Stapel confessed, lost position, gave up Ph.D., wrote a book
+
+## [Flawed science: The fraudulent research practices of social psychologist Diederik Stapel](https://pubman.mpdl.mpg.de/pubman/item/escidoc:1569964:8/component/escidoc:1569966/Stapel_Investigation_Final_report.pdf)
+
+- *"...found to have committed a serious infringement of scientific integrity by using fictitious data in his publications, while presenting the data as the output of empirical research."*
+- Previous suspicions/concerns about data "too good to be true" were ignored.
+- Fraud established in 55 publications.
+
+## How did it happen?
+
+- *"admitted to having committed fraud in much of his research. He has also conceded that he has been sloppy, kept inadequate records and presented data in the best light possible"*
+- *"...No explicit attention was paid to the combating or prevention of scientific misconduct within the scientific research environment in the Netherlands, and there was certainly no formal Code for research integrity..."*
+
+---
+
+- *"...Whatever measures existed were more implicit, and any action was at the discretion of individual researchers...."*
+- *"...no culture of transparency, information sharing, peer review and joint responsibility in this Faculty. It was easy for researchers to go their own way..."*
+- *"...[researchers] did not share their data with other members of the various research groups, and there was no peer review..."* 
+
+---
+
+- *"People trusted each other’s scientific integrity: no feedback, no warnings, no correction."*
+
+[Flawed science: The fraudulent research practices of social psychologist Diederik Stapel](https://pubman.mpdl.mpg.de/pubman/item/escidoc:1569964:8/component/escidoc:1569966/Stapel_Investigation_Final_report.pdf)
+
+## Recommendations
+
+- Avoid verification biases (pp. 48-50)
+- Provide complete information about methodology, sufficient to permit replication
+- Avoid statistical errors
+
+---
+
+- If it's "too good to be true", it probably isn't.
+- Journals should avoid bias toward *"elegant, concise, attractive findings"*
+- *"The data on which an experimental psychology doctoral dissertation is based must as a rule be collected and analysed by the PhD students themselves."*
+
+## What do you take from these cases?
+
+# Is there a crisis of reproducibility?
+
+## The Reproducibility Project
+
+- [Reproducibility Project: Psychology](https://osf.io/ezcuj/)
+- [[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716)
+- [Center for Open Science (COS)](https://cos.io), produces [Open Science Framework (OSF)](https://osf.io)
+
+## [[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716)
+
+- 39/98 (39.7%) replication attempts were successful
+- 97% of original studies reported statistically significant results vs. 36% of replications
+
+---
+
+```{r, fig.cap="[[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716)"}
+knitr::include_graphics("https://science-sciencemag-org.ezaccess.libraries.psu.edu/content/sci/349/6251/aac4716/F1.large.jpg")
+```
+
+---
+
+```{r, fig.cap="[[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716)"}
+knitr::include_graphics("https://science-sciencemag-org.ezaccess.libraries.psu.edu/content/sci/349/6251/aac4716/F2.large.jpg")
+```
+
+<small>This may not render if you are not behind the PSU VPN</small>
+
+## So, did the studies replicate?
+
+- [[@gilbert_comment_2016]](https://doi.org/10.1126/science.aad7243)
+    + Sampling error differences predicts < 100% reproducibility
+    + Samples !=
+    + Only 69% of original PIs "endorsed" replication protocol. Replication rate 4x higher (59.7% vs. 15.4%) in studies with endorsed protocol.
+    + CI of *expected* effect sizes given sample/methodological variability? [Many Labs project](https://osf.io/wx7ck/wiki/home/)
+
+----
+
+- [[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716) *"...seriously underestimated reproducibility of psychological science."*
+    
+## Issues
+
+- Kudos to [[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716) and [[@gilbert_comment_2016]](https://doi.org/10.1126/science.aad7243) for addressing these issues openly
+    + [Data](https://osf.io/ezcuj/) from [[@collaboration_estimating_2015]](https://doi.org/10.1126/science.aac4716)
+    + [Data](https://dx.doi.org/10.7910/DVN/5LKVH2) from [[@gilbert_comment_2016]](https://doi.org/10.1126/science.aad7243)
+
+---
+
+- Reproducibility of "psychological science" vs. a specific finding
+- What is the *true* effect size of a particular manipulation?
+- Domain-specific differences in/challenges to reproducibility
+- Possible confusion about types of reproducibility
+
+##  Differences across scientific domains [[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+
+- Degree of determinism
+- Signal to measurement-error ratio
+- Complexity of designs and measurement tools
+- Closeness of fit between hypothesis and experimental design or data
+- Statistical or analytic methods to test hypotheses
+
+---
+
+- Typical heterogeneity of experimental results
+- Culture of replication, transparency, and cumulating knowledge
+- Statistical criteria for truth claims
+- Purposes to which findings will be put and consequences of false conclusions
+
+<small>
+[[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+</small>
+
+## What does research reproducibility mean?
+
+- Methods
+- Results
+- Inferential
+
+<small>
+[[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+</small>
+
+## What does research reproducibility mean? 
+
+- **Methods** reproducibility
+
+> *"...the ability to implement, as exactly as possible, the experimental and computational procedures, with the same data and tools, to obtain the same results."*
+
+<small>
+[[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+</small>
+
+## What does research reproducibility mean?
+
+- **Results** reproducibility
+
+> *"(previously described as replicability) refers to obtaining the same results from the conduct of an independent study whose procedures are as closely matched to the original experiment as possible."*
+
+<small>
+[[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+</small>
+
+## What does research reproducibility mean?
+
+- **Inferential** reproducibility
+
+> *"...refers to the drawing of qualitatively similar conclusions from either an independent replication of a study or a reanalysis of the original study"*
+
+<small>
+[[@goodman_what_2016]](https://doi.org/10.1126/scitranslmed.aaf5027)
+</small>
+
+## Is there a reproducibility crisis in science?
+
+- Yes, a significant crisis
+- Yes, a slight crisis
+- No crisis
+- Don't know
+
+<small>
+[[@baker_over_2015]](https://doi.org/10.1038/533452a)
+</small>
+
+---
+
+```{r, fig.cap="[[@baker_over_2015]](https://doi.org/10.1038/533452a)"}
+knitr::include_graphics("https://www.nature.com/polopoly_fs/7.36716.1469695923!/image/reproducibility-graphic-online1.jpeg_gen/derivatives/landscape_630/reproducibility-graphic-online1.jpeg")
+```
+
+## Have you failed to reproduce an analysis from your lab or someone else's?
+
+---
+
+```{r, fig.cap="[[@baker_over_2015]](https://doi.org/10.1038/533452a)"}
+knitr::include_graphics("https://www.nature.com/polopoly_fs/7.36718.1464174471!/image/reproducibility-graphic-online3.jpg_gen/derivatives/landscape_630/reproducibility-graphic-online3.jpg")
+```
+
+## Does this surprise you? Why or why not?
+
+---
+
+```{r, fig.cap="[[@baker_over_2015]](https://doi.org/10.1038/533452a)"}
+knitr::include_graphics("https://www.nature.com/polopoly_fs/7.36719.1464174488!/image/reproducibility-graphic-online4.jpg_gen/derivatives/landscape_630/reproducibility-graphic-online4.jpg")
+```
+
+
+<!-- Factors contributing to irreproducible research -->
+
+
+# Next time
+
+---
+
+- Making research more reproducible
+- Reproducible workflows
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References
+
+<!-- Scrolling final reference page -->
+<!-- https://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+

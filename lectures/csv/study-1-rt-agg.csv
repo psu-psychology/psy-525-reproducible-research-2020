@@ -1,0 +1,10 @@
+subID,condition,rt
+001,upright,250
+001,inverted,300
+002,upright,225
+002,inverted,290
+003,upright,270
+003,inverted,230
+004,upright,210
+004,inverted,240
+
