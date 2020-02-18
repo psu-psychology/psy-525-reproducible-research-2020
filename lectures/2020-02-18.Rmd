@@ -64,6 +64,7 @@ slides > slide:not(.nobackground):after {
 
 ---
 
+- Pull first; edit second.
 - Pull requests are when you edit my code and want me to "pull"/adopt it.
     - If I'm a collaborator on the project with `write` privileges, I don't have to issue a pull request.
 
