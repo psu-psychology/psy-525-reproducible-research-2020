@@ -102,7 +102,7 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2020-02-18 08:26:55</p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-18 11:51:32</p>
           </hgroup>
   </slide>
 
@@ -142,9 +142,10 @@ slides > slide:not(.nobackground):after {
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Observations</h2></hgroup><article  id="observations">
 
-</article></slide><slide class=""><hgroup><h2>GitHub</h2></hgroup><article  id="github">
+</article></slide><slide class=""><hgroup><h2>git/GitHub</h2></hgroup><article  id="gitgithub">
 
 <ul>
+<li>Add <code>.Rproj</code> to your <code>.gitignore</code>. See <a href='https://github.com/PSY-525/hello-world/blob/master/.gitignore' title=''>Natalie’s stub</a>.</li>
 <li>You’re in charge of what goes where.</li>
 <li>Public repos are public, but no one knows what you’re doing unless you alert them.</li>
 </ul>
@@ -359,7 +360,7 @@ cor_test_inches_lbs[[1]]</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p>The Pearson’s product-moment correlation correlation between height and weight is 0.836, \(t\)(198)=21.472, \(p\)=0.00000, with a 95\(\%\) confidence interval of [0.789, 0.874].</p>
+<p>The Pearson’s product-moment correlation between height and weight is 0.836, \(t\)(198)=21.472, \(p\)=0.00000, with a 95\(\%\) confidence interval of [0.789, 0.874].</p>
 
 <p><span class="blue">
 I did some formatting using the <code>sprintf()</code> function to make the numbers look pretty. You may also find <code>format()</code> useful.</span></p>
@@ -380,9 +381,12 @@ summary(fit) # Use lm() command to fit formula</pre>
 ## -37.103  -7.520   0.850   6.759  29.707 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 38.58790    2.51316   15.35   &lt;2e-16 ***
-## lbs          0.32149    0.01497   21.47   &lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 38.58790    2.51316   15.35   &lt;2e-16
+## lbs          0.32149    0.01497   21.47   &lt;2e-16
+##                
+## (Intercept) ***
+## lbs         ***
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -443,9 +447,12 @@ summary(fit)</pre>
 ## -24.8229  -7.5843   0.0817   6.1271  29.6438 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 34.88577    2.48984   14.01   &lt;2e-16 ***
-## lbs          0.33834    0.01465   23.09   &lt;2e-16 ***
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 34.88577    2.48984   14.01   &lt;2e-16
+## lbs          0.33834    0.01465   23.09   &lt;2e-16
+##                
+## (Intercept) ***
+## lbs         ***
 ## ---
 ## Signif. codes:  
 ## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -582,9 +589,15 @@ summary(fit)</pre>
 <ul>
 <li>ggplot2 3.2.1 documentation: <a href='http://docs.ggplot2.org/current/' title=''>http://docs.ggplot2.org/current/</a></li>
 <li>Wickham, H. (2010). <em>ggplot2: Elegant Graphics for Data Analysis (Use R!)</em> <a href='http://ggplot2.org/book/' title=''>http://ggplot2.org/book/</a></li>
-<li>Chang, Winston (2013). *R Graphics Cookbook. O’Reilly.</li>
+<li>Chang, Winston (2013). <em>R Graphics Cookbook</em>. O’Reilly.</li>
 <li>Kieran Healy’s <a href='https://github.com/rstudio-conf-2020/dataviz' title=''>workshop at RStudio::Conf 2020</a></li>
 </ul>
+
+</article></slide><slide class=""><hgroup><h2>Example from <a href='https://github.com/rstudio-conf-2020/dataviz' title=''>K. Healy talk</a></h2></hgroup><article  id="example-from-k.-healy-talk">
+
+<pre >## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</pre>
+
+<p><img src="2020-02-18_files/figure-html/unnamed-chunk-1-1.png" width="900px" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Advanced simulation</h2></hgroup><article  id="advanced-simulation">
 
@@ -668,18 +681,18 @@ max_x = 250</pre>
 <pre class = 'prettyprint lang-r'># Defaults only
 height_weight_sim()</pre>
 
-<pre >##      beta0      beta1   beta0.lo   beta0.hi   beta1.lo 
-## 36.0000000  0.3300000 30.6497291 40.0010555  0.3066327 
-##   beta1.hi 
-##  0.3610621</pre>
+<pre >##      beta0      beta1   beta0.lo   beta0.hi 
+## 36.0000000  0.3300000 30.6497291 40.0010555 
+##   beta1.lo   beta1.hi 
+##  0.3066327  0.3610621</pre>
 
 <pre class = 'prettyprint lang-r'># Larger sample size
 height_weight_sim(sample_n = 500)</pre>
 
-<pre >##      beta0      beta1   beta0.lo   beta0.hi   beta1.lo 
-## 36.0000000  0.3300000 33.3918123 39.6015099  0.3081033 
-##   beta1.hi 
-##  0.3444201</pre>
+<pre >##      beta0      beta1   beta0.lo   beta0.hi 
+## 36.0000000  0.3300000 33.3918123 39.6015099 
+##   beta1.lo   beta1.hi 
+##  0.3081033  0.3444201</pre>
 
 </article></slide><slide class=""><hgroup><h2>Doing a series of simulations</h2></hgroup><article  id="doing-a-series-of-simulations">
 
@@ -731,7 +744,7 @@ ggplot(data = ht_wt_sims) +
   ylab(&quot;CIs for Slope&quot;) +
   geom_hline(yintercept = beta1, color = &quot;red&quot;)</pre>
 
-<p><img src="2020-02-18_files/figure-html/unnamed-chunk-1-1.png" width="900px" style="display: block; margin: auto;" /></p>
+<p><img src="2020-02-18_files/figure-html/unnamed-chunk-2-1.png" width="900px" style="display: block; margin: auto;" /></p>
 
 </article></slide><slide class=""><hgroup><h2>How about a factorial design?</h2></hgroup><article  id="how-about-a-factorial-design">
 
@@ -936,47 +949,27 @@ summary(fit2)</pre>
 ## [6] methods   base     
 ## 
 ## other attached packages:
-##  [1] knitr_1.27       DiagrammeR_1.0.5 forcats_0.4.0   
-##  [4] stringr_1.4.0    purrr_0.3.3      readr_1.3.1     
-##  [7] tidyr_1.0.0      tibble_2.1.3     tidyverse_1.3.0 
-## [10] lme4_1.1-21      Matrix_1.2-18    dplyr_0.8.3     
-## [13] ggplot2_3.2.1   
+## [1] knitr_1.27      lme4_1.1-21     Matrix_1.2-18  
+## [4] dplyr_0.8.3     ggplot2_3.2.1   gapminder_0.3.0
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] httr_1.4.1         tufte_0.5         
-##  [3] jsonlite_1.6       splines_3.6.2     
-##  [5] modelr_0.1.5       assertthat_0.2.1  
-##  [7] highr_0.8          cellranger_1.1.0  
-##  [9] yaml_2.2.0         pillar_1.4.3      
-## [11] backports_1.1.5    lattice_0.20-38   
-## [13] glue_1.3.1         digest_0.6.23     
-## [15] RColorBrewer_1.1-2 rvest_0.3.5       
-## [17] minqa_1.2.4        colorspace_1.4-1  
-## [19] htmltools_0.4.0    plyr_1.8.5        
-## [21] pkgconfig_2.0.3    broom_0.5.3       
-## [23] haven_2.2.0        scales_1.1.0      
-## [25] jpeg_0.1-8.1       generics_0.0.2    
-## [27] farver_2.0.3       withr_2.1.2       
-## [29] lazyeval_0.2.2     cli_2.0.1         
-## [31] magrittr_1.5       crayon_1.3.4      
-## [33] readxl_1.3.1       evaluate_0.14     
-## [35] fs_1.3.1           fansi_0.4.1       
-## [37] nlme_3.1-142       MASS_7.3-51.5     
-## [39] xml2_1.2.2         tools_3.6.2       
-## [41] hms_0.5.3          lifecycle_0.1.0   
-## [43] munsell_0.5.0      reprex_0.3.0      
-## [45] packrat_0.5.0      compiler_3.6.2    
-## [47] tinytex_0.19       rlang_0.4.4       
-## [49] grid_3.6.2         nloptr_1.2.1      
-## [51] rstudioapi_0.10    htmlwidgets_1.5.1 
-## [53] visNetwork_2.0.9   labeling_0.3      
-## [55] rmarkdown_2.1      boot_1.3-23       
-## [57] gtable_0.3.0       codetools_0.2-16  
-## [59] DBI_1.1.0          reshape2_1.4.3    
-## [61] R6_2.4.1           lubridate_1.7.4   
-## [63] stringi_1.4.5      Rcpp_1.0.3        
-## [65] vctrs_0.2.2        dbplyr_1.4.2      
-## [67] tidyselect_1.0.0   xfun_0.12</pre>
+##  [1] Rcpp_1.0.3       highr_0.8        nloptr_1.2.1    
+##  [4] plyr_1.8.5       pillar_1.4.3     compiler_3.6.2  
+##  [7] tools_3.6.2      boot_1.3-23      digest_0.6.23   
+## [10] packrat_0.5.0    nlme_3.1-142     lattice_0.20-38 
+## [13] evaluate_0.14    lifecycle_0.1.0  tibble_2.1.3    
+## [16] gtable_0.3.0     pkgconfig_2.0.3  rlang_0.4.4     
+## [19] cli_2.0.1        rstudioapi_0.10  yaml_2.2.0      
+## [22] xfun_0.12        withr_2.1.2      stringr_1.4.0   
+## [25] vctrs_0.2.2      grid_3.6.2       tidyselect_1.0.0
+## [28] tufte_0.5        glue_1.3.1       R6_2.4.1        
+## [31] jpeg_0.1-8.1     fansi_0.4.1      rmarkdown_2.1   
+## [34] minqa_1.2.4      reshape2_1.4.3   purrr_0.3.3     
+## [37] farver_2.0.3     magrittr_1.5     MASS_7.3-51.5   
+## [40] splines_3.6.2    scales_1.1.0     htmltools_0.4.0 
+## [43] assertthat_0.2.1 colorspace_1.4-1 labeling_0.3    
+## [46] tinytex_0.19     utf8_1.1.4       stringi_1.4.5   
+## [49] lazyeval_0.2.2   munsell_0.5.0    crayon_1.3.4</pre>
 
 </article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references"></article></slide>
 
