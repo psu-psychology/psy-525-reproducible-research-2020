@@ -7,9 +7,9 @@ It is a template for now, but the students will be filling in details very soon.
 
 ## Daisy Lei
 
-Daisy is...
+Daisy is a second year PhD graduate student in Cognitive Psychology and Language Science with a Specialization in Cognitive and Affective Neuroscience.
 
-Daisy's GitHub ID is <YOUR_ID_HERE>
+Daisy's GitHub ID is 3907660.
 
 ## Hannah Merseal
 
