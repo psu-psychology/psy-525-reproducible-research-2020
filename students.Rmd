@@ -9,7 +9,7 @@ It is a template for now, but the students will be filling in details very soon.
 
 Daisy is a second year PhD graduate student in Cognitive Psychology and Language Science with a Specialization in Cognitive and Affective Neuroscience.
 
-Daisy's GitHub ID is 3907660.
+Daisy's GitHub ID is [daisylei](https://github.com/daisylei).
 
 ## Hannah Merseal
 
