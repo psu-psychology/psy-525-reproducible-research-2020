@@ -25,9 +25,9 @@ Amanda's GitHub ID is <YOUR_ID_HERE>
 
 ## Natalie Pottschmidt
 
-Natalie is...
+Natalie is a first-year student in the Adult Clinical department, working with Dr. Louis Castonguay.
 
-Natalie's GitHub ID is <YOUR_ID_HERE>
+Natalie's GitHub ID is natspotts222, and her collection of repos related to this class is located [here](https://github.com/PSY-525).
 
 ## Raphael Rodriguez
 
