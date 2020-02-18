@@ -13,9 +13,7 @@ Daisy's GitHub ID is 3907660.
 
 ## Hannah Merseal
 
-Hannah is...
-
-Hannah's GitHub ID is <YOUR_ID_HERE>
+Hannah's course [GitHub repo](https://github.com/hannah-merseal/psy-525-reproducible-research-2020) and [personal GitHub page](https://github.com/hannah-merseal) may be found at the links indicated.
 
 ## Amanda Moeller
 
