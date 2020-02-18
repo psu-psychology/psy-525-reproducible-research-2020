@@ -13,13 +13,17 @@ output:
     widescreen: true
     incremental: false
     transition: default
+  html_document:
+    toc: true
+    toc_depth: 2
+    code_folding: show
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
                       fig.align = "center",
                       out.width = "900px",
-                      cache = TRUE)
+                      cache = FALSE)
 ```
 
 <!-- Code to make scrolling slides -->
@@ -295,21 +299,21 @@ summary(fit)
 
 ## Data visualization with `ggplot2`
 
-Wickham, H. & Grolemund, G. (2017). *R for Data Science*. O'Reilly. <http://r4ds.had.co.nz/>
-
-## Background about `ggplot2`
-
 - The `gg` refers to the Grammar of Graphics
 
 Wilkinson, L., Wills, D., Rope, D., Norton, A., & Dubbs, R. (2005). The Grammar of Graphics (Statistics and Computing) (2nd edition.). Springer. Retrieved from https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448
 
 ---
 
-- ggplot2 is the package; `ggplot()` is the function call
+- `ggplot2` is the package; `ggplot()` is the function call
 - Data can be continuous, ordinal, or nominal
 - Graphs map data $\rightarrow$ visual elements (aesthetics)
 - \{height, weight, gender, rt\} $\rightarrow$ \{x, y, color, shape, line type, row, column\}
 - 'Add' layers to our plot using the `+` operator
+
+## Learning `ggplot`
+
+- Wickham, H. & Grolemund, G. (2017). *R for Data Science*. O'Reilly. <http://r4ds.had.co.nz/>
 
 ## Let's walk through the data visualiation chapter
 
@@ -317,8 +321,10 @@ Wilkinson, L., Wills, D., Rope, D., Norton, A., & Dubbs, R. (2005). The Grammar 
 
 ## Other ggplot2 resources
 
-- Wickham, H. (2010). *ggplot2: Elegant Graphics for Data Analysis (Use R!)* <http://ggplot2.org/book/>
 - ggplot2 3.2.1 documentation: <http://docs.ggplot2.org/current/>
+- Wickham, H. (2010). *ggplot2: Elegant Graphics for Data Analysis (Use R!)* <http://ggplot2.org/book/>
+- Chang, Winston (2013). *R Graphics Cookbook. O'Reilly.
+- Kieran Healy's [workshop at RStudio::Conf 2020](https://github.com/rstudio-conf-2020/dataviz)
 
 # Advanced simulation
 

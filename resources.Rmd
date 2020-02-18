@@ -10,6 +10,8 @@ title: "Resources"
 
 ## Web courses
 
+- [RStudio.conf](https://rstudio.com/conference/)
+    - [GitHub repo for 2020 conference](https://github.com/rstudio/rstudio-conf)
 - [Data Carpentry](https://datacarpentry.org/), now [The Carpentries](https://carpentries.org/)
     - [OpenRefine for Social Science Data](https://datacarpentry.org/openrefine-socialsci/) by Data Carpentry.
     - [R for Reproducible Scientific Analysis](http://swcarpentry.github.io/r-novice-gapminder/)
