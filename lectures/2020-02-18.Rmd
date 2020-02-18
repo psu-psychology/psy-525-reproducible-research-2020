@@ -57,8 +57,9 @@ slides > slide:not(.nobackground):after {
 
 # Observations
 
-## GitHub
+## git/GitHub
 
+- Add `.Rproj` to your `.gitignore`. See [Natalie's stub](https://github.com/PSY-525/hello-world/blob/master/.gitignore).
 - You're in charge of what goes where.
 - Public repos are public, but no one knows what you're doing unless you alert them.
 
@@ -208,7 +209,7 @@ cor_test_inches_lbs[[1]]
 
 ---
 
-The `r cor_test_inches_lbs[[7]]` correlation between height and weight is `r sprintf("%.3f", cor_test_inches_lbs[[4]])`, $t$(`r sprintf("%i", cor_test_inches_lbs[[2]])`)=`r sprintf("%2.3f", cor_test_inches_lbs[[1]])`, $p$=`r sprintf("%.5f", cor_test_inches_lbs[[3]])`, with a 95$\%$ confidence interval of [`r sprintf("%.3f", cor_test_inches_lbs[[9]][1])`, `r sprintf("%.3f", cor_test_inches_lbs[[9]][2])`].
+The `r cor_test_inches_lbs[[7]]` between height and weight is `r sprintf("%.3f", cor_test_inches_lbs[[4]])`, $t$(`r sprintf("%i", cor_test_inches_lbs[[2]])`)=`r sprintf("%2.3f", cor_test_inches_lbs[[1]])`, $p$=`r sprintf("%.5f", cor_test_inches_lbs[[3]])`, with a 95$\%$ confidence interval of [`r sprintf("%.3f", cor_test_inches_lbs[[9]][1])`, `r sprintf("%.3f", cor_test_inches_lbs[[9]][2])`].
 
 <span class="blue">I did some formatting using the `sprintf()` function to make the numbers look pretty. You may also find `format()` useful.</span>
 
@@ -324,8 +325,22 @@ Wilkinson, L., Wills, D., Rope, D., Norton, A., & Dubbs, R. (2005). The Grammar 
 
 - ggplot2 3.2.1 documentation: <http://docs.ggplot2.org/current/>
 - Wickham, H. (2010). *ggplot2: Elegant Graphics for Data Analysis (Use R!)* <http://ggplot2.org/book/>
-- Chang, Winston (2013). *R Graphics Cookbook. O'Reilly.
+- Chang, Winston (2013). *R Graphics Cookbook*. O'Reilly.
 - Kieran Healy's [workshop at RStudio::Conf 2020](https://github.com/rstudio-conf-2020/dataviz)
+
+## Example from [K. Healy talk](https://github.com/rstudio-conf-2020/dataviz)
+
+```{r}
+library(gapminder)
+library(ggplot2)
+
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap, y = lifeExp))
+
+p + geom_point() + 
+  geom_smooth(mapping = aes(color = continent, fill = continent)) + 
+  scale_x_log10(labels = scales::dollar)
+```
 
 # Advanced simulation
 
