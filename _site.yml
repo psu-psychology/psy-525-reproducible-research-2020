@@ -46,6 +46,8 @@ navbar:
           href: how_to/sample-rmarkdown-document.html
         - text: "Embed 'child' R Markdown documents"
           href: how_to/embed-rmarkdown-docs.html
+        - text: "Make reports that take parameters"
+          href: how_to/reports-with-parameters.html
   right:
     - text: "Site info"
       href: site-info.html

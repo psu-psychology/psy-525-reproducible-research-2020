@@ -1,0 +1,37 @@
+---
+title: "Template Parameterizable Report"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output: html_document
+params:
+  data_file_path: "csv/p_1.csv"
+---
+
+```{r setup-2, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+# Import data from `r params$data_file_path`
+
+```{r import-data}
+these_data <- readr::read_csv(params$data_file_path)
+```
+
+# Plot data
+
+```{r plot-hist}
+ggplot2::ggplot(these_data) +
+  ggplot2::aes(x = rt, fill = type) +
+  ggplot2::geom_histogram()
+```
+
+```{r}
+ggplot2::ggplot(these_data) +
+  ggplot2::aes(y = rt, x = type) +
+  ggplot2::geom_boxplot()
+```
+
+
+

@@ -1,0 +1,198 @@
+---
+title: "Making Reports with Parameters"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output: 
+  html_document:
+    self_contained: true
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      out.width = "400px",
+                      fig.align = "center")
+```
+
+# Purpose
+
+This document describes how to create "parameterizable" reports.
+
+You could use this to create one R Markdown document that summarizes data from single individuals across a study.
+
+# Preparatory work
+
+For our example use case, we need a set of data files for each participant.
+The following code generates a set of data files and stores them in the `csv/` directory.
+We've set `eval=FALSE` since we only need to run this once.
+
+```{r, warning=FALSE, message=FALSE, echo=TRUE, eval=FALSE}
+n_subs <- 5
+
+letts <- letters[1:3]
+nums <- 1:3
+stims <- c(letts, nums)
+
+n_blocks_run <- 10
+n_runs_expt <- 5
+
+make_conds <- function(stims, n_blocks_run, 
+                       n_runs_expt) {
+  x <- rep(sample(stims, length(stims)), n_blocks_run)
+  rep(x, n_runs_expt)
+}
+
+simulate_rt <- function(df, mu = 300, mu_sd = 20, 
+                        err_sd = 20, lett_eff = 40) {
+  n_trials <- dim(df)[1]
+  sub_mu <- rnorm(1, mu, mu_sd)
+  mus <- rep(sub_mu, n_trials)
+  errs <- rnorm(n_trials, mean = 0, sd = err_sd)
+  dplyr::mutate(df, rt = mus + ifelse(type == "letters", lett_eff, 0) + errs)
+}
+
+make_data <- function(p_id) {
+  stims <- make_conds(stims, n_blocks_run, n_runs_expt)
+  df <- data.frame(p_id = p_id,
+                   stim = stims)
+  df <- dplyr::mutate(df, type = ifelse(stim %in% letters, "letter", "number"))
+  df
+}
+
+save_data <- function(df, data_dir = "csv") {
+  if (!dir.exists(data_dir)) dir.create(data_dir)
+  fn <- paste0("p_", unique(df$p_id), ".csv")
+  fn_full <- file.path(data_dir, fn)
+  message("Saving data to '", fn_full, "'.")
+  readr::write_csv(df, fn_full)
+}
+
+make_save_data <- function(p_id) {
+  d <- make_data(p_id)
+  d <- simulate_rt(d)
+  save_data(d)
+}
+
+purrr::map(1:n_subs, make_save_data)
+```
+
+# Procedure
+
+## Create a report template.
+
+Your template must have a `params:` value in the YAML header.
+This is the means by which we'll send the document parameters.
+It's good practice to give a default value for the parameter.
+That let's us knit (render) the report while we are tweaking it.
+We can always change the parameter value(s) when we render the report from the console.
+
+Here is an example from the `report-template.Rmd` file.
+
+````yaml
+---
+title: "Template Parameterizable Report"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output: html_document
+params:
+  data_file_path: "csv/p_01.csv"
+---
+````
+
+## Add chunk to import
+
+Add a chunk to the template to import your data.
+Use `params$data_file_path` as the file parameter to import.
+
+````markdown
+`r ''````{r import-data}
+these_data <- readr::read_csv(file = params$data_file_path)
+```
+````
+
+## Add other chunks 
+
+Add chunks to to visualize or analyze your data.
+
+This is the chunk from the report template that plots a histogram for a single participant.
+
+````markdown
+`r ''````{r plot-hist}
+ggplot2::ggplot(these_data) +
+  ggplot2::aes(x = rt, fill = type) +
+  ggplot2::geom_histogram()
+```
+````
+
+## Create report-rendering functions
+
+I've saved the following under `R/report_rendering_helpers.R`.
+
+### Render single report
+
+This function renders a single report 
+
+```
+render_my_report <- function(fn, out_dir = "html") {
+  if (!file.exists(fn)) {
+    stop("File '", fn, "' not found.")
+  }
+  if (!dir.exists(out_dir)) {
+    dir.create(out_dir)
+  }
+  
+  # Create output file name
+  report_fn <- paste0(fn, ".html")
+  
+  rmarkdown::render(input = "report-template.Rmd", 
+                    output_file = report_fn,
+                    output_dir = "html", 
+                    params = list(data_file_path = fn))
+}
+```
+
+### Render list of reports
+
+This function runs the report across the list of input files using the `purrr:map()` function.
+This style of programming avoids ugly "for" loops, and is super-efficient, but is a bit advanced for us at this juncture.
+
+```
+render_all_reports <- function(data_dir = "csv") {
+  if (!dir.exists(data_dir)) {
+    stop(paste0("Data directory '", data_dir, "' not found."))
+  }
+  
+  fl <- list.files(data_dir, pattern = "p_[1-9]", full.names = TRUE)
+  purrr::map(fl, render_my_report)
+}
+```
+
+## Render the reports
+
+"Source" your `report_rendering_helpers.R` to bring the helper functions into your current environment.
+Then, run the `render_all_reports()` command from the console.
+
+*Note*: This code assumes that your R Markdown template is in your current directory, and that the `R/`, `csv/`, and `html/` directories are available in your current directory.
+Since this tutorial is in a sub-directory of the course website, I changed my working directory to `how_to/` before running the code.
+If you want to try this yourself, I recommend copying the relevant files to a clean project so you don't have to change your working directory.
+
+*Note*: Do this sort of "meta-programming" with R Markdown from R scripts and the console.
+R Markdown doesn't do well with rendering other R Markdown documents.
+It's like that scene in ["Being John Malkovich"](https://en.wikipedia.org/wiki/Being_John_Malkovich).
+
+## View the reports
+
+[html/p_1.csv.html](html/p_1.csv.html)
+
+[html/p_2.csv.html](html/p_2.csv.html)
+
+[html/p_3.csv.html](html/p_3.csv.html)
+
+[html/p_4.csv.html](html/p_4.csv.html)
+
+[html/p_5.csv.html](html/p_5.csv.html)
