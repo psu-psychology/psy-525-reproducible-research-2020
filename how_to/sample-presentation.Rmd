@@ -1,0 +1,74 @@
+---
+title: "Sample R Markdown Presentation"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+output: 
+  ioslides_presentation:
+    incremental: false
+    widescreen: true
+    smaller: true
+    transition: default
+    logo: img/psu-psych.png
+    css: css/ioslides.css
+  slidy_presentation:
+    font_adjustment: +1
+    duration: 30
+    footer: "Copyright (c) 2020, Rick Gilmore"
+  beamer_presentation:
+    theme: "AnnArbor"
+    colortheme: "dolphin"
+    fonttheme: "structurebold"
+  powerpoint_presentation: default
+  revealjs::revealjs_presentation:
+    self_contained: false
+    incremental: false
+    theme: simple
+    transition: none
+    reveal_plugins: ["notes", "zoom"]
+    reveal_options:
+      slideNumber: true
+      previewLinks: false
+      center: true
+      touch: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Header 1
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+# Header 2
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
+---
+
+This is a slide without a header.
+
+```{r, out.height="500px"}
+knitr::include_graphics("img/sleic.jpg")
+```

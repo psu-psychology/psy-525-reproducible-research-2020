@@ -1,0 +1,203 @@
+---
+title: "Week 7: More R & R Markdown Tricks"
+subtitle: "PSY 525"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output: 
+  ioslides_presentation:
+    self_contained: false
+    lib_dir: libs
+    widescreen: true
+    incremental: false
+    transition: default
+  html_document:
+    toc: true
+    toc_depth: 2
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "900px",
+                      cache = FALSE)
+```
+
+<!-- Code to make scrolling slides -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Announcements
+
+- Code for Her [workshop on LaTex](https://sites.psu.edu/codeforher/latex-spring-2020-workshop/), 2020-02-26 6-8p, Paterno 103, Mann Assembly Room
+- Data Science Community meeting 2020-02-28, 10a, Pattee Library Collaboration Commons
+- [Institute for Computational and Data Science (ICDS) events](https://ics.psu.edu/news-events/events/)
+- ["The Data Deluge", ICDS Symposium, March 16-17, 2020](https://ics.psu.edu/news-events/events/icds-symposium-2020/), NLI.
+
+## Today's topics
+
+- Websites with R Markdown
+- Slides with R Markdown
+- (Optional) Doing useful things *en masse*
+
+# Websites with R Markdown
+
+## Why?
+
+- Easy-peasy
+- Edit in R Markdown, render to HTML
+- Rapid (re)deployment
+
+## Anatomy of R Markdown-generated site
+
+- `_site.yml`
+- `index.Rmd`
+- `other_pages.Rmd`
+
+## [How to...](../how_to/make-website-with-rstudio.html)
+
+- Build the site
+- Render
+- View
+- Edit
+- Commit and push
+- Enable GitHub pages on repo (if not already done)
+
+---
+
+- Bask in the glow...
+
+```{r, out.width="600px", fig.align='center'}
+knitr::include_graphics("https://preview.redd.it/trp3w83h6hc11.jpg?width=960&crop=smart&auto=webp&s=5609b58dcb66535e23addf3643862194bcff59e4")
+```
+
+## Your turn
+
+- Local or GitHub?
+- If local, make new local folder
+- Create site
+- Render
+- View `index.html`
+
+# Slides with R Markdown
+
+## Virtues...
+
+- Easy to make, edit, version-control, share
+- Slides as webpages $\rightarrow$ present from a browser
+- Share in public GitHub repo $\rightarrow$ present from any computer anywhere
+
+---
+
+- Incorporate R code (rerender figures, etc.)
+- Incorporate live links to external resources (video, web pages, etc.)
+- Possibility of reusing other R Markdown docs
+
+## Vices...
+
+- Not always the prettiest (unless you customize)
+- Sometimes hard to export as PDF
+- Web resources disappear, end up behind paywalls
+
+## Anatomy of a slide file
+
+- YAML header
+- Slides
+    - With title text
+    - Without title text/header
+
+## Many `*_presentation` slide options
+
+- ioslides_presentation (HTML)
+- slidy_presentation (HTML)
+- beamer_presentation (PDF)
+    - requires LaTex or (`install.packages("tinytex)`)
+- powerpoint_presentation (PPTX)
+    - requires MS Powerpoint
+
+---
+
+- revealjs::revealjs_presentation (HTML)
+    - `install.packages("revealjs")`
+- xaringen (HTML)
+    - `install.packages("xaringen")`
+    
+## Examples
+
+- [ioslides_presentation](../how_to/sample-presentation-ioslides.html)
+- [slidy_presentation](../how_to/sample-presentation-slidy.html)
+- [beamer_presentation](../how_to/sample-presentation-beamer.pdf)
+- [powerpoint_presentation](../how_to/sample-presentation-powerpoint.pptx)
+- [revealjs::revealjs_presentation](../how_to/sample-presentation-revealjs.html)
+
+## Read the docs!
+
+- ioslides: https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html
+- slidy: https://bookdown.org/yihui/rmarkdown/slidy-presentation.html
+- beamer: https://bookdown.org/yihui/rmarkdown/beamer-presentation.html
+
+---
+
+- powerpoint: https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html
+- revealjs: https://bookdown.org/yihui/rmarkdown/revealjs.html
+
+## Other bits
+
+- Add custom HTML
+- Tweak the CSS
+
+## Your turn
+
+- File/New File/R Markdown.../Presentation/<TYPE>
+- Examine the YAML header
+- Try a customization
+
+# Doing useful things *en masse*
+
+## Parameters in R Markdown files
+
+- [how_to/reports-with-parameters.html](../how_to/reports-with-parameters.html)
+
+## Embed 'child' documents
+
+- [how_to/embed-rmarkdown-docs.html](../how_to/embed-rmarkdown-docs.html)
+
+---
+
+```{r, out.width="400px"}
+knitr::include_graphics("https://previews.123rf.com/images/rawpixel/rawpixel1804/rawpixel180400274/98708035-rule-of-thumb.jpg")
+```
+
+- If you repeat the same thing 2-3x...consider automating
+
+## Automating by participant plots
+
+# Next time
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](https://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+
+```{r session-info}
+sessionInfo()
+```
+
+## References

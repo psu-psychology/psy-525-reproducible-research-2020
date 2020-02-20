@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Week 7: More R &amp; R Markdown Tricks</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Week 7: More R &amp; R Markdown Tricks',
+                        subtitle: 'PSY 525',
+                useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Rick Gilmore' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <link href="libs/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="libs/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="libs/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="libs/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="libs/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="libs/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+  </style>
+
+  <link rel="stylesheet" href="css/gilmore.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-20 11:38:01</p>
+          </hgroup>
+  </slide>
+
+<!-- Code to make scrolling slides -->
+
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Preliminaries</h2></hgroup><article  id="preliminaries">
+
+</article></slide><slide class=""><hgroup><h2>Announcements</h2></hgroup><article  id="announcements">
+
+<ul>
+<li>Code for Her <a href='https://sites.psu.edu/codeforher/latex-spring-2020-workshop/' title=''>workshop on LaTex</a>, 2020-02-26 6-8p, Paterno 103, Mann Assembly Room</li>
+<li>Data Science Community meeting 2020-02-28, 10a, Pattee Library Collaboration Commons</li>
+<li><a href='https://ics.psu.edu/news-events/events/' title=''>Institute for Computational and Data Science (ICDS) events</a></li>
+<li><a href='https://ics.psu.edu/news-events/events/icds-symposium-2020/' title=''>&ldquo;The Data Deluge&rdquo;, ICDS Symposium, March 16-17, 2020</a>, NLI.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Today’s topics</h2></hgroup><article  id="todays-topics">
+
+<ul>
+<li>Websites with R Markdown</li>
+<li>Slides with R Markdown</li>
+<li>(Optional) Doing useful things <em>en masse</em></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Websites with R Markdown</h2></hgroup><article  id="websites-with-r-markdown">
+
+</article></slide><slide class=""><hgroup><h2>Why?</h2></hgroup><article  id="why">
+
+<ul>
+<li>Easy-peasy</li>
+<li>Edit in R Markdown, render to HTML</li>
+<li>Rapid (re)deployment</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Anatomy of R Markdown-generated site</h2></hgroup><article  id="anatomy-of-r-markdown-generated-site">
+
+<ul>
+<li><code>_site.yml</code></li>
+<li><code>index.Rmd</code></li>
+<li><code>other_pages.Rmd</code></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><a href='../how_to/make-website-with-rstudio.html' title=''>How to…</a></h2></hgroup><article  id="how-to">
+
+<ul>
+<li>Build the site</li>
+<li>Render</li>
+<li>View</li>
+<li>Edit</li>
+<li>Commit and push</li>
+<li>Enable GitHub pages on repo (if not already done)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Bask in the glow…</li>
+</ul>
+
+<p><img src="https://preview.redd.it/trp3w83h6hc11.jpg?width=960&crop=smart&auto=webp&s=5609b58dcb66535e23addf3643862194bcff59e4" width="600px" style="display: block; margin: auto;" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Your turn</h2></hgroup><article  id="your-turn">
+
+<ul>
+<li>Local or GitHub?</li>
+<li>If local, make new local folder</li>
+<li>Create site</li>
+<li>Render</li>
+<li>View <code>index.html</code></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Slides with R Markdown</h2></hgroup><article  id="slides-with-r-markdown">
+
+</article></slide><slide class=""><hgroup><h2>Virtues…</h2></hgroup><article  id="virtues">
+
+<ul>
+<li>Easy to make, edit, version-control, share</li>
+<li>Slides as webpages \(\rightarrow\) present from a browser</li>
+<li>Share in public GitHub repo \(\rightarrow\) present from any computer anywhere</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>Incorporate R code (rerender figures, etc.)</li>
+<li>Incorporate live links to external resources (video, web pages, etc.)</li>
+<li>Possibility of reusing other R Markdown docs</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Vices…</h2></hgroup><article  id="vices">
+
+<ul>
+<li>Not always the prettiest (unless you customize)</li>
+<li>Sometimes hard to export as PDF</li>
+<li>Web resources disappear, end up behind paywalls</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Anatomy of a slide file</h2></hgroup><article  id="anatomy-of-a-slide-file">
+
+<ul>
+<li>YAML header</li>
+<li>Slides
+
+<ul>
+<li>With title text</li>
+<li>Without title text/header</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Many <code>*_presentation</code> slide options</h2></hgroup><article  id="many-_presentation-slide-options">
+
+<ul>
+<li>ioslides_presentation (HTML)</li>
+<li>slidy_presentation (HTML)</li>
+<li>beamer_presentation (PDF)
+
+<ul>
+<li>requires LaTex or (<code>install.packages(&quot;tinytex)</code>)</li>
+</ul></li>
+<li>powerpoint_presentation (PPTX)
+
+<ul>
+<li>requires MS Powerpoint</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>revealjs::revealjs_presentation (HTML)
+
+<ul>
+<li><code>install.packages(&quot;revealjs&quot;)</code></li>
+</ul></li>
+<li>xaringen (HTML)
+
+<ul>
+<li><code>install.packages(&quot;xaringen&quot;)</code></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Examples</h2></hgroup><article  id="examples">
+
+<ul>
+<li><a href='../how_to/sample-presentation-ioslides.html' title=''>ioslides_presentation</a></li>
+<li><a href='../how_to/sample-presentation-slidy.html' title=''>slidy_presentation</a></li>
+<li><a href='../how_to/sample-presentation-beamer.pdf' title=''>beamer_presentation</a></li>
+<li><a href='../how_to/sample-presentation-powerpoint.pptx' title=''>powerpoint_presentation</a></li>
+<li><a href='../how_to/sample-presentation-revealjs.html' title=''>revealjs::revealjs_presentation</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Read the docs!</h2></hgroup><article  id="read-the-docs">
+
+<ul>
+<li>ioslides: <a href='https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html' title=''>https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html</a></li>
+<li>slidy: <a href='https://bookdown.org/yihui/rmarkdown/slidy-presentation.html' title=''>https://bookdown.org/yihui/rmarkdown/slidy-presentation.html</a></li>
+<li>beamer: <a href='https://bookdown.org/yihui/rmarkdown/beamer-presentation.html' title=''>https://bookdown.org/yihui/rmarkdown/beamer-presentation.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li>powerpoint: <a href='https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html' title=''>https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html</a></li>
+<li>revealjs: <a href='https://bookdown.org/yihui/rmarkdown/revealjs.html' title=''>https://bookdown.org/yihui/rmarkdown/revealjs.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Other bits</h2></hgroup><article  id="other-bits">
+
+<ul>
+<li>Add custom HTML</li>
+<li>Tweak the CSS</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Your turn</h2></hgroup><article  id="your-turn-1">
+
+<ul>
+<li>File/New File/R Markdown…/Presentation/<TYPE></li>
+<li>Examine the YAML header</li>
+<li>Try a customization</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Doing useful things <em>en masse</em></h2></hgroup><article  id="doing-useful-things-en-masse">
+
+</article></slide><slide class=""><hgroup><h2>Parameters in R Markdown files</h2></hgroup><article  id="parameters-in-r-markdown-files">
+
+<ul>
+<li><a href='../how_to/reports-with-parameters.html' title=''>how_to/reports-with-parameters.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Embed &lsquo;child&rsquo; documents</h2></hgroup><article  id="embed-child-documents">
+
+<ul>
+<li><a href='../how_to/embed-rmarkdown-docs.html' title=''>how_to/embed-rmarkdown-docs.html</a></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p><img src="https://previews.123rf.com/images/rawpixel/rawpixel1804/rawpixel180400274/98708035-rule-of-thumb.jpg" width="400px" style="display: block; margin: auto;" /></p>
+
+<ul>
+<li>If you repeat the same thing 2-3x…consider automating</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Automating by participant plots</h2></hgroup><article  id="automating-by-participant-plots">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Next time</h2></hgroup><article  id="next-time">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Resources</h2></hgroup><article  id="resources">
+
+</article></slide><slide class=""><hgroup><h2>Software</h2></hgroup><article  id="software">
+
+<p>This talk was produced on 2020-02-20 in <a href='https://rstudio.com' title=''>RStudio</a> using R Markdown. The code and materials used to generate the slides may be found at <a href='https://github.com/psu-psychology/psy-525-reproducible-research-2020' title=''>https://github.com/psu-psychology/psy-525-reproducible-research-2020</a>. Information about the R Session that produced the code is as follows:</p>
+
+<pre >## R version 3.6.2 (2019-12-12)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.6
+## 
+## Matrix products: default
+## BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] lme4_1.1-21     Matrix_1.2-18   gapminder_0.3.0 dplyr_0.8.3    
+## [5] ggplot2_3.2.1  
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.3       nloptr_1.2.1     plyr_1.8.5       compiler_3.6.2  
+##  [5] pillar_1.4.3     base64enc_0.1-3  tools_3.6.2      boot_1.3-23     
+##  [9] digest_0.6.23    packrat_0.5.0    nlme_3.1-142     lattice_0.20-38 
+## [13] evaluate_0.14    lifecycle_0.1.0  tibble_2.1.3     gtable_0.3.0    
+## [17] pkgconfig_2.0.3  rlang_0.4.4      yaml_2.2.0       xfun_0.12       
+## [21] withr_2.1.2      stringr_1.4.0    knitr_1.27       revealjs_0.9    
+## [25] grid_3.6.2       tidyselect_1.0.0 tufte_0.5        glue_1.3.1      
+## [29] R6_2.4.1         jpeg_0.1-8.1     rmarkdown_2.1    minqa_1.2.4     
+## [33] reshape2_1.4.3   farver_2.0.3     purrr_0.3.3      magrittr_1.5    
+## [37] MASS_7.3-51.5    splines_3.6.2    scales_1.1.0     htmltools_0.4.0 
+## [41] assertthat_0.2.1 mime_0.8         colorspace_1.4-1 labeling_0.3    
+## [45] tinytex_0.19     stringi_1.4.5    lazyeval_0.2.2   munsell_0.5.0   
+## [49] crayon_1.3.4</pre>
+
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references"></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
