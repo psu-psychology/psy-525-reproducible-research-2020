@@ -74,7 +74,12 @@ slides > slide:not(.nobackground):after {
 - Render
 - View
 - Edit
+- Rebuild, re-render, view, edit, etc.
+
+---
+
 - Commit and push
+- Pull from dev branch (if you're using one)
 - Enable GitHub pages on repo (if not already done)
 
 ---
@@ -184,9 +189,13 @@ knitr::include_graphics("https://previews.123rf.com/images/rawpixel/rawpixel1804
 
 - If you repeat the same thing 2-3x...consider automating
 
-## Automating by participant plots
+## Automating by-participant plots
+
+<https://github.com/gilmore-lab/sex-differences-in-motion-perception>
 
 # Next time
+
+- Student's choice
 
 # Resources
 
