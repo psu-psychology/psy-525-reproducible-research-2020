@@ -102,7 +102,7 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">2020-02-25 09:28:17</p>
+            <p style="margin-top: 6px; margin-left: -2px;">2020-02-25 11:39:36</p>
           </hgroup>
   </slide>
 
@@ -259,20 +259,9 @@ h &lt;- h_pred + rnorm(n = sample_n, mean = 0, sd = sigma)</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <pre class = 'prettyprint lang-r'>library(ggplot2)
-library(dplyr)</pre>
+library(dplyr)
 
-<pre >## 
-## Attaching package: &#39;dplyr&#39;</pre>
-
-<pre >## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</pre>
-
-<pre >## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</pre>
-
-<pre class = 'prettyprint lang-r'>hist(w)</pre>
+hist(w)</pre>
 
 <p><img src="2020-02-18_files/figure-html/plot-hist-1.png" width="900px" style="display: block; margin: auto;" /></p>
 
@@ -316,10 +305,12 @@ scatter_1</pre>
 with(height_weight, cor.test(x = inches, y = lbs))</pre>
 
 <pre >## 
-##  Pearson&#39;s product-moment correlation
+##  Pearson&#39;s product-moment
+##  correlation
 ## 
 ## data:  inches and lbs
-## t = 21.472, df = 198, p-value &lt; 2.2e-16
+## t = 21.472, df = 198, p-value &lt;
+## 2.2e-16
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
 ##  0.7892534 0.8737537
@@ -392,12 +383,16 @@ summary(fit) # Use lm() command to fit formula</pre>
 ## -37.103  -7.520   0.850   6.759  29.707 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 38.58790    2.51316   15.35   &lt;2e-16 ***
-## lbs          0.32149    0.01497   21.47   &lt;2e-16 ***
+##             Estimate Std. Error t value
+## (Intercept) 38.58790    2.51316   15.35
+## lbs          0.32149    0.01497   21.47
+##             Pr(&gt;|t|)    
+## (Intercept)   &lt;2e-16 ***
+## lbs           &lt;2e-16 ***
 ## ---
 ## Signif. codes:  
-## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;
+##   0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 10.44 on 198 degrees of freedom
 ## Multiple R-squared:  0.6996, Adjusted R-squared:  0.6981 
@@ -451,16 +446,22 @@ summary(fit)</pre>
 ## lm(formula = inches ~ lbs, data = height_weight)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -24.8229  -7.5843   0.0817   6.1271  29.6438 
+##      Min       1Q   Median       3Q 
+## -24.8229  -7.5843   0.0817   6.1271 
+##      Max 
+##  29.6438 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 34.88577    2.48984   14.01   &lt;2e-16 ***
-## lbs          0.33834    0.01465   23.09   &lt;2e-16 ***
+##             Estimate Std. Error t value
+## (Intercept) 34.88577    2.48984   14.01
+## lbs          0.33834    0.01465   23.09
+##             Pr(&gt;|t|)    
+## (Intercept)   &lt;2e-16 ***
+## lbs           &lt;2e-16 ***
 ## ---
 ## Signif. codes:  
-## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;
+##   0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 9.794 on 198 degrees of freedom
 ## Multiple R-squared:  0.7293, Adjusted R-squared:  0.7279 
@@ -686,18 +687,18 @@ max_x = 250</pre>
 <pre class = 'prettyprint lang-r'># Defaults only
 height_weight_sim()</pre>
 
-<pre >##      beta0      beta1   beta0.lo   beta0.hi   beta1.lo 
-## 36.0000000  0.3300000 30.6497291 40.0010555  0.3066327 
-##   beta1.hi 
-##  0.3610621</pre>
+<pre >##      beta0      beta1   beta0.lo 
+## 36.0000000  0.3300000 30.6497291 
+##   beta0.hi   beta1.lo   beta1.hi 
+## 40.0010555  0.3066327  0.3610621</pre>
 
 <pre class = 'prettyprint lang-r'># Larger sample size
 height_weight_sim(sample_n = 500)</pre>
 
-<pre >##      beta0      beta1   beta0.lo   beta0.hi   beta1.lo 
-## 36.0000000  0.3300000 33.3918123 39.6015099  0.3081033 
-##   beta1.hi 
-##  0.3444201</pre>
+<pre >##      beta0      beta1   beta0.lo 
+## 36.0000000  0.3300000 33.3918123 
+##   beta0.hi   beta1.lo   beta1.hi 
+## 39.6015099  0.3081033  0.3444201</pre>
 
 </article></slide><slide class=""><hgroup><h2>Doing a series of simulations</h2></hgroup><article  id="doing-a-series-of-simulations">
 
@@ -877,11 +878,8 @@ sub_rt_df_merged &lt;- Reduce(function(x, y) merge(x, y, all=TRUE), sub_rt_df_li
 
 </article></slide><slide class=""><hgroup><h2>And, just for fun</h2></hgroup><article  id="and-just-for-fun">
 
-<pre class = 'prettyprint lang-r'>library(lme4)</pre>
-
-<pre >## Loading required package: Matrix</pre>
-
-<pre class = 'prettyprint lang-r'>fit1 &lt;- lmer(formula = rt ~ stim + (1|sub.id), data = sub_rt_df_merged)
+<pre class = 'prettyprint lang-r'>library(lme4)
+fit1 &lt;- lmer(formula = rt ~ stim + (1|sub.id), data = sub_rt_df_merged)
 summary(fit1)</pre>
 
 <pre >## Linear mixed model fit by REML [&#39;lmerMod&#39;]
@@ -916,16 +914,22 @@ summary(fit2)</pre>
 
 <pre >## 
 ## Error: as.factor(sub.id)
-##           Df   Sum Sq Mean Sq F value Pr(&gt;F)
-## Residuals 29 17943263  618733               
+##           Df   Sum Sq Mean Sq F value
+## Residuals 29 17943263  618733        
+##           Pr(&gt;F)
+## Residuals       
 ## 
 ## Error: Within
-##             Df   Sum Sq Mean Sq F value Pr(&gt;F)    
-## stim         1  3843699 3843699    1516 &lt;2e-16 ***
-## Residuals 5969 15131695    2535                   
+##             Df   Sum Sq Mean Sq F value
+## stim         1  3843699 3843699    1516
+## Residuals 5969 15131695    2535        
+##           Pr(&gt;F)    
+## stim      &lt;2e-16 ***
+## Residuals           
 ## ---
 ## Signif. codes:  
-## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</pre>
+##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;
+##   0.1 &#39; &#39; 1</pre>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Next time</h2></hgroup><article  id="next-time">
 
@@ -953,29 +957,42 @@ summary(fit2)</pre>
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
 ## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets 
-## [6] methods   base     
+## [1] stats     graphics  grDevices
+## [4] utils     datasets  methods  
+## [7] base     
 ## 
 ## other attached packages:
-## [1] lme4_1.1-21     Matrix_1.2-18   gapminder_0.3.0
-## [4] dplyr_0.8.4     ggplot2_3.2.1  
+## [1] knitr_1.28      lme4_1.1-21    
+## [3] Matrix_1.2-18   gapminder_0.3.0
+## [5] dplyr_0.8.4     ggplot2_3.2.1  
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.3       nloptr_1.2.1     plyr_1.8.5      
-##  [4] pillar_1.4.3     compiler_3.6.2   tools_3.6.2     
-##  [7] boot_1.3-23      digest_0.6.25    packrat_0.5.0   
-## [10] nlme_3.1-142     lattice_0.20-38  evaluate_0.14   
-## [13] lifecycle_0.1.0  tibble_2.1.3     gtable_0.3.0    
-## [16] pkgconfig_2.0.3  rlang_0.4.4      yaml_2.2.1      
-## [19] xfun_0.12        withr_2.1.2      stringr_1.4.0   
-## [22] knitr_1.28       grid_3.6.2       tidyselect_1.0.0
-## [25] tufte_0.5        glue_1.3.1       R6_2.4.1        
-## [28] rmarkdown_2.1    minqa_1.2.4      purrr_0.3.3     
-## [31] farver_2.0.3     reshape2_1.4.3   magrittr_1.5    
-## [34] MASS_7.3-51.5    splines_3.6.2    scales_1.1.0    
-## [37] htmltools_0.4.0  assertthat_0.2.1 colorspace_1.4-1
-## [40] labeling_0.3     stringi_1.4.6    lazyeval_0.2.2  
-## [43] munsell_0.5.0    crayon_1.3.4</pre>
+##  [1] Rcpp_1.0.3       highr_0.8       
+##  [3] nloptr_1.2.1     plyr_1.8.5      
+##  [5] pillar_1.4.3     compiler_3.6.2  
+##  [7] base64enc_0.1-3  tools_3.6.2     
+##  [9] boot_1.3-23      digest_0.6.25   
+## [11] packrat_0.5.0    nlme_3.1-142    
+## [13] lattice_0.20-38  evaluate_0.14   
+## [15] lifecycle_0.1.0  tibble_2.1.3    
+## [17] gtable_0.3.0     pkgconfig_2.0.3 
+## [19] rlang_0.4.4      yaml_2.2.1      
+## [21] xfun_0.12        withr_2.1.2     
+## [23] stringr_1.4.0    vctrs_0.2.3     
+## [25] hms_0.5.3        grid_3.6.2      
+## [27] tidyselect_1.0.0 tufte_0.5       
+## [29] glue_1.3.1       R6_2.4.1        
+## [31] jpeg_0.1-8.1     rmarkdown_2.1   
+## [33] minqa_1.2.4      readr_1.3.1     
+## [35] purrr_0.3.3      farver_2.0.3    
+## [37] reshape2_1.4.3   magrittr_1.5    
+## [39] MASS_7.3-51.5    splines_3.6.2   
+## [41] scales_1.1.0     htmltools_0.4.0 
+## [43] assertthat_0.2.1 mime_0.9        
+## [45] colorspace_1.4-1 labeling_0.3    
+## [47] tinytex_0.19     stringi_1.4.6   
+## [49] lazyeval_0.2.2   munsell_0.5.0   
+## [51] crayon_1.3.4</pre>
 
 </article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references"></article></slide>
 

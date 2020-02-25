@@ -1583,7 +1583,7 @@ div.tocify {
 <h1 class="title toc-ignore">R Markdown testbed</h1>
 <h3 class="subtitle">PSY 525</h3>
 <h4 class="author">Rick Gilmore</h4>
-<h4 class="date">2020-02-18 20:22:27</h4>
+<h4 class="date">2020-02-25 11:40:40</h4>
 
 </div>
 
@@ -1641,11 +1641,15 @@ y = rnorm(n = 100, mean = 2, sd = 0.5) # N(2, 0.5)</code></pre>
 <div id="summarize" class="section level2">
 <h2><span class="header-section-number">3.1</span> Summarize</h2>
 <pre class="r"><code>summary(x)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -3.0608 -0.5828  0.1755  0.2067  0.9175  2.9609</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu. 
+## -3.0608 -0.5828  0.1755  0.2067  0.9175 
+##    Max. 
+##  2.9609</code></pre>
 <pre class="r"><code>summary(y)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.6447  1.7091  2.0343  2.0401  2.3756  3.1948</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu. 
+##  0.6447  1.7091  2.0343  2.0401  2.3756 
+##    Max. 
+##  3.1948</code></pre>
 </div>
 <div id="histogram" class="section level2">
 <h2><span class="header-section-number">3.2</span> Histogram</h2>
@@ -1700,8 +1704,8 @@ Rick’s pic from Databrary
 <pre class="r"><code>summ.x = summary(x)
 summ.y = summary(y)
 names(summ.x) # Figure out variable names for indexing</code></pre>
-<pre><code>## [1] &quot;Min.&quot;    &quot;1st Qu.&quot; &quot;Median&quot;  &quot;Mean&quot;   
-## [5] &quot;3rd Qu.&quot; &quot;Max.&quot;</code></pre>
+<pre><code>## [1] &quot;Min.&quot;    &quot;1st Qu.&quot; &quot;Median&quot; 
+## [4] &quot;Mean&quot;    &quot;3rd Qu.&quot; &quot;Max.&quot;</code></pre>
 <p><em>Index by variable name:</em> X lies within the range of [-3.0607713, 2.9609391].</p>
 <p><em>Index by numeric index:</em> The (y-x) difference in means is 1.8333639.</p>
 <p><em>Calculate and report:</em> The correlation between x and y is 0.1743824.</p>

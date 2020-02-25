@@ -130,7 +130,7 @@ knitr::include_graphics("https://preview.redd.it/trp3w83h6hc11.jpg?width=960&cro
 - ioslides_presentation (HTML)
 - slidy_presentation (HTML)
 - beamer_presentation (PDF)
-    - requires LaTex or (`install.packages("tinytex)`)
+    - requires LaTex or (`install.packages("tinytex")`)
 - powerpoint_presentation (PPTX)
     - requires MS Powerpoint
 
