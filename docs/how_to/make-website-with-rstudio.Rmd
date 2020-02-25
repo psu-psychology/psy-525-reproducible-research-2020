@@ -34,7 +34,7 @@ There is a very similar workflow for creating a site for an organization (or a p
 
 ### Make the website
 
-1. View the [web_site template directory](https://github.com/psu-psychology/psy-525-reproducible-research-2020/tree/master/how_to/web_site_template) for a skeletal structure you can build on.
+1. View the [web_site template directory](https://github.com/psu-psychology/psy-525-reproducible-research-2020/how-to/web_site_template/docs) for a skeletal structure you can build on.
 2. Essential components of the site are as follows:
     - an `index.Rmd` file that is your home page.
     - a `_site.yml` file that tells RStudio how to render the `.Rmd` and other files into a site.
