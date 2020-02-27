@@ -5,7 +5,7 @@ render_subfolder <- function(sub_dir = "lectures") {
   message(paste0("There are ", length(fl), " files to render."))
   if (length(fl) > 0) {
     message(paste0("Rendering."))
-    lapply(fl, rmarkdown::render)
+    purrr::map(fl, rmarkdown::render)
   } else {
     message(paste0("No files to render. Exiting."))
   }
@@ -38,5 +38,5 @@ clean_up <- function() {
   if (file.exists("docs/psy-525-spring-2020.csv")) {
     file.remove("docs/psy-525-spring-2020.csv")
   }
-  launch_github()
+  #launch_github()
 }
