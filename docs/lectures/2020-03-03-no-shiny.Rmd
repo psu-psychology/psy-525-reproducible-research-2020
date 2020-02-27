@@ -1,0 +1,258 @@
+---
+title: "Week 8: Shiny"
+subtitle: "PSY 525"
+author: "Rick O. Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output:
+  ioslides_presentation:
+    incremental: no
+    self-contained: yes
+    transition: default
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "900px",
+                      cache = FALSE)
+```
+
+<!-- Scrolling slides -->
+<!-- http://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Announcements
+
+- No class next seek (Spring Break)
+- HW: Complete a 1-2 page write-up describing your plans for your final project. (Commit it to the repo you're using for that work.)
+
+## Today's topics
+
+- Interactive web apps with Shiny
+
+# Shiny
+
+## Background
+
+- RStudio framework for making interactive, web-based data applications
+- Basic [tutorial](http://shiny.rstudio.com/tutorial/)
+- [Gallery](http://shiny.rstudio.com/)
+
+## Components
+
+- User interface (UI)
+- Server instructions
+- Web server
+- Web browser
+
+## Template
+
+~~~~
+library(shiny)
+ui <- fluidPage()
+server <- function(input, output) {}
+shinyApp(ui = ui, server = server)
+~~~~
+
+## Correlation demo
+
+- **Goal**: Create an app to visualize the effects of changing the slope (m) and error (sd) in a linear relation 
+
+$$Y \sim X * \beta + N(0,\sigma)$$
+
+or
+
+$$ Y \sim X_0*\beta_0 + X_1*\beta_1 + N(0,\sigma)$$ 
+
+---
+
+- Inputs
+    + number of points
+    + slope
+    + error
+- Outputs
+    + scatter plot with fitted line
+    + correlation value
+
+---
+
+```{r, echo=FALSE}
+my.shiny.dir <- "shiny-apps/correlation-app"
+shiny::shinyAppDir(appDir = my.shiny.dir,
+  options=list(
+    width="100%", height=700
+  )
+)
+```
+
+## UI input components
+
+- Sliders for numeric input use `sliderInput()` function
+- Parameters *inputId*, *label*, *min*, *max*, and *value*
+
+~~~
+sliderInput(inputId = "points",
+  label = "Number of points:",
+  min = 10,
+  max = 200,
+  value = 50)
+~~~
+
+## Sliders for slope, error
+
+~~~
+sliderInput(inputId = "slope",
+  label = "Slope:",
+  min = -10,
+  max = 10,
+  value = 1)
+      
+sliderInput(inputId = "error",
+  label = "Error:",
+  min = .0001,
+  max = 5,
+  value = 0.5)
+~~~
+
+## Under the hood
+
+- Adjust the slider $\rightarrow$ the `sliderInput` function converts the slider position into a number
+    - That number gets assigned to the `inputId` of the UI element
+    - A list of elements with the `inputId` equal to the variable name(s) gets created: `input$points`, `input$slope`, ...
+    
+---
+
+- A `server(input, output)` function takes the `ui` inputs and creates an `output`
+- The UI takes the `output` and shows it on the screen
+
+## Server function
+
+- Syntax is `server <- function(input, output) {}`
+- Use `input$points`, `input$slope`, and `input$error` to grab values from UI
+- Save plot to `output$scatterPlot`
+
+## Calculating points and plotting them
+
+- Generate n = `input$points` as x
+- Calculate y = x * `input$slope` + error
+    + where error = `rnorm(input$points, sd = input$error)`
+- Plot x, y
+
+---
+
+~~~
+output$scatterPlot <- renderPlot({
+    # Calculate x, y, with slope and error
+    x = runif(input$points)
+    
+    # Vectorize x for point-wise multiplication
+    y = rep(input$slope, input$points) * as.vector(x) + 
+        rnorm(input$points, sd = input$error)
+        
+    # draw the histogram with the specified number of bins
+    scatter.smooth(x = x, y = y, xlab = "x", ylab = "y")
+})
+~~~
+
+## The whole shebang
+
+```
+library(shiny)
+
+# Define UI for application that draws a scatterplot
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("Correlation Demo"),
+  
+  # Sidebar with a slider input for number of points 
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(inputId = "points",
+                  label = "Number of points:",
+                  min = 10,
+                  max = 200,
+                  value = 50),
+      sliderInput(inputId = "slope",
+                  label = "Slope:",
+                  min = -10,
+                  max = 10,
+                  value = 1),
+      sliderInput(inputId = "error",
+                  label = "Error:",
+                  min = .0001,
+                  max = 5,
+                  value = 0.5)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput(outputId = "scatterPlot")
+    )
+  )
+)
+
+# Define server logic
+server <- function(input, output) {
+  
+  output$scatterPlot <- renderPlot({
+    
+    # Calculate x, y, with slope and error
+    x = runif(input$points)
+    y = rep(input$slope, input$points) * as.vector(x) + rnorm(input$points, sd = input$error)
+    
+    # draw the plot
+    scatter.smooth(x = x, y = y, xlab = "x", ylab = "y")
+  })
+}
+```
+
+## Why do this?
+
+- Fun, informative way to **simulate** before you run your study
+- Strong hypothesis generation, prediction
+- Interactive report
+- Interactive publication!
+
+## Let's explore
+
+- <http://wordbank.stanford.edu>
+- <https://www.rstudio.com/products/shiny/shiny-user-showcase/>
+- <http://shinyapps.org/>
+- <https://radiant-rstats.github.io/docs/>
+- <https://www.showmeshiny.com/>
+
+## Learning more
+
+- Shiny cheatsheet from RStudio. <https://www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf>
+
+# Your turn
+
+## Complete a series of "quests"
+
+- Clone the repo at <https://github.com/psu-psychology/shiny-resources>
+- Render `shiny-templates/shiny-work.Rmd` to see what the various examples do using `rmarkdown::render("shiny-templates/shiny-work.Rmd")`.
+- Try the quests!
+- Have fun
+
+# Next time...
+
+---
+
+- Python!
