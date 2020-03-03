@@ -18,7 +18,7 @@ runtime: shiny
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
                       fig.align = "center",
-                      out.width = "900px",
+                      out.width = "700px",
                       cache = FALSE)
 ```
 
@@ -43,9 +43,28 @@ slides > slide:not(.nobackground):after {
 - No class next seek (Spring Break)
 - HW: Complete a 1-2 page write-up describing your plans for your final project. (Commit it to the repo you're using for that work.)
 
+---
+
+- Women+ in Statistics and Data Science Group
+    - Seeking mentors and mentees [application](https://nam01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fforms.gle%2FDgWBWYmfA5L5mmTk7&data=02%7C01%7Crog1%40PSU.EDU%7C2dc85374382645c04c2a08d7bc86af44%7C7cf48d453ddb4389a9c1c115526eb52e%7C0%7C1%7C637185159049914361&sdata=PHcOhxzW5kn9akrao%2B%2BblFdG7Rn3RRnruRhoIOs6j%2BY%3D&reserved=0)
+    - Symposium on Statistics and Data Science (in Pgh), [submissions](https://ww2.amstat.org/meetings/sdss/2020/) due March 10
+
 ## Today's topics
 
+- Why you must plot first
 - Interactive web apps with Shiny
+
+# Why you must plot first
+
+## [Anscombe's Quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet)
+
+```{r}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Anscombe%27s_quartet_3.svg/638px-Anscombe%27s_quartet_3.svg.png")
+```
+
+## Datasaurus dozen ([Matejka & Fitzmaurice](https://www.autodeskresearch.com/publications/samestats))
+
+<iframe width="1140" height="684" src="https://www.youtube.com/embed/DbJyPELmhJc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Shiny
 
