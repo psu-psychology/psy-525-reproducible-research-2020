@@ -1,0 +1,1228 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={PSY 525.001 Spring 2020 Syllabus},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{PSY 525.001 Spring 2020 Syllabus}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{transparent-open-and-reproducible-research-practices-in-the-social-and-behavioral-sciences}{%
+\subsection{Transparent, Open, and Reproducible Research Practices in
+the Social and Behavioral
+Sciences}\label{transparent-open-and-reproducible-research-practices-in-the-social-and-behavioral-sciences}}
+
+Sidney Harris, New Yorker Magazine
+
+\hypertarget{instructor}{%
+\subsection{Instructor}\label{instructor}}
+
+Rick O. Gilmore, Ph.D. Professor of Psychology 114 Moore Building
+
++1 (814) 865-3664 rogilmore AT psu DOT edu
+\href{http://doodle.com/rickgilmore}{Schedule an appointment}
+
+\url{https://www.personal.psu.edu/rog1}
+\url{https://gilmore-lab.github.io} \url{https://databrary.org}
+
+\hypertarget{meeting-location-and-time}{%
+\subsection{Meeting Location and Time}\label{meeting-location-and-time}}
+
+Please note that beginning Tuesday, March 17 and continuing until
+further notice the class will meet on Zoom at
+\url{https://psu.zoom.us/my/rogilmore} in order to help reduce the
+impact of the COVID-19 outbreak.
+
+Tues 09:05-11:50 pm, \sout{350
+Moore}\url{https://psu.zoom.us/my/rogilmore} January 6 - May 1, 2020
+course 17294
+
+\hypertarget{resources}{%
+\subsection{Resources}\label{resources}}
+
+\begin{itemize}
+\tightlist
+\item
+  Awesome, free-to-you, data science tutorials from .
+\item
+  Psychology Department
+  \href{https://psu-psychology.github.io/data-science-and-reproducibility/}{page}
+  and
+  \href{https://psu-psychology.github.io/data-science-and-reproducibility/forum.html}{discussion
+  group} about data science and reproducibility.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{about-the-course}{%
+\subsection{About the course}\label{about-the-course}}
+
+Is there a crisis of reproducibility in psychological science? What does
+it mean to ask the question? What are transparent, open, and
+reproducible research practices? Should one implement them? How? This
+course will seek answers to these questions. Students will read about
+recent failures in research transparency and reproducibility and discuss
+the ethics of open practices in scientific research. Through a series of
+guided exercises students will learn how to use new research tools
+(e.g.~\href{https://www.rstudio.com}{RStudio},
+\href{http://jupyter.org}{Jupyter/iPython}, the
+\href{http://osf.io}{Open Science Framework},
+\href{http://github.com}{GitHub},
+\href{https://en.wikipedia.org/wiki/Command-line_interface}{command line
+scripting}) that make it easier to implement open and reproducible
+research practices. At the end of the course, students will be capable
+of implementing one or more new research practices into their own
+workflows. Evaluation will be based on in-class participation, short
+papers, and project assignments. No prior software development
+experience is required, but a willingness to learn new skills is
+essential.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{schedule}{%
+\section{Schedule}\label{schedule}}
+
+\hypertarget{week-1-tuesday-january-14-2020}{%
+\subsection{Week 1: Tuesday, January 14,
+2020}\label{week-1-tuesday-january-14-2020}}
+
+\hypertarget{topics}{%
+\subsubsection{Topics}\label{topics}}
+
+\begin{itemize}
+\tightlist
+\item
+  Introduction to the course
+\item
+  Needs/interests assessment, and goal setting
+\item
+  Discussion: Why trust science?
+\item
+  Setting up computational environments
+
+  \begin{itemize}
+  \tightlist
+  \item
+    On your local machine
+  \item
+    In the cloud
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework}{%
+\subsubsection{Homework}\label{homework}}
+
+Due by the start of class on 2020-01-21.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  In a paragraph or two, discuss whether you think researchers in your
+  field \emph{do} and \emph{should} embrace ``Mertonian norms.'' Why or
+  why not?
+\item
+  In a paragraph or two, describe your current knowledge of computer
+  programming languages, and at least three learning goals you have for
+  building upon that base.
+\item
+  Create a GitHub account, send me your account name in an email, and
+  see if you can create your own copy (fork or clone) of the course
+  repository. If you succeed, take a screen shot of the repository in
+  your local GitHub account.
+\item
+  Write these items up in a Word (.docx) file, and email it to me. Make
+  sure to use a sensible file name, e.g.,
+  \texttt{psy525-YOUR\_LAST\_NAME-2020-01-21.docx}.
+\end{enumerate}
+
+\hypertarget{week-2-tuesday-january-21-2020}{%
+\subsection{Week 2: Tuesday, January 21,
+2020}\label{week-2-tuesday-january-21-2020}}
+
+\hypertarget{topics-1}{%
+\subsubsection{Topics}\label{topics-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  The values of science
+\item
+  Cases of scientific misconduct
+\item
+  What is reproducibility? Are we in a crisis?
+\end{itemize}
+
+\hypertarget{readingswebinars}{%
+\subsubsection{Readings/webinars}\label{readingswebinars}}
+
+\begin{itemize}
+\tightlist
+\item
+  The values of science (read 1; skim the others)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Nosek, B. A., \& Bar-Anan, Y. (2012). Scientific utopia I: Opening
+    scientific communication. \emph{Psychological Inquiry},
+    \emph{23}(3), 217--243. Retrieved May 9, 2015, from
+    \url{http://dx.doi.org/10.1080/1047840X.2012.692215}
+  \item
+    Kim, S. Y., \& Kim, Y. (2018). The ethos of science and its
+    correlates: An empirical analysis of scientists' endorsement of
+    Mertonian norms. \emph{Science, Technology and Society}, 23(1),
+    1--24. SAGE Publications India. Retrieved from
+    \url{https://doi.org/10.1177/0971721817744438}
+  \item
+    Brakewood, B., \& Poldrack, R. A. (2013). The ethics of secondary
+    data analysis: Considering the application of Belmont principles to
+    the sharing of neuroimaging data. \emph{NeuroImage}, \emph{82},
+    671--676. Retrieved from
+    \url{http://dx.doi.org/10.1016/j.neuroimage.2013.02.040}
+  \end{itemize}
+\item
+  Cases of scientific misconduct (read 1; skim the other)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes}{Hauser}
+  \item
+    \href{http://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all\&_r=0}{Stapel}
+  \end{itemize}
+\item
+  Reproducibility (skim)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Open Science Collaboration. (2015). Estimating the reproducibility
+    of psychological science. \emph{Science}, \emph{349}(6251),
+    aac4716--aac4716. \url{https://doi.org/10.1126/science.aac4716}
+  \end{itemize}
+\item
+  Supplemental (not required)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Heesen, R., \& Bright, L. K. (2019). Is peer review a good idea?
+    \emph{The British Journal for the Philosophy of Science}, \emph{40}.
+    eprints.lse.ac.uk. Retrieved January 7, 2020, from
+    \url{http://eprints.lse.ac.uk/101242/}
+  \item
+    Goodman, S. N., Fanelli, D., \& Ioannidis, J. P. A. (2016). What
+    does research reproducibility mean? \emph{Science Translational
+    Medicine}, 8(341), 341ps12--341ps12.
+    \url{https://doi.org/10.1126/scitranslmed.aaf5027}
+  \item
+    \url{http://www.stats.org/what-do-we-mean-by-reproducibility/}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework-1}{%
+\subsubsection{Homework}\label{homework-1}}
+
+Due by the start of class on 2020-01-28.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Choose one of the verification bias examples from
+  \href{https://pure.mpg.de/pubman/item/item_1569964_8/component/file_1569966/Stapel_Investigation_Final_report.pdf}{\emph{Flawed
+  Science}}. In a paragraph or two, propose ways you might avoid this
+  sort of bias in your own research.
+\item
+  Choose one of the \href{https://osf.io/9f6gx/}{TOP guideline
+  categories} where either your own research practices have room to
+  improve or you are doing rather well. In a paragraph or two, explain
+  your reasoning.
+\end{enumerate}
+
+\hypertarget{week-3-tuesday-january-28-2020}{%
+\subsection{Week 3: Tuesday, January 28,
+2020}\label{week-3-tuesday-january-28-2020}}
+
+\hypertarget{topics-2}{%
+\subsubsection{Topics}\label{topics-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Evaluating Munafò et al.'s (2017) ``Manifesto for reproducible
+  science'', \url{https://doi.org/10.1038/s41562-016-0021}
+\item
+  Workflows and \emph{methods} reproducibility
+\item
+  Tidy data
+\end{itemize}
+
+\hypertarget{readingswebinars-1}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S.,
+  Chambers, C. D., Sert, N. P. du, \ldots{} Ioannidis, J. P. A. (2017).
+  A manifesto for reproducible science. Nature Human Behaviour, 1, 0021.
+  \url{https://doi.org/10.1038/s41562-016-0021}. (\textbf{Required})
+\item
+  Reproducible workflows (\textbf{Optional})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{http://datasci.kitzes.com/lessons/python/reproducible_workflow.html}
+  \item
+    \url{http://grunwaldlab.github.io/Reproducible-science-in-R/index.html}
+  \end{itemize}
+\item
+  Tidy data (\textbf{Optional})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Wickham, H. (2014). Tidy Data. Journal of Statistical Software,
+    59(10). \url{http://dx.doi.org/10.18637/jss.v059.i10}.
+  \end{itemize}
+\item
+  File naming (\textbf{Optional})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{http://guides.nyu.edu/data_management/file_org}
+  \item
+    \url{http://kbroman.org/dataorg/}
+  \end{itemize}
+\item
+  Spreadsheets (\textbf{Optional})
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://github.com/jennybc/sanesheets}
+  \item
+    \url{http://www.datacarpentry.org/2015-03-09-ISI-CODATA/lessons/excel/ecology-examples/00-intro.html}
+  \item
+    \url{https://github.com/jennybc/scary-excel-stories}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework-2}{%
+\subsubsection{Homework}\label{homework-2}}
+
+Due by the start of class on 2020-01-28.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Pick one of the recommended elements from
+  \href{http://www.nature.com/articles/s41562-016-0021/tables/1}{Table 1
+  in Munafò, et al.~(2017)}. Evaluate the recommendation. Do you agree
+  that it would mitigate one or more threats to reproducibility. Why or
+  why not? Do you agree with the assessment about the degree to which
+  stakeholders have adopted the recommended practice?. We covered most
+  of this material in class.
+\item
+  Edit/create a text-based workflow for an active project you are
+  working on.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Annote the workflow to indicate where it could be made more
+    reproducible, transparent.
+  \item
+    If you are feeling super-ambitious, you may want to try creating a
+    graph-based workflow using the \texttt{diagrammeR} package.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{week-4-tuesday-february-4-2020}{%
+\subsection{Week 4: Tuesday, February 4,
+2020}\label{week-4-tuesday-february-4-2020}}
+
+\hypertarget{topics-3}{%
+\subsubsection{Topics}\label{topics-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Pregistration and registered reports
+\item
+  Introduction to RStudio and R Markdown
+\end{itemize}
+
+\hypertarget{readingswebinars-2}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Pre-registration and registered reports
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Chambers, C., Munafò, M., \& signatories, more than 80. (2013, June
+    5). Trust in science would be improved by study pre-registration.
+    \emph{The Guardian}. Retrieved from
+    \url{https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration}
+  \item
+    Registered Reports. (n.d.). Retrieved January 24, 2017, from
+    \url{https://cos.io/rr/?_ga=1.163722943.1251838540.1458403228}
+  \item
+    Mathot, S. (2013, March 26). The pros and cons of pre-registration
+    in fundamental research. Retrieved January 24, 2017 from
+    \url{http://www.cogsci.nl/blog/miscellaneous/215-the-pros-and-cons-of-pre-registration-in-fundamental-research}
+  \item
+    (Optional) Frank, M. (2016, July 22). Preregister everything.
+    \url{http://babieslearninglanguage.blogspot.com/2016/07/preregister-everything.html}
+  \item
+    (Optional) Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., \&
+    Vanpaemel, W. (2019, May). Preregistration: Comparing Dream to
+    Reality. Retrieved from psyarxiv.com/d8wex.
+  \end{itemize}
+\item
+  \href{http://rmarkdown.rstudio.com/}{R Markdown} exercise
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/}{Getting
+    started with R Markdown}
+  \end{itemize}
+\item
+  Optional
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.datacamp.com/courses/reporting-with-r-markdown}{Authoring
+    R Markdown Reports}. 3 hrs.
+  \item
+    \href{https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1}{Working
+    with the RStudio IDE (Part II)}. 3 hrs.
+  \item
+    \href{https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-2}{Working
+    with the RStudio IDE (Part II)}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework-3}{%
+\subsubsection{Homework}\label{homework-3}}
+
+Due by the start of class on 2020-02-11.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find a preregistration document for a study relevant to your research
+  interests on \texttt{aspredicted.org} or \texttt{osf.io}. In a few
+  paragraphs, comment on what was and what was not included. Would the
+  preregistration provide researchers sufficient structure to carry out
+  the research without `HARKing'? What downsides do you see to
+  preregistration?
+\item
+  Create a template for a reproducible research report or a
+  pregistration document in R Markdown.
+\item
+  Convert some portion of your workflow from last week's assignment into
+  an R Markdown.
+\item
+  Make sure to use some R Markdown features you haven't used before.
+  Flag the features you used and explain how they'd be useful in an
+  actual use case you can envision.
+\item
+  Either email me the R Markdown file, or if you've pushed your file to
+  a GitHub repo, send me a review request.
+\end{enumerate}
+
+\hypertarget{week-5-tuesday-february-11-2020}{%
+\subsection{Week 5: Tuesday, February 11,
+2020}\label{week-5-tuesday-february-11-2020}}
+
+\hypertarget{topics-4}{%
+\subsubsection{Topics}\label{topics-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  Version control
+\item
+  git
+
+  \begin{itemize}
+  \tightlist
+  \item
+    GitHub
+  \item
+    GitHub pages
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{readingswebinars-3}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Hardwicke, T. E., \& Ioannidis, J. P. A. (2018). Mapping the universe
+  of registered reports. \emph{Nature Human Behaviour}, \emph{2}(11),
+  793--796. nature.com. Retrieved from
+  \url{http://dx.doi.org/10.1038/s41562-018-0444-y}
+\item
+  Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., \& Vanpaemel, W.
+  (2019, May). Preregistration: Comparing dream to reality. Retrieved
+  from \url{https://psyarxiv.com/d8wex}.
+\item
+  \href{https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/}{GitHub
+  and RStudio}
+\item
+  Jenny Bryan's \url{http://happygitwithr.com/}
+\end{itemize}
+
+\hypertarget{homework-4}{%
+\subsubsection{Homework}\label{homework-4}}
+
+Due by the start of class on 2020-02-18.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create GitHub repo for the project you completed last week
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Open an issue flagging \texttt{@rogilmore} so I know to look at your
+    repo and document.
+  \end{itemize}
+\item
+  Create a repo for your final course project
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create an R Markdown document where you start to outline the
+    possible directions that your final project might take.
+  \item
+    Open an issue so I can take a look.
+  \end{itemize}
+\item
+  Clone a repo; fix/change something; make a
+  \href{https://help.github.com/articles/about-pull-requests/}{pull
+  request}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Option 1:
+    \url{http://psu-psychology.github.io/psy-525-reproducible-research-2020/}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Suggestion: Add something about yourself to \texttt{students.html}
+      by editing \texttt{students.Rmd} and then rebuilding the site via
+      \texttt{rmarkdown::render\_site(encoding\ =\ "utf8")}
+    \end{itemize}
+  \item
+    Option 2:
+    \url{https://psu-psychology.github.io/data-science-and-reproducibility/}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Suggestion: Add or edit \texttt{resources.html} by editing
+      \texttt{resources.Rmd}.
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{week-6-tuesday-february-18-2020}{%
+\subsection{Week 6: Tuesday, February 18,
+2020}\label{week-6-tuesday-february-18-2020}}
+
+\hypertarget{topics-5}{%
+\subsubsection{Topics}\label{topics-5}}
+
+\begin{itemize}
+\tightlist
+\item
+  Simulation as a tool for reproducible and transparent science
+\item
+  Visualization tools in R
+\end{itemize}
+
+\hypertarget{readingswebinars-4}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  Required.
+  \href{https://www.datacamp.com/courses/data-visualization-with-ggplot2-1}{Data
+  Visualization with ggplot2 (Part 1)}
+\item
+  Desirable.
+  \href{https://www.datacamp.com/courses/data-visualization-with-ggplot2-2}{Data
+  Visualization with ggplot2 (Part 2)}
+\end{itemize}
+
+\hypertarget{homework-5}{%
+\subsubsection{Homework}\label{homework-5}}
+
+Due by the start of class on 2020-02-25.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create your own simulated data set for a real or proposed study.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    You may adapt or build upon the examples used in class.
+  \item
+    Put the results in an R Markdown (.Rmd) file.
+  \item
+    Commit the .Rmd file to your private repo on GitHub and either raise
+    an Issue on GitHub or submit a pull request.
+  \end{itemize}
+\item
+  Plot the results of your simulation using ggplot2 commands.
+\item
+  Make sure that your simulation has the following sub-sections:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Introduction/Motivation
+
+    \begin{itemize}
+    \tightlist
+    \item
+      What are you simulating and why? Where do the parameter estimates
+      come from? The literature or your best guess?
+    \end{itemize}
+  \item
+    Plots
+  \item
+    Statistical Analyses
+  \item
+    Discussion/Conclusions
+
+    \begin{itemize}
+    \tightlist
+    \item
+      What did you discover or demonstrate?
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Please label the R chunks in your R Markdown files
+\end{itemize}
+
+\hypertarget{week-7-tuesday-february-25-2020}{%
+\subsection{Week 7: Tuesday, February 25,
+2020}\label{week-7-tuesday-february-25-2020}}
+
+\hypertarget{topics-6}{%
+\subsubsection{Topics}\label{topics-6}}
+
+\begin{itemize}
+\tightlist
+\item
+  Doing other useful things with R and R Markdown
+\end{itemize}
+
+\hypertarget{readingswebinars-5}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-5}}
+
+\hypertarget{homework-6}{%
+\subsubsection{Homework}\label{homework-6}}
+
+Due by the start of class on 2020-03-03.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a set of HTML talk slides using R Markdown.
+\item
+  Try rendering the slides as a Word document, PowerPoint document, or
+  PDF.
+\item
+  Create a new repo and generate a simple website using R Markdown.
+\end{enumerate}
+
+\hypertarget{week-8-tuesday-march-3-2020}{%
+\subsection{Week 8: Tuesday, March 3,
+2020}\label{week-8-tuesday-march-3-2020}}
+
+\hypertarget{topics-7}{%
+\subsubsection{Topics}\label{topics-7}}
+
+\begin{itemize}
+\tightlist
+\item
+  Interactive visualizations using \href{shiny.html}{Shiny apps}
+\end{itemize}
+
+\hypertarget{readingswebinars-recommended}{%
+\subsubsection{Readings/webinars
+(recommended)}\label{readingswebinars-recommended}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-1/}{How
+  to start with Shiny (Part 1)}
+\item
+  \href{https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-2/}{How
+  to start with Shiny (Part 2)}
+\item
+  \href{https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-3/}{How
+  to start with Shiny (Part 3)}
+\end{itemize}
+
+\hypertarget{homework-7}{%
+\subsubsection{Homework}\label{homework-7}}
+
+Due by the start of class on 2020-03-17.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Complete a 1-2 page write-up describing your plans for your final
+  project.
+\end{enumerate}
+
+\hypertarget{spring-break-march-9---12-2020}{%
+\subsection{Spring Break March 9 - 12,
+2020}\label{spring-break-march-9---12-2020}}
+
+\textbf{NO CLASS}
+
+\hypertarget{week-9-tuesday-march-17-2020}{%
+\subsection{Week 9: Tuesday, March 17,
+2020}\label{week-9-tuesday-march-17-2020}}
+
+\hypertarget{topics-8}{%
+\subsubsection{Topics}\label{topics-8}}
+
+\begin{itemize}
+\tightlist
+\item
+  Python, the other language of data science
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Intro to \href{http://jupyter.org/}{Jupyter}
+  \item
+    Jupyter for research, teaching, talks
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{readingswebinars-6}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-6}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.datacamp.com/courses/importing-data-in-python-part-1}{Importing
+  data in Python (Part 1)}
+\item
+  \href{https://www.datacamp.com/courses/importing-data-in-python-part-2}{Importing
+  data in Python (Part 2)}
+\end{itemize}
+
+\hypertarget{homework-8}{%
+\subsubsection{Homework}\label{homework-8}}
+
+Due by the start of class on 2020-03-24.
+
+TBD
+
+\hypertarget{week-10-tuesday-march-24-2020}{%
+\subsection{Week 10: Tuesday, March 24,
+2020}\label{week-10-tuesday-march-24-2020}}
+
+\hypertarget{topics-9}{%
+\subsubsection{Topics}\label{topics-9}}
+
+\begin{itemize}
+\tightlist
+\item
+  Tools for reproducible data-gathering
+
+  \begin{itemize}
+  \tightlist
+  \item
+    E-Prime, Matlab (\href{http://psychtoolbox.org/}{Psychophysics
+    Toolbox}), \href{http://www.psychopy.org/}{PsychoPy}.
+  \item
+    \href{http://www.jspsych.org/}{jsPsych}
+  \item
+    MTurk
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \href{https://psiturk.org/}{psiTurk}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{readingswebinars-7}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-7}}
+
+\begin{itemize}
+\tightlist
+\item
+  de Leeuw, J.R. (2015). jsPsych: A JavaScript library for creating
+  behavioral experiments in a Web browser. \emph{Behavior Research
+  Methods}, \emph{47}(1), 1-12. \url{doi:10.3758/s13428-014-0458-y}
+\end{itemize}
+
+\hypertarget{homework-9}{%
+\subsubsection{Homework}\label{homework-9}}
+
+Due by the start of class on 2020-03-31.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open a PsychoPy demo program and save it with a new name. Add
+  additional documentation to the demo program that explains what's
+  happening. Change one or more parameters to make the program do
+  something slightly different, and explain what parameters you changed.
+\end{enumerate}
+
+\hypertarget{week-11-tuesday-march-31-2020}{%
+\subsection{Week 11: Tuesday, March 31,
+2020}\label{week-11-tuesday-march-31-2020}}
+
+\hypertarget{topics-10}{%
+\subsubsection{Topics}\label{topics-10}}
+
+\begin{itemize}
+\tightlist
+\item
+  Using APIs
+
+  \begin{itemize}
+  \tightlist
+  \item
+    U.S. Census
+  \item
+    Google Drive
+  \item
+    Box
+  \item
+    Wikidata
+  \item
+    Databrary
+  \item
+    OSF
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework-10}{%
+\subsubsection{Homework}\label{homework-10}}
+
+Due by the start of class on 2020-04-07.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a Jupyter notebook where you document your exploration of the
+  U.S. Census, Box, or Google Drive APIs.
+\end{enumerate}
+
+\hypertarget{week-12-tuesday-april-7-2020}{%
+\subsection{Week 12: Tuesday, April 7,
+2020}\label{week-12-tuesday-april-7-2020}}
+
+\hypertarget{topics-11}{%
+\subsubsection{Topics}\label{topics-11}}
+
+\begin{itemize}
+\tightlist
+\item
+  Where to share?
+\item
+  Publishing data
+\item
+  Challenges to sharing
+\item
+  Your open science portfolio
+\item
+  Funder policies
+\end{itemize}
+
+\hypertarget{readingswebinars-8}{%
+\subsubsection{Readings/webinars}\label{readingswebinars-8}}
+
+\begin{itemize}
+\tightlist
+\item
+  Meyer, M. N. (2018). Practical Tips for Ethical Data Sharing. Advances
+  in Methods and Practices in Psychological Science, 2515245917747656.
+  SAGE Publications Inc.~Retrieved from
+  \url{https://doi.org/10.1177/2515245917747656}
+\item
+  Gilmore, R.O. et al.~(2020).
+\end{itemize}
+
+\hypertarget{homework-11}{%
+\subsubsection{Homework}\label{homework-11}}
+
+Due by the start of class on 2020-04-07.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Choose two outlets for sharing research data or materials and compare
+  and contrast their strengths and weaknesses.
+\end{enumerate}
+
+\hypertarget{week-13-tuesday-april-14-2020}{%
+\subsection{Week 13: Tuesday, April 14,
+2020}\label{week-13-tuesday-april-14-2020}}
+
+\hypertarget{topics-12}{%
+\subsubsection{Topics}\label{topics-12}}
+
+\begin{itemize}
+\tightlist
+\item
+  Catch-up week
+\end{itemize}
+
+\hypertarget{week-14-tuesday-april-21-2020}{%
+\subsection{Week 14: Tuesday, April 21,
+2020}\label{week-14-tuesday-april-21-2020}}
+
+\hypertarget{topics-13}{%
+\subsubsection{Topics}\label{topics-13}}
+
+\begin{itemize}
+\tightlist
+\item
+  Preparation for student projects
+\end{itemize}
+
+\hypertarget{week-15-tuesday-april-28-2020}{%
+\subsection{Week 15: Tuesday, April 28,
+2020}\label{week-15-tuesday-april-28-2020}}
+
+\hypertarget{topics-14}{%
+\subsubsection{Topics}\label{topics-14}}
+
+\begin{itemize}
+\tightlist
+\item
+  Student project presentations
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{evaluation}{%
+\section{Evaluation}\label{evaluation}}
+
+PSY 525 course performance will be evaluated based on the following
+scheme:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Component & Points & \% of Grade\tabularnewline
+\midrule
+\endhead
+Class participation & 2 pts/class * 15 weeks = 30 & 25\tabularnewline
+Assignments & 5 pts * 12 assignments = 60 & 50\tabularnewline
+Final projects & 30 & 25\tabularnewline
+\textbf{TOTAL} & \textbf{150} & \textbf{100}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{resources-1}{%
+\section{Resources}\label{resources-1}}
+
+\hypertarget{how-tos}{%
+\subsection{How-to's}\label{how-tos}}
+
+\begin{itemize}
+\tightlist
+\item
+  How to \href{how_to/rstudio-server-pro.html}{connect to Penn State's
+  RStudio Server Pro} instance to run RStudio in the cloud.
+\item
+  How to \href{how_to/jupyter-notebooks-psu.html}{connect to Penn
+  State's Jupyter notebook server}.
+\item
+  How to \href{how_to/google-colaboratory.html}{use Google's
+  colaboratory Jupyter notebook service}.
+\end{itemize}
+
+\hypertarget{web-courses}{%
+\subsection{Web courses}\label{web-courses}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://rstudio.com/conference/}{RStudio.conf}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://github.com/rstudio/rstudio-conf}{GitHub repo for 2020
+    conference}
+  \end{itemize}
+\item
+  \href{https://datacarpentry.org/}{Data Carpentry}, now
+  \href{https://carpentries.org/}{The Carpentries}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://datacarpentry.org/openrefine-socialsci/}{OpenRefine
+    for Social Science Data} by Data Carpentry.
+  \item
+    \href{http://swcarpentry.github.io/r-novice-gapminder/}{R for
+    Reproducible Scientific Analysis}
+  \item
+    \href{http://swcarpentry.github.io/python-novice-inflammation/}{Programming
+    with Python}
+  \item
+    \href{http://swcarpentry.github.io/python-novice-gapminder/}{Plotting
+    and Programming in Python}
+  \item
+    \href{http://swcarpentry.github.io/git-novice/}{Version Control with
+    Git}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{books-and-e-books}{%
+\subsection{Books and E-Books}\label{books-and-e-books}}
+
+\begin{itemize}
+\tightlist
+\item
+  Chang, W. (2012). \emph{R Graphics Cookbook}.
+  \url{http://ase.tufts.edu/bugs/guide/assets/R\%20Graphics\%20Cookbook.pdf}
+\item
+  Gandrud, C. (2015). \emph{Reproducible Research with R and R Studio,
+  Second Edition}. CRC Press.
+  \url{https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379}
+\item
+  VanderPlas, J. (2016). \emph{Python Data Science Handbook}.
+  \url{https://jakevdp.github.io/PythonDataScienceHandbook/}
+\item
+  Wickham, H. \& Grolemund, G. (2016). \emph{R for Data Science: Import,
+  Tidy, Transform, Visualize, and Model Data}. O'Reilly Media.
+  \url{http://shop.oreilly.com/product/0636920034407.do}.
+\item
+  Wickham, H. (2019). \emph{Advanced R, 2nd Ed}. Chapman \& Hall/CRC.
+  \url{https://adv-r.hadley.nz/}.
+\item
+  Xie, Y., Allaire, J.J., \& Grolemund, G. (2019). \emph{R Markdown: The
+  Definitive Guide}. Chapman \& Hall/CRC.
+  \url{https://bookdown.org/yihui/rmarkdown/}.
+\end{itemize}
+
+\hypertarget{blogsprojects}{%
+\subsection{Blogs/Projects}\label{blogsprojects}}
+
+\begin{itemize}
+\tightlist
+\item
+  R bloggers \url{https://www.r-bloggers.com/}
+\item
+  Open science in practice.
+  \url{https://inattentionalcoffee.wordpress.com/2017/01/03/open-science-in-practice/}
+\item
+  Practicing what I preach: The open Ph.D.~experiment.
+  \url{http://www.librarianinthecity.com/2016/12/practicing-what-i-preach-the-open-phd-experiment/}
+\item
+  \href{https://sites.trinity.edu/osl}{Open Stats Lab}. Use data
+  published with psychology papers to teach statistics.
+\item
+  Jupyter, Zeppelin, Beaker: The Rise of the Notebooks.
+  \url{https://opendatascience.com/blog/jupyter-zeppelin-beaker-the-rise-of-the-notebooks/}
+\item
+  Open science and free culture.
+  \url{http://www.simoncolumbus.com/publications-2/open-science-and-free-culture/}
+\item
+  \href{https://osf.io/wfc6u/}{Collaborative Replications and Education
+  Project (CREP)}.
+\end{itemize}
+
+\hypertarget{software-tools}{%
+\subsection{Software tools}\label{software-tools}}
+
+\begin{itemize}
+\tightlist
+\item
+  OpenRefine, \url{https://openrefine.org}
+\item
+  LaTeX on the web
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ShareLaTex \url{http://sharelatex.com}
+  \item
+    Overleaf \url{http://www.overleaf.com}
+  \item
+    Authorea \url{http://www.authorea.com}
+  \end{itemize}
+\item
+  Experimental Design Assistant for planning animal studies
+  \url{https://eda.nc3rs.org.uk/}
+\item
+  p-hacker Shiny app \url{http://shinyapps.org/apps/p-hacker/}
+\end{itemize}
+
+\hypertarget{articles}{%
+\subsection{Articles}\label{articles}}
+
+\begin{itemize}
+\tightlist
+\item
+  Schweinsberg, M., Madan, N., Vianello, M., Sommer, S. A., Jordan, J.,
+  Tierney, W., \ldots{} Uhlmann, E. L. (2016). The pipeline project:
+  Pre-publication independent replications of a single laboratory's
+  research pipeline. Journal of Experimental Social Psychology, 66,
+  55--67. \url{https://doi.org/10.1016/j.jesp.2015.10.001}
+\item
+  Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S.,
+  Chambers, C. D., Sert, N. P. du, \ldots{} Ioannidis, J. P. A. (2017).
+  A manifesto for reproducible science. Nature Human Behaviour, 1, 0021.
+  \url{https://doi.org/10.1038/s41562-016-0021}.
+\item
+  Poldrack, R. A., Baker, C. I., Durnez, J., Gorgolewski, K. J.,
+  Matthews, P. M., Munafò, M. R., \ldots{} Yarkoni, T. (2017). Scanning
+  the horizon: towards transparent and reproducible neuroimaging
+  research. Nature Reviews Neuroscience, advance online publication.
+  \url{https://doi.org/10.1038/nrn.2016.167}.
+\end{itemize}
+
+\hypertarget{citation-management}{%
+\subsection{Citation Management}\label{citation-management}}
+
+\hypertarget{comparisons}{%
+\subsubsection{Comparisons}\label{comparisons}}
+
+\begin{itemize}
+\item
+  \url{http://guides.lib.uchicago.edu/c.php?g=297307\&p=1984557}
+\item
+  \url{https://en.wikipedia.org/wiki/Comparison_of_reference_management_software}
+\end{itemize}
+
+\hypertarget{software}{%
+\subsubsection{Software}\label{software}}
+
+\begin{itemize}
+\tightlist
+\item
+  Mendeley
+  \url{https://www.mendeley.com/careers/?dgcid=google_paid-search_Mendeley.com-Search-Branded-USA\&gclid=Cj0KEQiAifvEBRCVx5up6Ojgr5oBEiQALHw1TviV-SG0qOSpmmSkoIbrYrn1ZvPeZTinianXeiQa6FIaAqA28P8HAQ}
+\item
+  Zotero \url{https://www.zotero.org/}
+\item
+  Paperpile \url{https://paperpile.com/}
+\end{itemize}
+
+\end{document}
