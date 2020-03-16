@@ -1,0 +1,145 @@
+---
+title: "Week 9: Python"
+subtitle: "PSY 525"
+author: "Rick O. Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output:
+  ioslides_presentation:
+    incremental: no
+    self-contained: yes
+    transition: default
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "700px",
+                      cache = FALSE)
+```
+
+<!-- Scrolling slides -->
+<!-- http://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Announcements
+
+## Today's topics
+
+- Be multi-lingual!
+- Introduction to Python
+- Introduction to Jupyter
+
+# Be multilingual!
+
+## What to learn
+
+- R
+- HTML, CSS
+- Shell scripting
+- Python
+- MATLAB
+
+## Why/how
+
+- Computer languages are similar, have strengths & weaknesses
+- Comprehension before production (read code before you write it)
+
+# Introduction to Python
+
+## [Zen of Python](https://en.wikipedia.org/wiki/Zen_of_Python)
+
+- Beautiful is better than ugly.
+- Explicit is better than implicit.
+- Simple is better than complex.
+- Complex is better than complicated.
+- Readability counts.
+
+## Fun facts
+
+- Released in 1991
+- Supports imperative, object-oriented, and functional programming paradigms
+- Syntax makes extensive use of white space
+
+---
+
+Python:
+
+```
+def mult_by_two(x)
+  x * 2
+```
+
+R:
+
+```
+mult_by_two <- function(x) {
+  x * 2
+}
+```
+
+---
+
+- Uses `=` for assignment (vs. R's `<-`)
+
+## <https://www.tiobe.com/tiobe-index/>
+
+<iframe src="https://www.tiobe.com/tiobe-index/" height="500px" width="750px">
+</iframe>
+
+## Full-service programming language
+
+- Scientific programming
+- Web programming ([Django](https://www.djangoproject.com/))
+  - Instagram, Disqus, Mozilla, Bitbucket, Open Science Framework (OSF)
+
+# Introduction to Jupyter notebooks
+
+## Resources
+
+- GitHub repo: <https://github.com/psu-psychology/jupyter-resources>
+- How to: <https://psu-psychology.github.io/psy-525-reproducible-research-2020/how_to/jupyter-notebooks-psu.html>
+
+## About Jupyter
+
+- Literate programming documents (code + text + images + ...) in your browser
+- Began as interactive Python (iPython)
+
+## Getting to Juptyer
+
+- Local machine
+  - Installing Python, Jupyter
+  - Launch from terminal or Command Prompt app via `jupyter notebook`
+- Penn State's Juptyer notebook hub: <https://lxclusterapps.tlt.psu.edu:8000>
+
+## Walking through a simple notebook
+
+- <https://github.com/psu-psychology/jupyter-resources/blob/master/psy-525-jupyter-notebooks.ipynb>
+
+# Your turn
+
+## Try this
+
+- Connect to PSU VPN via Cisco AnyConnect, then
+  - <https://lxclusterapps.tlt.psu.edu:8000>
+  - Create a Jupyter notebook on the TLT server
+- Install Python on your local machine; install Jupyter & launch it.
+
+# Next time...
+
+- Jupyter notebooks for data science

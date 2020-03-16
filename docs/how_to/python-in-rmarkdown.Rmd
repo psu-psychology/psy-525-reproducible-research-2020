@@ -1,0 +1,176 @@
+---
+title: "Python and R Markdown"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+# Purpose
+
+This document describes how to use Python in an R Markdown document.
+
+This tutorial relies upon and extends this site: <https://rstudio.github.io/reticulate/articles/r_markdown.html>
+
+# Prerequisites
+
+## Install Python
+
+You want to use Python 3.
+The latest version as of `r Sys.Date()` is 3.8.2, but I recommend using the most recent stable version (3.7.6).
+Python 2 is no longer under active development.
+There is a still-smouldering flame war between the Python 2 and Python 3 communities.
+Remember my adage--avoid flame wars.
+Go with Python 3.
+
+### Mac OS X
+
+If you own your own machine, I strongly recommend using the Homebrew package manager. 
+Follow the instructions [here](https://brew.sh/) to install Homebrew.
+Then, you can enter `brew install python3` in Terminal.app to install Python 3.
+
+It's fine if you want to install Python 3 directly from the Python [site](https://www.python.org/downloads/mac-osx/) or use [Anaconda](https://www.anaconda.com/) or another tool.
+My main beef with the Conda package manager is that it seems to support fewer Python packages than the alternatives.
+So, I recommend installing Python via Homebrew and using `pip` to install additional packages.
+
+Check that this worked by entering `python3 --version` to check the installed Python verson.
+You might also want to run `which python3` and note the directory where the Python 3 source code is located.
+
+You'll want to use that as a variable in a future step.
+
+For example, here's a code chunk that does this:
+
+```{r}
+path_2_python3 <- system("which python3")
+if (path_2_python3 == "") message("Python3 not found.")
+```
+
+You may find [this site](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-macos) helpful if you run into trouble.
+
+### Windows
+
+[Here](https://www.python.org/downloads/windows/) is the official Python site for Windows.
+[Anaconda](https://www.anaconda.com/) is also an option, but see my caveat above.
+
+I was able to install Python on one of my personal PCs using the standard download procedure from <https://www.python.org/downloads/windows/>.
+
+### An alternative
+
+It appears that the `reticulate` package will ask if you want to install the `mini-conda` package manager if it does not find a Python distribution.
+It's fine to use this if it suits your needs.
+
+## Install the R `reticulate` package
+
+Enter `install.packages("reticulate")` from your R console.
+
+# Installing Python packages
+
+Like R, bare bones Python is useful but limited.
+You'll want to install packages to extend its functionality.
+
+## Mac OS
+
+Open a terminal, and enter the following commands:
+
+```
+pip3 install pandas
+pip3 install numpy
+pip3 install matplotlib
+```
+
+These three packages give you much-needed additional functionality.
+
+**Note:**`pip3` is the Python 3 version of `pip`. Depending on your specific set-up, it's possible that you could use `pip install` here, but the `pip3 install` command ensures that you install the right versions of the packages.
+
+If you do not have admin privileges, you may need to use these commands to install the packages with the `--user` flag to limit the installation to your own account.
+
+```
+pip3 install pandas --user
+pip3 install numpy --user
+pip3 install matplotlib --user
+```
+
+## Windows
+
+Installation on Windows is essentially the same.
+Open the Command Prompt application, then enter these commands:
+
+```
+pip3 install pandas
+pip3 install numpy
+pip3 install matplotlib
+```
+
+or as needed
+
+```
+pip3 install pandas --user
+pip3 install numpy --user
+pip3 install matplotlib --user
+```
+
+# Test set-up
+
+Load the `reticulate` R package and specify path to the Python version we want to use.
+Then check to make sure that `reticulate` can talk to Python 3.
+(Note that this next chunk is an R chunk).
+
+```{r}
+library(reticulate)
+if (reticulate::py_available()) message("Python 3 found.")
+```
+
+## Install a few packages
+
+Let's check to see if `pandas` is installed.
+Pandas is the Python world's equivalent of `tidyverse` although in saying so I'm sure I'm offending someone.
+
+```{r python-setup}
+if (reticulate::py_module_available("pandas")) message("'pandas' found.")
+```
+
+We'll also check to see if `matplotlib` is installed.
+This is a core plotting library.
+
+```{r}
+if (reticulate::py_module_available("matplotlib")) message("'matplotlib' found.")
+```
+
+If these are *not* installed, then I suggest you install the packages outside of R, as described above.
+
+# Working example
+
+We import the `pandas` package and the `csv/zoo.csv` dataset as a pandas data frame called `critters`.
+
+```{python}
+import pandas
+critters = pandas.read_csv("csv/zoo.csv")
+```
+
+Then, we print the head of the dataset.
+
+```{python}
+# default is 5
+critters.head(n=3)
+```
+
+Note the syntax.
+When we created `critters`, it created a pandas data frame.
+Pandas data frames allow a number of methods (functions) to be applied to them, `head()` is one of them.
+So, to apply the `head()` function to `critters`, we put method/function call at the end.
+
+Here's the full `critters` data set.
+
+```{python}
+print(critters)
+```
+
+```{python}
+pandas.crosstab(critters['animal'], columns = ['animal'])
+```

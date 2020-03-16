@@ -2,6 +2,13 @@
 title: "Resources"
 ---
 
+## Class-related GitHub repos
+
+- [Jupyter notebook resources](https://github.com/psu-psychology/jupyter-resources)
+- [Shiny resources](https://github.com/psu-psychology/shiny-resources)
+- [R Markdown ioslides resources](https://github.com/psu-psychology/rmarkdown-ioslides)
+- [Websites in R Markdown](https://github.com/psu-psychology/rmarkdown-website-template)
+
 ## How-to's
 
 - How to [connect to Penn State's RStudio Server Pro](how_to/rstudio-server-pro.html) instance to run RStudio in the cloud.

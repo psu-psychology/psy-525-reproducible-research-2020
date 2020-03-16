@@ -219,26 +219,21 @@ Due by the start of class on 2020-03-17.
 
 ## Spring Break March 9 - 12, 2020
 
-**NO CLASS**
+### Topics
+
+- Introduction to Python
+- Intro to [Jupyter](http://jupyter.org/)
 
 ## Week 9: Tuesday, March 17, 2020
 
 ### Topics
 
-- Python, the other language of data science
-    - Intro to [Jupyter](http://jupyter.org/)
-    - Jupyter for research, teaching, talks
+- Python for data science (pandas)
 
 ### Readings/webinars
 
 - [Importing data in Python (Part 1)](https://www.datacamp.com/courses/importing-data-in-python-part-1)
 - [Importing data in Python (Part 2)](https://www.datacamp.com/courses/importing-data-in-python-part-2)
-
-### Homework
-
-Due by the start of class on 2020-03-24.
-
-TBD
 
 ## Week 10: Tuesday, March 24, 2020
 
@@ -277,7 +272,7 @@ Add additional documentation to the demo program that explains what's happening.
 
 Due by the start of class on 2020-04-07.
 
-1. Create a Jupyter notebook where you document your exploration of the U.S. Census, Box, or Google Drive APIs. 
+1. Create a Jupyter notebook where you document your exploration of the U.S. Census, Box, or Google Drive APIs.
 
 ## Week 12: Tuesday, April 7, 2020
 
