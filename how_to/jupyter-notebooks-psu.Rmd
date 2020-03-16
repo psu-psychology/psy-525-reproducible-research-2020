@@ -87,12 +87,6 @@ Instead, click on the `Running` tab.
 This will show you a list of `Terminals` and `Notebooks`.
 Click on one of your old notebooks, and it will launch.
 
-# Logging out
-
-It's not required, but it's certainly good (computer) manners to log out.
-Press the `Logout` button in the upper right hand corner to do so.
-That will bring you back to the login screen.
-
 # Installing packages
 
 The base configuration of Python 3 comes with many useful packages, but you may want to install others for your notebooks.
@@ -108,3 +102,79 @@ The exclamation point `!` tells the notebook to access the system shell.
 The `--user` flag tells the system to install the package for the use of you, the user, alone.
 And, `censusdata` is the package.
 Execute the cell with command+enter, and the package will install.
+
+## Recommended packages to install
+
+I recommend a few basic packages to install right away.
+
+```
+!pip install --user pandas        # for data science
+!pip install --user numpy         # for numerically intensive computing
+!pip install --user matplotlib    # for plotting
+```
+
+You should only need to do this one time.
+The changes should propagate across other notebooks you create.
+
+## Alternative way to install packages
+
+You may also choose to install packages using a terminal application that the Jupyter notebook environment makes available.
+
+From the main Jupyter page, click on the "Running" tab to see whether there are any active terminals.
+
+```{r}
+knitr::include_graphics("img/jupyter-terminal.png")
+```
+
+If there are, you may click one one of them to activate it.
+In this case, there are not, so we go to the "Files" tab, and select the "New" drop down menu from the far right side, and then select the "Terminal" command.
+
+```{r}
+knitr::include_graphics("img/new-jupyter-terminal.png")
+```
+
+A new Linux terminal opens in a new window.
+
+```{r}
+knitr::include_graphics("img/jupyter-terminal-window.png")
+```
+
+You can now enter your installation commands here.
+**Note:**We don't need the `!` because we are not issuing this commands in the Jupyter notebook.
+
+```
+pip install --user pandas        # for data science
+pip install --user numpy         # for numerically intensive computing
+pip install --user matplotlib    # for plotting
+```
+
+While you're here, you might as well look around.
+Try listing the directory's contents.
+
+```
+ls
+```
+
+## Accessing your PASS space
+
+If you find a `pass-dir` using the terminal commands above, you can navigate to it using the `cd` or change directory command.
+If you don't want to navigate to it, you can list the contents using `ls`.
+
+**Note:**If you can't `ls` the directory, then you will have to do a few extra steps (HT to Matt Hansen at TLT for helping me sort this out.)
+
+1. Run the `klist` command. If you
+2. If you do not have an active Kerberos ticket, then run `kinit` at the terminal and enter your password when you see the ...@dce.psu.edu prompt.
+3. Run `klist` again to verify that you have an active Kerberos ticket.
+4. If you do, then you should be able to `ls pass-dir`. 
+
+You may want to browse to pass-dir in the Jupyter interface prior to within the notebook because PASS has many nodes and they are accessed “on demand” and access might timeout within the notebook the first time.
+
+### Uploading files to your PASS space
+
+You can use the [WebFiles](https://webfiles.psu.edu) application to upload files to your PASS space.
+
+# Logging out
+
+It's not required, but it's certainly good (computer) manners to log out.
+Press the `Logout` button in the upper right hand corner to do so.
+That will bring you back to the login screen.
