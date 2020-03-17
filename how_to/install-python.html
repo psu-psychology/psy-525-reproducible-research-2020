@@ -11,7 +11,7 @@
 
 
 
-<title>Python and R Markdown</title>
+<title>Installing Python</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1592,127 +1592,103 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Python and R Markdown</h1>
+<h1 class="title toc-ignore">Installing Python</h1>
 
 </div>
 
 
 <div id="purpose" class="section level1">
 <h1>Purpose</h1>
-<p>This document describes how to use Python in an R Markdown document.</p>
-<p>This tutorial relies upon and extends this site: <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html" class="uri">https://rstudio.github.io/reticulate/articles/r_markdown.html</a></p>
+<p>This document describes how to install Python on your personal machine.</p>
 </div>
 <div id="prerequisites" class="section level1">
 <h1>Prerequisites</h1>
-<div id="install-python" class="section level2">
-<h2>Install Python</h2>
-<p>Follow the instructions at <a href="https://psu-psychology.github.io/psy-525-reproducible-research-2020/how_to/install-python.html" class="uri">https://psu-psychology.github.io/psy-525-reproducible-research-2020/how_to/install-python.html</a> to install Python on your local machine.</p>
+<p>You’ll need administrative access to your machine.</p>
+<div id="is-python-already-installed" class="section level2">
+<h2>Is Python already installed?</h2>
+<p>Check to see if you have Python installed already.</p>
+<div id="mac-os" class="section level3">
+<h3>Mac OS</h3>
+<p>Open a terminal and try these commands:</p>
+<pre><code>python --version</code></pre>
+<p>If you have Python 3.7.6 or greater, then you’re already set. Ignore the rest of this how-to.</p>
 </div>
-<div id="confirm-that-your-r-studio-session-can-see-python3" class="section level2">
-<h2>Confirm that your R Studio session can see Python3</h2>
-<p>The following works on Mac OS. I need to add a more generic test that works on Windows, too.</p>
-<pre class="r"><code>path_2_python3 &lt;- system(&quot;which python3&quot;)
-if (path_2_python3 == &quot;&quot;) message(&quot;Python3 not found.&quot;)</code></pre>
-<p>You may find <a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-macos">this site</a> helpful if you run into trouble.</p>
-</div>
-<div id="an-alternative" class="section level2">
-<h2>An alternative</h2>
-<p>It appears that the R <code>reticulate</code> package will ask if you want to install the <code>mini-conda</code> package manager if it does not find a Python distribution. It’s fine to use this if it suits your needs. I have not tested it yet.</p>
+<div id="windows" class="section level3">
+<h3>Windows</h3>
+<p>Open the Command Prompt or Windows PowerShell application. You can access these by entering <code>command</code> or <code>powershell</code> in the search window in the Windows 10 toolbar. Enter this command at the prompt:</p>
+<pre><code>python --version</code></pre>
+<p>If the command returns <code>Python 3.7.6</code> or a later version, you’re set.</p>
 </div>
 </div>
-<div id="install-the-r-reticulate-package" class="section level1">
-<h1>Install the R <code>reticulate</code> package</h1>
-<p>Enter <code>install.packages(&quot;reticulate&quot;)</code> from your R console.</p>
 </div>
-<div id="install-python-packages" class="section level1">
-<h1>Install Python packages</h1>
-<p>Like R, bare bones Python is useful but limited. You’ll want to install packages to extend its functionality.</p>
-<div id="mac-os" class="section level2">
-<h2>Mac OS</h2>
-<p>Open a terminal, and enter the following commands:</p>
-<pre><code>pip3 install pandas
-pip3 install numpy
-pip3 install matplotlib</code></pre>
-<p>These three packages give you much-needed additional functionality.</p>
-<p><strong>Note:</strong><code>pip3</code> is the Python 3 version of <code>pip</code>. Depending on your specific set-up, it’s possible that you could use <code>pip install</code> here, but the <code>pip3 install</code> command ensures that you install the right versions of the packages.</p>
-<p>If you do not have admin privileges, you may need to use these commands to install the packages with the <code>--user</code> flag to limit the installation to your own account.</p>
-<pre><code>pip3 install pandas --user
-pip3 install numpy --user
-pip3 install matplotlib --user</code></pre>
+<div id="installing-python" class="section level1">
+<h1>Installing Python</h1>
+<div id="which-python-version" class="section level2">
+<h2>Which Python version?</h2>
+<p>You want to use Python 3. The latest version as of 2020-03-17 is 3.8.2, but I recommend using the most recent stable version (3.7.7). Python 2 is no longer under active development. There is a still-smouldering flame war between the Python 2 and Python 3 communities. Remember my adage–avoid flame wars. Go with Python 3.</p>
 </div>
-<div id="windows" class="section level2">
+<div id="mac-os-x" class="section level2">
+<h2>Mac OS X</h2>
+<div id="homebrew-on-mac-os-x" class="section level3">
+<h3>Homebrew on Mac OS X</h3>
+<p>If you own your own machine, I strongly recommend using the Homebrew package manager.</p>
+</div>
+<div id="uninstall-old-version-of-homebrew" class="section level3">
+<h3>Uninstall old version of Homebrew</h3>
+<p>If you’ve installed Homebrew some time ago, you may want to uninstall it before reinstalling.</p>
+<p>Enter the following command in a terminal:</p>
+<pre><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</code></pre>
+</div>
+<div id="install-new-version-of-homebrew" class="section level3">
+<h3>Install new version of Homebrew</h3>
+<p>Follow the instructions <a href="https://brew.sh/">here</a> to install Homebrew:</p>
+<pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code></pre>
+</div>
+<div id="install-python3-under-homebrew" class="section level3">
+<h3>Install Python3 under Homebrew</h3>
+<p>Enter the following command in a terminal to install Python3:</p>
+<pre><code>brew install python3</code></pre>
+</div>
+<div id="alternatives-to-homebrew" class="section level3">
+<h3>Alternatives to Homebrew</h3>
+<p>It’s fine if you want to install Python 3 directly from the Python <a href="https://www.python.org/downloads/mac-osx/">site</a> or use <a href="https://www.anaconda.com/">Anaconda</a> or another tool. My main beef with the Conda package manager is that it seems to support fewer Python packages than the alternatives.</p>
+</div>
+</div>
+<div id="windows-1" class="section level2">
 <h2>Windows</h2>
-<p>Installation on Windows is essentially the same. Open the Command Prompt or PowerShell application, then enter these commands:</p>
-<pre><code>pip3 install pandas
+<p>I had good luck installing Python following the instructions on <a href="https://www.python.org/downloads/windows/" class="uri">https://www.python.org/downloads/windows/</a>. Again, I suggest you download the latest stable release (<a href="https://www.python.org/downloads/release/python-377/">3.7.7</a> as of 2020-03-17).</p>
+<p>This will download an installer program. Launch it and follow the steps.</p>
+<p>You may also want to consider <a href="https://www.anaconda.com/">Anaconda</a>.</p>
+</div>
+</div>
+<div id="test-your-python3-installation" class="section level1">
+<h1>Test your Python3 installation</h1>
+<p>From a Mac OS terminal or the Windows Command Prompt or Windows PowerShell application enter the following command:</p>
+<pre><code>python --version</code></pre>
+<p>With luck, this should return <code>Python 3.7.7</code> or something similar.</p>
+<div id="optional-python3-test-drive" class="section level2">
+<h2>Optional Python3 test drive</h2>
+<p>To open a Python session, enter <code>python</code> at the Mac OS terminal or the Windows Command Prompt or Windows PowerShell prompt. This will open an interactive Python session that should look something like this:</p>
+<pre><code>Python 3.7.6 (default, Mar  6 2020, 14:33:20)
+[Clang 11.0.0 (clang-1100.0.33.17)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+<p>You can start entering Python commands or type <code>exit()</code> and press <code>return</code> to exit.</p>
+</div>
+</div>
+<div id="download-packages" class="section level1">
+<h1>Download packages</h1>
+<p>If you’ve used Homebrew to install Python on Mac OS or the Python.org installer on Windows, you can use the <code>pip</code> package manager to install packages. These commands work in the Mac OS terminal or the Windows Command Prompt or Windows PowerShell application.</p>
+<p><strong>Note:</strong> I suggest using the explicit <code>pip3</code> command in case you have multiple versions of Python installed. For example, Mac OS comes with Python 2.7. I do not think that Windows comes with a Python installation, so if you install Python 3 and Python 3 alone, you should be able to use <code>python</code> to launch Python 3 <code>pip</code> to run <code>pip3</code>.</p>
+<pre><code>pip3 install jupyter
+pip3 install pandas
 pip3 install numpy
 pip3 install matplotlib</code></pre>
-<p>or as needed</p>
-<pre><code>pip3 install pandas --user
-pip3 install numpy --user
-pip3 install matplotlib --user</code></pre>
-</div>
-</div>
-<div id="test-set-up" class="section level1">
-<h1>Test set-up</h1>
-<p>Load the <code>reticulate</code> R package and specify path to the Python version we want to use. Then check to make sure that <code>reticulate</code> can talk to Python 3. (Note that this next chunk is an R chunk).</p>
-<pre class="r"><code>library(reticulate)
-if (reticulate::py_available()) message(&quot;Python 3 found.&quot;)</code></pre>
-<div id="install-a-few-packages" class="section level2">
-<h2>Install a few packages</h2>
-<p>Let’s check to see if <code>pandas</code> is installed. Pandas is the Python world’s equivalent of <code>tidyverse</code> although in saying so I’m sure I’m offending someone.</p>
-<pre class="r"><code>if (reticulate::py_module_available(&quot;pandas&quot;)) message(&quot;&#39;pandas&#39; found.&quot;)</code></pre>
-<pre><code>## &#39;pandas&#39; found.</code></pre>
-<p>We’ll also check to see if <code>matplotlib</code> is installed. This is a core plotting library.</p>
-<pre class="r"><code>if (reticulate::py_module_available(&quot;matplotlib&quot;)) message(&quot;&#39;matplotlib&#39; found.&quot;)</code></pre>
-<p>If these are <em>not</em> installed, then I suggest you install the packages outside of R, as described above.</p>
-</div>
-</div>
-<div id="working-example" class="section level1">
-<h1>Working example</h1>
-<p>We import the <code>pandas</code> package and the <code>csv/zoo.csv</code> dataset as a pandas data frame called <code>critters</code>.</p>
-<pre class="python"><code>import pandas
-critters = pandas.read_csv(&quot;csv/zoo.csv&quot;)</code></pre>
-<p>Then, we print the head of the dataset.</p>
-<pre class="python"><code># default is 5
-critters.head(n=3)</code></pre>
-<pre><code>##      animal  uniq_id  water_need
-## 0  elephant     1001         500
-## 1  elephant     1002         600
-## 2  elephant     1003         550</code></pre>
-<p>Note the syntax. When we created <code>critters</code>, it created a pandas data frame. Pandas data frames allow a number of methods (functions) to be applied to them, <code>head()</code> is one of them. So, to apply the <code>head()</code> function to <code>critters</code>, we put method/function call at the end.</p>
-<p>Here’s the full <code>critters</code> data set.</p>
-<pre class="python"><code>print(critters)</code></pre>
-<pre><code>##       animal  uniq_id  water_need
-## 0   elephant     1001         500
-## 1   elephant     1002         600
-## 2   elephant     1003         550
-## 3      tiger     1004         300
-## 4      tiger     1005         320
-## 5      tiger     1006         330
-## 6      tiger     1007         290
-## 7      tiger     1008         310
-## 8      zebra     1009         200
-## 9      zebra     1010         220
-## 10     zebra     1011         240
-## 11     zebra     1012         230
-## 12     zebra     1013         220
-## 13     zebra     1014         100
-## 14     zebra     1015          80
-## 15      lion     1016         420
-## 16      lion     1017         600
-## 17      lion     1018         500
-## 18      lion     1019         390
-## 19  kangaroo     1020         410
-## 20  kangaroo     1021         430
-## 21  kangaroo     1022         410</code></pre>
-<pre class="python"><code>pandas.crosstab(critters[&#39;animal&#39;], columns = [&#39;animal&#39;])</code></pre>
-<pre><code>## col_0     animal
-## animal          
-## elephant       3
-## kangaroo       3
-## lion           4
-## tiger          5
-## zebra          7</code></pre>
+<p>In some cases, you may get an error with these commands because they install the packages globally–for all users. If so, then add the <code>--user</code> flag:</p>
+<pre><code>pip3 install --user jupyter
+pip3 install --user pandas
+pip3 install --user numpy
+pip3 install --user matplotlib</code></pre>
 </div>
 
 
