@@ -81,7 +81,7 @@ slides > slide:not(.nobackground):after {
 Python:
 
 ```
-def mult_by_two(x)
+def mult_by_two(x):
   x * 2
 ```
 

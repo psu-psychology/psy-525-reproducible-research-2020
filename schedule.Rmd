@@ -219,16 +219,14 @@ Due by the start of class on 2020-03-17.
 
 ## Spring Break March 9 - 12, 2020
 
-### Topics
-
-- Introduction to Python
-- Intro to [Jupyter](http://jupyter.org/)
+NO CLASS
 
 ## Week 9: Tuesday, March 17, 2020
 
 ### Topics
 
-- Python for data science (pandas)
+- Introduction to Python
+- Intro to [Jupyter notebooks](http://jupyter.org/)
 
 ### Readings/webinars
 
@@ -240,10 +238,11 @@ Due by the start of class on 2020-03-17.
 ### Topics
 
 - Tools for reproducible data-gathering
-    + E-Prime, Matlab ([Psychophysics Toolbox](http://psychtoolbox.org/)), [PsychoPy](http://www.psychopy.org/).
+    + E-Prime, Matlab ([Psychophysics Toolbox](http://psychtoolbox.org/)).
     + [jsPsych](http://www.jspsych.org/)
     + MTurk
         - [psiTurk](https://psiturk.org/)
+    + [PsychoPy](http://www.psychopy.org/)
 
 ### Readings/webinars
 
@@ -272,7 +271,7 @@ Add additional documentation to the demo program that explains what's happening.
 
 Due by the start of class on 2020-04-07.
 
-1. Create a Jupyter notebook where you document your exploration of the U.S. Census, Box, or Google Drive APIs.
+Create a Jupyter notebook (or R Markdown report) where you document your exploration of the U.S. Census, Box, or Google Drive APIs.
 
 ## Week 12: Tuesday, April 7, 2020
 
