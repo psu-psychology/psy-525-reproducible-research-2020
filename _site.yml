@@ -55,7 +55,7 @@ navbar:
         - text: "Make reports that take parameters"
           href: how_to/reports-with-parameters.html
         - text: "Use Python in R Markdown"
-          href: how_to/python_in_rmarkdown.html
+          href: how_to/python-in-rmarkdown.html
   right:
     - text: "Site info"
       href: site-info.html

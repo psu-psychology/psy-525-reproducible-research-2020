@@ -1,0 +1,1 @@
+writeLines(c('\\documentclass{article}', '\\begin{document}', 'Hello world!', '\\end{document}'),'test.tex')
