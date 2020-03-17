@@ -1,0 +1,155 @@
+---
+title: "Installing Python"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+# Purpose
+
+This document describes how to install Python on your personal machine.
+
+# Prerequisites
+
+You'll need administrative access to your machine.
+
+## Is Python already installed?
+
+Check to see if you have Python installed already.
+
+### Mac OS
+
+Open a terminal and try these commands:
+
+```
+python --version
+```
+
+If you have Python 3.7.6 or greater, then you're already set.
+Ignore the rest of this how-to.
+
+### Windows
+
+Open the Command Prompt or Windows PowerShell application.
+You can access these by entering `command` or `powershell` in the search window in the Windows 10 toolbar.
+Enter this command at the prompt:
+
+```
+python --version
+```
+
+If the command returns `Python 3.7.6` or a later version, you're set.
+
+# Installing Python
+
+## Which Python version?
+
+You want to use Python 3.
+The latest version as of `r Sys.Date()` is 3.8.2, but I recommend using the most recent stable version (3.7.7).
+Python 2 is no longer under active development.
+There is a still-smouldering flame war between the Python 2 and Python 3 communities.
+Remember my adage--avoid flame wars.
+Go with Python 3.
+
+## Mac OS X
+
+### Homebrew on Mac OS X
+
+If you own your own machine, I strongly recommend using the Homebrew package manager.
+
+### Uninstall old version of Homebrew
+
+If you've installed Homebrew some time ago, you may want to uninstall it before reinstalling.
+
+Enter the following command in a terminal:
+
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+```
+
+### Install new version of Homebrew
+
+Follow the instructions [here](https://brew.sh/) to install Homebrew:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+### Install Python3 under Homebrew
+
+Enter the following command in a terminal to install Python3:
+
+```
+brew install python3
+```
+
+### Alternatives to Homebrew
+
+It's fine if you want to install Python 3 directly from the Python [site](https://www.python.org/downloads/mac-osx/) or use [Anaconda](https://www.anaconda.com/) or another tool.
+My main beef with the Conda package manager is that it seems to support fewer Python packages than the alternatives.
+
+## Windows
+
+I had good luck installing Python following the instructions on <https://www.python.org/downloads/windows/>.
+Again, I suggest you download the latest stable release ([3.7.7](https://www.python.org/downloads/release/python-377/) as of 2020-03-17).
+
+This will download an installer program.
+Launch it and follow the steps.
+
+You may also want to consider [Anaconda](https://www.anaconda.com/).
+
+# Test your Python3 installation
+
+From a Mac OS terminal or the Windows Command Prompt or Windows PowerShell application enter the following command:
+
+```
+python --version
+```
+
+With luck, this should return `Python 3.7.7` or something similar.
+
+## Optional Python3 test drive
+
+To open a Python session, enter `python` at the Mac OS terminal or the Windows Command Prompt or Windows PowerShell prompt.
+This will open an interactive Python session that should look something like this:
+
+```
+Python 3.7.6 (default, Mar  6 2020, 14:33:20)
+[Clang 11.0.0 (clang-1100.0.33.17)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+You can start entering Python commands or type `exit()` and press `return` to exit.
+
+# Download packages
+
+If you've used Homebrew to install Python on Mac OS or the Python.org installer on Windows, you can use the `pip` package manager to install packages.
+These commands work in the Mac OS terminal or the Windows Command Prompt or Windows PowerShell application.
+
+**Note:** I suggest using the explicit `pip3` command in case you have multiple versions of Python installed. For example, Mac OS comes with Python 2.7.
+I do not think that Windows comes with a Python installation, so if you install Python 3 and Python 3 alone, you should be able to use `python` to launch Python 3 `pip` to run `pip3`.
+
+```
+pip3 install jupyter
+pip3 install pandas
+pip3 install numpy
+pip3 install matplotlib
+```
+
+In some cases, you may get an error with these commands because they install the packages globally--for all users.
+If so, then add the `--user` flag:
+
+```
+pip3 install --user jupyter
+pip3 install --user pandas
+pip3 install --user numpy
+pip3 install --user matplotlib
+```

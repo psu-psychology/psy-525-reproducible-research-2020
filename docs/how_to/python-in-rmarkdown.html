@@ -1606,35 +1606,26 @@ div.tocify {
 <h1>Prerequisites</h1>
 <div id="install-python" class="section level2">
 <h2>Install Python</h2>
-<p>You want to use Python 3. The latest version as of 2020-03-16 is 3.8.2, but I recommend using the most recent stable version (3.7.6). Python 2 is no longer under active development. There is a still-smouldering flame war between the Python 2 and Python 3 communities. Remember my adage–avoid flame wars. Go with Python 3.</p>
-<div id="mac-os-x" class="section level3">
-<h3>Mac OS X</h3>
-<p>If you own your own machine, I strongly recommend using the Homebrew package manager. Follow the instructions <a href="https://brew.sh/">here</a> to install Homebrew. Then, you can enter <code>brew install python3</code> in Terminal.app to install Python 3.</p>
-<p>It’s fine if you want to install Python 3 directly from the Python <a href="https://www.python.org/downloads/mac-osx/">site</a> or use <a href="https://www.anaconda.com/">Anaconda</a> or another tool. My main beef with the Conda package manager is that it seems to support fewer Python packages than the alternatives. So, I recommend installing Python via Homebrew and using <code>pip</code> to install additional packages.</p>
-<p>Check that this worked by entering <code>python3 --version</code> to check the installed Python verson. You might also want to run <code>which python3</code> and note the directory where the Python 3 source code is located.</p>
-<p>You’ll want to use that as a variable in a future step.</p>
-<p>For example, here’s a code chunk that does this:</p>
+<p>Follow the instructions at <a href="https://psu-psychology.github.io/psy-525-reproducible-research-2020/how_to/install-python.html" class="uri">https://psu-psychology.github.io/psy-525-reproducible-research-2020/how_to/install-python.html</a> to install Python on your local machine.</p>
+</div>
+<div id="confirm-that-your-r-studio-session-can-see-python3" class="section level2">
+<h2>Confirm that your R Studio session can see Python3</h2>
+<p>The following works on Mac OS. I need to add a more generic test that works on Windows, too.</p>
 <pre class="r"><code>path_2_python3 &lt;- system(&quot;which python3&quot;)
 if (path_2_python3 == &quot;&quot;) message(&quot;Python3 not found.&quot;)</code></pre>
 <p>You may find <a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-macos">this site</a> helpful if you run into trouble.</p>
 </div>
-<div id="windows" class="section level3">
-<h3>Windows</h3>
-<p><a href="https://www.python.org/downloads/windows/">Here</a> is the official Python site for Windows. <a href="https://www.anaconda.com/">Anaconda</a> is also an option, but see my caveat above.</p>
-<p>I was able to install Python on one of my personal PCs using the standard download procedure from <a href="https://www.python.org/downloads/windows/" class="uri">https://www.python.org/downloads/windows/</a>.</p>
-</div>
-<div id="an-alternative" class="section level3">
-<h3>An alternative</h3>
-<p>It appears that the <code>reticulate</code> package will ask if you want to install the <code>mini-conda</code> package manager if it does not find a Python distribution. It’s fine to use this if it suits your needs.</p>
+<div id="an-alternative" class="section level2">
+<h2>An alternative</h2>
+<p>It appears that the R <code>reticulate</code> package will ask if you want to install the <code>mini-conda</code> package manager if it does not find a Python distribution. It’s fine to use this if it suits your needs. I have not tested it yet.</p>
 </div>
 </div>
-<div id="install-the-r-reticulate-package" class="section level2">
-<h2>Install the R <code>reticulate</code> package</h2>
+<div id="install-the-r-reticulate-package" class="section level1">
+<h1>Install the R <code>reticulate</code> package</h1>
 <p>Enter <code>install.packages(&quot;reticulate&quot;)</code> from your R console.</p>
 </div>
-</div>
-<div id="installing-python-packages" class="section level1">
-<h1>Installing Python packages</h1>
+<div id="install-python-packages" class="section level1">
+<h1>Install Python packages</h1>
 <p>Like R, bare bones Python is useful but limited. You’ll want to install packages to extend its functionality.</p>
 <div id="mac-os" class="section level2">
 <h2>Mac OS</h2>
@@ -1649,9 +1640,9 @@ pip3 install matplotlib</code></pre>
 pip3 install numpy --user
 pip3 install matplotlib --user</code></pre>
 </div>
-<div id="windows-1" class="section level2">
+<div id="windows" class="section level2">
 <h2>Windows</h2>
-<p>Installation on Windows is essentially the same. Open the Command Prompt application, then enter these commands:</p>
+<p>Installation on Windows is essentially the same. Open the Command Prompt or PowerShell application, then enter these commands:</p>
 <pre><code>pip3 install pandas
 pip3 install numpy
 pip3 install matplotlib</code></pre>

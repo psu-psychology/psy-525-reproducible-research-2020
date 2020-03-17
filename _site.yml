@@ -56,6 +56,8 @@ navbar:
           href: how_to/reports-with-parameters.html
         - text: "Use Python in R Markdown"
           href: how_to/python-in-rmarkdown.html
+        - text: "Install Python locally"
+          href: how_to/install-python.html
   right:
     - text: "Site info"
       href: site-info.html
