@@ -142,4 +142,6 @@ mult_by_two <- function(x) {
 
 # Next time...
 
-- Jupyter notebooks for data science
+---
+
+- Tools for reproducible data-gathering
