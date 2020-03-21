@@ -1,0 +1,305 @@
+---
+title: "Week 9: Python"
+subtitle: "PSY 525"
+author: "Rick O. Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output:
+  ioslides_presentation:
+    incremental: no
+    self-contained: yes
+    transition: default
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "700px",
+                      cache = FALSE)
+```
+
+<!-- Scrolling slides -->
+<!-- http://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Check-in
+
+## Announcements
+
+- Data science community meeting, Monday, March 30, 2020, 10:00a, <https://psu.zoom.us/j/677349894>
+
+## Today's topics
+
+- Tools for reproducible data-gathering
+
+# Tools for reproducible data-gathering
+
+## Tools
+
+- [E-Prime](https://www.pstnet.com/eprime.cfm)
+- Matlab ([Psychophysics Toolbox](http://psychtoolbox.org/))
+- [PsychoPy](http://www.psychopy.org/).
+- [jsPsych](http://www.jspsych.org/)
+- [MTurk](https://www.mturk.com/mturk/welcome)
+    + [psiTurk](https://psiturk.org/)
+    
+## E-Prime
+
+- Windows only, commercial
+- [System for Teaching Experimental Psychology (STEP)](https://step.talkbank.org/)
+    - [[@macwhinney_stepsystem_2001]](http://doi.org/10.3758/BF03195379)
+    - STEP script libraries: <https://step.talkbank.org/scripts-plus/> and <https://step.talkbank.org/scripts-student/>
+- Journal of Neurobehavioral Experiments and Stimuli ([JONES](https://www.neurobs.com/jones/jones_main))
+<!-- - University of Kent script libraries: <https://www.kent.ac.uk/psychology/technical/experiments.html> -->
+
+## [Psychophysics Toolbox](http://psychtoolbox.org/)
+
+- Matlab-based, but also runs Octave (open source port of Matlab)
+- Runs on Linux, Windows, Mac OS X
+  - Linux (Ubuntu) now recommended
+  
+---
+
+- Script libraries:
+    - <http://www.kehinger.com/PTBexamples.html>
+    - Introduction to Psychtoolbox on Matlab, <http://www.jonaskaplan.com/psych599.php>
+- YouTube tutorial channel: <https://www.youtube.com/watch?v=5Sskr9m-UtQ>
+
+## [PsychoPy](http://www.psychopy.org/)
+
+- Python-based
+- Runs on Linux, Windows, Mac OS X
+- Script libraries:
+    - [PyHab](https://github.com/jfkominsky/PyHab) for habituation/looking time studies. [[@Kominsky2019-cm]](https://doi.org/10.1016/j.infbeh.2018.11.006)
+    - [Pavlovia.org](https://pavlovia.org/) for online studies.
+- Timing evaluation study. [[@bridges_pitiot_macaskill_peirce_2020]](https://doi.org/10.31234/osf.io/d6nu5)
+
+## [jsPsych](http://www.jspsych.org/)
+
+- JavaScript (js)-based
+- Runs in browser, locally or via the web
+
+https://github.com/topics/psychology-experiments?l=javascript
+
+## [MTurk](https://www.mturk.com/mturk/welcome)
+
+- Amazon's system for matching workers "turkers" with tasks
+- Demographics of user base
+    - <http://demographics.mturk-tracker.com/#/gender/all>
+- [LookIt](https://lookit.mit.edu/), looking time studies using web cameras
+    - See also [[@tran_online_2017]](http://doi.org/10.1016/j.jecp.2016.12.003)
+- [psiTurk](https://psiturk.org/)
+    - [Experiment exchange](https://psiturk.org/ee/)
+    
+## [Shiny](https://github.com/daattali/shinyforms)
+
+<iframe src="https://daattali.com/shiny/mimic-google-form/">
+</iframe>
+
+## Challenges to reproducibility
+
+- Commercial vs. non-commercial tools
+- Computers vary, OS vary, versions change
+- Hard to ensure scripts run on different hardware, software
+- Desktop-based (better timing) vs. web-based (less hardware/software dependent)
+- Programming practices vary
+
+## Challenges to reproducibility
+
+- Citing resources is inconsistent
+    - Resource Identification Initiative's Research Resource Identifiers (RRIDs)
+    - <https://www.force11.org/group/resource-identification-initiative>
+    - [[@vasilevsky_reproducibility_2013]](http://doi.org/10.7717/peerj.148)
+- Terminology for tasks is inconsistent
+    - Poldrack's [*Cognitive Atlas*](http://www.cognitiveatlas.org/tasks/a)
+    
+## Partial solutions
+
+- Open code sharing
+    + <https://github.com/gilmore-lab/peep-II>
+    + <https://github.com/gilmore-lab/planforms>
+- Share videos, stills of displays
+    + [[@gilmore-adolph-video-2017]](http://http://osf.io/3kvp7)
+    + e.g., [[@https://doi.org/10.17910/B7.272]](https://doi.org/10.17910/B7.272)
+    
+---
+
+- Use Open Science Framework (OSF) or Databrary as a project "hub"
+- Future: "containerize" experiment apps
+    + [Docker.com](https://www.docker.com/)
+    
+## Self-assessment
+
+- What tool(s) are you using now?
+- Do you use shared code? What was the source?
+- Do you alter shared display code? How do you document the changes?
+- Do you share display code? How?
+- Barriers to greater sharing?
+
+# Your turn
+
+## Goals
+
+- Go a bit deeper into jsPsych
+    - [jsPsych documentation](http://docs.jspsych.org/).
+- ["Hello, World" demo](http://docs.jspsych.org/tutorials/hello-world/).
+- Why jsPsych?
+    + No platform dependencies!
+    + Can run/test from within RStudio!
+
+## A basic [web page](simple-page.html)
+
+~~~~
+<!doctype html>
+<html>
+    <head>
+        <title>My page</title>
+    </head>
+    <body>
+    <h1>This is a top-level header.</h1>
+    <h2>This is a second level header.</h2>
+    <p>This is a paragraph.</p>
+    </body>
+</html>
+~~~~
+
+---
+
+- Nested tags: `<html></html>`, `<head></head>`, `<body></body>`
+- Resources: links (`<a></a>`), imgs (`<img></img>`), video (`<video></video>`), etc.
+- Tag + src + parameter syntax: `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/200px-HTML5_logo_and_wordmark.svg.png" width = 200px></img>`
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/200px-HTML5_logo_and_wordmark.svg.png" width = 200px></img>
+
+## More on web page anatomy and physiology
+
+- Hypertext Markup Language [(HTML)](http://www.w3schools.com/html/default.asp)
+    + Structure of web pages
+- [Cascading Style Sheets (CSS)](http://www.w3schools.com/css/default.asp)
+    + Style of web page elements
+    
+## More on web page anatomy and physiology
+
+- [JavaScript](http://www.w3schools.com/js/)
+    + Programming language for web pages
+    + Frameworks/libraries are collections of useful commands
+- [Web application framework](https://en.wikipedia.org/wiki/Web_framework)
+    + Integration with other resources and services (e.g., databases)
+
+## Hello, World!
+
+~~~~
+<!doctype html>
+<html>
+    <head>
+        <title>My experiment</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/jspsych-5.0.3/jspsych.js"></script>
+        <script src="js/jspsych-5.0.3/plugins/jspsych-text.js"></script>
+        <link href="js/jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+    </head>
+    
+    <body>
+    </body>
+    
+    <script>
+    var hello_trial = {
+        type: 'text',
+        text: 'Hello world!'
+    }
+    jsPsych.init({
+        timeline: [ hello_trial ]
+    })
+    </script>
+</html>
+~~~~
+
+## Loading JavaScript libraries
+
+~~~~
+<!--- From the web --->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--- From local directories --->
+<script src="js/jspsych-5.0.3/jspsych.js"></script>
+<script src="js/jspsych-5.0.3/plugins/jspsych-text.js"></script>
+~~~~
+
+- JQuery a widely used library to access/manipulate/style HTML tags with consistent syntax.
+
+## Loading jsPsych CSS
+
+~~~~
+<link href="js/jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+~~~~
+
+## jsPsych code to show message
+
+~~~~
+<script>
+  var hello_trial = {
+      type: 'text',
+      text: 'Hello world!'
+  }
+  jsPsych.init({
+      timeline: [ hello_trial ]
+  })
+</script>
+~~~~
+
+## Run finished "Hello World" example
+
+## jsPsych produces data files in JSON format
+
+Here's what the data look like in JavaScript Object Notation (JSON)
+
+~~~~
+ {
+  "rt": 1219,
+  "stimulus": "img/orange.png",
+  "key_press": 70,
+  "response": "no-go",
+  "trial_type": "single-stim",
+  "trial_index": 2,
+  "time_elapsed": 13924,
+  "internal_node_id": "0.0-2.0-0.0",
+  "correct": false
+ },
+ {
+  "rt": -1,
+  "stimulus": "img/orange.png",
+  "key_press": -1,
+  "response": "no-go",
+  "trial_type": "single-stim",
+  "trial_index": 3,
+  "time_elapsed": 16305,
+  "internal_node_id": "0.0-2.0-1.0",
+  "correct": true
+ },
+~~~~
+
+## Downside of jsPsych
+
+- Copy data file manually (if running locally)
+- Save to web server (if running on server)
+
+## Questions?
+
+## In-class quests
+
+- Work through jsPsych Hello, World! [demo](http://docs.jspsych.org/tutorials/hello-world/).
+- Work through jsPsych simple RT [demo](http://docs.jspsych.org/tutorials/rt-task/).
