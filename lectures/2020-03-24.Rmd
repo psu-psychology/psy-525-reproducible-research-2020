@@ -1,5 +1,5 @@
 ---
-title: "Week 9: Python"
+title: "Week 10: Reproducible data gathering"
 subtitle: "PSY 525"
 author: "Rick O. Gilmore"
 date: "`r Sys.time()`"
@@ -46,6 +46,8 @@ slides > slide:not(.nobackground):after {
 ## Today's topics
 
 - Tools for reproducible data-gathering
+- Deeper dive into PsychoPy
+- In-class jsPsych quests
 
 # Tools for reproducible data-gathering
 
@@ -53,7 +55,7 @@ slides > slide:not(.nobackground):after {
 
 - [E-Prime](https://www.pstnet.com/eprime.cfm)
 - Matlab ([Psychophysics Toolbox](http://psychtoolbox.org/))
-- [PsychoPy](http://www.psychopy.org/).
+- [PsychoPy](http://www.psychopy.org/)
 - [jsPsych](http://www.jspsych.org/)
 - [MTurk](https://www.mturk.com/mturk/welcome)
     + [psiTurk](https://psiturk.org/)
@@ -62,7 +64,7 @@ slides > slide:not(.nobackground):after {
 
 - Windows only, commercial
 - [System for Teaching Experimental Psychology (STEP)](https://step.talkbank.org/)
-    - [[@macwhinney_stepsystem_2001]](http://doi.org/10.3758/BF03195379)
+    - [[@MacWhinney2001-wr]](http://doi.org/10.3758/BF03195379)
     - STEP script libraries: <https://step.talkbank.org/scripts-plus/> and <https://step.talkbank.org/scripts-student/>
 - Journal of Neurobehavioral Experiments and Stimuli ([JONES](https://www.neurobs.com/jones/jones_main))
 <!-- - University of Kent script libraries: <https://www.kent.ac.uk/psychology/technical/experiments.html> -->
@@ -102,9 +104,20 @@ https://github.com/topics/psychology-experiments?l=javascript
 - Demographics of user base
     - <http://demographics.mturk-tracker.com/#/gender/all>
 - [LookIt](https://lookit.mit.edu/), looking time studies using web cameras
-    - See also [[@tran_online_2017]](http://doi.org/10.1016/j.jecp.2016.12.003)
+    - See also [[@Tran2017-qd]](http://doi.org/10.1016/j.jecp.2016.12.003)
+    
+---
+
 - [psiTurk](https://psiturk.org/)
     - [Experiment exchange](https://psiturk.org/ee/)
+    
+## Other web-based platforms (survey research)
+
+- [Prolific](https://www.prolific.co/)
+- [Centiment](https://www.centiment.co/)
+- [Qualtrics](https://www.qualtrics.com/research-services/online-sample/)
+- [Medallia](https://www.medallia.com/)
+
     
 ## [Shiny](https://github.com/daattali/shinyforms)
 
@@ -114,7 +127,7 @@ https://github.com/topics/psychology-experiments?l=javascript
 ## Challenges to reproducibility
 
 - Commercial vs. non-commercial tools
-- Computers vary, OS vary, versions change
+- Computers vary, OS's vary, versions change
 - Hard to ensure scripts run on different hardware, software
 - Desktop-based (better timing) vs. web-based (less hardware/software dependent)
 - Programming practices vary
@@ -124,7 +137,7 @@ https://github.com/topics/psychology-experiments?l=javascript
 - Citing resources is inconsistent
     - Resource Identification Initiative's Research Resource Identifiers (RRIDs)
     - <https://www.force11.org/group/resource-identification-initiative>
-    - [[@vasilevsky_reproducibility_2013]](http://doi.org/10.7717/peerj.148)
+    - [[@Vasilevsky2013-ha]](http://doi.org/10.7717/peerj.148)
 - Terminology for tasks is inconsistent
     - Poldrack's [*Cognitive Atlas*](http://www.cognitiveatlas.org/tasks/a)
     
@@ -135,7 +148,7 @@ https://github.com/topics/psychology-experiments?l=javascript
     + <https://github.com/gilmore-lab/planforms>
 - Share videos, stills of displays
     + [[@gilmore-adolph-video-2017]](http://http://osf.io/3kvp7)
-    + e.g., [[@https://doi.org/10.17910/B7.272]](https://doi.org/10.17910/B7.272)
+    + e.g., <https://doi.org/10.17910/B7.272>
     
 ---
 
@@ -151,6 +164,117 @@ https://github.com/topics/psychology-experiments?l=javascript
 - Do you share display code? How?
 - Barriers to greater sharing?
 
+# Deeper dive into PsychoPy
+
+## Installation
+
+- Use standalone version 3 ("batteries included")
+- Visit <https://github.com/psychopy/psychopy/releases/>
+- Download version for your OS
+- Open app
+
+## Demos/basic/hello_world.py
+
+```
+"""
+Demo: show a very basic program: hello world
+"""
+
+from __future__ import absolute_import, division, print_function
+
+# Import key parts of the PsychoPy library:
+from psychopy import visual, core
+
+# Create a visual window:
+win = visual.Window()
+
+# Create (but not yet display) some text:
+msg1 = visual.TextStim(win, text=u"Hello world!")  # default position = centered
+msg2 = visual.TextStim(win, text=u"\u00A1Hola mundo!", pos=(0, -0.3))
+
+# Draw the text to the hidden visual buffer:
+msg1.draw()
+msg2.draw()
+
+# Show the hidden buffer--everything that has been drawn since the last win.flip():
+win.flip()
+
+# Wait 3 seconds so people can see the message, then exit gracefully:
+core.wait(3)
+
+win.close()
+core.quit()
+
+# The contents of this file are in the public domain.
+```
+
+## Demos/basic/face_jpg.py
+
+```
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+This demo shows you different image presentation using visual.ImageStim and
+visual.GratinGstim. It introduces some of the many attributes of these stimulus
+types.
+"""
+
+from __future__ import division
+
+# Import the modules that we need in this script
+from psychopy import core, visual, event
+
+# Create a window to draw in
+win = visual.Window(size=(600, 600), color='black')
+
+# An image using ImageStim.
+image = visual.ImageStim(win, image='face.jpg')
+
+# We can also use the image as a mask (mask="face.jpg") for other stimuli!
+grating = visual.GratingStim(win,
+    pos=(-0.5, 0),
+    tex='sin',
+    mask='face.jpg',
+    color='green')
+grating.size = (0.5, 0.5)  # attributes can be changed after initialization
+grating.sf = 1.0
+
+# Initiate clock to keep track of time
+clock = core.Clock()
+while clock.getTime() < 12 and not event.getKeys():
+    # Set dynamic attributes. There's a lot of different possibilities.
+    # so look at the documentation and try playing around here.
+    grating.phase += 0.01  # Advance phase by 1/100th of a cycle
+    grating.pos += (0.001, 0)  # Advance on x but not y
+    image.ori *=  1.01  # Accelerating orientation (1% on every frame)
+    image.size -= 0.001  # Decrease size uniformly on x and y
+    if image.opacity >=  0:  # attributes can be referenced
+        image.opacity -= 0.001  # Decrease opacity
+
+    # Show the result of all the above
+    image.draw()
+    grating.draw()
+    win.flip()
+
+win.close()
+core.quit()
+
+# The contents of this file are in the public domain.
+```
+
+## Rick's PsychoPy advice
+
+- Study the demos; tweak them.
+- Choose top down (builder) or bottom-up (script-first) approach at the outset.
+- Make experimental parameters explicit.
+
+---
+
+- Design your data outputs for reproducible post-processing.
+    - Think: 'What data frame am I going to want to have?'
+- Write and test import & cleaning code as you finalize your study.
+
 # Your turn
 
 ## Goals
@@ -161,6 +285,10 @@ https://github.com/topics/psychology-experiments?l=javascript
 - Why jsPsych?
     + No platform dependencies!
     + Can run/test from within RStudio!
+    
+## Preliminaries
+
+- Make a local copy/clone of <https://github.com/psu-psychology/jsPsych-resources>
 
 ## A basic [web page](simple-page.html)
 
@@ -204,26 +332,24 @@ https://github.com/topics/psychology-experiments?l=javascript
 ## Hello, World!
 
 ~~~~
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>My experiment</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="js/jspsych-5.0.3/jspsych.js"></script>
-        <script src="js/jspsych-5.0.3/plugins/jspsych-text.js"></script>
-        <link href="js/jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+        <script src="jspsych-6.1.0/jspsych.js"></script>
+        <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
+        <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     </head>
-    
-    <body>
-    </body>
+    <body></body>
     
     <script>
     var hello_trial = {
-        type: 'text',
-        text: 'Hello world!'
+        type: 'html-keyboard-response',
+        stimulus: 'Hello world!'
     }
+
     jsPsych.init({
-        timeline: [ hello_trial ]
+        timeline: [hello_trial]
     })
     </script>
 </html>
@@ -232,19 +358,14 @@ https://github.com/topics/psychology-experiments?l=javascript
 ## Loading JavaScript libraries
 
 ~~~~
-<!--- From the web --->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!--- From local directories --->
-<script src="js/jspsych-5.0.3/jspsych.js"></script>
-<script src="js/jspsych-5.0.3/plugins/jspsych-text.js"></script>
+<script src="jspsych-6.1.0/jspsych.js"></script>
 ~~~~
-
-- JQuery a widely used library to access/manipulate/style HTML tags with consistent syntax.
 
 ## Loading jsPsych CSS
 
 ~~~~
-<link href="js/jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+<link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
 ~~~~
 
 ## jsPsych code to show message
@@ -252,16 +373,15 @@ https://github.com/topics/psychology-experiments?l=javascript
 ~~~~
 <script>
   var hello_trial = {
-      type: 'text',
-      text: 'Hello world!'
+    type: 'html-keyboard-response',
+    stimulus: 'Hello world!'
   }
+
   jsPsych.init({
-      timeline: [ hello_trial ]
+    timeline: [hello_trial]
   })
 </script>
 ~~~~
-
-## Run finished "Hello World" example
 
 ## jsPsych produces data files in JSON format
 
@@ -297,9 +417,32 @@ Here's what the data look like in JavaScript Object Notation (JSON)
 - Copy data file manually (if running locally)
 - Save to web server (if running on server)
 
+## Closing the loop
+
+- [Importing and visualizing data](https://github.com/psu-psychology/jsPsych-resources/blob/master/visualize-rt-data.md) from jsPsych
+
 ## Questions?
 
 ## In-class quests
 
 - Work through jsPsych Hello, World! [demo](http://docs.jspsych.org/tutorials/hello-world/).
 - Work through jsPsych simple RT [demo](http://docs.jspsych.org/tutorials/rt-task/).
+
+# Next time...
+
+---
+
+- Gathering info from afar: Using APIs
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References

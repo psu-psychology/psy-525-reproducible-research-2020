@@ -8,6 +8,7 @@ title: "Resources"
 - [Shiny resources](https://github.com/psu-psychology/shiny-resources)
 - [R Markdown ioslides resources](https://github.com/psu-psychology/rmarkdown-ioslides)
 - [Websites in R Markdown](https://github.com/psu-psychology/rmarkdown-website-template)
+- [jsPsych resources](https://github.com/psu-psychology/jsPsych-resources)
 
 ## How-to's
 
