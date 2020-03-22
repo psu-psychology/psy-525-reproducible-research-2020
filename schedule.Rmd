@@ -252,8 +252,19 @@ NO CLASS
 
 Due by the start of class on 2020-03-31.
 
-1. Open a PsychoPy demo program and save it with a new name. 
-Add additional documentation to the demo program that explains what's happening. Change one or more parameters to make the program do something slightly different, and explain what parameters you changed.
+#### If you are new to PsychoPy:
+
+Open a PsychoPy demo program and save it with a new name. 
+Add additional documentation to the demo program that explains what's happening. 
+Change one or more parameters to make the program do something slightly different, and explain what parameters you changed.
+Push your code to a repo and tag `rogilmore`.
+
+#### If you are an experienced PsychoPy user:
+
+Share a PsychoPy application you have helped to develop.
+Add additional documentation to the demo program that explains what's happening.
+Modify the program as needed so that another user could run it by cloning your program.
+Push your code to a repo and tag `rogilmore`.
 
 ## Week 11: Tuesday, March 31, 2020
 
