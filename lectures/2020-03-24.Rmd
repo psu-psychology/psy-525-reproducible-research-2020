@@ -131,7 +131,7 @@ https://github.com/topics/psychology-experiments?l=javascript
 <iframe src="https://daattali.com/shiny/mimic-google-form/">
 </iframe>
 
-## Challenges to reproducibility
+## Challenges to experimental reproducibility
 
 - Commercial vs. non-commercial tools
 - Computers vary, OS's vary, versions change
@@ -153,6 +153,7 @@ https://github.com/topics/psychology-experiments?l=javascript
 - Open code sharing
     + <https://github.com/gilmore-lab/peep-II>
     + <https://github.com/gilmore-lab/planforms>
+    + <https://github.com/gilmore-lab/sex-differences-in-motion-perception/tree/master/psychopy>
 - Share videos, stills of displays
     + [[@gilmore-adolph-video-2017]](http://http://osf.io/3kvp7)
     + e.g., <https://doi.org/10.17910/B7.272>

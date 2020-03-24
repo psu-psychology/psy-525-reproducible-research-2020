@@ -1,0 +1,176 @@
+---
+title: "Interact with Box.com API"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+    keep_md: true
+---
+
+
+
+# Purpose
+
+This document describes how to interact with the Box.com API.
+
+# Prerequisites
+
+- You must have a PSU Access ID (e.g., rog1).
+- You must have a Box.com account associated with your PSU ID.
+
+# Installation
+
+## Package dependencies
+
+We'll use the `boxr` package.
+
+
+```r
+if (!require(boxr)){
+  install.packages("boxr")
+}
+```
+
+```
+## Loading required package: boxr
+```
+
+```r
+if (!require("openssl")){
+  install.packages("openssl")
+}
+```
+
+```
+## Loading required package: openssl
+```
+
+## Create app on Box.com
+
+You'll need to create an app on Box.com for your scripts to interact with. 
+Visit <https://psu.app.box.com/developers/console>.
+If you are not already logged in to Box.com, you'll be asked to login and provide your two-factor authentication credentials.
+
+From the Box Developers My Apps console, press the Create New App Button.
+
+
+```r
+knitr::include_graphics("img/box-app-new.png")
+```
+
+<img src="img/box-app-new.png" style="display: block; margin: auto;" />
+
+Select Custom App as the application type.
+
+
+```r
+knitr::include_graphics("img/box-custom-app.png")
+```
+
+<img src="img/box-custom-app.png" style="display: block; margin: auto;" />
+
+Press the Next button to proceed.
+
+Choose the method of Authentication.
+For our purposes here, I recommend using Standard OAuth 2.0 (User Authentication).
+
+
+```r
+knitr::include_graphics("img/box-oath.png")
+```
+
+<img src="img/box-oath.png" style="display: block; margin: auto;" />
+
+Press "Next" to proceed.
+
+Name your app.
+
+
+```r
+knitr::include_graphics("img/box-name-app.png")
+```
+
+<img src="img/box-name-app.png" style="display: block; margin: auto;" />
+
+Press Create App.
+If you get the "Woot! Your app has been created" screen, you can do the computer happy dance if you like.
+Otherwise, continue.
+Press the "View Your App" button.
+
+You app's configuration page will open.
+Scroll down to the "OAuth 2.0 Credentials" section.
+
+
+```r
+knitr::include_graphics("img/box-edit-oauth-cred.png")
+```
+
+<img src="img/box-edit-oauth-cred.png" style="display: block; margin: auto;" />
+
+Don't edit these.
+**Note:** Your credentials will differ from mine.
+
+### Change OAuth redirect
+
+Scroll down a bit further to the 'OAuth 2.0 Redirect URI' panel.
+Edit the 'Redirect URI' to `http://localhost:8080`.
+This will force your script to launch a login window for Box when you try to authenticate.
+If you don't change this field, your app will not work.
+
+Hit the 'Save Changes' button.
+
+Scroll back up to the 'OAuth 2.0 Credentials' section again.
+
+## Set-up credentials in R
+
+Type the following command template into your R console, but *do not hit enter* yet:
+
+```
+boxr::box_auth(client_id="", client_secret = "")
+```
+
+From your Box.com app configuration page, copy the `Client ID` field and paste it between the quotation marks in `client_id=""`.
+Then, copy the `Client Secret` and paste it between the quotation marks in `client_secret=""` above.
+
+## Test authentication from R
+
+*Now* press enter at the R console to execute the `boxr::box_auth()` command.
+You should see a login window like the following:
+
+
+```r
+knitr::include_graphics("img/box-grant-access.png")
+```
+
+<img src="img/box-grant-access.png" style="display: block; margin: auto;" />
+
+Press the "Grant Access to Box" button, and close the browser window with the "Authentication complete. Please close this page and return to R." message.
+
+## Store credentials (optional)
+
+If you want to use R to access Box in the future, you may wish to follow the instructions that appear in the R console to save these credentials in your `.Renviron` file.
+
+- Open your `.Renviron` file via `usethis::edit_r_environ()`.
+- Paste the `BOX_CLIENT_ID` and `BOX_CLIENT_SECRET` lines into the file.
+- Save the file.
+- Restart R (Session/Restart R).
+
+**Note:** Your `.Renviron` file should live in your user's root/home directory and thus *not* be part of a repo you are using for version control.
+However, make absolutely sure that you add `.Renviron` to your `.gitignore` file or else you could inadvertently share your credentials with the world.
+
+Here is a screenshot from the `.gitignore` file for the class repo.
+Note that the `boxr` app added its own hidden folder `~/.boxr-oauth` to the list of files to ignore.
+I added my root `.Renviron` file (`~/.Renviron`) and my local (to this project/repo) `.Renviron` file just to make absolutely sure I don't leak credentials.
+
+
+```r
+knitr::include_graphics("img/box-r-security.png")
+```
+
+<img src="img/box-r-security.png" style="display: block; margin: auto;" />
+
+# Test the connection to Box
+
+*Coming soon*
