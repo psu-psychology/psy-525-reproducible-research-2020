@@ -39,6 +39,8 @@ slides > slide:not(.nobackground):after {
 
 ## Check-in
 
+- How are things going?
+
 ## Announcements
 
 - Data science community meeting, Monday, March 30, 2020, 10:00a, <https://psu.zoom.us/j/677349894>
@@ -54,7 +56,7 @@ slides > slide:not(.nobackground):after {
 ## Tools
 
 - [E-Prime](https://www.pstnet.com/eprime.cfm)
-- Matlab ([Psychophysics Toolbox](http://psychtoolbox.org/))
+- Matlab-based ([Psychophysics Toolbox](http://psychtoolbox.org/))
 - [PsychoPy](http://www.psychopy.org/)
 
 ---
@@ -89,6 +91,7 @@ slides > slide:not(.nobackground):after {
     - <http://www.kehinger.com/PTBexamples.html>
     - Introduction to Psychtoolbox on Matlab, <http://www.jonaskaplan.com/psych599.php>
 - YouTube tutorial channel: <https://www.youtube.com/watch?v=5Sskr9m-UtQ>
+- Brad Wyble's [Stream](https://osf.io/tdvxm/) environment for "rapid, precise experimental development"
 
 ## [PsychoPy](http://www.psychopy.org/)
 
@@ -153,9 +156,16 @@ https://github.com/topics/psychology-experiments?l=javascript
 - Open code sharing
     + <https://github.com/gilmore-lab/peep-II>
     + <https://github.com/gilmore-lab/planforms>
+    + <https://github.com/gilmore-lab/sex-differences-in-motion-perception>
+- Psychology Department script library
+
+---
+
 - Share videos, stills of displays
-    + [[@gilmore-adolph-video-2017]](http://http://osf.io/3kvp7)
+    + [[@gilmore-adolph-video-2017]](https://osf.io/3kvp7)
     + e.g., <https://doi.org/10.17910/B7.272>
+    + [Journal of Visualized Experiments (JOVE)](https://www.jove.com/)
+- [PLAY Project](https://play-project.org)
     
 ---
 
@@ -278,6 +288,7 @@ core.quit()
 
 ---
 
+- Choose GUI or script-based approach
 - Design your data outputs for reproducible post-processing.
     - Think: 'What data frame am I going to want to have?'
 - Write and test import & cleaning code as you finalize your study.
