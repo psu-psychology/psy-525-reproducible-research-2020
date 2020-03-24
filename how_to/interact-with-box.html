@@ -1599,7 +1599,7 @@ div.tocify {
 
 <div id="purpose" class="section level1">
 <h1>Purpose</h1>
-<p>This document describes how to interact with the Box.com API.</p>
+<p>This document describes how to interact with the Box.com API. This enables users to automate file uploading, downloading, and sharing.</p>
 </div>
 <div id="prerequisites" class="section level1">
 <h1>Prerequisites</h1>
@@ -1681,7 +1681,227 @@ div.tocify {
 </div>
 <div id="test-the-connection-to-box" class="section level1">
 <h1>Test the connection to Box</h1>
-<p><em>Coming soon</em></p>
+<p>Let’s interact with Box!</p>
+<div id="authenticate" class="section level2">
+<h2>Authenticate</h2>
+<pre class="r"><code>boxr::box_auth()</code></pre>
+<pre><code>## Using `BOX_CLIENT_ID` from environment</code></pre>
+<pre><code>## Using `BOX_CLIENT_SECRET` from environment</code></pre>
+<pre><code>## boxr: Authenticated using OAuth2 as Rick Gilmore (rog1@psu.edu, id: 196373178)</code></pre>
+</div>
+<div id="creating-directories" class="section level2">
+<h2>Creating directories</h2>
+<pre class="r"><code>my_dir_name &lt;- &quot;a-test-directory&quot;
+f &lt;- boxr::box_dir_create(my_dir_name)
+str(f)</code></pre>
+<pre><code>## List of 22
+##  $ type               : chr &quot;folder&quot;
+##  $ id                 : chr &quot;107936007462&quot;
+##  $ sequence_id        : chr &quot;0&quot;
+##  $ etag               : chr &quot;0&quot;
+##  $ name               : chr &quot;a-test-directory&quot;
+##  $ created_at         : chr &quot;2020-03-24T08:58:01-07:00&quot;
+##  $ modified_at        : chr &quot;2020-03-24T08:58:01-07:00&quot;
+##  $ description        : chr &quot;&quot;
+##  $ size               : int 0
+##  $ path_collection    :List of 2
+##   ..$ total_count: int 1
+##   ..$ entries    :List of 1
+##   .. ..$ :List of 5
+##   .. .. ..$ type       : chr &quot;folder&quot;
+##   .. .. ..$ id         : chr &quot;0&quot;
+##   .. .. ..$ sequence_id: NULL
+##   .. .. ..$ etag       : NULL
+##   .. .. ..$ name       : chr &quot;All Files&quot;
+##  $ created_by         :List of 4
+##   ..$ type : chr &quot;user&quot;
+##   ..$ id   : chr &quot;196373178&quot;
+##   ..$ name : chr &quot;Rick Gilmore&quot;
+##   ..$ login: chr &quot;rog1@psu.edu&quot;
+##  $ modified_by        :List of 4
+##   ..$ type : chr &quot;user&quot;
+##   ..$ id   : chr &quot;196373178&quot;
+##   ..$ name : chr &quot;Rick Gilmore&quot;
+##   ..$ login: chr &quot;rog1@psu.edu&quot;
+##  $ trashed_at         : NULL
+##  $ purged_at          : NULL
+##  $ content_created_at : chr &quot;2020-03-24T08:58:01-07:00&quot;
+##  $ content_modified_at: chr &quot;2020-03-24T08:58:01-07:00&quot;
+##  $ owned_by           :List of 4
+##   ..$ type : chr &quot;user&quot;
+##   ..$ id   : chr &quot;196373178&quot;
+##   ..$ name : chr &quot;Rick Gilmore&quot;
+##   ..$ login: chr &quot;rog1@psu.edu&quot;
+##  $ shared_link        : NULL
+##  $ folder_upload_email: NULL
+##  $ parent             :List of 5
+##   ..$ type       : chr &quot;folder&quot;
+##   ..$ id         : chr &quot;0&quot;
+##   ..$ sequence_id: NULL
+##   ..$ etag       : NULL
+##   ..$ name       : chr &quot;All Files&quot;
+##  $ item_status        : chr &quot;active&quot;
+##  $ item_collection    :List of 5
+##   ..$ total_count: int 0
+##   ..$ entries    : list()
+##   ..$ offset     : int 0
+##   ..$ limit      : int 100
+##   ..$ order      :List of 2
+##   .. ..$ :List of 2
+##   .. .. ..$ by       : chr &quot;type&quot;
+##   .. .. ..$ direction: chr &quot;ASC&quot;
+##   .. ..$ :List of 2
+##   .. .. ..$ by       : chr &quot;name&quot;
+##   .. .. ..$ direction: chr &quot;ASC&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;boxr_folder_reference&quot;</code></pre>
+<p>That seemed to work. We have stored the returned metadata in a variable <code>f</code>. Now, let’s create two subdirectories under that main directory. First, we switch to the created directory and make it our temporary working directory.</p>
+<pre class="r"><code>home_dir &lt;- boxr::box_getwd()
+boxr::box_setwd(f$id) # Box uses ID numbers to identify directories and files.</code></pre>
+<pre><code>## box.com working directory changed to &#39;a-test-directory&#39;
+## 
+##       id: 107936007462
+##     tree: All Files/a-test-directory
+##    owner: rog1@psu.edu
+## contents: 0 files, 0 folders</code></pre>
+<p>Then we create two directories, <code>qa</code>, and <code>data_collection</code>.</p>
+<pre class="r"><code>thing_1 &lt;- boxr::box_dir_create(&quot;thing_1&quot;)
+thing_2&lt;- boxr::box_dir_create(&quot;thing_2&quot;)</code></pre>
+</div>
+<div id="listing-directories" class="section level2">
+<h2>Listing directories</h2>
+<p>Let’s retrieve a list of directories in our current working directory. The default is the current working directory. Note: We need to load the <code>tidyverse</code> package to have access to the pipe <code>%&gt;%</code> operator.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+## ✓ tibble  2.1.3     ✓ dplyr   0.8.5
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>my_box_dirs &lt;- boxr::box_ls()
+my_box_dirs %&gt;%
+  knitr::kable(.)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="center">type</th>
+<th align="left">id</th>
+<th align="right">size</th>
+<th align="left">description</th>
+<th align="left">owner</th>
+<th align="left">path</th>
+<th align="left">modified_at</th>
+<th align="left">content_modified_at</th>
+<th align="left">sha1</th>
+<th align="right">version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">thing_1</td>
+<td align="center">folder</td>
+<td align="left">107935643847</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"><a href="mailto:rog1@psu.edu" class="email">rog1@psu.edu</a></td>
+<td align="left">All Files/a-test-directory</td>
+<td align="left">2020-03-24 11:58:02</td>
+<td align="left">2020-03-24 11:58:02</td>
+<td align="left">NA</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">thing_2</td>
+<td align="center">folder</td>
+<td align="left">107935936106</td>
+<td align="right">0</td>
+<td align="left"></td>
+<td align="left"><a href="mailto:rog1@psu.edu" class="email">rog1@psu.edu</a></td>
+<td align="left">All Files/a-test-directory</td>
+<td align="left">2020-03-24 11:58:02</td>
+<td align="left">2020-03-24 11:58:02</td>
+<td align="left">NA</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="create-a-csv-data-file-and-upload" class="section level2">
+<h2>Create a CSV data file and upload</h2>
+<p>Let’s test the upload functionality by creating a CSV data frame and uploading it to the ‘thing_1’ folder.</p>
+<pre class="r"><code>df &lt;- data.frame(name = c(&quot;Tom&quot;, &quot;Dick&quot;, &quot;Harriet&quot;),
+                 age = c(10, 15, 20),
+                 alive = c(FALSE, TRUE, TRUE))</code></pre>
+<pre class="r"><code>target_dir &lt;- as.data.frame(my_box_dirs) %&gt;%
+  filter(name == &quot;thing_1&quot;)</code></pre>
+<p>Now, we’ll make a temporary csv data file and upload it</p>
+<pre class="r"><code>readr::write_csv(df, &quot;tmp.csv&quot;)
+boxr::box_ul(target_dir$id, file = &quot;tmp.csv&quot;)</code></pre>
+<pre><code>## 
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+<pre><code>## 
+## box.com remote file reference
+## 
+##  name        : tmp.csv 
+##  file id     : 639637023367 
+##  version     : V1 
+##  size        : 57 B 
+##  modified at : 2020-03-24 08:58:06 
+##  created at  : 2020-03-24 08:58:06 
+##  uploaded by : rog1@psu.edu 
+##  owned by    : rog1@psu.edu 
+##  shared link : None 
+## 
+##  parent folder name :  thing_1 
+##  parent folder id   :  107935643847</code></pre>
+<div id="downloading-uploaded-file" class="section level3">
+<h3>Downloading uploaded file</h3>
+<p>Let’s list the files in the <code>thing_1</code> subdirectory first.</p>
+<pre class="r"><code>target_list &lt;- boxr::box_ls(target_dir$id)
+target_list</code></pre>
+<pre><code>## 
+## box.com remote object list (1 objects)
+## 
+##   Summary of first 1:
+## 
+##      name type           id size        owner
+## 1 tmp.csv file 639637023367 57 B rog1@psu.edu
+## 
+## 
+## Use as.data.frame() to extract full results.</code></pre>
+<p>Now, we try to download it.</p>
+<pre class="r"><code>boxr::box_dl(as.data.frame(target_list)$id, overwrite = TRUE, file_name = &quot;new_tmp.csv&quot;)</code></pre>
+<pre><code>## 
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+<pre><code>## [1] &quot;/Users/rog1/rrr/psy-525-reproducible-research-2020/how_to/new_tmp.csv&quot;</code></pre>
+<pre class="r"><code>downloaded_f &lt;- readr::read_csv(&quot;new_tmp.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   name = col_character(),
+##   age = col_double(),
+##   alive = col_logical()
+## )</code></pre>
+<pre class="r"><code>str(downloaded_f)</code></pre>
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 3 obs. of  3 variables:
+##  $ name : chr  &quot;Tom&quot; &quot;Dick&quot; &quot;Harriet&quot;
+##  $ age  : num  10 15 20
+##  $ alive: logi  FALSE TRUE TRUE
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   name = col_character(),
+##   ..   age = col_double(),
+##   ..   alive = col_logical()
+##   .. )</code></pre>
+</div>
+</div>
 </div>
 
 

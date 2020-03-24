@@ -143,4 +143,90 @@ knitr::include_graphics("img/box-r-security.png")
 
 # Test the connection to Box
 
-*Coming soon*
+Let's interact with Box!
+
+## Authenticate
+
+```{r authenticate}
+boxr::box_auth()
+```
+
+## Creating directories
+
+```{r list-directories}
+my_dir_name <- "a-test-directory"
+f <- boxr::box_dir_create(my_dir_name)
+str(f)
+```
+
+That seemed to work.
+We have stored the returned metadata in a variable `f`.
+Now, let's create two subdirectories under that main directory.
+First, we switch to the created directory and make it our temporary working directory.
+
+```{r set-new-home-dir}
+home_dir <- boxr::box_getwd()
+boxr::box_setwd(f$id) # Box uses ID numbers to identify directories and files.
+```
+
+Then we create two directories, `qa`, and `data_collection`.
+
+```{r create-dirs}
+thing_1 <- boxr::box_dir_create("thing_1")
+thing_2<- boxr::box_dir_create("thing_2")
+```
+
+## Listing directories
+
+Let's retrieve a list of directories in our current working directory.
+The default is the current working directory.
+Note: We need to load the `tidyverse` package to have access to the pipe `%>%` operator.
+
+```{r list-dirs}
+library(tidyverse)
+my_box_dirs <- boxr::box_ls()
+my_box_dirs %>%
+  knitr::kable(.)
+```
+
+## Create a CSV data file and upload
+
+Let's test the upload functionality by creating a CSV data frame and uploading it to the 'thing_1' folder.
+
+```{r create-test-data}
+df <- data.frame(name = c("Tom", "Dick", "Harriet"),
+                 age = c(10, 15, 20),
+                 alive = c(FALSE, TRUE, TRUE))
+```
+
+```{r specify-target-dir}
+target_dir <- as.data.frame(my_box_dirs) %>%
+  filter(name == "thing_1")
+```
+
+Now, we'll make a temporary csv data file and upload it 
+
+```{r upload}
+readr::write_csv(df, "tmp.csv")
+boxr::box_ul(target_dir$id, file = "tmp.csv")
+```
+
+### Downloading uploaded file
+
+Let's list the files in the `thing_1` subdirectory first.
+
+```{r list-in-dir}
+target_list <- boxr::box_ls(target_dir$id)
+target_list
+```
+
+Now, we try to download it.
+
+```{r download}
+boxr::box_dl(as.data.frame(target_list)$id, overwrite = TRUE, file_name = "new_tmp.csv")
+```
+
+```{r examine}
+downloaded_f <- readr::read_csv("new_tmp.csv")
+str(downloaded_f)
+```
