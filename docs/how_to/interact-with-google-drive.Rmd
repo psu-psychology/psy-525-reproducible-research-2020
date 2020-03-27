@@ -1,0 +1,120 @@
+---
+title: "Interact with the Google Drive API"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+# Purpose
+
+This document describes how to interact with the Google Drive API.
+This enables users to automate file uploading, downloading, and sharing.
+The [documentation site](https://googledrive.tidyverse.org/) is good.
+This brief how-to borrows from it.
+
+# Prerequisites
+
+- You must have a personal Google account or have your Google apps account via Penn State set-up.
+
+# Installation
+
+## Package dependencies
+
+We'll use the [`googledrive`](https://googledrive.tidyverse.org/) package.
+
+```{r install-packages}
+if (!require(googledrive)){
+  install.packages("googledrive")
+}
+```
+
+# Test the connection to Google Drive
+
+## List files
+
+List files in your Google Drive.
+
+```{r}
+googledrive::drive_find(n_max = 5)
+```
+
+This will initiate the process of authenticating to your Google Drive account.
+Depending on which Google Drive account you choose (e.g., your personal one or a PSU one associated with your access ID like `rog1@psu.edu`) there will be different sets of steps.
+
+When you see "Authentication complete. Please close this page and return to R.", you have finished the authentication process.
+If you have documents in your Google Drive under the account you chose, you will see them listed in the console.
+
+## Upload files
+
+Let's create a test file and then upload it.
+
+```{r create-test-data}
+df <- data.frame(name = c("Tom", "Dick", "Harriet"),
+                 age = c(10, 15, 20),
+                 alive = c(FALSE, TRUE, TRUE))
+
+readr::write_csv(df, "tmp.csv")
+
+# Upload tmp.csv as test-data and make it a spreadsheet
+(test_data <- googledrive::drive_upload(
+  media = "tmp.csv",
+  name = "my-525-test-data",
+  type = "spreadsheet"
+))
+```
+
+We now confirm that Google drive knows about it.
+
+```{r find-test-data}
+googledrive::drive_find(pattern = "my-525-test-data")
+```
+
+It does, so let's download it again.
+
+```{r}
+new_test <- googledrive::drive_download("my-525-test-data")
+```
+This downloads the file as `.xlsx`.
+
+# Sheets-specific commands
+
+## Package installation
+
+You will want to install the [`googlesheets4` package](https://googlesheets4.tidyverse.org/) to interact with Google sheets.
+
+```{r}
+if (!require(googlesheets4)){
+  install.packages("googlesheets4")
+}
+```
+
+## Reading sheets
+
+```{r}
+gapm_data <- googlesheets4::read_sheet("1U6Cf_qEOhiR9AZqTqS3mbMF3zt2db48ZP5v3rkrAEJY")
+```
+
+The first time you call this command, the package will ask to confirm your authentication details.
+
+Now, we can visualize the data.
+
+```{r}
+str(gapm_data)
+```
+
+```{r}
+library(ggplot2)
+gapm_data %>%
+  ggplot(.) +
+  aes(x = lifeExp, y = country) +
+  geom_violin()
+```
+

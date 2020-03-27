@@ -60,6 +60,12 @@ navbar:
           href: how_to/python-in-rmarkdown.html
         - text: "Install Python locally"
           href: how_to/install-python.html
+        - text: "Interact with Box.com API"
+          href: how_to/interact-with-box.html
+        - text: "Interact with the Qualtrics API"
+          href: how_to/interact-with-qualtrics.html
+        - text: "Interact with the Google Drive API"
+          href: how_to/interact-with-google-drive.html
   right:
     - text: "Site info"
       href: site-info.html

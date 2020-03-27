@@ -134,7 +134,7 @@ https://github.com/topics/psychology-experiments?l=javascript
 <iframe src="https://daattali.com/shiny/mimic-google-form/">
 </iframe>
 
-## Challenges to reproducibility
+## Challenges to experimental reproducibility
 
 - Commercial vs. non-commercial tools
 - Computers vary, OS's vary, versions change

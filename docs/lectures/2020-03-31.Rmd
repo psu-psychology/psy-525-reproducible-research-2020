@@ -1,0 +1,112 @@
+---
+title: "Week 11: Getting data from afar: APIs"
+subtitle: "PSY 525"
+author: "Rick O. Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output:
+  ioslides_presentation:
+    incremental: no
+    self-contained: yes
+    transition: default
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "700px",
+                      cache = FALSE)
+```
+
+<!-- Scrolling slides -->
+<!-- http://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Check-in
+
+## Announcements
+
+## Today's topics
+
+- Tools for reproducible (remote) data gathering 
+
+# Tools for reproducible (remote) data gathering
+
+## What are APIs
+
+- Application Program Interface (API)
+- Talk to computer services
+
+## Why use APIs
+
+- Reduce human manipulation of data files
+- Reduce errors
+- Reduce security/privacy breaches
+- Improve reproducibility
+
+## Some useful APIs
+
+- Box
+- Google Drive
+- OSF
+- Databrary
+
+## Box.com
+
+- [`boxr` R package](https://r-box.github.io/boxr/)
+
+## Google Drive
+
+## OSF
+
+## Databrary
+
+- [`databraryapi` R package](https://github.com/PLAY-behaviorome/databraryapi)
+- [`databrarypi` Python package](https://github.com/PLAY-behaviorome/databrarypi)
+
+# Your turn
+
+## Box
+
+- Visit <https://psu.app.box.com/developers/console>
+
+---
+
+
+```
+box_auth(client_id = "7ysxfink4ml7byn6393pwg88ub76mvkx", client_secret = "9YxPHHZUBHuqjANCpOGKjxpmE5iJMjXG")
+```
+
+# Next time...
+
+---
+
+- Gathering info from afar: Using APIs
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References
