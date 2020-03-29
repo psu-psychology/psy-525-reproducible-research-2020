@@ -34,8 +34,10 @@ navbar:
           href: lectures/2020-03-03-no-shiny.html
         - text: "Week 9: 2020-03-17"
           href: lectures/2020-03-17.html
-        - text: "Week 9: 2020-03-24"
+        - text: "Week 10: 2020-03-24"
           href: lectures/2020-03-24.html
+        - text: "Week 11: 2020-03-31"
+          href: lectures/2020-03-31.html
     - text: "Students"
       href: students.html
     - text: "How-to"
