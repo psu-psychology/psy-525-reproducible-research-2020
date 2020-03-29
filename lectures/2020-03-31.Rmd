@@ -1,5 +1,5 @@
 ---
-title: "Week 11: Getting data from afar: APIs"
+title: "Week 11: Managing resources from afar via APIs"
 subtitle: "PSY 525"
 author: "Rick O. Gilmore"
 date: "`r Sys.time()`"
@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.align = "center",
                       out.width = "700px",
                       cache = FALSE)
+library(tidyverse)
 ```
 
 <!-- Scrolling slides -->
@@ -43,9 +44,9 @@ slides > slide:not(.nobackground):after {
 
 ## Today's topics
 
-- Tools for reproducible (remote) data gathering 
+- Managing resources from afar via APIs 
 
-# Tools for reproducible (remote) data gathering
+# Managing resources from afar via APIs
 
 ## What are APIs
 
@@ -59,6 +60,12 @@ slides > slide:not(.nobackground):after {
 - Reduce security/privacy breaches
 - Improve reproducibility
 
+---
+
+```{r, fig.cap="[Munafo et al.](https://doi.org/10.1038/s41562-016-0021)"}
+knitr::include_graphics("https://www.nature.com/article-assets/npg/nathumbehav/2017/s41562-016-0021/images_hires/w926/s41562-016-0021-f1.jpg")
+```
+
 ## Some useful APIs
 
 - Box
@@ -69,34 +76,124 @@ slides > slide:not(.nobackground):after {
 ## Box.com
 
 - [`boxr` R package](https://r-box.github.io/boxr/)
+- [`python-box` Python package](https://pypi.org/project/python-box/)
 
 ## Google Drive
 
-## OSF
+- [`googledrive` R package](https://googledrive.tidyverse.org/)
+- [`google-api-python-client` Python client](https://github.com/googleapis/google-api-python-client)
+
+## Open Science Framework (OSF)
+
+- [`osfr` package for R](https://github.com/ropensci/osfr)
+- [`osfsync` package for Python](https://github.com/osfclient/osfclient)
 
 ## Databrary
 
 - [`databraryapi` R package](https://github.com/PLAY-behaviorome/databraryapi)
 - [`databrarypi` Python package](https://github.com/PLAY-behaviorome/databrarypi)
 
-# Your turn
+## What can you do with these APIs?
 
-## Box
+- Move data to/from cloud storage
+- Leave data on cloud storage; clean, visualize locally
+- Produce reproducible workflows from the get-go
+- Access & visualize data shared by others
 
-- Visit <https://psu.app.box.com/developers/console>
+## What's involved?
+
+- Downloading package
+- Configuring authentication
+
+## Example 1: `databraryapi`
+
+- Summarize demographics of specific study
+
+<small>
+Tamis-LeMonda, C. (2013). Language, cognitive, and socio-emotional skills from 9 months until their transition to first grade in U.S. children from African-American, Dominican, Mexican, and Chinese backgrounds. Databrary. Retrieved March 29, 2020 from http://doi.org/10.17910/B7CC74.
+</small>
 
 ---
 
+- Login
 
+```{r, echo=TRUE}
+databraryapi::login_db()
 ```
-box_auth(client_id = "7ysxfink4ml7byn6393pwg88ub76mvkx", client_secret = "9YxPHHZUBHuqjANCpOGKjxpmE5iJMjXG")
+
+---
+
+- Download demographic data
+
+```{r, echo=TRUE}
+demog <- databraryapi::download_session_csv(8)
 ```
+
+---
+
+```{r, echo=TRUE}
+str(demog)
+```
+
+---
+
+- Clean and visualize
+
+```{r, echo=TRUE}
+sex_race <- demog %>%
+  dplyr::select(., sex = participant.gender,
+                race = participant.race)
+
+xtabs(formula = ~ sex + race, sex_race)
+```
+
+## Other working examples
+
+- [Quality Assurance (QA)](https://github.com/PLAY-behaviorome/workflow/tree/master/session_qa_reports) on PLAY
+- Databrary [weekly report](https://gilmore-lab.github.io/databrary-analytics/weekly/databrary_weekly_report.html)
+
+## Example 2: NY Times data on COVID-19
+
+- Data: <https://github.com/nytimes/covid-19-data>
+- NY tracking page: <https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html>
+
+```{r, echo=TRUE}
+# Note the URL uses raw.githubusercontent.com
+cv19 <- readr::read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
+str(cv19)
+```
+
+---
+
+```{r, echo=TRUE}
+cv19 %>%
+  dplyr::filter(., state %in% c("Pennsylvania", "New York", "New Jersey", "Maryland", "Ohio", "West Virginia", "Delaware")) %>%
+  ggplot(.) +
+  aes(date, cases, color = state) +
+  geom_point() +
+  geom_line()
+```
+
+# Your turn
+
+## Connect to Qualtrics
+
+- [how_to/interact-with-qualtrics](../how_to/interact-with-qualtrics.html)
+
+## Connect to Box
+
+- [how_to/interact-with-box](../how_to/interact-with-box.html)
+
+## Connect to Google Drive
+
+- [how_to/interact-with-google-drive](../how_to/interact-with-google-drive.html)
 
 # Next time...
 
 ---
 
-- Gathering info from afar: Using APIs
+- Where to share
+- Your open science portfolio
 
 # Resources
 

@@ -282,7 +282,8 @@ Push your code to a repo and tag `rogilmore`.
 
 Due by the start of class on 2020-04-07.
 
-Create a Jupyter notebook (or R Markdown report) where you document your exploration of the U.S. Census, Box, or Google Drive APIs.
+Create a Jupyter notebook (or R Markdown report) where you document your exploration of the Qualtrics, Box, or Google Drive APIs.
+Describe a use case for one of these tools in your research workflow, and test a preliminary implementation.
 
 ## Week 12: Tuesday, April 7, 2020
 
@@ -296,8 +297,8 @@ Create a Jupyter notebook (or R Markdown report) where you document your explora
 
 ### Readings/webinars
 
-- Meyer, M. N. (2018). Practical Tips for Ethical Data Sharing. Advances in Methods and Practices in Psychological Science, 2515245917747656. SAGE Publications Inc. Retrieved from https://doi.org/10.1177/2515245917747656
-- Gilmore, R.O. et al. (2020).
+- Meyer, M. N. (2018). Practical Tips for Ethical Data Sharing. *Advances in Methods and Practices in Psychological Science*, 2515245917747656. SAGE Publications Inc. Retrieved from https://doi.org/10.1177/2515245917747656
+- Gilmore, R.O., Cole, P.M., van Aken, M.A.G., Verma S., & Worthman, C.M. (2020). Advancing scientific integrity, transparency, and openness in child development research: Challenges and possible solutions. *Child Development Perspectives*, *14*(1), 9-14. https://dx.doi.org/10.1111/cdep.12360
 
 ### Homework
 
