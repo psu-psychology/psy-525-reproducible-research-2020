@@ -98,20 +98,23 @@ knitr::include_graphics("https://www.nature.com/article-assets/npg/nathumbehav/2
 - Move data to/from cloud storage
 - Leave data on cloud storage; clean, visualize locally
 - Produce reproducible workflows from the get-go
+- Reduce the likelihood that data can "leak"
 - Access & visualize data shared by others
 
 ## What's involved?
 
 - Downloading package
 - Configuring authentication
+- Testing the connection
+- Writing code to do what you want
 
 ## Example 1: `databraryapi`
 
 - Summarize demographics of specific study
 
-<small>
-Tamis-LeMonda, C. (2013). Language, cognitive, and socio-emotional skills from 9 months until their transition to first grade in U.S. children from African-American, Dominican, Mexican, and Chinese backgrounds. Databrary. Retrieved March 29, 2020 from http://doi.org/10.17910/B7CC74.
-</small>
+<p class='citation'>
+Tamis-LeMonda, C. (2013). Language, cognitive, and socio-emotional skills from 9 months until their transition to first grade in U.S. children from African-American, Dominican, Mexican, and Chinese backgrounds. *Databrary*. Retrieved March 29, 2020 from http://doi.org/10.17910/B7CC74.
+</p>
 
 ---
 

@@ -68,6 +68,8 @@ navbar:
           href: how_to/interact-with-qualtrics.html
         - text: "Interact with the Google Drive API"
           href: how_to/interact-with-google-drive.html
+        - text: "Interact with the U.S. Census API"
+          href: how_to/interact-with-census.html
   right:
     - text: "Site info"
       href: site-info.html
