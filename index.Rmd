@@ -1,5 +1,5 @@
 ---
-pagetitle: "index.html"
+pagetitle: "PSY 525.001"
 ---
 
 ## Transparent, Open, and Reproducible Research Practices in the Social and Behavioral Sciences

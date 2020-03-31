@@ -1,0 +1,43 @@
+---
+title: "Interact with KoboToolbox API"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+# Purpose
+
+This document describes how to interact with the KoboToolbox API.
+KoboToolbox is a tool for creating web-based surveys.
+The surveys can also be run on an Android device offline, and the results pushed to the server when the device is back online.
+
+# Prerequisites
+
+- An account on KoboToolbox.
+
+Visit <https://www.kobotoolbox.org/> and click on the 'Sign Up' menu item.
+
+Then press the 'Create An Account' button on the right side of the screen if you are a researcher.
+
+# Installation
+
+## Package dependencies
+
+We'll use the [`koboloadeR` package](https://unhcr.github.io/koboloadeR/).
+It's still in beta stage, so we have to install it via the `devtools` package from the package's GitHub repo.
+
+```{r}
+if (!require(devtools)) {
+  install.packages("devtools")
+}
+devtools::install_github("unhcr/koboloadeR", ref = "gh-pages") 
+```
+
