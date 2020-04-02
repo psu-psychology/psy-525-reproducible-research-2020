@@ -3,7 +3,6 @@ title: "Students"
 ---
 
 This page provides some background information about the students in PSY 525.
-It is a template for now, but the students will be filling in details very soon.
 
 ## Daisy Lei
 
@@ -17,9 +16,7 @@ Hannah's course [GitHub repo](https://github.com/hannah-merseal/psy-525-reproduc
 
 ## Amanda Moeller
 
-Amanda is...
-
-Amanda's GitHub ID is <YOUR_ID_HERE>
+Amanda's GitHub ID is [anm332](https://github.com/anm332).
 
 ## Natalie Pottschmidt
 
@@ -29,12 +26,8 @@ Natalie's GitHub ID is natspotts222, and her collection of repos related to this
 
 ## Raphael Rodriguez
 
-Raphael is...
-
 Raphael's GitHub ID is <YOUR_ID_HERE>
 
 ## Holly Zaharchuk
 
-Holly is...
-
-Holly's GitHub ID is <YOUR_ID_HERE>
+Holly's GitHub ID is [hollzzar](https://github.com/hollzzar).
