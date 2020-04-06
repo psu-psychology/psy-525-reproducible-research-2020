@@ -1,0 +1,230 @@
+---
+title: "Week 12: Your open science portfolio"
+subtitle: "PSY 525"
+author: "Rick O. Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output:
+  ioslides_presentation:
+    incremental: no
+    self-contained: yes
+    transition: default
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "700px",
+                      cache = FALSE)
+library(tidyverse)
+```
+
+<!-- Scrolling slides -->
+<!-- http://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Check-in
+
+## Announcements
+
+- Agenda for next week?
+
+## Today's topics
+
+- Where to share?
+- Challenges to sharing
+- Your open science portfolio
+- Funder policies
+
+# Where to share?
+
+## Considerations for storing
+
+- Why are you doing this?
+    - For yourself
+    - For colleagues
+    - For funders/journals
+
+---
+
+- What are you planning to share/store?
+    - Data
+    - Code
+    - Materials (displays, test items)
+
+---
+
+- What permissions do you have?
+    - From participants
+    - From colleagues/collaborators
+    - From IRB/ethics boards
+    
+## Considerations for using/reusing
+
+- What information do I want?
+- How do I find it?
+- How do I access it?
+
+## [Inter-university Consortium for Political and Social Research (ICPSR)](https://www.icpsr.umich.edu/icpsrweb/)
+
+- Data repository
+- More than 50 year history of storing, sharing data
+- Based at U Michigan
+- Dominant player in sociology, demography, political science
+- Search by measure
+- Some online analyses
+- <https://www.icpsr.umich.edu/icpsrweb/>
+
+## [Data Dryad](http://datadryad.org/)
+
+- Focus on data linked to publications
+- Strong presence in biological sciences, but not domain-specific
+- <http://datadryad.org/>
+
+## [Dataverse](http://dataverse.org)
+
+- Domain general repository + software for repositories
+- Institute for Quantitative Social Sciences at Harvard
+- <http://dataverse.org/>
+
+## [Databrary](http://databrary.org)
+
+- Specialized for video
+- Emphasizing developmental science
+- Search for data
+- <http://databrary.org>
+
+## [Open Science Framework](http://osf.io)
+
+- Product of the [Center for Open Science (COS)](http://cos.io)
+- Domain general "hub" for research workflows
+- Home of [PsyArXiv](https://osf.io/preprints/psyarxiv) preprints
+- <http://osf.io>
+
+## [PSU's ScholarSphere](https://scholarsphere.psu.edu/)
+
+- Institutional repository
+- Domain general, linked to individual scholars
+- <https://scholarsphere.psu.edu/>
+
+## [National Database for Autism Research (NDAR)](https://ndar.nih.gov/)
+
+- Now the NIMH data archive
+- Data aggregation, secondary analyses
+- Details about measures, individual participants
+- <https://ndar.nih.gov/>
+
+## TalkBank/CHILDES
+
+- Language transcripts, audio, video
+- <http://talkbank.org/>
+
+## WordBank
+
+- Repository of one type of measure: MacArthur-Bates Communicative Development Inventory (M-CDI)
+- <http://wordbank.stanford.edu/>
+
+## Other options
+
+- Personal/lab website
+- GitHub
+
+## [Data.World](http://data.world)
+
+- Social network for shared data
+- <http://data.world>
+
+## Publishing data
+
+- [Nature Scientific Data](http://www.nature.com/sdata/)
+- [APA's Archives of Scientific Psychology](http://www.apa.org/pubs/journals/arc/index.aspx)
+- COS contemplating a new journal
+- [Transparency and Openness Promotion (TOP) guidelines](https://cos.io/top/)
+
+# Challenges to sharing
+
+## Why share? [[@Meyer2018-vk]](https://doi.org/10.1177/2515245917747656)
+
+- Journals, funders may require
+- Some questions are too important *not* to share
+- "Openness and transparency are (or should be) universal values that reflect scientific ideals" [[@Gilmore2020-sl]](https://doi.org/10.1111/cdep.12360)
+- Bolster credibility
+
+## Preparing to share
+
+- Don't promise to destroy data
+- Don't promise NOT to share data
+- Don't promise that research analyses of the collected data will be limited to certain topics
+
+---
+
+- DO get consent to retain and share data
+- DO incorporate data-retention and -sharing clauses into IRB templates
+- DO be thoughtful when considering risks of re-identification
+
+--
+
+- DO consider working with a data repository
+- DO be thoughtful when selecting a data repository
+
+## Challenges...
+
+- Risks to researchers
+- Respecting diversity
+- Balancing benefits with costs
+
+# Your open science portfolio
+
+## Should do
+
+- [ORCID](http://orcid.org/)
+- non-PSU email for professional use
+
+## Might do
+
+- GitHub, Twitter 
+- yourname.com
+- [ResearchGate](http://researchgate.net)
+- [Academia.edu](http://academia.edu)
+
+# Funder policies
+    
+## NSF
+
+*"Investigators are expected to share with other researchers, at no more than incremental cost and within a reasonable time, the primary data, samples, physical collections and other supporting materials created or gathered in the course of work under NSF grants. Grantees are expected to encourage and facilitate such sharing."*
+
+<https://www.nsf.gov/bfa/dias/policy/dmp.jsp>
+
+## NIMH
+
+*"The National Institute of Mental Health (NIMH) has established an informatics infrastructure to enable the sharing and use of data collected from human subjects in clinical research by the entire research community.  Researchers funded by NIMH are strongly encouraged to deposit data from human subjects into this infrastructure.  In addition, non-NIMH funded researchers with related data are welcome to deposit their data."*
+
+<https://grants.nih.gov/grants/guide/notice-files/NOT-MH-15-012.html>
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References

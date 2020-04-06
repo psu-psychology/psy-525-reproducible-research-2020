@@ -297,14 +297,14 @@ Describe a use case for one of these tools in your research workflow, and test a
 
 ### Readings/webinars
 
-- Meyer, M. N. (2018). Practical Tips for Ethical Data Sharing. *Advances in Methods and Practices in Psychological Science*, 2515245917747656. SAGE Publications Inc. Retrieved from https://doi.org/10.1177/2515245917747656
+- Meyer, M. N. (2018). Practical tips for ethical data sharing. *Advances in Methods and Practices in Psychological Science*, 2515245917747656. SAGE Publications Inc. Retrieved from https://doi.org/10.1177/2515245917747656
 - Gilmore, R.O., Cole, P.M., van Aken, M.A.G., Verma S., & Worthman, C.M. (2020). Advancing scientific integrity, transparency, and openness in child development research: Challenges and possible solutions. *Child Development Perspectives*, *14*(1), 9-14. https://dx.doi.org/10.1111/cdep.12360
 
 ### Homework
 
-Due by the start of class on 2020-04-07.
+Due by the start of class on 2020-04-14.
 
-1. Choose two outlets for sharing research data or materials and compare and contrast their strengths and weaknesses.
+Choose two outlets for sharing research data or materials and compare and contrast their strengths and weaknesses.
 
 ## Week 13: Tuesday, April 14, 2020
 
