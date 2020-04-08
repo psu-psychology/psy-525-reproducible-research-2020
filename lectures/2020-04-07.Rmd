@@ -59,6 +59,7 @@ slides > slide:not(.nobackground):after {
     - For yourself
     - For colleagues
     - For funders/journals
+    - Accelerate discovery
 
 ---
 
@@ -86,6 +87,9 @@ slides > slide:not(.nobackground):after {
 - More than 50 year history of storing, sharing data
 - Based at U Michigan
 - Dominant player in sociology, demography, political science
+
+---
+
 - Search by measure
 - Some online analyses
 - <https://www.icpsr.umich.edu/icpsrweb/>
@@ -105,8 +109,8 @@ slides > slide:not(.nobackground):after {
 ## [Databrary](http://databrary.org)
 
 - Specialized for video
-- Emphasizing developmental science
-- Search for data
+- Origins in developmental science
+- Search for data, access via API (https://github.com/PLAY-behaviorome/databraryapi)
 - <http://databrary.org>
 
 ## [Open Science Framework](http://osf.io)
@@ -177,7 +181,7 @@ slides > slide:not(.nobackground):after {
 - DO incorporate data-retention and -sharing clauses into IRB templates
 - DO be thoughtful when considering risks of re-identification
 
---
+---
 
 - DO consider working with a data repository
 - DO be thoughtful when selecting a data repository
@@ -209,6 +213,37 @@ slides > slide:not(.nobackground):after {
 *"Investigators are expected to share with other researchers, at no more than incremental cost and within a reasonable time, the primary data, samples, physical collections and other supporting materials created or gathered in the course of work under NSF grants. Grantees are expected to encourage and facilitate such sharing."*
 
 <https://www.nsf.gov/bfa/dias/policy/dmp.jsp>
+
+## National Institutes of Health (NIH)
+
+- Policies (https://www.nlm.nih.gov/NIHbmic/nih_data_sharing_policies.html) differ by Institute
+
+## National Institute on Aging (NIA)
+
+> "*NIA expect that ADNI deidentified data will be made available to the general scientific community within a very short timeframe. ADNI recommends full, open access of all de-identified ADNI imaging and clinical data to indviduals who register with the ADNI and agree to the conditions in the "ADNI Data Use Agreement" and who undergo limited screening.*"
+
+## National Institute of Child Health and Human Development (NICHD)
+
+> "*Regardless of the amount requested, investigators are expected to include a brief 1-paragraph description of how final research data will be shared, or explain why data-sharing is not possible. Applicants are encouraged to discuss data-sharing plans with their NIH program contact.*"
+
+## National Institute on Drug Abuse (NIDA)
+
+> "*The NIH expects and supports the timely release and sharing of final research data from NIH-supported studies for use by other researchers to expedite the translation of research results into knowledge, products and procedures to improve human health. Data sets for CTN protocols will be available after (1) the primary paper has been accepted for publication, or (2) the data is locked for more than 18 months, whichever comes first.*"
+
+## National Institutes of Health (NIH)
+
+> "*Expects investigators seeking more than $500K in direct support in any given year to submit a data sharing plan with their application or to indicate why data sharing is not possible.*"
+
+---
+
+- https://grants.nih.gov/policy/sharing.htm
+
+> "*It is NIH policy that the results and accomplishments of the activities that it funds should be made available to the public.  PIs and funding recipient institutions are expected to make the results and accomplishments of their activities available to the research community and to the public at large.*"
+
+
+## Autism-related research funded by NIH
+
+> "*All data resulting from this autism-related NIH-funded research involving human subjects are expected to be submitted to the National Database for Autism Research (NDAR), along with appropriate supporting documentation to enable efficient use of the data.*"
 
 ## NIMH
 
