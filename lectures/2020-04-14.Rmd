@@ -1,0 +1,65 @@
+---
+title: "Week 13: More Python..."
+subtitle: "PSY 525"
+author: "Rick O. Gilmore"
+date: "`r Sys.time()`"
+css: css/gilmore.css
+bibliography: bib/psu-repro.bib
+csl: bib/apa.csl
+output:
+  ioslides_presentation:
+    incremental: no
+    self-contained: yes
+    transition: default
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      fig.align = "center",
+                      out.width = "700px",
+                      cache = FALSE)
+library(tidyverse)
+```
+
+<!-- Scrolling slides -->
+<!-- http://stackoverflow.com/q/38260799 -->
+<style>
+slides > slide { overflow: scroll; }
+slides > slide:not(.nobackground):before {
+  background: none;
+  }
+slides > slide:not(.nobackground):after {
+  content: '';
+  background: none;
+  }
+}
+</style>
+
+# Preliminaries
+
+## Today's topics
+
+- Optional: More Python...
+
+# More Python
+
+## Background
+
+- I found an excellent set of slides:  [[@Kane-2019]](https://kaneplusplus.github.io/python-for-r-programmers/).
+- Rather than reinvent this excellent wheel, I suggest you work through the following:
+    - [Background & Basics](https://kaneplusplus.github.io/python-for-r-programmers/part-1.html)
+    - [Digging Deeper into Python Programming Constructs](https://kaneplusplus.github.io/python-for-r-programmers/part-2.html)
+
+# Resources
+
+## Software
+
+This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com) using R Markdown.
+The code and materials used to generate the slides may be found at <https://github.com/psu-psychology/psy-525-reproducible-research-2020>.
+Information about the R Session that produced the code is as follows:
+```{r session-info}
+sessionInfo()
+```
+
+## References

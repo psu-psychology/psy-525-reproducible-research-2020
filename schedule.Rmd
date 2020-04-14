@@ -310,7 +310,7 @@ Choose two outlets for sharing research data or materials and compare and contra
 
 ### Topics
 
-- Catch-up week
+- (Optional) More Python...
 
 ## Week 14: Tuesday, April 21, 2020
 
