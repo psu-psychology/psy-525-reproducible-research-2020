@@ -13,24 +13,37 @@
 
 <title>Resources</title>
 
-<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -43,32 +56,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -78,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -98,40 +83,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -159,7 +120,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -171,7 +132,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -181,11 +142,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -197,13 +175,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -211,16 +188,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -264,7 +234,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -292,7 +262,7 @@ $(document).ready(function () {
   <a href="resources.html">Resources</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Lectures
      
     <span class="caret"></span>
@@ -343,7 +313,7 @@ $(document).ready(function () {
   <a href="students.html">Students</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     How-to
      
     <span class="caret"></span>
@@ -409,7 +379,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -421,19 +391,31 @@ $(document).ready(function () {
 <div id="class-related-github-repos" class="section level2">
 <h2>Class-related GitHub repos</h2>
 <ul>
-<li><a href="https://github.com/psu-psychology/jupyter-resources">Jupyter notebook resources</a></li>
-<li><a href="https://github.com/psu-psychology/shiny-resources">Shiny resources</a></li>
-<li><a href="https://github.com/psu-psychology/rmarkdown-ioslides">R Markdown ioslides resources</a></li>
-<li><a href="https://github.com/psu-psychology/rmarkdown-website-template">Websites in R Markdown</a></li>
-<li><a href="https://github.com/psu-psychology/jsPsych-resources">jsPsych resources</a></li>
+<li><a
+href="https://github.com/psu-psychology/jupyter-resources">Jupyter
+notebook resources</a></li>
+<li><a href="https://github.com/psu-psychology/shiny-resources">Shiny
+resources</a></li>
+<li><a href="https://github.com/psu-psychology/rmarkdown-ioslides">R
+Markdown ioslides resources</a></li>
+<li><a
+href="https://github.com/psu-psychology/rmarkdown-website-template">Websites
+in R Markdown</a></li>
+<li><a
+href="https://github.com/psu-psychology/jsPsych-resources">jsPsych
+resources</a></li>
 </ul>
 </div>
 <div id="how-tos" class="section level2">
 <h2>How-to’s</h2>
 <ul>
-<li>How to <a href="how_to/rstudio-server-pro.html">connect to Penn State’s RStudio Server Pro</a> instance to run RStudio in the cloud.</li>
-<li>How to <a href="how_to/jupyter-notebooks-psu.html">connect to Penn State’s Jupyter notebook server</a>.</li>
-<li>How to <a href="how_to/google-colaboratory.html">use Google’s colaboratory Jupyter notebook service</a>.</li>
+<li>How to <a href="how_to/rstudio-server-pro.html">connect to Penn
+State’s RStudio Server Pro</a> instance to run RStudio in the
+cloud.</li>
+<li>How to <a href="how_to/jupyter-notebooks-psu.html">connect to Penn
+State’s Jupyter notebook server</a>.</li>
+<li>How to <a href="how_to/google-colaboratory.html">use Google’s
+colaboratory Jupyter notebook service</a>.</li>
 </ul>
 </div>
 <div id="web-courses" class="section level2">
@@ -441,61 +423,117 @@ $(document).ready(function () {
 <ul>
 <li><a href="https://rstudio.com/conference/">RStudio.conf</a>
 <ul>
-<li><a href="https://github.com/rstudio/rstudio-conf">GitHub repo for 2020 conference</a></li>
+<li><a href="https://github.com/rstudio/rstudio-conf">GitHub repo for
+2020 conference</a></li>
 </ul></li>
-<li><a href="https://datacarpentry.org/">Data Carpentry</a>, now <a href="https://carpentries.org/">The Carpentries</a>
+<li><a href="https://datacarpentry.org/">Data Carpentry</a>, now <a
+href="https://carpentries.org/">The Carpentries</a>
 <ul>
-<li><a href="https://datacarpentry.org/openrefine-socialsci/">OpenRefine for Social Science Data</a> by Data Carpentry.</li>
-<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">R for Reproducible Scientific Analysis</a></li>
-<li><a href="http://swcarpentry.github.io/python-novice-inflammation/">Programming with Python</a></li>
-<li><a href="http://swcarpentry.github.io/python-novice-gapminder/">Plotting and Programming in Python</a></li>
-<li><a href="http://swcarpentry.github.io/git-novice/">Version Control with Git</a></li>
+<li><a href="https://datacarpentry.org/openrefine-socialsci/">OpenRefine
+for Social Science Data</a> by Data Carpentry.</li>
+<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">R for
+Reproducible Scientific Analysis</a></li>
+<li><a
+href="http://swcarpentry.github.io/python-novice-inflammation/">Programming
+with Python</a></li>
+<li><a
+href="http://swcarpentry.github.io/python-novice-gapminder/">Plotting
+and Programming in Python</a></li>
+<li><a href="http://swcarpentry.github.io/git-novice/">Version Control
+with Git</a></li>
 </ul></li>
 </ul>
 </div>
 <div id="books-and-e-books" class="section level2">
 <h2>Books and E-Books</h2>
 <ul>
-<li>Chang, W. (2012). <em>R Graphics Cookbook</em>. <a href="http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf" class="uri">http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf</a></li>
-<li>Gandrud, C. (2015). <em>Reproducible Research with R and R Studio, Second Edition</em>. CRC Press. <a href="https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379" class="uri">https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379</a></li>
-<li>VanderPlas, J. (2016). <em>Python Data Science Handbook</em>. <a href="https://jakevdp.github.io/PythonDataScienceHandbook/" class="uri">https://jakevdp.github.io/PythonDataScienceHandbook/</a></li>
-<li>Wickham, H. &amp; Grolemund, G. (2016). <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media. <a href="http://shop.oreilly.com/product/0636920034407.do" class="uri">http://shop.oreilly.com/product/0636920034407.do</a>.</li>
-<li>Wickham, H. (2019). <em>Advanced R, 2nd Ed</em>. Chapman &amp; Hall/CRC. <a href="https://adv-r.hadley.nz/" class="uri">https://adv-r.hadley.nz/</a>.</li>
-<li>Xie, Y., Allaire, J.J., &amp; Grolemund, G. (2019). <em>R Markdown: The Definitive Guide</em>. Chapman &amp; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</li>
+<li>Chang, W. (2012). <em>R Graphics Cookbook</em>. <a
+href="http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf"
+class="uri">http://ase.tufts.edu/bugs/guide/assets/R%20Graphics%20Cookbook.pdf</a></li>
+<li>Gandrud, C. (2015). <em>Reproducible Research with R and R Studio,
+Second Edition</em>. CRC Press. <a
+href="https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379"
+class="uri">https://www.crcpress.com/Reproducible-Research-with-R-and-R-Studio-Second-Edition/Gandrud/p/book/9781498715379</a></li>
+<li>VanderPlas, J. (2016). <em>Python Data Science Handbook</em>. <a
+href="https://jakevdp.github.io/PythonDataScienceHandbook/"
+class="uri">https://jakevdp.github.io/PythonDataScienceHandbook/</a></li>
+<li>Wickham, H. &amp; Grolemund, G. (2016). <em>R for Data Science:
+Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media.
+<a href="http://shop.oreilly.com/product/0636920034407.do"
+class="uri">http://shop.oreilly.com/product/0636920034407.do</a>.</li>
+<li>Wickham, H. (2019). <em>Advanced R, 2nd Ed</em>. Chapman &amp;
+Hall/CRC. <a href="https://adv-r.hadley.nz/"
+class="uri">https://adv-r.hadley.nz/</a>.</li>
+<li>Xie, Y., Allaire, J.J., &amp; Grolemund, G. (2019). <em>R Markdown:
+The Definitive Guide</em>. Chapman &amp; Hall/CRC. <a
+href="https://bookdown.org/yihui/rmarkdown/"
+class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</li>
 </ul>
 </div>
 <div id="blogsprojects" class="section level2">
 <h2>Blogs/Projects</h2>
 <ul>
-<li>R bloggers <a href="https://www.r-bloggers.com/" class="uri">https://www.r-bloggers.com/</a></li>
-<li>Open science in practice. <a href="https://inattentionalcoffee.wordpress.com/2017/01/03/open-science-in-practice/" class="uri">https://inattentionalcoffee.wordpress.com/2017/01/03/open-science-in-practice/</a></li>
-<li>Practicing what I preach: The open Ph.D. experiment. <a href="http://www.librarianinthecity.com/2016/12/practicing-what-i-preach-the-open-phd-experiment/" class="uri">http://www.librarianinthecity.com/2016/12/practicing-what-i-preach-the-open-phd-experiment/</a></li>
-<li><a href="https://sites.trinity.edu/osl">Open Stats Lab</a>. Use data published with psychology papers to teach statistics.</li>
-<li>Jupyter, Zeppelin, Beaker: The Rise of the Notebooks. <a href="https://opendatascience.com/blog/jupyter-zeppelin-beaker-the-rise-of-the-notebooks/" class="uri">https://opendatascience.com/blog/jupyter-zeppelin-beaker-the-rise-of-the-notebooks/</a></li>
-<li>Open science and free culture. <a href="http://www.simoncolumbus.com/publications-2/open-science-and-free-culture/" class="uri">http://www.simoncolumbus.com/publications-2/open-science-and-free-culture/</a></li>
-<li><a href="https://osf.io/wfc6u/">Collaborative Replications and Education Project (CREP)</a>.</li>
+<li>R bloggers <a href="https://www.r-bloggers.com/"
+class="uri">https://www.r-bloggers.com/</a></li>
+<li>Open science in practice. <a
+href="https://inattentionalcoffee.wordpress.com/2017/01/03/open-science-in-practice/"
+class="uri">https://inattentionalcoffee.wordpress.com/2017/01/03/open-science-in-practice/</a></li>
+<li>Practicing what I preach: The open Ph.D. experiment. <a
+href="http://www.librarianinthecity.com/2016/12/practicing-what-i-preach-the-open-phd-experiment/"
+class="uri">http://www.librarianinthecity.com/2016/12/practicing-what-i-preach-the-open-phd-experiment/</a></li>
+<li><a href="https://sites.trinity.edu/osl">Open Stats Lab</a>. Use data
+published with psychology papers to teach statistics.</li>
+<li>Jupyter, Zeppelin, Beaker: The Rise of the Notebooks. <a
+href="https://opendatascience.com/blog/jupyter-zeppelin-beaker-the-rise-of-the-notebooks/"
+class="uri">https://opendatascience.com/blog/jupyter-zeppelin-beaker-the-rise-of-the-notebooks/</a></li>
+<li>Open science and free culture. <a
+href="http://www.simoncolumbus.com/publications-2/open-science-and-free-culture/"
+class="uri">http://www.simoncolumbus.com/publications-2/open-science-and-free-culture/</a></li>
+<li><a href="https://osf.io/wfc6u/">Collaborative Replications and
+Education Project (CREP)</a>.</li>
 </ul>
 </div>
 <div id="software-tools" class="section level2">
 <h2>Software tools</h2>
 <ul>
-<li>OpenRefine, <a href="https://openrefine.org" class="uri">https://openrefine.org</a></li>
+<li>OpenRefine, <a href="https://openrefine.org"
+class="uri">https://openrefine.org</a></li>
 <li>LaTeX on the web
 <ul>
-<li>ShareLaTex <a href="http://sharelatex.com" class="uri">http://sharelatex.com</a></li>
-<li>Overleaf <a href="http://www.overleaf.com" class="uri">http://www.overleaf.com</a></li>
-<li>Authorea <a href="http://www.authorea.com" class="uri">http://www.authorea.com</a></li>
+<li>ShareLaTex <a href="http://sharelatex.com"
+class="uri">http://sharelatex.com</a></li>
+<li>Overleaf <a href="http://www.overleaf.com"
+class="uri">http://www.overleaf.com</a></li>
+<li>Authorea <a href="http://www.authorea.com"
+class="uri">http://www.authorea.com</a></li>
 </ul></li>
-<li>Experimental Design Assistant for planning animal studies <a href="https://eda.nc3rs.org.uk/" class="uri">https://eda.nc3rs.org.uk/</a></li>
-<li>p-hacker Shiny app <a href="http://shinyapps.org/apps/p-hacker/" class="uri">http://shinyapps.org/apps/p-hacker/</a></li>
+<li>Experimental Design Assistant for planning animal studies <a
+href="https://eda.nc3rs.org.uk/"
+class="uri">https://eda.nc3rs.org.uk/</a></li>
+<li>p-hacker Shiny app <a href="http://shinyapps.org/apps/p-hacker/"
+class="uri">http://shinyapps.org/apps/p-hacker/</a></li>
 </ul>
 </div>
 <div id="articles" class="section level2">
 <h2>Articles</h2>
 <ul>
-<li>Schweinsberg, M., Madan, N., Vianello, M., Sommer, S. A., Jordan, J., Tierney, W., … Uhlmann, E. L. (2016). The pipeline project: Pre-publication independent replications of a single laboratory’s research pipeline. Journal of Experimental Social Psychology, 66, 55–67. <a href="https://doi.org/10.1016/j.jesp.2015.10.001" class="uri">https://doi.org/10.1016/j.jesp.2015.10.001</a></li>
-<li>Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S., Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A manifesto for reproducible science. Nature Human Behaviour, 1, 0021. <a href="https://doi.org/10.1038/s41562-016-0021" class="uri">https://doi.org/10.1038/s41562-016-0021</a>.</li>
-<li>Poldrack, R. A., Baker, C. I., Durnez, J., Gorgolewski, K. J., Matthews, P. M., Munafò, M. R., … Yarkoni, T. (2017). Scanning the horizon: towards transparent and reproducible neuroimaging research. Nature Reviews Neuroscience, advance online publication. <a href="https://doi.org/10.1038/nrn.2016.167" class="uri">https://doi.org/10.1038/nrn.2016.167</a>.</li>
+<li>Schweinsberg, M., Madan, N., Vianello, M., Sommer, S. A., Jordan,
+J., Tierney, W., … Uhlmann, E. L. (2016). The pipeline project:
+Pre-publication independent replications of a single laboratory’s
+research pipeline. Journal of Experimental Social Psychology, 66, 55–67.
+<a href="https://doi.org/10.1016/j.jesp.2015.10.001"
+class="uri">https://doi.org/10.1016/j.jesp.2015.10.001</a></li>
+<li>Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S.,
+Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A
+manifesto for reproducible science. Nature Human Behaviour, 1, 0021. <a
+href="https://doi.org/10.1038/s41562-016-0021"
+class="uri">https://doi.org/10.1038/s41562-016-0021</a>.</li>
+<li>Poldrack, R. A., Baker, C. I., Durnez, J., Gorgolewski, K. J.,
+Matthews, P. M., Munafò, M. R., … Yarkoni, T. (2017). Scanning the
+horizon: towards transparent and reproducible neuroimaging research.
+Nature Reviews Neuroscience, advance online publication. <a
+href="https://doi.org/10.1038/nrn.2016.167"
+class="uri">https://doi.org/10.1038/nrn.2016.167</a>.</li>
 </ul>
 </div>
 <div id="citation-management" class="section level2">
@@ -503,16 +541,24 @@ $(document).ready(function () {
 <div id="comparisons" class="section level3">
 <h3>Comparisons</h3>
 <ul>
-<li><p><a href="http://guides.lib.uchicago.edu/c.php?g=297307&amp;p=1984557" class="uri">http://guides.lib.uchicago.edu/c.php?g=297307&amp;p=1984557</a></p></li>
-<li><p><a href="https://en.wikipedia.org/wiki/Comparison_of_reference_management_software" class="uri">https://en.wikipedia.org/wiki/Comparison_of_reference_management_software</a></p></li>
+<li><p><a
+href="http://guides.lib.uchicago.edu/c.php?g=297307&amp;p=1984557"
+class="uri">http://guides.lib.uchicago.edu/c.php?g=297307&amp;p=1984557</a></p></li>
+<li><p><a
+href="https://en.wikipedia.org/wiki/Comparison_of_reference_management_software"
+class="uri">https://en.wikipedia.org/wiki/Comparison_of_reference_management_software</a></p></li>
 </ul>
 </div>
 <div id="software" class="section level3">
 <h3>Software</h3>
 <ul>
-<li>Mendeley <a href="https://www.mendeley.com/careers/?dgcid=google_paid-search_Mendeley.com-Search-Branded-USA&amp;gclid=Cj0KEQiAifvEBRCVx5up6Ojgr5oBEiQALHw1TviV-SG0qOSpmmSkoIbrYrn1ZvPeZTinianXeiQa6FIaAqA28P8HAQ" class="uri">https://www.mendeley.com/careers/?dgcid=google_paid-search_Mendeley.com-Search-Branded-USA&amp;gclid=Cj0KEQiAifvEBRCVx5up6Ojgr5oBEiQALHw1TviV-SG0qOSpmmSkoIbrYrn1ZvPeZTinianXeiQa6FIaAqA28P8HAQ</a></li>
-<li>Zotero <a href="https://www.zotero.org/" class="uri">https://www.zotero.org/</a></li>
-<li>Paperpile <a href="https://paperpile.com/" class="uri">https://paperpile.com/</a></li>
+<li>Mendeley <a
+href="https://www.mendeley.com/careers/?dgcid=google_paid-search_Mendeley.com-Search-Branded-USA&amp;gclid=Cj0KEQiAifvEBRCVx5up6Ojgr5oBEiQALHw1TviV-SG0qOSpmmSkoIbrYrn1ZvPeZTinianXeiQa6FIaAqA28P8HAQ"
+class="uri">https://www.mendeley.com/careers/?dgcid=google_paid-search_Mendeley.com-Search-Branded-USA&amp;gclid=Cj0KEQiAifvEBRCVx5up6Ojgr5oBEiQALHw1TviV-SG0qOSpmmSkoIbrYrn1ZvPeZTinianXeiQa6FIaAqA28P8HAQ</a></li>
+<li>Zotero <a href="https://www.zotero.org/"
+class="uri">https://www.zotero.org/</a></li>
+<li>Paperpile <a href="https://paperpile.com/"
+class="uri">https://paperpile.com/</a></li>
 </ul>
 </div>
 </div>
@@ -527,7 +573,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -545,7 +591,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

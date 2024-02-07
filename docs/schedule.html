@@ -13,24 +13,37 @@
 
 <title>Schedule</title>
 
-<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -43,32 +56,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -78,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -98,40 +83,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -159,7 +120,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -171,7 +132,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -181,11 +142,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -197,13 +175,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -211,16 +188,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -264,7 +234,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -292,7 +262,7 @@ $(document).ready(function () {
   <a href="resources.html">Resources</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Lectures
      
     <span class="caret"></span>
@@ -343,7 +313,7 @@ $(document).ready(function () {
   <a href="students.html">Students</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     How-to
      
     <span class="caret"></span>
@@ -409,7 +379,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -437,10 +407,19 @@ $(document).ready(function () {
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-01-21.</p>
 <ol style="list-style-type: decimal">
-<li>In a paragraph or two, discuss whether you think researchers in your field <em>do</em> and <em>should</em> embrace “Mertonian norms.” Why or why not?</li>
-<li>In a paragraph or two, describe your current knowledge of computer programming languages, and at least three learning goals you have for building upon that base.</li>
-<li>Create a GitHub account, send me your account name in an email, and see if you can create your own copy (fork or clone) of the course repository. If you succeed, take a screen shot of the repository in your local GitHub account.</li>
-<li>Write these items up in a Word (.docx) file, and email it to me. Make sure to use a sensible file name, e.g., <code>psy525-YOUR_LAST_NAME-2020-01-21.docx</code>.</li>
+<li>In a paragraph or two, discuss whether you think researchers in your
+field <em>do</em> and <em>should</em> embrace “Mertonian norms.” Why or
+why not?</li>
+<li>In a paragraph or two, describe your current knowledge of computer
+programming languages, and at least three learning goals you have for
+building upon that base.</li>
+<li>Create a GitHub account, send me your account name in an email, and
+see if you can create your own copy (fork or clone) of the course
+repository. If you succeed, take a screen shot of the repository in your
+local GitHub account.</li>
+<li>Write these items up in a Word (.docx) file, and email it to me.
+Make sure to use a sensible file name, e.g.,
+<code>psy525-YOUR_LAST_NAME-2020-01-21.docx</code>.</li>
 </ol>
 </div>
 </div>
@@ -459,24 +438,52 @@ $(document).ready(function () {
 <ul>
 <li>The values of science (read 1; skim the others)
 <ul>
-<li>Nosek, B. A., &amp; Bar-Anan, Y. (2012). Scientific utopia I: Opening scientific communication. <em>Psychological Inquiry</em>, <em>23</em>(3), 217–243. Retrieved May 9, 2015, from <a href="http://dx.doi.org/10.1080/1047840X.2012.692215" class="uri">http://dx.doi.org/10.1080/1047840X.2012.692215</a></li>
-<li>Kim, S. Y., &amp; Kim, Y. (2018). The ethos of science and its correlates: An empirical analysis of scientists’ endorsement of Mertonian norms. <em>Science, Technology and Society</em>, 23(1), 1–24. SAGE Publications India. Retrieved from <a href="https://doi.org/10.1177/0971721817744438" class="uri">https://doi.org/10.1177/0971721817744438</a></li>
-<li>Brakewood, B., &amp; Poldrack, R. A. (2013). The ethics of secondary data analysis: Considering the application of Belmont principles to the sharing of neuroimaging data. <em>NeuroImage</em>, <em>82</em>, 671–676. Retrieved from <a href="http://dx.doi.org/10.1016/j.neuroimage.2013.02.040" class="uri">http://dx.doi.org/10.1016/j.neuroimage.2013.02.040</a></li>
+<li>Nosek, B. A., &amp; Bar-Anan, Y. (2012). Scientific utopia I:
+Opening scientific communication. <em>Psychological Inquiry</em>,
+<em>23</em>(3), 217–243. Retrieved May 9, 2015, from <a
+href="http://dx.doi.org/10.1080/1047840X.2012.692215"
+class="uri">http://dx.doi.org/10.1080/1047840X.2012.692215</a></li>
+<li>Kim, S. Y., &amp; Kim, Y. (2018). The ethos of science and its
+correlates: An empirical analysis of scientists’ endorsement of
+Mertonian norms. <em>Science, Technology and Society</em>, 23(1), 1–24.
+SAGE Publications India. Retrieved from <a
+href="https://doi.org/10.1177/0971721817744438"
+class="uri">https://doi.org/10.1177/0971721817744438</a></li>
+<li>Brakewood, B., &amp; Poldrack, R. A. (2013). The ethics of secondary
+data analysis: Considering the application of Belmont principles to the
+sharing of neuroimaging data. <em>NeuroImage</em>, <em>82</em>, 671–676.
+Retrieved from <a
+href="http://dx.doi.org/10.1016/j.neuroimage.2013.02.040"
+class="uri">http://dx.doi.org/10.1016/j.neuroimage.2013.02.040</a></li>
 </ul></li>
 <li>Cases of scientific misconduct (read 1; skim the other)
 <ul>
-<li><a href="http://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes">Hauser</a></li>
-<li><a href="http://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all&amp;_r=0">Stapel</a></li>
+<li><a
+href="http://www.sciencemag.org/news/2012/09/harvard-psychology-researcher-committed-fraud-us-investigation-concludes">Hauser</a></li>
+<li><a
+href="http://www.nytimes.com/2013/04/28/magazine/diederik-stapels-audacious-academic-fraud.html?pagewanted=all&amp;_r=0">Stapel</a></li>
 </ul></li>
 <li>Reproducibility (skim)
 <ul>
-<li>Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. <em>Science</em>, <em>349</em>(6251), aac4716–aac4716. <a href="https://doi.org/10.1126/science.aac4716" class="uri">https://doi.org/10.1126/science.aac4716</a></li>
+<li>Open Science Collaboration. (2015). Estimating the reproducibility
+of psychological science. <em>Science</em>, <em>349</em>(6251),
+aac4716–aac4716. <a href="https://doi.org/10.1126/science.aac4716"
+class="uri">https://doi.org/10.1126/science.aac4716</a></li>
 </ul></li>
 <li>Supplemental (not required)
 <ul>
-<li>Heesen, R., &amp; Bright, L. K. (2019). Is peer review a good idea? <em>The British Journal for the Philosophy of Science</em>, <em>40</em>. eprints.lse.ac.uk. Retrieved January 7, 2020, from <a href="http://eprints.lse.ac.uk/101242/" class="uri">http://eprints.lse.ac.uk/101242/</a></li>
-<li>Goodman, S. N., Fanelli, D., &amp; Ioannidis, J. P. A. (2016). What does research reproducibility mean? <em>Science Translational Medicine</em>, 8(341), 341ps12–341ps12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027" class="uri">https://doi.org/10.1126/scitranslmed.aaf5027</a></li>
-<li><a href="http://www.stats.org/what-do-we-mean-by-reproducibility/" class="uri">http://www.stats.org/what-do-we-mean-by-reproducibility/</a></li>
+<li>Heesen, R., &amp; Bright, L. K. (2019). Is peer review a good idea?
+<em>The British Journal for the Philosophy of Science</em>, <em>40</em>.
+eprints.lse.ac.uk. Retrieved January 7, 2020, from <a
+href="http://eprints.lse.ac.uk/101242/"
+class="uri">http://eprints.lse.ac.uk/101242/</a></li>
+<li>Goodman, S. N., Fanelli, D., &amp; Ioannidis, J. P. A. (2016). What
+does research reproducibility mean? <em>Science Translational
+Medicine</em>, 8(341), 341ps12–341ps12. <a
+href="https://doi.org/10.1126/scitranslmed.aaf5027"
+class="uri">https://doi.org/10.1126/scitranslmed.aaf5027</a></li>
+<li><a href="http://www.stats.org/what-do-we-mean-by-reproducibility/"
+class="uri">http://www.stats.org/what-do-we-mean-by-reproducibility/</a></li>
 </ul></li>
 </ul>
 </div>
@@ -484,8 +491,14 @@ $(document).ready(function () {
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-01-28.</p>
 <ol style="list-style-type: decimal">
-<li>Choose one of the verification bias examples from <a href="https://pure.mpg.de/pubman/item/item_1569964_8/component/file_1569966/Stapel_Investigation_Final_report.pdf"><em>Flawed Science</em></a>. In a paragraph or two, propose ways you might avoid this sort of bias in your own research.</li>
-<li>Choose one of the <a href="https://osf.io/9f6gx/">TOP guideline categories</a> where either your own research practices have room to improve or you are doing rather well. In a paragraph or two, explain your reasoning.</li>
+<li>Choose one of the verification bias examples from <a
+href="https://pure.mpg.de/pubman/item/item_1569964_8/component/file_1569966/Stapel_Investigation_Final_report.pdf"><em>Flawed
+Science</em></a>. In a paragraph or two, propose ways you might avoid
+this sort of bias in your own research.</li>
+<li>Choose one of the <a href="https://osf.io/9f6gx/">TOP guideline
+categories</a> where either your own research practices have room to
+improve or you are doing rather well. In a paragraph or two, explain
+your reasoning.</li>
 </ol>
 </div>
 </div>
@@ -494,7 +507,9 @@ $(document).ready(function () {
 <div id="topics-2" class="section level3">
 <h3>Topics</h3>
 <ul>
-<li>Evaluating Munafò et al.’s (2017) “Manifesto for reproducible science”, <a href="https://doi.org/10.1038/s41562-016-0021" class="uri">https://doi.org/10.1038/s41562-016-0021</a></li>
+<li>Evaluating Munafò et al.’s (2017) “Manifesto for reproducible
+science”, <a href="https://doi.org/10.1038/s41562-016-0021"
+class="uri">https://doi.org/10.1038/s41562-016-0021</a></li>
 <li>Workflows and <em>methods</em> reproducibility</li>
 <li>Tidy data</li>
 </ul>
@@ -502,26 +517,43 @@ $(document).ready(function () {
 <div id="readingswebinars-1" class="section level3">
 <h3>Readings/webinars</h3>
 <ul>
-<li>Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S., Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A manifesto for reproducible science. Nature Human Behaviour, 1, 0021. <a href="https://doi.org/10.1038/s41562-016-0021" class="uri">https://doi.org/10.1038/s41562-016-0021</a>. (<strong>Required</strong>)</li>
+<li>Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S.,
+Chambers, C. D., Sert, N. P. du, … Ioannidis, J. P. A. (2017). A
+manifesto for reproducible science. Nature Human Behaviour, 1, 0021. <a
+href="https://doi.org/10.1038/s41562-016-0021"
+class="uri">https://doi.org/10.1038/s41562-016-0021</a>.
+(<strong>Required</strong>)</li>
 <li>Reproducible workflows (<strong>Optional</strong>)
 <ul>
-<li><a href="http://datasci.kitzes.com/lessons/python/reproducible_workflow.html" class="uri">http://datasci.kitzes.com/lessons/python/reproducible_workflow.html</a></li>
-<li><a href="http://grunwaldlab.github.io/Reproducible-science-in-R/index.html" class="uri">http://grunwaldlab.github.io/Reproducible-science-in-R/index.html</a></li>
+<li><a
+href="http://datasci.kitzes.com/lessons/python/reproducible_workflow.html"
+class="uri">http://datasci.kitzes.com/lessons/python/reproducible_workflow.html</a></li>
+<li><a
+href="http://grunwaldlab.github.io/Reproducible-science-in-R/index.html"
+class="uri">http://grunwaldlab.github.io/Reproducible-science-in-R/index.html</a></li>
 </ul></li>
 <li>Tidy data (<strong>Optional</strong>)
 <ul>
-<li>Wickham, H. (2014). Tidy Data. Journal of Statistical Software, 59(10). <a href="http://dx.doi.org/10.18637/jss.v059.i10" class="uri">http://dx.doi.org/10.18637/jss.v059.i10</a>.</li>
+<li>Wickham, H. (2014). Tidy Data. Journal of Statistical Software,
+59(10). <a href="http://dx.doi.org/10.18637/jss.v059.i10"
+class="uri">http://dx.doi.org/10.18637/jss.v059.i10</a>.</li>
 </ul></li>
 <li>File naming (<strong>Optional</strong>)
 <ul>
-<li><a href="http://guides.nyu.edu/data_management/file_org" class="uri">http://guides.nyu.edu/data_management/file_org</a></li>
-<li><a href="http://kbroman.org/dataorg/" class="uri">http://kbroman.org/dataorg/</a></li>
+<li><a href="http://guides.nyu.edu/data_management/file_org"
+class="uri">http://guides.nyu.edu/data_management/file_org</a></li>
+<li><a href="http://kbroman.org/dataorg/"
+class="uri">http://kbroman.org/dataorg/</a></li>
 </ul></li>
 <li>Spreadsheets (<strong>Optional</strong>)
 <ul>
-<li><a href="https://github.com/jennybc/sanesheets" class="uri">https://github.com/jennybc/sanesheets</a></li>
-<li><a href="http://www.datacarpentry.org/2015-03-09-ISI-CODATA/lessons/excel/ecology-examples/00-intro.html" class="uri">http://www.datacarpentry.org/2015-03-09-ISI-CODATA/lessons/excel/ecology-examples/00-intro.html</a></li>
-<li><a href="https://github.com/jennybc/scary-excel-stories" class="uri">https://github.com/jennybc/scary-excel-stories</a></li>
+<li><a href="https://github.com/jennybc/sanesheets"
+class="uri">https://github.com/jennybc/sanesheets</a></li>
+<li><a
+href="http://www.datacarpentry.org/2015-03-09-ISI-CODATA/lessons/excel/ecology-examples/00-intro.html"
+class="uri">http://www.datacarpentry.org/2015-03-09-ISI-CODATA/lessons/excel/ecology-examples/00-intro.html</a></li>
+<li><a href="https://github.com/jennybc/scary-excel-stories"
+class="uri">https://github.com/jennybc/scary-excel-stories</a></li>
 </ul></li>
 </ul>
 </div>
@@ -529,11 +561,20 @@ $(document).ready(function () {
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-01-28.</p>
 <ol style="list-style-type: decimal">
-<li><del>Pick one of the recommended elements from <a href="http://www.nature.com/articles/s41562-016-0021/tables/1">Table 1 in Munafò, et al. (2017)</a>. Evaluate the recommendation. Do you agree that it would mitigate one or more threats to reproducibility. Why or why not? Do you agree with the assessment about the degree to which stakeholders have adopted the recommended practice?</del>. We covered most of this material in class.</li>
-<li>Edit/create a text-based workflow for an active project you are working on.
+<li><del>Pick one of the recommended elements from <a
+href="http://www.nature.com/articles/s41562-016-0021/tables/1">Table 1
+in Munafò, et al. (2017)</a>. Evaluate the recommendation. Do you agree
+that it would mitigate one or more threats to reproducibility. Why or
+why not? Do you agree with the assessment about the degree to which
+stakeholders have adopted the recommended practice?</del>. We covered
+most of this material in class.</li>
+<li>Edit/create a text-based workflow for an active project you are
+working on.
 <ul>
-<li>Annote the workflow to indicate where it could be made more reproducible, transparent.</li>
-<li>If you are feeling super-ambitious, you may want to try creating a graph-based workflow using the <code>diagrammeR</code> package.</li>
+<li>Annote the workflow to indicate where it could be made more
+reproducible, transparent.</li>
+<li>If you are feeling super-ambitious, you may want to try creating a
+graph-based workflow using the <code>diagrammeR</code> package.</li>
 </ul></li>
 </ol>
 </div>
@@ -552,21 +593,42 @@ $(document).ready(function () {
 <ul>
 <li>Pre-registration and registered reports
 <ul>
-<li>Chambers, C., Munafò, M., &amp; signatories, more than 80. (2013, June 5). Trust in science would be improved by study pre-registration. <em>The Guardian</em>. Retrieved from <a href="https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration" class="uri">https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration</a></li>
-<li>Registered Reports. (n.d.). Retrieved January 24, 2017, from <a href="https://cos.io/rr/?_ga=1.163722943.1251838540.1458403228" class="uri">https://cos.io/rr/?_ga=1.163722943.1251838540.1458403228</a></li>
-<li>Mathot, S. (2013, March 26). The pros and cons of pre-registration in fundamental research. Retrieved January 24, 2017 from <a href="http://www.cogsci.nl/blog/miscellaneous/215-the-pros-and-cons-of-pre-registration-in-fundamental-research" class="uri">http://www.cogsci.nl/blog/miscellaneous/215-the-pros-and-cons-of-pre-registration-in-fundamental-research</a></li>
-<li>(Optional) Frank, M. (2016, July 22). Preregister everything. <a href="http://babieslearninglanguage.blogspot.com/2016/07/preregister-everything.html" class="uri">http://babieslearninglanguage.blogspot.com/2016/07/preregister-everything.html</a></li>
-<li>(Optional) Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., &amp; Vanpaemel, W. (2019, May). Preregistration: Comparing Dream to Reality. Retrieved from psyarxiv.com/d8wex.</li>
+<li>Chambers, C., Munafò, M., &amp; signatories, more than 80. (2013,
+June 5). Trust in science would be improved by study pre-registration.
+<em>The Guardian</em>. Retrieved from <a
+href="https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration"
+class="uri">https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration</a></li>
+<li>Registered Reports. (n.d.). Retrieved January 24, 2017, from <a
+href="https://cos.io/rr/?_ga=1.163722943.1251838540.1458403228"
+class="uri">https://cos.io/rr/?_ga=1.163722943.1251838540.1458403228</a></li>
+<li>Mathot, S. (2013, March 26). The pros and cons of pre-registration
+in fundamental research. Retrieved January 24, 2017 from <a
+href="http://www.cogsci.nl/blog/miscellaneous/215-the-pros-and-cons-of-pre-registration-in-fundamental-research"
+class="uri">http://www.cogsci.nl/blog/miscellaneous/215-the-pros-and-cons-of-pre-registration-in-fundamental-research</a></li>
+<li>(Optional) Frank, M. (2016, July 22). Preregister everything. <a
+href="http://babieslearninglanguage.blogspot.com/2016/07/preregister-everything.html"
+class="uri">http://babieslearninglanguage.blogspot.com/2016/07/preregister-everything.html</a></li>
+<li>(Optional) Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., &amp;
+Vanpaemel, W. (2019, May). Preregistration: Comparing Dream to Reality.
+Retrieved from psyarxiv.com/d8wex.</li>
 </ul></li>
 <li><a href="http://rmarkdown.rstudio.com/">R Markdown</a> exercise
 <ul>
-<li><a href="https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/">Getting started with R Markdown</a></li>
+<li><a
+href="https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/">Getting
+started with R Markdown</a></li>
 </ul></li>
 <li>Optional
 <ul>
-<li><a href="https://www.datacamp.com/courses/reporting-with-r-markdown">Authoring R Markdown Reports</a>. 3 hrs.</li>
-<li><a href="https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1">Working with the RStudio IDE (Part II)</a>. 3 hrs.</li>
-<li><a href="https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-2">Working with the RStudio IDE (Part II)</a></li>
+<li><a
+href="https://www.datacamp.com/courses/reporting-with-r-markdown">Authoring
+R Markdown Reports</a>. 3 hrs.</li>
+<li><a
+href="https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1">Working
+with the RStudio IDE (Part II)</a>. 3 hrs.</li>
+<li><a
+href="https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-2">Working
+with the RStudio IDE (Part II)</a></li>
 </ul></li>
 </ul>
 </div>
@@ -574,11 +636,21 @@ $(document).ready(function () {
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-02-11.</p>
 <ol style="list-style-type: decimal">
-<li>Find a preregistration document for a study relevant to your research interests on <code>aspredicted.org</code> or <code>osf.io</code>. In a few paragraphs, comment on what was and what was not included. Would the preregistration provide researchers sufficient structure to carry out the research without ‘HARKing’? What downsides do you see to preregistration?</li>
-<li>Create a template for a reproducible research report or a pregistration document in R Markdown.</li>
-<li>Convert some portion of your workflow from last week’s assignment into an R Markdown.</li>
-<li>Make sure to use some R Markdown features you haven’t used before. Flag the features you used and explain how they’d be useful in an actual use case you can envision.</li>
-<li>Either email me the R Markdown file, or if you’ve pushed your file to a GitHub repo, send me a review request.</li>
+<li>Find a preregistration document for a study relevant to your
+research interests on <code>aspredicted.org</code> or
+<code>osf.io</code>. In a few paragraphs, comment on what was and what
+was not included. Would the preregistration provide researchers
+sufficient structure to carry out the research without ‘HARKing’? What
+downsides do you see to preregistration?</li>
+<li>Create a template for a reproducible research report or a
+pregistration document in R Markdown.</li>
+<li>Convert some portion of your workflow from last week’s assignment
+into an R Markdown.</li>
+<li>Make sure to use some R Markdown features you haven’t used before.
+Flag the features you used and explain how they’d be useful in an actual
+use case you can envision.</li>
+<li>Either email me the R Markdown file, or if you’ve pushed your file
+to a GitHub repo, send me a review request.</li>
 </ol>
 </div>
 </div>
@@ -598,10 +670,20 @@ $(document).ready(function () {
 <div id="readingswebinars-3" class="section level3">
 <h3>Readings/webinars</h3>
 <ul>
-<li>Hardwicke, T. E., &amp; Ioannidis, J. P. A. (2018). Mapping the universe of registered reports. <em>Nature Human Behaviour</em>, <em>2</em>(11), 793–796. nature.com. Retrieved from <a href="http://dx.doi.org/10.1038/s41562-018-0444-y" class="uri">http://dx.doi.org/10.1038/s41562-018-0444-y</a></li>
-<li>Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., &amp; Vanpaemel, W. (2019, May). Preregistration: Comparing dream to reality. Retrieved from <a href="https://psyarxiv.com/d8wex" class="uri">https://psyarxiv.com/d8wex</a>.</li>
-<li><a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/">GitHub and RStudio</a></li>
-<li>Jenny Bryan’s <a href="http://happygitwithr.com/" class="uri">http://happygitwithr.com/</a></li>
+<li>Hardwicke, T. E., &amp; Ioannidis, J. P. A. (2018). Mapping the
+universe of registered reports. <em>Nature Human Behaviour</em>,
+<em>2</em>(11), 793–796. nature.com. Retrieved from <a
+href="http://dx.doi.org/10.1038/s41562-018-0444-y"
+class="uri">http://dx.doi.org/10.1038/s41562-018-0444-y</a></li>
+<li>Claesen, A., Gomes, S. L. B. T., Tuerlinckx, F., &amp; Vanpaemel, W.
+(2019, May). Preregistration: Comparing dream to reality. Retrieved from
+<a href="https://psyarxiv.com/d8wex"
+class="uri">https://psyarxiv.com/d8wex</a>.</li>
+<li><a
+href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/">GitHub
+and RStudio</a></li>
+<li>Jenny Bryan’s <a href="http://happygitwithr.com/"
+class="uri">http://happygitwithr.com/</a></li>
 </ul>
 </div>
 <div id="homework-4" class="section level3">
@@ -610,22 +692,34 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li>Create GitHub repo for the project you completed last week
 <ul>
-<li>Open an issue flagging <code>@rogilmore</code> so I know to look at your repo and document.</li>
+<li>Open an issue flagging <code>@rogilmore</code> so I know to look at
+your repo and document.</li>
 </ul></li>
 <li>Create a repo for your final course project
 <ul>
-<li>Create an R Markdown document where you start to outline the possible directions that your final project might take.</li>
+<li>Create an R Markdown document where you start to outline the
+possible directions that your final project might take.</li>
 <li>Open an issue so I can take a look.</li>
 </ul></li>
-<li>Clone a repo; fix/change something; make a <a href="https://help.github.com/articles/about-pull-requests/">pull request</a>.
+<li>Clone a repo; fix/change something; make a <a
+href="https://help.github.com/articles/about-pull-requests/">pull
+request</a>.
 <ul>
-<li>Option 1: <a href="http://psu-psychology.github.io/psy-525-reproducible-research-2020/" class="uri">http://psu-psychology.github.io/psy-525-reproducible-research-2020/</a>
+<li>Option 1: <a
+href="http://psu-psychology.github.io/psy-525-reproducible-research-2020/"
+class="uri">http://psu-psychology.github.io/psy-525-reproducible-research-2020/</a>
 <ul>
-<li>Suggestion: Add something about yourself to <code>students.html</code> by editing <code>students.Rmd</code> and then rebuilding the site via <code>rmarkdown::render_site(encoding = "utf8")</code></li>
+<li>Suggestion: Add something about yourself to
+<code>students.html</code> by editing <code>students.Rmd</code> and then
+rebuilding the site via
+<code>rmarkdown::render_site(encoding = "utf8")</code></li>
 </ul></li>
-<li>Option 2: <a href="https://psu-psychology.github.io/data-science-and-reproducibility/" class="uri">https://psu-psychology.github.io/data-science-and-reproducibility/</a>
+<li>Option 2: <a
+href="https://psu-psychology.github.io/data-science-and-reproducibility/"
+class="uri">https://psu-psychology.github.io/data-science-and-reproducibility/</a>
 <ul>
-<li>Suggestion: Add or edit <code>resources.html</code> by editing <code>resources.Rmd</code>.</li>
+<li>Suggestion: Add or edit <code>resources.html</code> by editing
+<code>resources.Rmd</code>.</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -643,8 +737,12 @@ $(document).ready(function () {
 <div id="readingswebinars-4" class="section level3">
 <h3>Readings/webinars</h3>
 <ul>
-<li>Required. <a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">Data Visualization with ggplot2 (Part 1)</a></li>
-<li>Desirable. <a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-2">Data Visualization with ggplot2 (Part 2)</a></li>
+<li>Required. <a
+href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">Data
+Visualization with ggplot2 (Part 1)</a></li>
+<li>Desirable. <a
+href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-2">Data
+Visualization with ggplot2 (Part 2)</a></li>
 </ul>
 </div>
 <div id="homework-5" class="section level3">
@@ -655,14 +753,16 @@ $(document).ready(function () {
 <ul>
 <li>You may adapt or build upon the examples used in class.</li>
 <li>Put the results in an R Markdown (.Rmd) file.</li>
-<li>Commit the .Rmd file to your private repo on GitHub and either raise an Issue on GitHub or submit a pull request.</li>
+<li>Commit the .Rmd file to your private repo on GitHub and either raise
+an Issue on GitHub or submit a pull request.</li>
 </ul></li>
 <li>Plot the results of your simulation using ggplot2 commands.</li>
 <li>Make sure that your simulation has the following sub-sections:
 <ul>
 <li>Introduction/Motivation
 <ul>
-<li>What are you simulating and why? Where do the parameter estimates come from? The literature or your best guess?</li>
+<li>What are you simulating and why? Where do the parameter estimates
+come from? The literature or your best guess?</li>
 </ul></li>
 <li>Plots</li>
 <li>Statistical Analyses</li>
@@ -693,8 +793,10 @@ $(document).ready(function () {
 <p>Due by the start of class on 2020-03-03.</p>
 <ol style="list-style-type: decimal">
 <li>Create a set of HTML talk slides using R Markdown.</li>
-<li>Try rendering the slides as a Word document, PowerPoint document, or PDF.</li>
-<li>Create a new repo and generate a simple website using R Markdown.</li>
+<li>Try rendering the slides as a Word document, PowerPoint document, or
+PDF.</li>
+<li>Create a new repo and generate a simple website using R
+Markdown.</li>
 </ol>
 </div>
 </div>
@@ -703,22 +805,30 @@ $(document).ready(function () {
 <div id="topics-7" class="section level3">
 <h3>Topics</h3>
 <ul>
-<li>Interactive visualizations using <a href="shiny.html">Shiny apps</a></li>
+<li>Interactive visualizations using <a href="shiny.html">Shiny
+apps</a></li>
 </ul>
 </div>
 <div id="readingswebinars-recommended" class="section level3">
 <h3>Readings/webinars (recommended)</h3>
 <ul>
-<li><a href="https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-1/">How to start with Shiny (Part 1)</a></li>
-<li><a href="https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-2/">How to start with Shiny (Part 2)</a></li>
-<li><a href="https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-3/">How to start with Shiny (Part 3)</a></li>
+<li><a
+href="https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-1/">How
+to start with Shiny (Part 1)</a></li>
+<li><a
+href="https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-2/">How
+to start with Shiny (Part 2)</a></li>
+<li><a
+href="https://www.rstudio.com/resources/webinars/how-to-start-with-shiny-part-3/">How
+to start with Shiny (Part 3)</a></li>
 </ul>
 </div>
 <div id="homework-7" class="section level3">
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-03-17.</p>
 <ol style="list-style-type: decimal">
-<li>Complete a 1-2 page write-up describing your plans for your final project.</li>
+<li>Complete a 1-2 page write-up describing your plans for your final
+project.</li>
 </ol>
 </div>
 </div>
@@ -738,8 +848,12 @@ $(document).ready(function () {
 <div id="readingswebinars-6" class="section level3">
 <h3>Readings/webinars</h3>
 <ul>
-<li><a href="https://www.datacamp.com/courses/importing-data-in-python-part-1">Importing data in Python (Part 1)</a></li>
-<li><a href="https://www.datacamp.com/courses/importing-data-in-python-part-2">Importing data in Python (Part 2)</a></li>
+<li><a
+href="https://www.datacamp.com/courses/importing-data-in-python-part-1">Importing
+data in Python (Part 1)</a></li>
+<li><a
+href="https://www.datacamp.com/courses/importing-data-in-python-part-2">Importing
+data in Python (Part 2)</a></li>
 </ul>
 </div>
 </div>
@@ -750,7 +864,8 @@ $(document).ready(function () {
 <ul>
 <li>Tools for reproducible data-gathering
 <ul>
-<li>E-Prime, Matlab (<a href="http://psychtoolbox.org/">Psychophysics Toolbox</a>).</li>
+<li>E-Prime, Matlab (<a href="http://psychtoolbox.org/">Psychophysics
+Toolbox</a>).</li>
 <li><a href="http://www.jspsych.org/">jsPsych</a></li>
 <li>MTurk
 <ul>
@@ -763,7 +878,11 @@ $(document).ready(function () {
 <div id="readingswebinars-7" class="section level3">
 <h3>Readings/webinars</h3>
 <ul>
-<li>de Leeuw, J.R. (2015). jsPsych: A JavaScript library for creating behavioral experiments in a Web browser. <em>Behavior Research Methods</em>, <em>47</em>(1), 1-12. <a href="doi:10.3758/s13428-014-0458-y" class="uri">doi:10.3758/s13428-014-0458-y</a></li>
+<li>de Leeuw, J.R. (2015). jsPsych: A JavaScript library for creating
+behavioral experiments in a Web browser. <em>Behavior Research
+Methods</em>, <em>47</em>(1), 1-12. <a
+href="doi:10.3758/s13428-014-0458-y"
+class="uri">doi:10.3758/s13428-014-0458-y</a></li>
 </ul>
 </div>
 <div id="homework-8" class="section level3">
@@ -771,11 +890,20 @@ $(document).ready(function () {
 <p>Due by the start of class on 2020-03-31.</p>
 <div id="if-you-are-new-to-psychopy" class="section level4">
 <h4>If you are new to PsychoPy:</h4>
-<p>Open a PsychoPy demo program and save it with a new name. Add additional documentation to the demo program that explains what’s happening. Change one or more parameters to make the program do something slightly different, and explain what parameters you changed. Push your code to a repo and tag <code>rogilmore</code>.</p>
+<p>Open a PsychoPy demo program and save it with a new name. Add
+additional documentation to the demo program that explains what’s
+happening. Change one or more parameters to make the program do
+something slightly different, and explain what parameters you changed.
+Push your code to a repo and tag <code>rogilmore</code>.</p>
 </div>
-<div id="if-you-are-an-experienced-psychopy-user" class="section level4">
+<div id="if-you-are-an-experienced-psychopy-user"
+class="section level4">
 <h4>If you are an experienced PsychoPy user:</h4>
-<p>Share a PsychoPy application you have helped to develop. Add additional documentation to the demo program that explains what’s happening. Modify the program as needed so that another user could run it by cloning your program. Push your code to a repo and tag <code>rogilmore</code>.</p>
+<p>Share a PsychoPy application you have helped to develop. Add
+additional documentation to the demo program that explains what’s
+happening. Modify the program as needed so that another user could run
+it by cloning your program. Push your code to a repo and tag
+<code>rogilmore</code>.</p>
 </div>
 </div>
 </div>
@@ -798,7 +926,10 @@ $(document).ready(function () {
 <div id="homework-9" class="section level3">
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-04-07.</p>
-<p>Create a Jupyter notebook (or R Markdown report) where you document your exploration of the Qualtrics, Box, or Google Drive APIs. Describe a use case for one of these tools in your research workflow, and test a preliminary implementation.</p>
+<p>Create a Jupyter notebook (or R Markdown report) where you document
+your exploration of the Qualtrics, Box, or Google Drive APIs. Describe a
+use case for one of these tools in your research workflow, and test a
+preliminary implementation.</p>
 </div>
 </div>
 <div id="week-12-tuesday-april-7-2020" class="section level2">
@@ -816,14 +947,24 @@ $(document).ready(function () {
 <div id="readingswebinars-8" class="section level3">
 <h3>Readings/webinars</h3>
 <ul>
-<li>Meyer, M. N. (2018). Practical tips for ethical data sharing. <em>Advances in Methods and Practices in Psychological Science</em>, 2515245917747656. SAGE Publications Inc. Retrieved from <a href="https://doi.org/10.1177/2515245917747656" class="uri">https://doi.org/10.1177/2515245917747656</a></li>
-<li>Gilmore, R.O., Cole, P.M., van Aken, M.A.G., Verma S., &amp; Worthman, C.M. (2020). Advancing scientific integrity, transparency, and openness in child development research: Challenges and possible solutions. <em>Child Development Perspectives</em>, <em>14</em>(1), 9-14. <a href="https://dx.doi.org/10.1111/cdep.12360" class="uri">https://dx.doi.org/10.1111/cdep.12360</a></li>
+<li>Meyer, M. N. (2018). Practical tips for ethical data sharing.
+<em>Advances in Methods and Practices in Psychological Science</em>,
+2515245917747656. SAGE Publications Inc. Retrieved from <a
+href="https://doi.org/10.1177/2515245917747656"
+class="uri">https://doi.org/10.1177/2515245917747656</a></li>
+<li>Gilmore, R.O., Cole, P.M., van Aken, M.A.G., Verma S., &amp;
+Worthman, C.M. (2020). Advancing scientific integrity, transparency, and
+openness in child development research: Challenges and possible
+solutions. <em>Child Development Perspectives</em>, <em>14</em>(1),
+9-14. <a href="https://dx.doi.org/10.1111/cdep.12360"
+class="uri">https://dx.doi.org/10.1111/cdep.12360</a></li>
 </ul>
 </div>
 <div id="homework-10" class="section level3">
 <h3>Homework</h3>
 <p>Due by the start of class on 2020-04-14.</p>
-<p>Choose two outlets for sharing research data or materials and compare and contrast their strengths and weaknesses.</p>
+<p>Choose two outlets for sharing research data or materials and compare
+and contrast their strengths and weaknesses.</p>
 </div>
 </div>
 <div id="week-13-tuesday-april-14-2020" class="section level2">
@@ -864,7 +1005,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -882,7 +1023,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

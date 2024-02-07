@@ -16,6 +16,12 @@ knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
 
 This document describes how to use Penn State's Jupyter notebook server system.
 
+**NOTE**
+
+As of Spring 2024, Penn State no longer supports the server described in this document.
+
+Other mechanisms for using Jupyter notebooks must be found.
+
 # Prerequisites
 
 1. You must have a PSU Access ID (e.g., rog1).
